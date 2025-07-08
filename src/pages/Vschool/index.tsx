@@ -38,6 +38,7 @@ const Startup = () => {
 
             {/* features */}
             <Features />
+            <OurImpact />
             <Yt3Videos />
             {/* integration */}
             <Integrations />
@@ -46,7 +47,7 @@ const Startup = () => {
             {/* <Pricing planFeatures={planFeatures} /> */}
             <YoutubeVid />
             <VideosAndPointers />
-            <OurImpact />
+
             {/* <Testimonials /> */}
             <VSchoolSuperApp />
             <MapImage />

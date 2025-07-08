@@ -8,7 +8,7 @@ const stats = [
         end: 10,
         suffix: 'M+',
         label: 'Benificiaries',
-        subtext: 'Lives transformed through education',
+        subtext: 'Enabling system transformation through technology',
         icon: <FcApproval size={64} />,
     },
     {
@@ -17,7 +17,7 @@ const stats = [
         suffix: 'K+',
 
         label: 'Teachers',
-        subtext: 'Educators empowered with new skills',
+        subtext: 'Educators empowered with new tools',
         icon: <FcReading size={64} />,
     },
     {
@@ -25,12 +25,12 @@ const stats = [
         end: 120,
         suffix: 'K+',
         label: 'Schools',
-        subtext: 'Educational institutions modernized',
+        subtext: 'Learning transformed through evidence-based practices',
         icon: <FcLibrary size={64} />,
     },
     {
         start: 0,
-        end: 2,
+        end: 1.6,
         suffix: 'M',
         label: 'USD raised',
         subtext: 'Funding secured for education',

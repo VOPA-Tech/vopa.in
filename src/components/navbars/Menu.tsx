@@ -69,12 +69,12 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                                 to: '/projects/vschool',
                                 label: 'VSchool - Free Digital Education (3 Million+ Students)',
                             },
-                            { to: '/projects/nipun-bharat', label: 'Mission NIPUN Maharashtra (350K Students)' },
+                            { to: '/projects/nipun-bharat', label: 'Mission NIPUN Maharashtra - SCERT Maharashtra' },
                             {
                                 to: '/projects/digital-learning-project',
                                 label: 'Digital Learning Project (21 Schools)',
                             },
-                            { to: '/projects/myca', label: 'MYCA - Mental Health For All (Aim - 100K+ Students)' },
+                            { to: '/projects/myca', label: 'MYCA - Mental Health For All (Aim - 100K Citizens)' },
                         ].map((item, idx) => (
                             <Nav.Item as="li" key={idx}>
                                 <NavLink

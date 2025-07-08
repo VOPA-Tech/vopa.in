@@ -59,17 +59,17 @@ const AccordionExample = () => {
         {
             id: 1,
             title: 'Effective Training:',
-            text: `Over 2 lakh  teachers and 1.2 lakh  headmasters have been trained and onboarded, facilitating swift project adoption and implementation.`,
+            text: `Over 2 lakh  teachers and 1.2 lakh  headmasters are neomg trained and onboarded, facilitating swift project adoption and implementation.`,
         },
         {
             id: 2,
             title: 'Enabling Centralization',
-            text: ` SCERT Maharashtra to set the goals, pace, and action plans through our tech innovations, ensuring a customized approach that meets specific needs`,
+            text: ` SCERT Maharashtra to set the goals, pace, and action plans through a human centric tech-led, customizable approach that meets Maharashtra's needs`,
         },
         {
             id: 3,
             title: 'Comprehensive Assessments',
-            text: `Monthly evaluations of over one lakh students, with data visually presented in dashboards for all stakeholders, driving targeted improvements.`,
+            text: `Monthly evaluations of over 7 million students, with data visually presented in dashboards for all stakeholders: Parents, Teachers, HM's, System - driving targeted improvements.`,
         },
         {
             id: 4,

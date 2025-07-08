@@ -23,8 +23,8 @@ const Projects = ({ projects }: ProjectsProps) => {
                 <Row className="justify-content-center">
                     <Col className="text-start">
                         <h1 className="display-5 fw-medium">
-                            We're Shaping A World Where Every Child Has The Tools To Learn, The Strength To Grow, And
-                            The Freedom To Flourish.
+                            We're shaping a world where every child has the tools to learn, the strength to grow, and
+                            the freedom to flourish.
                         </h1>
                         <p className="mb-0">
                             <span className=" p-1 align-middle">Projects We Have Done</span>

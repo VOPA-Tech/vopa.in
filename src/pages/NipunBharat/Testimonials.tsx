@@ -35,8 +35,8 @@ const Testimonials = () => {
                                 {/* <Badge pill bg="" className="badge-soft-primary px-2 py-1">
                                     Feedback
                                 </Badge> */}
-                                <h1 className="display-5 fw-medium">Partners says</h1>
-                                <p className="text-muted mx-auto">Few valuables words</p>
+                                <h1 className="display-5 fw-medium">Partnerships</h1>
+                                {/* <p className="text-muted mx-auto">Few valuables words</p> */}
                             </Col>
                         </Row>
                         <Row className="mt-3">

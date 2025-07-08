@@ -114,7 +114,7 @@ const projects: Project[] = [
     },
     {
         field: 'Education',
-        title: 'Nipun Bharat Maharashtra',
+        title: 'Nipun Maharashtra',
         description:
             'Nipun Bharat, a Maharashtra, focuses on enhancing foundational literacy and numeracy for children in the state, with VOPA supporting the program through digital tools and resources aimed at improving learning outcomes.',
         image: '/images/homePage/projectCardImages/nipun.png',
