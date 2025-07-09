@@ -1,11 +1,6 @@
 import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 
-// components
-
-const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
-const Logout = React.lazy(() => import('../pages/auth/Logout'));
-
 // home
 const Home = React.lazy(() => import('../pages/Home'));
 
@@ -84,8 +79,6 @@ const AllRoutes = () => {
                             path: 'feedback-and-testimonials',
                             element: <LoadComponent component={FeedbackTestimonials} />,
                         },
-                        { path: 'confirm', element: <LoadComponent component={Confirm} /> },
-                        { path: 'logout', element: <LoadComponent component={Logout} /> },
                     ],
                 },
 
