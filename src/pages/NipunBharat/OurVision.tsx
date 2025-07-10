@@ -15,7 +15,7 @@ const impactData = [
         start: 195,
         end: 200,
         suffix: 'K+',
-        prefix: '$',
+        prefix: '',
         title: 'ZP Teachers',
         subtitle:
             'To use NIPUN Maharashtra to revolutionize how India diagnoses and addresses foundational learning gaps through AI Powered, state integrated, platforms',
