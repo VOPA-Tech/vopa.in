@@ -48,7 +48,7 @@ const stats = [
 
 const OurImpact = () => {
     return (
-        <section className="pt-8 pb-6 bg-light position-relative" data-aos="fade-up">
+        <section className="pt-8 pb-6  position-relative" data-aos="fade-up">
             <Container>
                 <Row>
                     <Col className="text-center">
