@@ -83,7 +83,11 @@ const Footer1 = () => {
                 <hr />
                 <Row className="text-md-start text-center">
                     <Col md={8}>
-                        <p className="pb-0 mb-0 text-muted">{new Date().getFullYear()} © VOPA. All rights reserved.</p>
+                        <Link to="/auth/login">
+                            <p className="pb-0 mb-0 text-muted">
+                                {new Date().getFullYear()} © VOPA. All rights reserved.
+                            </p>
+                        </Link>
                     </Col>
                     <Col md={4} className="text-md-end">
                         <div className="align-items-end mt-md-0 mt-4">

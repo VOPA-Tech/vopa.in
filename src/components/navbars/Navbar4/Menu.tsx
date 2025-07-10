@@ -5,7 +5,7 @@ const Menu = () => {
     return (
         <Nav as="ul" className="mx-auto">
             <Nav.Item as="li" className="pe-3">
-                <Nav.Link href="/" className="active">
+                <Nav.Link href="/account/dashboard" className="active">
                     <div className="d-flex align-items-center">
                         <span className="icon-xxs me-1 flex-shrink-0">
                             <FeatherIcon icon="grid" className="icon-dual-primary" />
@@ -16,7 +16,7 @@ const Menu = () => {
             </Nav.Item>
 
             <Nav.Item as="li" className="pe-3">
-                <Nav.Link href="/">
+                <Nav.Link href="#">
                     <div className="d-flex align-items-center">
                         <span className="icon-xxs me-1 flex-shrink-0">
                             <FeatherIcon icon="folder" className="icon-dual-dark" />
@@ -27,7 +27,7 @@ const Menu = () => {
             </Nav.Item>
 
             <Nav.Item as="li" className="pe-3">
-                <Nav.Link href="/">
+                <Nav.Link href="#">
                     <div className="d-flex align-items-center">
                         <span className="icon-xxs me-1 flex-shrink-0">
                             <FeatherIcon icon="list" className="icon-dual-dark" />
@@ -38,7 +38,7 @@ const Menu = () => {
             </Nav.Item>
 
             <Nav.Item as="li" className="pe-3">
-                <Nav.Link href="/">
+                <Nav.Link href="#">
                     <div className="d-flex align-items-center">
                         <span className="icon-xxs me-1 flex-shrink-0">
                             <FeatherIcon icon="bar-chart-2" className="icon-dual-dark" />
@@ -49,7 +49,7 @@ const Menu = () => {
             </Nav.Item>
 
             <Nav.Item as="li" className="pe-3">
-                <Nav.Link href="/">
+                <Nav.Link href="/account/settings">
                     <div className="d-flex align-items-center">
                         <span className="icon-xxs me-1 flex-shrink-0">
                             <FeatherIcon icon="tool" className="icon-dual-dark" />

@@ -1,5 +1,13 @@
 import React, { Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
+
+// auth
+const Login = React.lazy(() => import('../pages/auth/Login'));
+const SignUp = React.lazy(() => import('../pages/auth/SignUp'));
+const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
+const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
+const Logout = React.lazy(() => import('../pages/auth/Logout'));
 
 // home
 const Home = React.lazy(() => import('../pages/Home'));
@@ -20,6 +28,10 @@ const Company = React.lazy(() => import('../pages/vopaHome'));
 const About = React.lazy(() => import('../pages/About'));
 const Contact = React.lazy(() => import('../pages/Contact'));
 const Career = React.lazy(() => import('../pages/Career'));
+
+// pages
+const Dashboard = React.lazy(() => import('../pages/account/Dashboard'));
+const Settings = React.lazy(() => import('../pages/account/Settings'));
 
 const loading = () => <div className=""></div>;
 
@@ -71,6 +83,16 @@ const AllRoutes = () => {
             path: '/',
             children: [
                 {
+                    path: 'auth',
+                    children: [
+                        { path: 'login', element: <LoadComponent component={Login} /> },
+                        { path: 'signup', element: <LoadComponent component={SignUp} /> },
+                        { path: 'forget-password', element: <LoadComponent component={ForgetPassword} /> },
+                        { path: 'confirm', element: <LoadComponent component={Confirm} /> },
+                        { path: 'logout', element: <LoadComponent component={Logout} /> },
+                    ],
+                },
+                {
                     path: 'impact',
                     children: [
                         { path: 'work-reports', element: <LoadComponent component={WorkReports} /> },
@@ -99,6 +121,20 @@ const AllRoutes = () => {
                         { path: 'digital-learning-project', element: <LoadComponent component={DLP} /> },
                         { path: 'myca', element: <LoadComponent component={MYCA} /> },
                         { path: 'overview', element: <LoadComponent component={ProjectsOverview} /> },
+                    ],
+                },
+            ],
+        },
+        {
+            // protected routes
+            path: '/',
+            element: <PrivateRoute roles={'Admin'} />,
+            children: [
+                {
+                    path: 'account',
+                    children: [
+                        { path: 'dashboard', element: <LoadComponent component={Dashboard} /> },
+                        { path: 'settings', element: <LoadComponent component={Settings} /> },
                     ],
                 },
             ],
