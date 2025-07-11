@@ -7,162 +7,19 @@ export type Employee = {
     name: string;
     role: string;
     department: string;
-    photo: File | string;
+    photo: string;
     status: 'Active' | 'Inactive';
     priority: boolean;
 };
 
 const Employees = () => {
-    const [employees, setEmployees] = useState<Employee[]>([
-        {
-            id: 1,
-            name: 'Amit Sharma',
-            role: 'Principal',
-            department: 'Administration',
-            photo: '',
-            status: 'Active',
-            priority: true,
-        },
-        {
-            id: 2,
-            name: 'Nisha Rao',
-            role: 'Math Teacher',
-            department: 'Academics',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 3,
-            name: 'Raj Mehta',
-            role: 'Science Teacher',
-            department: 'Academics',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 4,
-            name: 'Sneha Patel',
-            role: 'HR Manager',
-            department: 'HR',
-            photo: '',
-            status: 'Active',
-            priority: true,
-        },
-        {
-            id: 5,
-            name: 'Vinod Khanna',
-            role: 'IT Head',
-            department: 'Tech',
-            photo: '',
-            status: 'Inactive',
-            priority: false,
-        },
-        {
-            id: 6,
-            name: 'Tanya Singh',
-            role: 'English Teacher',
-            department: 'Academics',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 7,
-            name: 'Ravi Kumar',
-            role: 'PE Coach',
-            department: 'Sports',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 8,
-            name: 'Kavita Joshi',
-            role: 'Music Instructor',
-            department: 'Arts',
-            photo: '',
-            status: 'Inactive',
-            priority: false,
-        },
-        {
-            id: 9,
-            name: 'Deepak Nair',
-            role: 'Science Lab Assistant',
-            department: 'Academics',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 10,
-            name: 'Sunita Desai',
-            role: 'Accounts Manager',
-            department: 'Finance',
-            photo: '',
-            status: 'Active',
-            priority: true,
-        },
-        {
-            id: 11,
-            name: 'Yogesh Tiwari',
-            role: 'Security Head',
-            department: 'Admin',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 12,
-            name: 'Anjali Jain',
-            role: 'Computer Teacher',
-            department: 'Tech',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 13,
-            name: 'Harshita Bansal',
-            role: 'Dance Instructor',
-            department: 'Arts',
-            photo: '',
-            status: 'Inactive',
-            priority: false,
-        },
-        {
-            id: 14,
-            name: 'Manoj Verma',
-            role: 'Transport Head',
-            department: 'Transport',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-        {
-            id: 15,
-            name: 'Reshma Sheikh',
-            role: 'Counselor',
-            department: 'Support',
-            photo: '',
-            status: 'Active',
-            priority: false,
-        },
-    ]);
+    const [employees, setEmployees] = useState<Employee[]>([]);
 
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null);
 
-    const [form, setForm] = useState<{
-        name: string;
-        role: string;
-        department: string;
-        photo: string | File;
-        status: 'Active' | 'Inactive';
-        priority: boolean;
-    }>({
+    const [form, setForm] = useState<Omit<Employee, 'id'>>({
         name: '',
         role: '',
         department: '',
@@ -214,6 +71,11 @@ const Employees = () => {
         setShowModal(false);
     };
 
+    const handleImageChoose = () => {
+        const url = prompt('Enter image URL from your bucket:');
+        if (url) setForm((prev) => ({ ...prev, photo: url }));
+    };
+
     return (
         <div>
             <div className="d-flex justify-content-between align-items-center mb-3">
@@ -239,11 +101,7 @@ const Employees = () => {
                             <tr key={emp.id}>
                                 <td>
                                     <img
-                                        src={
-                                            typeof emp.photo === 'string'
-                                                ? emp.photo || 'https://via.placeholder.com/40'
-                                                : URL.createObjectURL(emp.photo)
-                                        }
+                                        src={emp.photo || 'https://via.placeholder.com/40'}
                                         alt="avatar"
                                         style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
                                     />
@@ -306,38 +164,19 @@ const Employees = () => {
                     <Modal.Body>
                         <Form.Group className="mb-3">
                             <Form.Label>Photo</Form.Label>
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex align-items-center gap-2">
                                 <div
-                                    className="position-relative me-3"
+                                    className="position-relative"
                                     style={{ width: 60, height: 60, borderRadius: '50%', overflow: 'hidden' }}>
                                     <img
-                                        src={
-                                            typeof form.photo === 'string'
-                                                ? form.photo || 'https://via.placeholder.com/60'
-                                                : form.photo
-                                                ? URL.createObjectURL(form.photo)
-                                                : 'https://via.placeholder.com/60'
-                                        }
+                                        src={form.photo || 'https://via.placeholder.com/60'}
                                         alt="avatar"
                                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                     />
-                                    <div
-                                        className="position-absolute bottom-0 end-0 bg-white rounded-circle p-1"
-                                        style={{ cursor: 'pointer' }}
-                                        onClick={() => document.getElementById('fileInput')?.click()}>
-                                        <FeatherIcon icon="edit" size={14} />
-                                    </div>
                                 </div>
-                                <input
-                                    type="file"
-                                    id="fileInput"
-                                    accept="image/*"
-                                    className="d-none"
-                                    onChange={(e) => {
-                                        const file = e.target.files?.[0];
-                                        if (file) setForm({ ...form, photo: file });
-                                    }}
-                                />
+                                <Button size="sm" onClick={handleImageChoose}>
+                                    Choose from Bucket
+                                </Button>
                             </div>
                         </Form.Group>
 
