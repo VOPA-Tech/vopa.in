@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { Button, Row, Col, Alert } from 'react-bootstrap';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -25,7 +25,6 @@ type UserData = {
 };
 
 const Login = () => {
-    const navigate = useNavigate();
     const { t } = useTranslation();
     const [user, error, login] = useLogin();
 
@@ -43,24 +42,20 @@ const Login = () => {
     handle form submission
     */
     const onSubmit = (formData: UserData) => {
-        if (formData.email === 'manasee@gmail.com' || formData.password === '1234') {
-            navigate('/account/dashboard');
-            //     login!({ email: formData['email'], password: formData['password'] });
-            // };
-            // const location = useLocation();
-            // let redirectUrl = '/';
-            // if (location.state) {
-            //     const { from } = location.state as LocationState;
-            //     redirectUrl = from ? from.pathname : '/';
-        } else {
-            alert('Invalid credentials, please try again.');
-        }
+        login!({ email: formData['email'], password: formData['password'] });
     };
+
+    const location = useLocation();
+    let redirectUrl = '/account/dashboard';
+    console.log('Location:', location);
+    if (location.state) {
+        const { from } = location.state as LocationState;
+        redirectUrl = from ? from.pathname : '/';
+    }
 
     return (
         <>
-            {/* {user && <Navigate to={redirectUrl} replace />} */}
-
+            {user && <Navigate to={redirectUrl} replace />}
             <AuthLayout
                 hasSlider
                 bottomLinks={
@@ -78,12 +73,14 @@ const Login = () => {
 
                 {error && (
                     <Alert variant="danger" className="mb-3">
-                        {/* {error} */}
-                        Something went wrong, please try again later.
+                        Something went wrong! {t('Please try again later.')}
                     </Alert>
                 )}
 
-                <VerticalForm<UserData> onSubmit={onSubmit} resolver={schemaResolver}>
+                <VerticalForm<UserData>
+                    onSubmit={onSubmit}
+                    resolver={schemaResolver}
+                    defaultValues={{ email: 'prompt@coderthemes.com', password: 'test' }}>
                     <FormInput
                         type="email"
                         name="email"
