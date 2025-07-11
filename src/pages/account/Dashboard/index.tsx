@@ -25,8 +25,8 @@ const Dashboard = () => {
                     <Row>
                         <Col lg={12}>
                             <div className="page-title">
-                                <h3 className="mb-0">Hi Greeva</h3>
-                                <p className="mt-1 fw-medium">Welcome to Prompt!</p>
+                                <h3 className="mb-0">Hi Mayuresh</h3>
+                                <p className="mt-1 fw-medium">Welcome to VOPA!</p>
                             </div>
                         </Col>
                     </Row>

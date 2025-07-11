@@ -38,7 +38,7 @@ const Navbar4 = ({ isSticky, navClass, fixedWidth }: Navbar4Props) => {
                     <Navbar.Collapse id="topnav-menu-content4">
                         <Menu />
                         <Nav as="ul" className="align-items-lg-center">
-                            <NotificationDropdown notifications={notifications} />
+                            {/* <NotificationDropdown notifications={notifications} /> */}
                             <ProfileDropdown profileOptions={profileOptions} />
                         </Nav>
                     </Navbar.Collapse>

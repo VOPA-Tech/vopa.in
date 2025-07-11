@@ -32,6 +32,7 @@ const Career = React.lazy(() => import('../pages/Career'));
 // pages
 const Dashboard = React.lazy(() => import('../pages/account/Dashboard'));
 const Settings = React.lazy(() => import('../pages/account/Settings'));
+const Content = React.lazy(() => import('../pages/account/Content'));
 
 const loading = () => <div className=""></div>;
 
@@ -134,6 +135,7 @@ const AllRoutes = () => {
                     path: 'account',
                     children: [
                         { path: 'dashboard', element: <LoadComponent component={Dashboard} /> },
+                        { path: 'content', element: <LoadComponent component={Content} /> },
                         { path: 'settings', element: <LoadComponent component={Settings} /> },
                     ],
                 },

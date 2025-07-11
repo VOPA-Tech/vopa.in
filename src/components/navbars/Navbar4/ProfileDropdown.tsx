@@ -21,7 +21,7 @@ const ProfileDropdown = ({ profileOptions }: ProfileProps) => {
                         <img src={user} alt="user" className="avatar avatar-xs rounded-circle me-2" />
                     </div>
                     <div className="flex-grow-1 ms-1 lh-base">
-                        <span className="fw-semibold fs-13 d-block line-height-normal">Greeva N</span>
+                        <span className="fw-semibold fs-13 d-block line-height-normal">Mayuresh Khole</span>
                         <span className="text-muted fs-13">Admin</span>
                     </div>
                 </div>
