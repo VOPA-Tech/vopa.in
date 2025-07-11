@@ -44,11 +44,7 @@ const Hero = () => {
                                 <Col xs={6}>
                                     <Card className="shadow-lg">
                                         <Card.Body className="p-1">
-                                            <img
-                                                src={'/images/projectImages/projectOverviewHero1.png'}
-                                                className="img-fluid"
-                                                alt=""
-                                            />
+                                            <img src="/images/vschool/vschoolGuy.png" className="img-fluid" alt="" />
                                         </Card.Body>
                                     </Card>
                                 </Col>
