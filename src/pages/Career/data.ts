@@ -65,6 +65,13 @@ const gallery: GalleryItem[] = [
     {
         id: 6,
         image: {
+            src: '/images/aboutUs/officePhotos/vopaTeam.png',
+            caption: 'A common seating area',
+        },
+    },
+    {
+        id: 6,
+        image: {
             src: '/images/career/certificate.png',
             caption: 'A common seating area',
         },

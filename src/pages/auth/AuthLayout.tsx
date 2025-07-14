@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 // components
-import SwiperSlider1 from '../../components/sliders/SwiperSlider1';
 
 // dummy data
-import { slides1 } from '../../components/sliders/data';
+
+import SwiperSlider1 from './SwiperSlider1';
+import { slides1 } from './data';
 
 type AuthLayoutProps = {
     hasSlider: boolean;

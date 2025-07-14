@@ -2,9 +2,6 @@ import { Link } from 'react-router-dom';
 import { Card, Col, Dropdown, ProgressBar, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 
-// images
-import profile from 'assets/images/avatars/img-8.jpg';
-
 const ProfileWidget = () => {
     return (
         <Col lg={5}>
@@ -13,7 +10,11 @@ const ProfileWidget = () => {
                     <Row>
                         <Col>
                             <div className="d-flex">
-                                <img src={profile} alt="profile" className="img-fluid avatar-sm rounded-sm me-3" />
+                                <img
+                                    src="/images/aboutUs/vopaStaff/rutujaJeve.jpg"
+                                    alt="profile"
+                                    className="img-fluid avatar-sm rounded-sm me-3"
+                                />
                                 <div className="flex-grow-1">
                                     <h4 className="mb-1 mt-0 fs-16">Ms. Greeva Navadiya</h4>
                                     <p className="text-muted pb-0 fs-14">Web & Graphic Designer</p>
@@ -26,8 +27,7 @@ const ProfileWidget = () => {
                                     as={Link}
                                     to="#"
                                     id="dropdownMenuLink-1"
-                                    className="btn-link text-muted p-0"
-                                >
+                                    className="btn-link text-muted p-0">
                                     <FeatherIcon icon="more-horizontal" className="icon icon-xs" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>

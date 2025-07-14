@@ -1,8 +1,5 @@
 import { Post, oldPost } from './types';
 
-// images
-import postImg1 from 'assets/images/blog/post1.jpg';
-
 const post3: Post[] = [
     // {
     //     link: 'https://drive.google.com/file/d/1Z_CH7xkzdwwOQy-8vRk0UPsMoG_ZWT07/preview',
@@ -110,7 +107,7 @@ const post3: Post[] = [
 ];
 const post1: oldPost[] = [
     {
-        image: postImg1,
+        image: '/images/woodPanelHero.jpg',
         slug: '1',
         tag: { variant: 'success', value: 'info' },
         title: 'स्पष्टपणे विचार करण्याची कला भाग ००२ – SURVIVORSHIP BIAS',
@@ -139,7 +136,7 @@ PS:
         },
     },
     {
-        image: postImg1,
+        image: '/images/woodPanelHero.jpg',
         slug: '2',
         tag: { variant: 'success', value: 'info' },
         title: 'बुडालेल्या किंमतीचा पाश: स्पष्टपणे विचार करण्याची कला भाग ००३',
@@ -168,7 +165,7 @@ PS:
         },
     },
     {
-        image: postImg1,
+        image: '/images/woodPanelHero.jpg',
         slug: '3',
         tag: { variant: 'success', value: 'info' },
         title: 'पुष्टीकरण पूर्वाग्रह ०१: स्पष्टपणे विचार करण्याची कला: भाग ००४',
@@ -201,7 +198,7 @@ PS:
         },
     },
     {
-        image: postImg1,
+        image: '/images/woodPanelHero.jpg',
         slug: '4',
         tag: { variant: 'success', value: 'info' },
         title: 'परस्पर कृतज्ञता: स्पष्टपणे विचार करण्याची कला: भाग ००५',

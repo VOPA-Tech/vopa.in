@@ -1,7 +1,4 @@
-import { Button, Col, Container, Row } from 'react-bootstrap';
-
-// images
-import vschool from 'assets/images/hero/allTab.png';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Hero4 = () => {
     return (
@@ -25,7 +22,7 @@ const Hero4 = () => {
                     <Col lg={7} md={6}>
                         <div className="img-container text-end pt-5 pt-sm-0">
                             <img
-                                src={vschool}
+                                src="/images/nipun/allTab.png"
                                 alt="startup"
                                 className="img-fluid rounded-3 shadow-lg"
                                 data-aos="fade-left"

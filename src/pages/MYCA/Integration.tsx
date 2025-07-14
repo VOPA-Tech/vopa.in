@@ -1,21 +1,11 @@
 import { Badge, Card, Col, Container, Row } from 'react-bootstrap';
 // images
-import slack from 'assets/images/brands/slack.png';
-import fb from 'assets/images/brands/fb.png';
-import salesforce from 'assets/images/brands/salesforce.jpg';
-import at from 'assets/images/brands/at.png';
-import gsheet from 'assets/images/brands/gsheet.png';
-import ac from 'assets/images/brands/ac.jpeg';
+
 import FeatherIcon from 'feather-icons-react';
 // types
 import { Integration } from './types';
-import classNames from 'classnames';
 
-type IntegrationsProps = {
-    integrations: Integration[];
-};
-
-const Integrations = ({ integrations }: IntegrationsProps) => {
+const Integrations = () => {
     const mycaFeatures: Integration[] = [
         {
             appLogo: 'book',

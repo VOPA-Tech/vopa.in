@@ -1,80 +1,6 @@
 // types
-import { TeamMember, Feature, Project, BlogPost } from './types';
+import { Feature, Project } from './types';
 
-// images
-import img1 from 'assets/images/avatars/img-1.jpg';
-import img2 from 'assets/images/avatars/img-2.jpg';
-import img3 from 'assets/images/avatars/img-3.jpg';
-import img4 from 'assets/images/avatars/img-4.jpg';
-import img5 from 'assets/images/avatars/img-5.jpg';
-import img6 from 'assets/images/avatars/img-6.jpg';
-import img7 from 'assets/images/avatars/img-7.jpg';
-import img8 from 'assets/images/avatars/img-8.jpg';
-import ProjectImg1 from 'assets/images/features/agency1.jpg';
-import ProjectImg2 from 'assets/images/features/agency2.jpg';
-
-const teamMembers: TeamMember[] = [
-    {
-        avatar: img1,
-        name: 'Ana Russo',
-        designation: 'CEO',
-    },
-    {
-        avatar: img2,
-        name: 'Danette Payne',
-        designation: 'CTO',
-    },
-    {
-        avatar: img3,
-        name: 'Tammy Ward',
-        designation: 'VP, Product Development',
-    },
-    {
-        avatar: img4,
-        name: 'Paul Moore',
-        designation: 'Back-End Developer',
-    },
-    {
-        avatar: img5,
-        name: 'Harry Burris',
-        designation: 'PHP Developer',
-    },
-    {
-        avatar: img6,
-        name: 'Patricia Ferraro',
-        designation: 'Web Designer',
-    },
-    {
-        avatar: img7,
-        name: 'Robert Smith',
-        designation: 'Graphic Designer',
-    },
-    {
-        avatar: img8,
-        name: 'Lindsay Clark',
-        designation: 'Web Designer',
-    },
-    {
-        avatar: img2,
-        name: 'Lindsay Clark',
-        designation: 'Front-End Developer',
-    },
-    {
-        avatar: img4,
-        name: 'Ernest Griffith',
-        designation: 'PHP Developer',
-    },
-    {
-        avatar: img6,
-        name: 'Cecelia Poole',
-        designation: 'Back-End Developer',
-    },
-    {
-        avatar: img3,
-        name: 'Morris Hall',
-        designation: 'Graphic Designer',
-    },
-];
 const features: Feature[] = [
     {
         icon: 'mail',
@@ -145,30 +71,5 @@ const projects: Project[] = [
         link: '/projects/digital-learning-project',
     },
 ];
-const blogPosts: BlogPost[] = [
-    {
-        heading: 'Design',
-        img: ProjectImg2,
-        time: '11 March, 2020',
-        title: 'Top 10 design inspirations to follow',
-        description:
-            'Single page websites are taking over the world, and thats why I would like you to present the best ...',
-    },
-    {
-        heading: 'Development',
-        img: ProjectImg2,
-        time: '12 March, 2020',
-        title: 'Top 10 design inspirations to follow',
-        description:
-            'We have shortlisted the best WordPress themes for alcohol production, distribution, and selling to...',
-    },
-    {
-        heading: 'Design',
-        img: ProjectImg2,
-        time: '13 March, 2020',
-        title: 'Top 10 design inspirations to follow',
-        description: 'The following Italian restaurant WordPress themes come with the powerful drag-n-drop...',
-    },
-];
 
-export { teamMembers, features, projects, blogPosts };
+export { features, projects };

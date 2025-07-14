@@ -1,10 +1,6 @@
 // types
 import { Project, Task } from './types';
 
-// images
-import member1 from 'assets/images/avatars/img-8.jpg';
-import member2 from 'assets/images/avatars/img-5.jpg';
-
 const projects: Project[] = [
     {
         time: 'Aug 09, 2020',
@@ -18,7 +14,7 @@ const projects: Project[] = [
             value: 75,
             variant: 'success',
         },
-        member: [member1, member2],
+        member: ['/images/aboutUs/vopaStaff/rutujaJeve.jpg', '/images/aboutUs/vopaStaff/rutujaJeve.jpg'],
     },
     {
         time: 'Aug 10, 2020',
@@ -32,7 +28,7 @@ const projects: Project[] = [
             value: 50,
             variant: 'danger',
         },
-        member: [member1, member2],
+        member: ['/images/aboutUs/vopaStaff/rutujaJeve.jpg', '/images/aboutUs/vopaStaff/rutujaJeve.jpg'],
     },
     {
         time: 'Aug 11, 2020',
@@ -46,7 +42,7 @@ const projects: Project[] = [
             value: 60,
             variant: 'warning',
         },
-        member: [member1, member2],
+        member: ['/images/aboutUs/vopaStaff/rutujaJeve.jpg', '/images/aboutUs/vopaStaff/rutujaJeve.jpg'],
     },
 ];
 

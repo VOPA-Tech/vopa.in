@@ -1,7 +1,5 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
-// images
-import vschool from 'assets/images/hero/allTab.png';
 import { useNavigate } from 'react-router-dom';
 
 const Hero4 = () => {
@@ -43,8 +41,8 @@ const Hero4 = () => {
                     <Col lg={7} md={6}>
                         <div className="img-container text-end pt-5 pt-sm-0">
                             <img
-                                src={vschool}
-                                alt="startup"
+                                src="/images/dlp/allTab.png"
+                                alt="Nipun Maharashtra"
                                 className="img-fluid rounded-3 shadow-lg"
                                 data-aos="fade-left"
                                 data-aos-duration="1000"

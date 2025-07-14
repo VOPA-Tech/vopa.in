@@ -7,9 +7,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // components
 import { FormInput } from 'components/form';
 
-// images
-import avatar from 'assets/images/avatars/img-8.jpg';
-
 const AccountInformation = () => {
     /*
     form default values
@@ -55,7 +52,7 @@ const AccountInformation = () => {
     /*
     handle form submission
     */
-    const onSubmit = () => { };
+    const onSubmit = () => {};
 
     return (
         <>
@@ -65,7 +62,11 @@ const AccountInformation = () => {
                 <h6 className="mt-4">Your Avatar</h6>
                 <Row className="align-items-center">
                     <Col xs="auto">
-                        <img src={avatar} className="img-fluid avatar-md rounded-circle shadow" alt="..." />
+                        <img
+                            src="/images/aboutUs/vopaStaff/rutujaJeve.jpg"
+                            className="img-fluid avatar-md rounded-circle shadow"
+                            alt="..."
+                        />
                     </Col>
                     <Col>
                         <Link to="#" className="btn btn-outline-primary btn-sm">

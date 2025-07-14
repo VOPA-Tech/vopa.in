@@ -9,9 +9,6 @@ const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
 const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 const Logout = React.lazy(() => import('../pages/auth/Logout'));
 
-// home
-const Home = React.lazy(() => import('../pages/Home'));
-
 const Vschool = React.lazy(() => import('../pages/Vschool'));
 const DLP = React.lazy(() => import('../pages/DigitalLearningProgram'));
 const MYCA = React.lazy(() => import('../pages/MYCA'));
@@ -103,11 +100,6 @@ const AllRoutes = () => {
                             element: <LoadComponent component={FeedbackTestimonials} />,
                         },
                     ],
-                },
-
-                {
-                    path: 'home',
-                    element: <LoadComponent component={Home} />,
                 },
 
                 {

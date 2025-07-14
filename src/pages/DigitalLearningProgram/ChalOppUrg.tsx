@@ -1,10 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Badge, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-
-// images
-import desktop1 from 'assets/images/features/desktop1.gif';
-import desktop from 'assets/images/hero/desktop.jpg';
 
 const ChalOppUrg = () => {
     const ChalOppUrg = [

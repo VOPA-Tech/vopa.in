@@ -3,15 +3,11 @@ import classNames from 'classnames';
 
 // component
 import Menu from './Menu';
-import NotificationDropdown from './NotificationDropdown';
+
 import ProfileDropdown from './ProfileDropdown';
 
 // dummy data
-import { notifications, profileOptions } from './data';
-
-// images
-import logo from 'assets/images/logo.webp';
-import logoLight from 'assets/images/logo-light.webp';
+import { profileOptions } from './data';
 
 type Navbar4Props = {
     isSticky?: boolean;
@@ -29,8 +25,8 @@ const Navbar4 = ({ isSticky, navClass, fixedWidth }: Navbar4Props) => {
                 className={classNames('topnav-menu', navClass)}>
                 <Container fluid={!fixedWidth}>
                     <Navbar.Brand href="/" className="logo">
-                        <img src={logo} height="30" className="align-top logo-dark" alt="" />
-                        <img src={logoLight} height="30" className="align-top logo-light" alt="" />
+                        <img src="/logo.webp" height="30" className="align-top logo-dark" alt="" />
+                        <img src="/logo-light.webp" height="30" className="align-top logo-light" alt="" />
                     </Navbar.Brand>
 
                     <Navbar.Toggle className="me-3" aria-controls="topnav-menu-content4" />

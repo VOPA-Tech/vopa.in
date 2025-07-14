@@ -3,20 +3,16 @@ import { Navbar3 } from 'components/navbars';
 
 import BackToTop from 'components/BackToTop';
 
-import ClientsReview from './ClientsReview';
 import Features from './Features';
-import Integrations from './Integration';
-import Pricing from './Pricing';
-import Footer from './Footer';
 
 // data
-import { integrations, planFeatures } from './data';
+
 import Hero4 from './Hero4';
-import YoutubeVid from './YoutubeVid';
+
 import OurVision from './OurVision';
 import Testimonials from './Testimonials';
 import CTA from './CTA';
-import AccordionExample from './Accordions';
+
 import HowWeArwDoing from './HowWeAreDoing';
 import VideosAndPointers from './VideosAndPointers.tsx';
 import { Footer1 } from 'components/footer';

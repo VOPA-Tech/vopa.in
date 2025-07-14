@@ -2,9 +2,6 @@ import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 
-// images
-import logo from 'assets/images/logo.webp';
-
 const Footer1 = () => {
     // Success green color
     const successGreen = '#28c76f';
@@ -24,7 +21,7 @@ const Footer1 = () => {
                             style={{ color: 'inherit' }}
                             onMouseOver={hoverStyle}
                             onMouseOut={unhoverStyle}>
-                            <img src={logo} height="30" alt="" />
+                            <img src="/logo.webp" height="30" alt="" />
                         </Link>
                         <p className="text-muted w-75">
                             Vowels of the People Association (VOPA) Commerce Avenue, Paud Road, Kothrud, Pune +91

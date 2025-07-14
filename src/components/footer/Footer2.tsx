@@ -2,9 +2,6 @@ import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 
-// imgaes
-import logo from 'assets/images/logo.webp';
-
 const Footer2 = () => {
     return (
         <section className="mt-lg-5 pt-5 pb-4 bg-gradient3 position-relative">
@@ -12,7 +9,7 @@ const Footer2 = () => {
                 <Row>
                     <Col xl={8}>
                         <Link className="navbar-brand me-lg-4 mb-4 me-auto d-flex align-items-center pt-0" to="#">
-                            <img src={logo} height="30" alt="" />
+                            <img src="/logo.webp" height="30" alt="" />
                         </Link>
                         <p className="text-muted w-50">
                             On the other hand, we denounce with righteous indignation and dislike men who are so

@@ -1,18 +1,6 @@
-import { Link } from 'react-router-dom';
-import { Badge, Col, Container, Row } from 'react-bootstrap';
-import FeatherIcon from 'feather-icons-react';
-
-// images
-import desktop1 from 'assets/images/features/desktop1.gif';
-import desktop from 'assets/images/hero/desktop.jpg';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Features = () => {
-    const features = [
-        'Aligned with NIPUN Bharat and NEP 2020 learning goals',
-        'Reduces over 21 hours/month of teacher workload through automation',
-        'Customizable dashboards and tools for district-specific strategies',
-    ];
-
     return (
         <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
             <Container>

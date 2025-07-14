@@ -9,8 +9,6 @@ import { useUser } from '../../hooks/auth';
 import Menu from './Menu';
 
 // images
-import logo from '../../assets/images/logo.webp';
-import logoLight from '../../assets/images/logo-light.webp';
 
 type Navbar1Props = {
     isSticky?: boolean;
@@ -55,8 +53,8 @@ const Navbar1 = ({ isSticky, navClass, buttonClass, fixedWidth, hideSearch }: Na
                 className={classNames('topnav-menu', navClass)}>
                 <Container fluid={!fixedWidth}>
                     <Navbar.Brand href="/" className="logo">
-                        <img src={logo} height="30" className="align-top logo-dark" alt="" />
-                        <img src={logoLight} height="30" className="align-top logo-light" alt="" />
+                        <img src="/logo.webp" height="30" className="align-top logo-dark" alt="" />
+                        <img src="/logo-light.webp" height="30" className="align-top logo-light" alt="" />
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />

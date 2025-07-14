@@ -159,13 +159,13 @@ const Blogs = () => {
             </Table>
 
             {/* Add / Edit Modal */}
-            <Modal show={showModal} onHide={() => setShowModal(false)} centered size="lg">
+            <Modal show={showModal} onHide={() => setShowModal(false)} fullscreen>
                 <Modal.Header closeButton>
                     <Modal.Title>{isEditing ? 'Edit Blog' : 'Add Blog'}</Modal.Title>
                 </Modal.Header>
                 <Form onSubmit={handleSubmit}>
-                    <Modal.Body>
-                        <Row>
+                    <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
+                        <Row className="mb-3">
                             <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Label>Title</Form.Label>
@@ -175,6 +175,8 @@ const Blogs = () => {
                                         onChange={(e) => setForm({ ...form, title: e.target.value })}
                                     />
                                 </Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Label>Author</Form.Label>
                                     <Form.Control
@@ -183,6 +185,8 @@ const Blogs = () => {
                                         onChange={(e) => setForm({ ...form, author: e.target.value })}
                                     />
                                 </Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Label>Category</Form.Label>
                                     <Form.Control
@@ -191,6 +195,8 @@ const Blogs = () => {
                                         onChange={(e) => setForm({ ...form, category: e.target.value })}
                                     />
                                 </Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Label>Thumbnail URL</Form.Label>
                                     <div className="d-flex gap-2">
@@ -203,6 +209,8 @@ const Blogs = () => {
                                         </Button>
                                     </div>
                                 </Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Label>Cover Photo URL</Form.Label>
                                     <div className="d-flex gap-2">
@@ -215,6 +223,8 @@ const Blogs = () => {
                                         </Button>
                                     </div>
                                 </Form.Group>
+                            </Col>
+                            <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Check
                                         label="Featured"
@@ -227,21 +237,22 @@ const Blogs = () => {
                                         label="Published"
                                         checked={form.status === 'Published'}
                                         onChange={(e) =>
-                                            setForm({ ...form, status: e.target.checked ? 'Published' : 'Draft' })
+                                            setForm({
+                                                ...form,
+                                                status: e.target.checked ? 'Published' : 'Draft',
+                                            })
                                         }
                                     />
                                 </Form.Group>
                             </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Label>Content</Form.Label>
-                                    <EditorWithMediaLibrary
-                                        value={form.content}
-                                        onChange={(value) => setForm({ ...form, content: value })}
-                                    />
-                                </Form.Group>
-                            </Col>
                         </Row>
+                        <Form.Group className="mt-4">
+                            <Form.Label>Content</Form.Label>
+                            <EditorWithMediaLibrary
+                                value={form.content}
+                                onChange={(value) => setForm({ ...form, content: value })}
+                            />
+                        </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => setShowModal(false)}>
@@ -253,11 +264,11 @@ const Blogs = () => {
             </Modal>
 
             {/* View Modal */}
-            <Modal show={!!viewingBlog} onHide={() => setViewingBlog(null)} centered size="lg">
+            <Modal show={!!viewingBlog} onHide={() => setViewingBlog(null)} centered fullscreen>
                 <Modal.Header closeButton>
                     <Modal.Title>{viewingBlog?.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
                     {viewingBlog && (
                         <>
                             <img src={viewingBlog.coverPhoto} alt="Cover" className="img-fluid mb-3" />

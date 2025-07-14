@@ -5,8 +5,6 @@ import { useState } from 'react';
 import { ReactComponent as Bottom } from 'assets/images/shapes/bottom.svg';
 // types
 import { Project } from './types';
-import Blog from './Blog';
-import { blogPosts } from './data';
 
 type ProjectsProps = {
     projects: Project[];

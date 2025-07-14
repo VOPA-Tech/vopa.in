@@ -8,9 +8,6 @@ import { useUser } from '../../hooks/auth';
 // component
 import Menu from './Menu';
 
-// images
-import logo from '../../assets/images/logo.webp';
-
 type Navbar2Props = {
     isSticky?: boolean;
     navClass?: string;
@@ -55,7 +52,7 @@ const Navbar2 = ({ isSticky, navClass, buttonClass, fixedWidth, hideSearch }: Na
                 <Container fluid={!fixedWidth}>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" className="me-3" />
                     <Navbar.Brand href="/" className="me-lg-4 me-auto">
-                        <img src={logo} height="30" className="d-inline-block align-top" alt="" />
+                        <img src="/logo.webp" height="30" className="d-inline-block align-top" alt="" />
                     </Navbar.Brand>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         {!hideSearch && (
