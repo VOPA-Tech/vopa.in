@@ -19,7 +19,7 @@ import Hero9 from './Hero9';
 import HeroCara from './HeroCara';
 import KnowAboutUs from './KnowAboutUs';
 import ProductCards from './ProductCards';
-import AchivementStrip from './AchivementStrip';
+
 import TwoCause from './TwoCause';
 import OurImpact from './OurImpact';
 import ProjectCardsSlider from './ProjectCardsSlider';

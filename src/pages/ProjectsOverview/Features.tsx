@@ -2,10 +2,6 @@ import { Link } from 'react-router-dom';
 import { Badge, Col, Container, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 
-// images
-import desktop1 from 'assets/images/features/desktop1.gif';
-import desktop from 'assets/images/hero/desktop.jpg';
-
 const Features = () => {
     const features = ['Guided lesson preparation and planning', 'Centralized monitoring of teaching preparation'];
 
@@ -40,7 +36,7 @@ const Features = () => {
                     </Col>
                     <Col lg={{ span: 6, offset: 1 }}>
                         <img
-                            src="/images/vschool/racialGap.jpg"
+                            src="/images/projectImages/racialGap.webp"
                             alt="desktop1"
                             className="img-fluid"
                             data-aos="fade-left"
@@ -54,7 +50,7 @@ const Features = () => {
                             className="bg-white p-2 rounded border shadow mb-lg-0 mb-3"
                             data-aos="fade-right"
                             data-aos-duration="1500">
-                            <img src="/images/vschool/ourSolution.jpg" alt="desktop" className="img-fluid" />
+                            <img src="/images/projectImages/ourSolution.webp" alt="desktop" className="img-fluid" />
                         </div>
                     </Col>
                     <Col lg={{ span: 5, offset: 1 }}>

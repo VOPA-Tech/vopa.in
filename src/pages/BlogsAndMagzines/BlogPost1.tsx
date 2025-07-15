@@ -1,6 +1,5 @@
-import { Badge, Card, Col, Row } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 
 const BlogPost1 = ({ post }: any) => {
     return (

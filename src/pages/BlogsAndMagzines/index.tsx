@@ -2,36 +2,28 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // components
-import { Navbar1, Navbar3 } from 'components/navbars';
-
-import { Footer1, Footer2 } from 'components/footer';
+import { Navbar3 } from 'components/navbars';
+import { Footer1 } from 'components/footer';
 import BackToTop from 'components/BackToTop';
-
 import Hero from './Hero';
-
 import BlogPost3 from './BlogPost3';
-import SubscriptionForm from './SubscriptionForm';
+import BlogPost1 from './BlogPost1';
+import VSchoolAnalytics from './VSchoolAnalytics';
 
 // dummy data
-import { post1, post3 } from './data';
+import { post3 } from './data';
 
-// images
-
-import { useEffect, useState } from 'react';
-import VSchoolAnalytics from './VSchoolAnalytics';
-import BlogPost1 from './BlogPost1';
-import { fetchBlogs } from 'api/fetchBlogs';
+// context
 import { useAppContext } from 'context/AppContext';
 
 const Blog = () => {
     const { blogs, isBlogsLoading } = useAppContext();
+
     return (
         <>
-            <div className="header-7" style={{ background: 'url(/images/woodPanelHero.jpg' }}>
+            <div className="header-7" style={{ background: 'url(/images/woodPanelHero.jpg)' }}>
                 <div className="overlay"></div>
-
                 <Navbar3 navClass="navbar-dark text-white" fixedWidth buttonClass="btn-secondary btn-sm" />
-
                 <Hero />
             </div>
 
@@ -40,27 +32,30 @@ const Blog = () => {
                     <Row className="justify-content-lg-between">
                         <Col lg={12}>
                             <Row className="mt-6" data-aos="fade-up">
-                                {post3.map((post) => (
-                                    <Col lg={4}>
+                                {post3.map((post, index) => (
+                                    <Col lg={4} key={index}>
                                         <BlogPost3 post={post} />
                                     </Col>
                                 ))}
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="mt-6" data-aos="fade-up">
-                        {blogs.map((blog) => (
-                            <Col lg={6}>
-                                <BlogPost1 post={blog} />
-                            </Col>
-                        ))}
-                    </Row>
+
+                    {/* Only show blogs if they exist */}
+                    {Array.isArray(blogs) && blogs.length > 0 && (
+                        <Row className="mt-6" data-aos="fade-up">
+                            {blogs.map((blog, index) => (
+                                <Col lg={6} key={index}>
+                                    <BlogPost1 post={blog} />
+                                </Col>
+                            ))}
+                        </Row>
+                    )}
                 </Container>
             </section>
-            <VSchoolAnalytics />
-            {/* footer */}
-            <Footer1 />
 
+            <VSchoolAnalytics />
+            <Footer1 />
             <BackToTop variant="success" />
         </>
     );

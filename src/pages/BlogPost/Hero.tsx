@@ -1,15 +1,13 @@
 import { Badge, Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import FeatherIcon from 'feather-icons-react';
-
-// images
-import img1 from 'assets/images/avatars/img-4.jpg';
 
 type HeroProps = {
     blog: any;
 };
 
 const Hero: React.FC<HeroProps> = ({ blog }) => {
+    if (!blog) return null; // prevent rendering if blog is not available
+
     return (
         <section className="hero-4 pb-5 pt-8 pt-lg-6 pb-sm-4">
             <Container>
@@ -18,38 +16,37 @@ const Hero: React.FC<HeroProps> = ({ blog }) => {
                         <Breadcrumb>
                             <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
                             <Breadcrumb.Item href="#">Blog</Breadcrumb.Item>
-                            <Breadcrumb.Item active>{blog.slug}</Breadcrumb.Item>
+                            <Breadcrumb.Item active>{blog?.slug || 'Post'}</Breadcrumb.Item>
                         </Breadcrumb>
 
-                        <div className="mt-4">
-                            <Link to="#">
+                        {blog?.tag && (
+                            <div className="mt-4">
                                 <Badge bg="" className="badge-soft-info mb-1">
-                                    Info
+                                    {blog.tag}
                                 </Badge>
-                            </Link>
-                        </div>
-                        <h1 className="hero-title mt-0">{blog?.name}</h1>
+                            </div>
+                        )}
+
+                        <h1 className="hero-title mt-0">{blog?.name || 'Untitled'}</h1>
                     </Col>
                 </Row>
 
                 <Row className="mt-4 align-items-center">
                     <Col xs="auto">
                         <div className="d-flex align-items-center">
-                            <img
+                            {/* <img
                                 className="me-2 avatar avatar-sm rounded-circle avatar-border"
-                                src={'/images/aboutUs/vopaStaff/prafullaShashikant.jpg'}
-                                alt=""
-                            />
-
+                                src="/images/aboutUs/vopaStaff/nobg/prafullaShashikant.png"
+                                alt="Author"
+                            /> */}
                             <div>
                                 <h5 className="m-0">
-                                    <Link to="#">{blog.content.author}</Link>
+                                    <Link to="#">{blog?.content?.author || 'Anonymous'}</Link>
                                 </h5>
-                                {/* <p className="text-muted mb-0 fs-13">11 Mar, 2020 · 3 min read</p> */}
                             </div>
                         </div>
                     </Col>
-                    <Col>
+                    {/* <Col>
                         <div className="text-md-end">
                             <ul className="list-inline mb-0">
                                 <li className="list-inline-item text-muted align-middle me-2 text-uppercase fs-13 fw-medium">
@@ -72,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ blog }) => {
                                 </li>
                             </ul>
                         </div>
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
         </section>

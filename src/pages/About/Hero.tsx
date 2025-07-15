@@ -34,7 +34,7 @@ const Hero = () => {
                                     <Card className="shadow-lg">
                                         <Card.Body className="p-1">
                                             <img
-                                                src={'/images/aboutUs/officePhotos/office1.png'}
+                                                src={'/images/aboutUs/officePhotos/office1.webp'}
                                                 className="img-fluid"
                                                 alt=""
                                             />
@@ -47,7 +47,7 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1">
                                                     <img
-                                                        src={'/images/aboutUs/officePhotos/office2.png'}
+                                                        src={'/images/aboutUs/officePhotos/office2.webp'}
                                                         className="img-fluid"
                                                         alt=""
                                                     />
@@ -60,7 +60,7 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
-                                                        src={'/images/aboutUs/officePhotos/office3.png'}
+                                                        src={'/images/aboutUs/officePhotos/office3.webp'}
                                                         className="img-fluid"
                                                         alt=""
                                                     />

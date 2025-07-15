@@ -1,7 +1,7 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
 // images
-import vschool from 'assets/images/hero/allTab.png';
+import vschool from 'assets/images/hero/allTab.webp';
 
 const Hero4 = () => {
     return (

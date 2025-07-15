@@ -1,14 +1,16 @@
 import { Badge, Col, Container, Row } from 'react-bootstrap';
-import FeatherIcon from 'feather-icons-react'; // Make sure this is already installed
+import FeatherIcon from 'feather-icons-react';
 
 type TeamProps = {
-    teamMembers: any;
+    teamMembers: any[];
 };
 
 const Team = ({ teamMembers }: TeamProps) => {
-    // Prioritize leaders if they have a priority field
-    const leaders = (teamMembers || []).filter((member) => member.content.priority);
-    const others = (teamMembers || []).filter((member) => !member.content.priority);
+    if (!teamMembers || teamMembers.length === 0) return null;
+
+    // Separate priority members
+    const leaders = teamMembers.filter((member) => member?.content?.priority);
+    const others = teamMembers.filter((member) => !member?.content?.priority);
     const sortedMembers = [...leaders, ...others];
 
     return (
@@ -26,30 +28,31 @@ const Team = ({ teamMembers }: TeamProps) => {
                     </Col>
                 </Row>
                 <Row className="mt-5">
-                    {sortedMembers.map((teamMember, index) => (
+                    {sortedMembers.map((member, index) => (
                         <Col lg={4} md={6} key={index.toString()}>
                             <div className="d-flex align-items-center mb-5 pb-md-4">
                                 <img
-                                    src={teamMember.content.Photo.filename}
-                                    alt="avatar"
+                                    src={member?.content?.Photo?.filename || '/images/placeholder.jpg'}
+                                    alt={member?.name || 'Team Member'}
                                     style={{ width: '100px', height: '125px' }}
                                     className="avatar-xl d-block rounded me-4"
                                 />
                                 <div className="flex-grow-1">
-                                    <h5 className="mt-0 mb-1 fw-medium d-flex align-items-center">{teamMember.name}</h5>
-                                    <p className="text-muted fw-medium mb-0">{teamMember.content.Designation}</p>
+                                    <h5 className="mt-0 mb-1 fw-medium d-flex align-items-center">
+                                        {member?.name || 'Unnamed'}
+                                    </h5>
                                     <p className="text-muted fw-medium mb-0">
-                                        {' '}
-                                        {teamMember.content.LinkedIn && (
-                                            <a
-                                                href={teamMember.content.LinkedIn}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="">
-                                                <FeatherIcon icon="linkedin" size={16} />
-                                            </a>
-                                        )}
+                                        {member?.content?.Designation || 'Designation'}
                                     </p>
+                                    {member?.content?.LinkedIn && (
+                                        <a
+                                            href={member.content.LinkedIn}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-muted mt-1 d-inline-block">
+                                            <FeatherIcon icon="linkedin" size={16} />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </Col>

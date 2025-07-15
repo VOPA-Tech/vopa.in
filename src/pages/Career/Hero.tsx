@@ -2,11 +2,6 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FeatherIcon from 'feather-icons-react';
 
-// images
-import img1 from 'assets/images/photos/12.jpg';
-import img2 from 'assets/images/photos/14.jpg';
-import img3 from 'assets/images/photos/15.jpg';
-
 const Hero = () => {
     return (
         <section className="hero-4 pb-5 pt-7 py-sm-7">
@@ -20,12 +15,6 @@ const Hero = () => {
                             We're always open for new creative, analytical and technical minds to join our team. Search
                             for the suitable job.
                         </p>
-                        {/* <div className="pt-4 pb-md-5 mb-md-4">
-                            <Link to="#job-openings" className="btn btn-secondary mb-2" data-toggle="smooth-scroll">
-                                View All Openings
-                                <FeatherIcon className="icon-xxs ms-2" icon="arrow-right" />
-                            </Link>
-                        </div> */}
                     </Col>
                     <Col lg={6} md={6}>
                         <div className="img-container text-end ps-lg-5" data-aos="zoom-in">
@@ -34,7 +23,7 @@ const Hero = () => {
                                     <Card className="shadow-lg">
                                         <Card.Body className="p-1">
                                             <img
-                                                src={'/images/aboutUs/officePhotos/office1.png'}
+                                                src={'/images/aboutUs/officePhotos/office1.webp'}
                                                 className="img-fluid"
                                                 alt=""
                                             />
@@ -47,7 +36,7 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1">
                                                     <img
-                                                        src={'/images/aboutUs/officePhotos/office3.png'}
+                                                        src={'/images/aboutUs/officePhotos/office3.webp'}
                                                         className="img-fluid"
                                                         alt=""
                                                     />
@@ -60,7 +49,7 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
-                                                        src={'/images/aboutUs/officePhotos/office2.png'}
+                                                        src={'/images/aboutUs/officePhotos/office2.webp'}
                                                         className="img-fluid"
                                                         alt=""
                                                     />

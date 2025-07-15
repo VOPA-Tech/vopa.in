@@ -9,7 +9,6 @@ type HeroProps = {
 
 const PostContent = ({ blog }: HeroProps) => {
     const nestedContent = blog?.content?.body?.[0]?.content;
-
     const coverImage = blog?.content?.cover_image?.filename;
 
     return (
@@ -18,28 +17,30 @@ const PostContent = ({ blog }: HeroProps) => {
                 <Row>
                     <Col lg={12}>
                         {/* Hero Image */}
-                        <figure className="figure">
-                            {/* <img
-                                src={coverImage || 'https://source.unsplash.com/GXNo-OJynTQ/1920x720'}
-                                alt="Blog Hero"
-                                className="figure-img img-fluid rounded"
-                            /> */}
-                        </figure>
+                        {coverImage && (
+                            <figure className="figure">
+                                <img src={coverImage} alt="Blog Cover" className="figure-img img-fluid rounded" />
+                            </figure>
+                        )}
 
                         {/* Render Blog Content */}
-                        <div
-                            style={{
-                                color: '#212529',
-                                fontSize: '1rem',
-                                lineHeight: '1.7',
-                            }}
-                            dangerouslySetInnerHTML={{
-                                __html: renderRichText(nestedContent),
-                            }}
-                        />
+                        {nestedContent ? (
+                            <div
+                                style={{
+                                    color: '#212529',
+                                    fontSize: '1rem',
+                                    lineHeight: '1.7',
+                                }}
+                                dangerouslySetInnerHTML={{
+                                    __html: renderRichText(nestedContent),
+                                }}
+                            />
+                        ) : (
+                            <p className="text-muted">No content available.</p>
+                        )}
 
                         {/* Social Sharing */}
-                        <ul className="list-inline mb-0 mt-4">
+                        {/* <ul className="list-inline mb-0 mt-4">
                             <li className="list-inline-item text-muted align-middle me-2 text-uppercase fs-13 fw-medium">
                                 Share:
                             </li>
@@ -58,7 +59,7 @@ const PostContent = ({ blog }: HeroProps) => {
                                     <FeatherIcon className="icon-xs icon-dual-danger" icon="instagram" />
                                 </Link>
                             </li>
-                        </ul>
+                        </ul> */}
                     </Col>
                 </Row>
             </Container>

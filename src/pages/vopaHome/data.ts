@@ -35,7 +35,7 @@ const projects: Project[] = [
         title: 'V-School',
         description:
             'V-School, by Vowels of the People Association (VOPA), offers free education through an Android app with an ecosystem approach serving students, parents, teachers, and administrators, empowering quality learning across Maharashtra.',
-        image: '/images/homePage/projectCardImages/vschool.png',
+        image: '/images/homePage/projectCardImages/vschool.webp',
         link: '/projects/vschool',
     },
     {
@@ -67,7 +67,7 @@ const projects: Project[] = [
         title: 'Digital Learning Project (DLP)',
         description:
             'Comprehensive program to modernize schools and enhance teacher capabilities through innovative training methodologies, digital literacy programs, and infrastructure development to create 21st-century learning environments.',
-        image: '/images/homePage/projectCardImages/dlp.png',
+        image: '/images/homePage/projectCardImages/dlp.webp',
         link: '/projects/digital-learning-project',
     },
 ];

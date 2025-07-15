@@ -1,61 +1,53 @@
 // component
-import { Navbar1, Navbar3 } from "../../components/navbars";
-import { Hero9 } from "../../components/heros";
-import BackToTop from "../../components/BackToTop";
-import { Footer1 } from "../../components/footer";
+import { Navbar3 } from '../../components/navbars';
 
-import About from "./About";
-import Feature from "./Feature";
-import Counter from "./Counter";
-import Team from "./Team";
-import Client from "./Client";
+import BackToTop from '../../components/BackToTop';
+import { Footer1 } from '../../components/footer';
 
-// dummy data
-// import { teamMembers } from './data';
-import TeamFour from "./DoobTeam";
-import Hero from "./Hero";
-import Partners from "./Partners";
-import { useAppContext } from "context/AppContext";
-import { useEffect } from "react";
+import Team from './Team';
+
+import Hero from './Hero';
+import Partners from './Partners';
+import { useAppContext } from 'context/AppContext';
 
 const Company = () => {
-  const { teamMembers, isTeamLoading } = useAppContext();
+    const { teamMembers, isTeamLoading } = useAppContext();
 
-  return (
-    <>
-      {/* header and hero */}
-      <div>
-        <Navbar3
-          navClass="navbar-light zindex-10"
-          buttonClass="btn-outline-secondary btn-sm"
-          // hideSearch
-          fixedWidth
-          isSticky
-        />
-        <Hero />
-      </div>
+    return (
+        <>
+            {/* header and hero */}
+            <div>
+                <Navbar3
+                    navClass="navbar-light zindex-10"
+                    buttonClass="btn-outline-secondary btn-sm"
+                    // hideSearch
+                    fixedWidth
+                    isSticky
+                />
+                <Hero />
+            </div>
 
-      {/* about */}
-      {/* <About /> */}
+            {/* about */}
+            {/* <About /> */}
 
-      {/* feature */}
-      {/* <Feature /> */}
+            {/* feature */}
+            {/* <Feature /> */}
 
-      {/* counter */}
-      {/* <Counter /> */}
-      {/* <TeamFour column="col-lg-6 col-xl-3 col-md-6 col-12 mt--30" teamStyle="team-style-three" /> */}
-      {/* Team */}
-      <Team teamMembers={teamMembers} />
+            {/* counter */}
+            {/* <Counter /> */}
+            {/* <TeamFour column="col-lg-6 col-xl-3 col-md-6 col-12 mt--30" teamStyle="team-style-three" /> */}
+            {/* Team */}
+            <Team teamMembers={teamMembers} />
 
-      {/* client */}
-      <Partners />
+            {/* client */}
+            <Partners />
 
-      {/* footer */}
-      <Footer1 />
+            {/* footer */}
+            <Footer1 />
 
-      <BackToTop variant="success" />
-    </>
-  );
+            <BackToTop variant="success" />
+        </>
+    );
 };
 
 export default Company;

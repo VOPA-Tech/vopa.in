@@ -22,7 +22,7 @@ const Hero4 = () => {
                     <Col lg={7} md={6}>
                         <div className="img-container text-end pt-5 pt-sm-0">
                             <img
-                                src="/images/nipun/allTab.png"
+                                src="/images/nipun/allTab.webp"
                                 alt="startup"
                                 className="img-fluid rounded-3 shadow-lg"
                                 data-aos="fade-left"

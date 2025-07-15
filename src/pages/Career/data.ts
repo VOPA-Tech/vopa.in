@@ -1,12 +1,6 @@
 // types
 import { Benefit, GalleryItem, Vacancy } from './types';
 
-// images
-import img1 from 'assets/images/photos/3.jpg';
-import img2 from 'assets/images/photos/4.jpg';
-import img3 from 'assets/images/photos/5.jpg';
-import img4 from 'assets/images/photos/10.jpg';
-
 const benefits: Benefit[] = [
     {
         icon: 'compass',
@@ -44,28 +38,28 @@ const gallery: GalleryItem[] = [
     {
         id: 3,
         image: {
-            src: '/images/aboutUs/officePhotos/office1.png',
+            src: '/images/aboutUs/officePhotos/office1.webp',
             caption: 'Office Desks',
         },
     },
     {
         id: 4,
         image: {
-            src: '/images/aboutUs/officePhotos/office2.png',
+            src: '/images/aboutUs/officePhotos/office2.webp',
             caption: 'Meeting Room view',
         },
     },
     {
         id: 5,
         image: {
-            src: '/images/aboutUs/officePhotos/office3.png',
+            src: '/images/aboutUs/officePhotos/office3.webp',
             caption: 'Outside view',
         },
     },
     {
         id: 6,
         image: {
-            src: '/images/aboutUs/officePhotos/vopaTeam.png',
+            src: '/images/aboutUs/officePhotos/vopaTeam.webp',
             caption: 'A common seating area',
         },
     },

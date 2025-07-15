@@ -6,9 +6,9 @@ import { Navigation, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // images
-import coworking1 from 'assets/images/hero/allTab.png';
+import coworking1 from 'assets/images/hero/allTab.webp';
 import coworking2 from 'assets/images/hero/shala.png';
-import coworking3 from 'assets/images/hero/allTab.png';
+import coworking3 from 'assets/images/hero/allTab.webp';
 // import TabsExample from 'pages/docs/Bootstrap/Tabs';
 
 const SwiperSlider = () => {
