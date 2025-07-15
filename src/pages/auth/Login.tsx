@@ -35,9 +35,14 @@ const Login = () => {
         })
     );
 
-    const onSubmit = (formData: UserData) => {
-        console.log('Submitted form data:', formData);
-        login({ email: formData.email, password: formData.password });
+    const onSubmit = async (formData: UserData) => {
+        try {
+            console.log('Submitted form data:', formData);
+            await login({ email: formData.email, password: formData.password });
+        } catch (err) {
+            console.error('Login error:', err);
+            // Optional: Show user-friendly message if error is not set already
+        }
     };
 
     // ✅ Always redirect to dashboard on successful login
