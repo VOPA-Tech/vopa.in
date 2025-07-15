@@ -1,21 +1,27 @@
-// helpers
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { logout as logoutApi } from '../../helpers';
 import { APICore, setAuthorization } from '../../helpers/api/apiCore';
 
 export default function useLogout() {
-    const api = new APICore();
+    const navigate = useNavigate();
 
-    const logout = () => {
-        const response = logoutApi();
-        response
+    const logout = useCallback(() => {
+        const api = new APICore(); // ✅ moved inside callback
+
+        logoutApi()
             .then(() => {
                 api.setLoggedInUser(null);
                 setAuthorization(null);
+                navigate('/auth/login');
             })
             .catch((e) => {
-                console.error(e);
+                console.error('Logout error:', e);
+                api.setLoggedInUser(null);
+                setAuthorization(null);
+                navigate('/auth/login');
             });
-    };
+    }, [navigate]);
 
     return [logout];
 }
