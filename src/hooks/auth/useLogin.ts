@@ -1,4 +1,3 @@
-// helpers
 import { useState } from 'react';
 import { login as loginApi } from '../../helpers';
 import { APICore, setAuthorization } from '../../helpers/api/apiCore';
@@ -6,21 +5,37 @@ import { APICore, setAuthorization } from '../../helpers/api/apiCore';
 export default function useLogin() {
     const api = new APICore();
 
-    const [user, setUser] = useState();
-    const [error, setError] = useState();
+    const [user, setUser] = useState<any>(null);
+    const [error, setError] = useState<any>(null);
 
-    const login = ({ email, password }: { email: string; password: string }) => {
-        const response = loginApi({ email, password });
-        response
-            .then((response) => {
-                setUser(response.data);
-                api.setLoggedInUser(response.data);
-                setAuthorization(response.data!['token']);
-            })
-            .catch((e) => {
-                setError(e);
-            });
+    const login = async ({ email, password }: { email: string; password: string }) => {
+        try {
+            console.log('Calling loginApi...');
+            const response = await loginApi({ email, password });
+
+            console.log('Raw login response:', response); // 👈 Add this
+            if (!response || !response.data) {
+                console.error('No response or response.data is undefined!');
+                return;
+            }
+
+            const { token, admin } = response.data;
+            console.log('Token:', token, 'Admin:', admin); // 👈 Add this too
+
+            const session = {
+                token,
+                role: 'Admin',
+                ...admin,
+            };
+
+            setUser(session);
+            api.setLoggedInUser(session);
+            setAuthorization(token);
+        } catch (e) {
+            console.error('Login failed:', e);
+            setError(e);
+        }
     };
 
-    return [user, error, login];
+    return [user, error, login] as const;
 }

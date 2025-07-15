@@ -28,9 +28,6 @@ const Login = () => {
     const { t } = useTranslation();
     const [user, error, login] = useLogin();
 
-    /*
-    form validation schema
-    */
     const schemaResolver = yupResolver(
         yup.object().shape({
             email: yup.string().required(t('Please enter Email')).email(t('Please enter valid Email')),
@@ -38,20 +35,13 @@ const Login = () => {
         })
     );
 
-    /*
-    handle form submission
-    */
     const onSubmit = (formData: UserData) => {
-        login!({ email: formData['email'], password: formData['password'] });
+        console.log('Submitted form data:', formData);
+        login({ email: formData.email, password: formData.password });
     };
 
-    const location = useLocation();
-    let redirectUrl = '/account/dashboard';
-    console.log('Location:', location);
-    if (location.state) {
-        const { from } = location.state as LocationState;
-        redirectUrl = from ? from.pathname : '/';
-    }
+    // ✅ Always redirect to dashboard on successful login
+    const redirectUrl = '/account/dashboard';
 
     return (
         <>

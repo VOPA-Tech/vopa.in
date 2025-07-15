@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // content type
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-// axios.defaults.baseURL = config.API_URL;
+axios.defaults.baseURL = 'http://localhost:5000';
 
 // intercepting to capture errors
 axios.interceptors.response.use(
@@ -111,6 +111,8 @@ class APICore {
      * post given data to url
      */
     create = (url: string, data: any) => {
+        console.log('APICore.create - URL:', url);
+        console.log('APICore.create - Data:', data);
         return axios.post(url, data);
     };
 
