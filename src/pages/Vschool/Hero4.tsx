@@ -1,12 +1,11 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
-
-// images
-import vschool from 'assets/images/hero/allTab.webp';
 import { Link } from 'react-router-dom';
-import { useAppContext } from 'context/AppContext';
+import { useDispatch } from 'react-redux';
+import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
 
 const Hero4 = () => {
-    const { setIsDonationModalOpen } = useAppContext();
+    const dispatch = useDispatch();
+
     return (
         <section className="hero-4 bg-soft-warning pt-7 pb-3 py-sm-7 overflow-hidden">
             <Container>
@@ -21,7 +20,10 @@ const Hero4 = () => {
                             equity.
                         </p>
                         <div className="pt-3 pt-sm-5">
-                            <Button className="mb-2" variant="success" onClick={() => setIsDonationModalOpen(true)}>
+                            <Button
+                                className="mb-2"
+                                variant="success"
+                                onClick={() => dispatch(setIsDonationModalOpen(true))}>
                                 Support a Child’s Education
                             </Button>
                             <Link className="mt-sm-2" to="/contact">

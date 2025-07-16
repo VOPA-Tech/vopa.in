@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Container, Nav, Navbar, Modal, Row, Col, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-// hooks
-import { useUser } from '../../hooks/auth';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
+// import { RootState } from 'store'; // ✅ make sure this points to your store's RootState
 
 // components
 import Menu from './Menu';
-
-import { useAppContext } from 'context/AppContext';
 
 type Navbar3Props = {
     isSticky?: boolean;
@@ -19,12 +19,8 @@ type Navbar3Props = {
 };
 
 const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) => {
-    const [loggedInUser] = useUser();
-    const { setIsDonationModalOpen, isDonationModalOpen } = useAppContext();
-    const [showModal, setShowModal] = useState(false);
-
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
+    const dispatch = useDispatch();
+    const isDonationModalOpen = useSelector((state: any) => state.appState.isDonationModalOpen); // updated to match slice name
 
     useEffect(() => {
         const btnTop = document.getElementById('btn-back-to-top');
@@ -48,6 +44,10 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
         });
     }, []);
 
+    const toggleDonationModal = () => {
+        dispatch(setIsDonationModalOpen(!isDonationModalOpen));
+    };
+
     return (
         <header>
             <Navbar
@@ -69,7 +69,7 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
                                     to="#"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        setIsDonationModalOpen(true);
+                                        toggleDonationModal();
                                     }}
                                     className={classNames('btn', 'btn-xl', 'btn-success')}>
                                     <strong>Donate</strong>
@@ -81,7 +81,7 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
             </Navbar>
 
             {/* Donation Modal */}
-            <Modal show={isDonationModalOpen} onHide={() => setIsDonationModalOpen(false)} size="lg" centered>
+            <Modal show={isDonationModalOpen} onHide={() => dispatch(setIsDonationModalOpen(false))} size="lg" centered>
                 <Modal.Header closeButton>
                     <Modal.Title>SUPPORT US TO HELP THEM!</Modal.Title>
                 </Modal.Header>
@@ -106,16 +106,16 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
                                     <strong>IFSC:</strong> KKBK0001765
                                 </li>
                                 <li>
-                                    <strong>contact.vopa@ybl</strong>
+                                    <strong>Email:</strong> contact.vopa@ybl
                                 </li>
                                 <li>
-                                    <strong>contact.vopa@axl</strong>
+                                    <strong>Alt Email:</strong> contact.vopa@axl
                                 </li>
                             </ul>
                         </Col>
                         <Col md={6} className="text-center">
                             <Image
-                                src={'/images/donate/qr.png'}
+                                src="/images/donate/qr.png"
                                 alt="QR Code"
                                 fluid
                                 style={{ maxHeight: 200, marginBottom: 10 }}
@@ -124,14 +124,6 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
                         </Col>
                     </Row>
                 </Modal.Body>
-                {/* <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={() => alert('Thank you for your interest in supporting us!')}>
-                        Proceed
-                    </Button>
-                </Modal.Footer> */}
             </Modal>
         </header>
     );

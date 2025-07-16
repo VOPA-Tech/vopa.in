@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Navbar3 } from 'components/navbars';
 import { Footer1 } from 'components/footer';
@@ -8,13 +9,21 @@ import BackToTop from 'components/BackToTop';
 import Hero from './Hero';
 import PostContent from './PostContent';
 
-import { oldPost } from 'pages/BlogsAndMagzines/types';
-import { useAppContext } from 'context/AppContext';
+import { loadBlogs } from 'reduxFolder/appSlice';
 
 const BlogPost = () => {
     const { id } = useParams();
-    const { blogs = [], isBlogsLoading } = useAppContext(); // default to [] to avoid crash
-    const [blog, setBlog] = useState<oldPost | null>(null);
+    const dispatch = useDispatch();
+
+    const blogs = useSelector((state) => state.appState.blogs);
+    const isBlogsLoading = useSelector((state) => state.appState.isBlogsLoading);
+    const [blog, setBlog] = useState(null); // ✅ fixed incorrect generic syntax
+
+    useEffect(() => {
+        if (!blogs.length) {
+            dispatch(loadBlogs());
+        }
+    }, [dispatch, blogs.length]);
 
     useEffect(() => {
         if (!isBlogsLoading && blogs.length) {

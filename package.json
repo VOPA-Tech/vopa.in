@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
+    "@reduxjs/toolkit": "^2.8.2",
     "@storyblok/react": "^2.4.8",
     "@types/aos": "^3.0.4",
     "@types/node": "^16.7.13",
@@ -28,6 +29,7 @@
     "react-icons": "^5.5.0",
     "react-image-lightbox": "^5.1.4",
     "react-quill": "^2.0.0",
+    "react-redux": "^9.2.0",
     "react-responsive-masonry": "^2.1.4",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
