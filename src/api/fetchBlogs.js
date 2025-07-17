@@ -1,5 +1,5 @@
 export const fetchBlogs = async () => {
-    const token = 'kCKFLVcCUY4HXnQ2HIDkZAtt'; // replace with env var in production
+    const token = process.env.REACT_APP_STORY_BLOCK_ACCESS_TOKEN; // replace with env var in production
     const version = 'published'; // or 'draft'
     const starts_with = 'blog_post'; // your folder slug
 

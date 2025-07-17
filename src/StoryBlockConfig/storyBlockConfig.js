@@ -2,6 +2,6 @@
 import { storyblokInit, apiPlugin } from '@storyblok/react';
 
 storyblokInit({
-    accessToken: 'kCKFLVcCUY4HXnQ2HIDkZAtt', // Replace with your token from Storyblok
+    accessToken: process.env.REACT_APP_STORY_BLOCK_ACCESS_TOKEN,
     use: [apiPlugin],
 });

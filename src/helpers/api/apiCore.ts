@@ -1,11 +1,9 @@
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
-// import config from '../../config';
-
 // content type
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
 // intercepting to capture errors
 axios.interceptors.response.use(

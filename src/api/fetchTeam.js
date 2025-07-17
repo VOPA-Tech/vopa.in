@@ -1,7 +1,7 @@
 // src/api/fetchTeam.js
 
 export const fetchTeamMembers = async () => {
-    const token = 'kCKFLVcCUY4HXnQ2HIDkZAtt'; // replace with env var in production
+    const token = process.env.REACT_APP_STORY_BLOCK_ACCESS_TOKEN; // replace with env var in production
     const version = 'published'; // or 'draft'
     const starts_with = 'team_members'; // your folder slug
     try {

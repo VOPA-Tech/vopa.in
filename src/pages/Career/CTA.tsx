@@ -21,18 +21,29 @@ const CTA = () => {
                         </Card>
                     </Col> */}
                     {/* <Col lg={6}> */}
+
                     <Card className="shadow-none border mb-0 rounded-sm">
                         <Card.Body>
                             <h3 className="mt-0 fw-semibold">
                                 Come and be a part of the exciting journey of social change!
                             </h3>
-                            {/* <p></p> */}
+
                             <a
                                 href="https://docs.google.com/forms/d/e/1FAIpQLScM6CEiwnfAutSDHOwR1B2ra1DPsrpyj6KYR3MfyZnfIg8iyw/viewform"
-                                target="blank"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="btn btn-outline-success mt-4">
                                 Apply by filling up this form!
                             </a>
+
+                            <div className="mt-4">
+                                <img
+                                    src="/images/career/googleFormQR.png"
+                                    alt="QR Code to Application Form"
+                                    width={200}
+                                    height={200}
+                                />
+                            </div>
                         </Card.Body>
                     </Card>
                     {/* </Col> */}

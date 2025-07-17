@@ -123,6 +123,11 @@ const vacancies: Vacancy[] = [
                 type: 'React Native, Django/Python',
                 link: 'https://drive.google.com/file/d/1Wyi3fNyHDIit4dI4Mf_o0n53eyO24cvM/view',
             },
+            {
+                designation: 'RME Intern',
+                type: '',
+                link: '',
+            },
         ],
     },
 ];
