@@ -3,8 +3,15 @@ import { Col, Container, Row } from 'react-bootstrap';
 // component
 import { Navbar4 } from 'components/navbars';
 import { Footer3 } from 'components/footer';
+import { useLogin } from 'hooks/auth';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
+    const [user, error, login] = useLogin();
+    useEffect(() => {
+        console.log('User User', user);
+    }, [user]);
+
     return (
         <>
             {/* header */}

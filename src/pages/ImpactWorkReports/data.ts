@@ -33,7 +33,7 @@ const post3: Post[] = [
     },
     // {
     //     link: 'https://docs.google.com/gview?url=https://vopa.in/wp-content/uploads/2022/01/VOPA-Annual-report-2020-21_compressed-1.pdf&embedded=true',
-    //     docUrl: 'https://vopa.in/wp-content/uploads/2022/01/VOPA-Annual-report-2020-21_compressed-1.pdf',
+    //     docUrl: 'https://docs.google.com/gview?url=https://vopa.in/wp-content/uploads/2022/01/VOPA-Annual-report-2020-21_compressed-1.pdf&embedded=true',
     //     tag: { variant: 'success', value: 'Annual Reports' },
     //     title: 'Annual Report 2020-21',
     // },
