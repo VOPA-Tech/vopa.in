@@ -3,7 +3,7 @@ import { Dropdown, Nav } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 
 import { ProfileOption } from './types';
-import { useLogout } from 'hooks/auth';
+import { useLogin, useLogout } from 'hooks/auth';
 
 type ProfileProps = {
     profileOptions: ProfileOption[];
@@ -11,7 +11,7 @@ type ProfileProps = {
 
 const ProfileDropdown = ({ profileOptions }: ProfileProps) => {
     const [logout] = useLogout();
-
+    const [user, error] = useLogin();
     const handleItemClick = (label: string) => {
         if (label === 'Sign Out') {
             logout();
@@ -23,15 +23,15 @@ const ProfileDropdown = ({ profileOptions }: ProfileProps) => {
             <Dropdown.Toggle as={Nav.Link} id="user">
                 <div className="d-flex align-items-center">
                     <div className="flex-shrink-0">
-                        <img
+                        {/* <img
                             src="/images/aboutUs/vopaStaff/rutujaJeve.jpg"
                             alt="user"
                             className="avatar avatar-xs rounded-circle me-2"
-                        />
+                        /> */}
                     </div>
                     <div className="flex-grow-1 ms-1 lh-base">
-                        <span className="fw-semibold fs-13 d-block line-height-normal">Mayuresh Khole</span>
-                        <span className="text-muted fs-13">Admin</span>
+                        <span className="fw-semibold fs-13 d-block line-height-normal">{user.email}</span>
+                        <span className="text-muted fs-13">{user.role}</span>
                     </div>
                 </div>
             </Dropdown.Toggle>

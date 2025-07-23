@@ -12,7 +12,6 @@ export const loadTeam = createAsyncThunk('app/loadTeam', fetchTeamMembers);
 export const loadVacancies = createAsyncThunk('app/loadVacancies', fetchVacancies);
 
 type AppState = {
-    user: null | object;
     isDonationModalOpen: boolean;
     blogs: any[];
     isBlogsLoading: boolean;
@@ -23,7 +22,6 @@ type AppState = {
 };
 
 const initialState: AppState = {
-    user: null,
     isDonationModalOpen: false,
     blogs: [],
     isBlogsLoading: true,

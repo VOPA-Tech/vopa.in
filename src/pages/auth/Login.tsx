@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Button, Row, Col, Alert } from 'react-bootstrap';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,14 +10,8 @@ import { useLogin } from '../../hooks/auth';
 
 // components
 import { VerticalForm, FormInput } from '../../components/form';
-
 import AuthLayout from './AuthLayout';
-
-type LocationState = {
-    from: {
-        pathname: string;
-    };
-};
+import { useEffect } from 'react';
 
 type UserData = {
     email: string;
@@ -26,7 +20,7 @@ type UserData = {
 
 const Login = () => {
     const { t } = useTranslation();
-    const [user, error, login] = useLogin();
+    const [user, error, loginHandler] = useLogin();
 
     const schemaResolver = yupResolver(
         yup.object().shape({
@@ -36,16 +30,14 @@ const Login = () => {
     );
 
     const onSubmit = async (formData: UserData) => {
+        console.log('I am Getting Called', formData);
         try {
-            console.log('Submitted form data:', formData);
-            await login({ email: formData.email, password: formData.password });
+            await loginHandler({ email: formData.email, password: formData.password });
         } catch (err) {
             console.error('Login error:', err);
-            // Optional: Show user-friendly message if error is not set already
         }
     };
 
-    // ✅ Always redirect to dashboard on successful login
     const redirectUrl = '/account/dashboard';
 
     return (
@@ -68,20 +60,18 @@ const Login = () => {
 
                 {error && (
                     <Alert variant="danger" className="mb-3">
-                        Something went wrong! {t('Please try again later.')}
+                        {t('Something went wrong! Please try again later.')}
                     </Alert>
                 )}
 
-                <VerticalForm<UserData>
-                    onSubmit={onSubmit}
-                    resolver={schemaResolver}
-                    defaultValues={{ email: 'prompt@coderthemes.com', password: 'test' }}>
+                <VerticalForm<UserData> onSubmit={onSubmit} resolver={schemaResolver}>
                     <FormInput
                         type="email"
                         name="email"
                         label={t('Email')}
                         placeholder={t('Email')}
-                        containerClass={'mb-3'}
+                        autoComplete="email"
+                        containerClass="mb-3"
                     />
 
                     <FormInput
@@ -89,6 +79,7 @@ const Login = () => {
                         type="password"
                         name="password"
                         placeholder={t('Password')}
+                        autoComplete="current-password"
                         action={
                             <Link
                                 to="/auth/forget-password"
@@ -96,14 +87,14 @@ const Login = () => {
                                 {t('Forgot your password?')}
                             </Link>
                         }
-                        containerClass={'mb-3'}
+                        containerClass="mb-3"
                     />
 
                     <FormInput
                         type="checkbox"
                         name="checkbox"
                         label={t('Remember me')}
-                        containerClass={'mb-3'}
+                        containerClass="mb-3"
                         defaultChecked
                     />
 

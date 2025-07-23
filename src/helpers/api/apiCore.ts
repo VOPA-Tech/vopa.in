@@ -207,6 +207,10 @@ class APICore {
             this.setLoggedInUser({ token, ...user, ...modifiedUser });
         }
     };
+
+    logout() {
+        sessionStorage.removeItem('shield_user');
+    }
 }
 
 /*

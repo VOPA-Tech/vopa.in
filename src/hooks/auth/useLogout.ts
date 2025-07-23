@@ -1,27 +1,21 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logout as logoutApi } from '../../helpers';
-import { APICore, setAuthorization } from '../../helpers/api/apiCore';
+import { useDispatch } from 'react-redux';
+import { logout as logoutAction } from '../../reduxFolder/authSlice'; // update path as needed
+import { logout as logoutApi } from '../../helpers'; // optional backend logout call
 
 export default function useLogout() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const logout = useCallback(() => {
-        const api = new APICore(); // ✅ moved inside callback
-
         logoutApi()
-            .then(() => {
-                api.setLoggedInUser(null);
-                setAuthorization(null);
-                navigate('/auth/login');
-            })
-            .catch((e) => {
-                console.error('Logout error:', e);
-                api.setLoggedInUser(null);
-                setAuthorization(null);
+            .catch((e) => console.error('Logout API failed:', e))
+            .finally(() => {
+                dispatch(logoutAction()); // ✅ Redux clears user/token/localStorage
                 navigate('/auth/login');
             });
-    }, [navigate]);
+    }, [dispatch, navigate]);
 
     return [logout];
 }

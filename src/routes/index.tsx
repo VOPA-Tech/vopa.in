@@ -28,6 +28,7 @@ const Career = React.lazy(() => import('../pages/Career'));
 
 // pages
 const Dashboard = React.lazy(() => import('../pages/account/Dashboard'));
+const Gallery = React.lazy(() => import('../pages/account/Gallery'));
 const UserManagement = React.lazy(() => import('../pages/account/UserManagement'));
 const Settings = React.lazy(() => import('../pages/account/Settings'));
 const Content = React.lazy(() => import('../pages/account/Content'));
@@ -131,6 +132,7 @@ const AllRoutes = () => {
                         { path: 'userManagement', element: <LoadComponent component={UserManagement} /> },
                         { path: 'content', element: <LoadComponent component={Content} /> },
                         { path: 'settings', element: <LoadComponent component={Settings} /> },
+                        { path: 'gallery', element: <LoadComponent component={Gallery} /> },
                     ],
                 },
             ],

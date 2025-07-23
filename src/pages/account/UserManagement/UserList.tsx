@@ -1,97 +1,115 @@
-import { Link } from 'react-router-dom';
-import { Badge, Button, Card, Col, Form, Row, Spinner } from 'react-bootstrap';
-import FeatherIcon from 'feather-icons-react';
-import classNames from 'classnames';
+import { APICore } from 'helpers/api/apiCore';
+import React, { useState } from 'react';
+import { Table, Button, Modal, Form } from 'react-bootstrap';
 
-type TasksProps = {
-    users: any;
+const api = new APICore();
+
+type User = {
+    _id: string;
+    email: string;
+    role: string;
 };
 
-const UserList = ({ users }: TasksProps) => {
+type Props = {
+    users: User[];
+};
+
+const UserList = ({ users }: Props) => {
+    const [editUser, setEditUser] = useState<User | null>(null);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleEditClick = (user: User) => {
+        setEditUser(user);
+        setShowModal(true);
+    };
+
+    const handleDeleteClick = async (_id: string) => {
+        try {
+            await api.delete(`/users/${_id}`);
+            alert('User deleted successfully!');
+            window.location.reload();
+        } catch (err) {
+            alert('Failed to delete user.');
+        }
+    };
+
+    const handleSave = async () => {
+        if (!editUser) return;
+
+        try {
+            await api.update(`/users/${editUser._id}`, editUser);
+            alert('User updated successfully!');
+            setShowModal(false);
+            window.location.reload();
+        } catch (err) {
+            alert('Failed to update user.');
+        }
+    };
+
     return (
-        <Row>
-            <Col lg={12}>
-                <Row>
-                    <Col>
-                        <h4 className="mb-3 mt-0 fs-16">Users</h4>
-                    </Col>
-                    <Col xs="auto">
-                        <Link to="#" className="fw-semibold text-primary fs-13">
-                            View All
-                            <FeatherIcon icon="arrow-right" className="ms-1 icon-xxs" />
-                        </Link>
-                    </Col>
-                </Row>
+        <>
+            <Table striped bordered hover responsive>
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th style={{ width: '150px' }}>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((u) => (
+                        <tr key={u._id}>
+                            <td>{u.email}</td>
+                            <td>{u.role}</td>
+                            <td>
+                                <Button variant="warning" size="sm" onClick={() => handleEditClick(u)}>
+                                    Edit
+                                </Button>{' '}
+                                <Button variant="danger" size="sm" onClick={() => handleDeleteClick(u._id)}>
+                                    Delete
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
 
-                {(users || []).map((task, index) => {
-                    return (
-                        <Row className="mb-2" key={index.toString()}>
-                            <Col>
-                                <Card className="mb-0">
-                                    <Card.Body>
-                                        <Row className="align-items-center justify-content-sm-between">
-                                            <Col lg={6}>
-                                                <Form>
-                                                    <Form.Check
-                                                        type="checkbox"
-                                                        label={task.title}
-                                                        id={`task${task.id}`}
-                                                    />
-                                                </Form>
-                                            </Col>
-                                            <Col lg={3}>
-                                                <Badge pill bg="" className={classNames('badge-soft-' + task.variant)}>
-                                                    {task.time}
-                                                </Badge>
-                                            </Col>
-                                            <Col lg={3}>
-                                                <ul className="list-inline text-sm-end mb-0">
-                                                    <li className="list-inline-item pe-3">
-                                                        <span className="icon icon-xxs text-normal">
-                                                            <FeatherIcon icon="list" className="icon-dual-dark me-1" />
-                                                        </span>
-                                                        {task.taskRatio.completedTask}/{task.taskRatio.totalTask}
-                                                    </li>
-                                                    <li className="list-inline-item pe-3">
-                                                        <span className="icon icon-xxs text-normal">
-                                                            <FeatherIcon icon="mail" className="icon-dual-dark me-1" />
-                                                        </span>
-                                                        {task.comment}
-                                                    </li>
-                                                    <li className="list-inline-item">
-                                                        <Badge
-                                                            bg=""
-                                                            className={classNames(
-                                                                { 'badge-soft-danger': task.priority === 'High' },
-                                                                { 'badge-soft-info': task.priority === 'Medium' },
-                                                                { 'badge-soft-success': task.priority === 'Low' },
-                                                                'p-1'
-                                                            )}>
-                                                            {task.priority}
-                                                        </Badge>
-                                                    </li>
-                                                </ul>
-                                            </Col>
-                                        </Row>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
-                    );
-                })}
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit User</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="editEmail" className="mb-3">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                type="email"
+                                value={editUser?.email || ''}
+                                onChange={(e) => setEditUser({ ...editUser!, email: e.target.value })}
+                            />
+                        </Form.Group>
 
-                <Row className="mb-3 mt-4">
-                    <Col>
-                        <div className="text-center">
-                            <Button variant="outline-primary" size="sm">
-                                <Spinner animation="border" size="sm" className="me-1" />
-                                Load More
-                            </Button>
-                        </div>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+                        <Form.Group>
+                            <Form.Label>Role</Form.Label>
+                            <Form.Select
+                                value={editUser?.role}
+                                onChange={(e) => setEditUser({ ...editUser, role: e.target.value })}>
+                                <option value="Admin">Admin</option>
+                                <option value="User">User</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleSave}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     );
 };
 

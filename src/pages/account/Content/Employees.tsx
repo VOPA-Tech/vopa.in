@@ -1,36 +1,58 @@
-import { useState } from 'react';
-import { Badge, Button, Col, Form, Modal, Row, Table } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Badge, Button, Form, Modal, Table } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEmployees, addEmployee, updateEmployee, deleteEmployee } from 'reduxFolder/contentSlice';
+import ImagePickerModal from './ImagePickerModal';
 
 export type Employee = {
-    id: number;
+    _id?: string;
     name: string;
     role: string;
     department: string;
+    linkedin: string;
+    level: number;
+    joinedDate: string;
     photo: string;
     status: 'Active' | 'Inactive';
-    priority: boolean;
 };
 
 const Employees = () => {
-    const [employees, setEmployees] = useState<Employee[]>([]);
+    const dispatch: any = useDispatch();
+    const { employees } = useSelector((state: any) => state.contentState);
 
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null);
+    const [showImagePicker, setShowImagePicker] = useState(false);
 
-    const [form, setForm] = useState<Omit<Employee, 'id'>>({
+    const [form, setForm] = useState<Omit<Employee, '_id'>>({
         name: '',
         role: '',
         department: '',
+        linkedin: '',
+        level: 3,
+        joinedDate: new Date().toISOString().split('T')[0],
         photo: '',
         status: 'Active',
-        priority: false,
     });
+
+    useEffect(() => {
+        dispatch(fetchEmployees());
+    }, [dispatch]);
 
     const handleAdd = () => {
         setIsEditing(false);
-        setForm({ name: '', role: '', department: '', photo: '', status: 'Active', priority: false });
+        setForm({
+            name: '',
+            role: '',
+            department: '',
+            linkedin: '',
+            level: 3,
+            joinedDate: new Date().toISOString().split('T')[0],
+            photo: '',
+            status: 'Active',
+        });
         setShowModal(true);
     };
 
@@ -41,39 +63,30 @@ const Employees = () => {
             name: emp.name,
             role: emp.role,
             department: emp.department,
+            linkedin: emp.linkedin,
+            level: emp.level,
+            joinedDate: emp.joinedDate?.split('T')[0] || '',
             photo: emp.photo,
             status: emp.status,
-            priority: emp.priority,
         });
         setShowModal(true);
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (id?: string) => {
+        if (!id) return;
         if (window.confirm('Are you sure to delete this employee?')) {
-            setEmployees((prev) => prev.filter((e) => e.id !== id));
+            dispatch(deleteEmployee(id));
         }
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const newEmp: Employee = {
-            id: isEditing && editingEmployee ? editingEmployee.id : Date.now(),
-            ...form,
-        };
-
-        setEmployees((prev) => {
-            if (isEditing && editingEmployee) {
-                return prev.map((e) => (e.id === editingEmployee.id ? newEmp : e));
-            }
-            return [...prev, newEmp];
-        });
-
+        if (isEditing && editingEmployee?._id) {
+            dispatch(updateEmployee({ id: editingEmployee._id, data: form }));
+        } else {
+            dispatch(addEmployee(form));
+        }
         setShowModal(false);
-    };
-
-    const handleImageChoose = () => {
-        const url = prompt('Enter image URL from your bucket:');
-        if (url) setForm((prev) => ({ ...prev, photo: url }));
     };
 
     return (
@@ -96,20 +109,17 @@ const Employees = () => {
                 </thead>
                 <tbody>
                     {employees
-                        .sort((a, b) => (b.priority ? 1 : 0) - (a.priority ? 1 : 0))
-                        .map((emp) => (
-                            <tr key={emp.id}>
+                        .slice()
+                        .sort((a: Employee, b: Employee) => a.level - b.level) // Optional: sort by level
+                        .map((emp: Employee) => (
+                            <tr key={emp._id}>
                                 <td>
                                     <img
                                         src={emp.photo || 'https://via.placeholder.com/40'}
                                         alt="avatar"
                                         style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
                                     />
-                                    {emp.priority && (
-                                        <Badge bg="warning" className="ms-2">
-                                            Priority
-                                        </Badge>
-                                    )}
+                                    <span className="ms-2">Lv {emp.level}</span>
                                 </td>
                                 <td>{emp.name}</td>
                                 <td>{emp.role}</td>
@@ -119,15 +129,14 @@ const Employees = () => {
                                         type="switch"
                                         checked={emp.status === 'Active'}
                                         onChange={() =>
-                                            setEmployees((prev) =>
-                                                prev.map((e) =>
-                                                    e.id === emp.id
-                                                        ? {
-                                                              ...e,
-                                                              status: e.status === 'Active' ? 'Inactive' : 'Active',
-                                                          }
-                                                        : e
-                                                )
+                                            dispatch(
+                                                updateEmployee({
+                                                    id: emp._id!,
+                                                    data: {
+                                                        ...emp,
+                                                        status: emp.status === 'Active' ? 'Inactive' : 'Active',
+                                                    },
+                                                })
                                             )
                                         }
                                     />
@@ -145,7 +154,7 @@ const Employees = () => {
                                             size="sm"
                                             variant="light"
                                             className="border"
-                                            onClick={() => handleDelete(emp.id)}>
+                                            onClick={() => handleDelete(emp._id)}>
                                             <FeatherIcon icon="trash" size={16} className="text-danger" />
                                         </Button>
                                     </div>
@@ -174,7 +183,7 @@ const Employees = () => {
                                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                     />
                                 </div>
-                                <Button size="sm" onClick={handleImageChoose}>
+                                <Button size="sm" onClick={() => setShowImagePicker(true)}>
                                     Choose from Bucket
                                 </Button>
                             </div>
@@ -188,6 +197,7 @@ const Employees = () => {
                                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                             />
                         </Form.Group>
+
                         <Form.Group className="mb-2">
                             <Form.Label>Role</Form.Label>
                             <Form.Control
@@ -196,6 +206,7 @@ const Employees = () => {
                                 onChange={(e) => setForm({ ...form, role: e.target.value })}
                             />
                         </Form.Group>
+
                         <Form.Group className="mb-2">
                             <Form.Label>Department</Form.Label>
                             <Form.Control
@@ -204,23 +215,41 @@ const Employees = () => {
                                 onChange={(e) => setForm({ ...form, department: e.target.value })}
                             />
                         </Form.Group>
+
                         <Form.Group className="mb-2">
-                            <Form.Check
-                                label="Priority"
-                                checked={form.priority}
-                                onChange={(e) => setForm({ ...form, priority: e.target.checked })}
+                            <Form.Label>LinkedIn</Form.Label>
+                            <Form.Control
+                                type="url"
+                                value={form.linkedin}
+                                onChange={(e) => setForm({ ...form, linkedin: e.target.value })}
                             />
                         </Form.Group>
+
+                        <Form.Group className="mb-2">
+                            <Form.Label>Level</Form.Label>
+                            <Form.Select
+                                value={form.level}
+                                onChange={(e) => setForm({ ...form, level: Number(e.target.value) })}>
+                                <option value={1}>1 - Junior</option>
+                                <option value={2}>2 - Mid</option>
+                                <option value={3}>3 - Senior</option>
+                            </Form.Select>
+                        </Form.Group>
+
+                        <Form.Group className="mb-2">
+                            <Form.Label>Join Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                value={form.joinedDate}
+                                onChange={(e) => setForm({ ...form, joinedDate: e.target.value })}
+                            />
+                        </Form.Group>
+
                         <Form.Group className="mb-2">
                             <Form.Check
                                 label="Active"
                                 checked={form.status === 'Active'}
-                                onChange={(e) =>
-                                    setForm({
-                                        ...form,
-                                        status: e.target.checked ? 'Active' : 'Inactive',
-                                    })
-                                }
+                                onChange={(e) => setForm({ ...form, status: e.target.checked ? 'Active' : 'Inactive' })}
                             />
                         </Form.Group>
                     </Modal.Body>
@@ -232,6 +261,16 @@ const Employees = () => {
                     </Modal.Footer>
                 </Form>
             </Modal>
+
+            <ImagePickerModal
+                show={showImagePicker}
+                folder="employees"
+                onClose={() => setShowImagePicker(false)}
+                onSelect={(url) => {
+                    setForm((prev) => ({ ...prev, photo: url }));
+                    setShowImagePicker(false);
+                }}
+            />
         </div>
     );
 };

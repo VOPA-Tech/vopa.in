@@ -8,6 +8,7 @@ import ProfileDropdown from './ProfileDropdown';
 
 // dummy data
 import { profileOptions } from './data';
+import { useLogin } from 'hooks/auth';
 
 type Navbar4Props = {
     isSticky?: boolean;

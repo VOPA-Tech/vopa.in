@@ -42,6 +42,16 @@ const Menu = () => {
                     </div>
                 </Nav.Link>
             </Nav.Item>
+            <Nav.Item as="li" className="pe-3">
+                <Nav.Link
+                    href="/account/gallery"
+                    className={currentPath === '/account/gallery' ? 'active fw-bold text-success' : ''}>
+                    <div className="d-flex align-items-center">
+                        <span className="icon-xxs me-1 flex-shrink-0"></span>
+                        <div className="flex-grow-1">Gallery</div>
+                    </div>
+                </Nav.Link>
+            </Nav.Item>
         </Nav>
     );
 };
