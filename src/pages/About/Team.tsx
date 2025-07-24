@@ -1,17 +1,30 @@
 import { Badge, Col, Container, Row } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 
+type TeamMember = {
+    level?: number;
+    name?: string;
+    photo?: string;
+    content?: {
+        Designation?: string;
+        LinkedIn?: string;
+    };
+};
+
 type TeamProps = {
-    teamMembers: any[];
+    teamMembers?: TeamMember[] | null;
 };
 
 const Team = ({ teamMembers }: TeamProps) => {
-    if (!teamMembers || teamMembers.length === 0) return null;
+    // Ensure teamMembers is an array
+    const safeTeamMembers = Array.isArray(teamMembers) ? teamMembers : [];
+
+    if (safeTeamMembers.length === 0) return null;
 
     // Separate priority members
-    const level3 = teamMembers.filter((member) => member?.level === 3);
-    const level2 = teamMembers.filter((member) => member?.level === 2);
-    const level1 = teamMembers.filter((member) => member?.level === 1);
+    const level3 = safeTeamMembers.filter((member) => member?.level === 3);
+    const level2 = safeTeamMembers.filter((member) => member?.level === 2);
+    const level1 = safeTeamMembers.filter((member) => member?.level === 1);
     const sortedMembers = [...level3, ...level2, ...level1];
 
     return (
@@ -30,7 +43,7 @@ const Team = ({ teamMembers }: TeamProps) => {
                 </Row>
                 <Row className="mt-5">
                     {sortedMembers.map((member, index) => (
-                        <Col lg={4} md={6} key={index.toString()}>
+                        <Col lg={4} md={6} key={index}>
                             <div className="d-flex align-items-center mb-5 pb-md-4">
                                 <img
                                     src={member?.photo || '/images/placeholder.jpg'}
