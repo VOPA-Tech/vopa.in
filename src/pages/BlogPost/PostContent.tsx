@@ -1,30 +1,24 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import FeatherIcon from 'feather-icons-react';
-import { renderRichText } from '@storyblok/react';
 
 type HeroProps = {
     blog: any;
 };
 
 const PostContent = ({ blog }: HeroProps) => {
-    const nestedContent = blog?.content?.body?.[0]?.content;
-    const coverImage = blog?.content?.cover_image?.filename;
-
     return (
         <section className="position-relative pb-5">
             <Container>
                 <Row>
                     <Col lg={12}>
                         {/* Hero Image */}
-                        {coverImage && (
+                        {blog.coverUrl && (
                             <figure className="figure">
-                                <img src={coverImage} alt="Blog Cover" className="figure-img img-fluid rounded" />
+                                <img src={blog.coverUrl} alt="Blog Cover" className="figure-img img-fluid rounded" />
                             </figure>
                         )}
 
                         {/* Render Blog Content */}
-                        {nestedContent ? (
+                        {blog.content ? (
                             <div
                                 style={{
                                     color: '#212529',
@@ -32,7 +26,7 @@ const PostContent = ({ blog }: HeroProps) => {
                                     lineHeight: '1.7',
                                 }}
                                 dangerouslySetInnerHTML={{
-                                    __html: renderRichText(nestedContent),
+                                    __html: blog.content,
                                 }}
                             />
                         ) : (

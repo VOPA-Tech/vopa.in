@@ -9,16 +9,16 @@ import BlogPost3 from './BlogPost3';
 import BlogPost1 from './BlogPost1';
 import VSchoolAnalytics from './VSchoolAnalytics';
 import { post3 } from './data';
-import { loadBlogs } from 'reduxFolder/appSlice';
+import { fetchBlogs } from 'reduxFolder/blogSlice';
 
 const Blog = () => {
     const dispatch = useDispatch();
-    const blogs = useSelector((state) => state.appState.blogs);
-    const isBlogsLoading = useSelector((state) => state.appState.isBlogsLoading);
+    const blogs = useSelector((state) => state.blogState.blogs);
+    const isBlogsLoading = useSelector((state) => state.blogState.loading);
 
     useEffect(() => {
         if (!blogs.length) {
-            dispatch(loadBlogs());
+            dispatch(fetchBlogs());
         }
     }, [dispatch, blogs.length]);
 

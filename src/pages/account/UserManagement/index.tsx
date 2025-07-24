@@ -4,14 +4,15 @@ import { Col, Container, Row, Button, Modal, Form } from 'react-bootstrap';
 
 import { Navbar4 } from 'components/navbars';
 import { Footer3 } from 'components/footer';
-import { useLogin } from 'hooks/auth';
+import { useLogin, useUser } from 'hooks/auth';
 import { APICore } from 'helpers/api/apiCore';
 
 import { fetchUsers } from 'reduxFolder/usersSlice';
 import UserList from './UserList';
+import { Navigate } from 'react-router-dom';
 
 const Dashboard = () => {
-    const [user, error, login] = useLogin();
+    const [loggedInUser] = useUser();
     const dispatch = useDispatch();
     const api = new APICore();
 
@@ -24,6 +25,9 @@ const Dashboard = () => {
         (dispatch as any)(fetchUsers());
     }, [dispatch]);
 
+    if (loggedInUser?.role === 'User') {
+        return <Navigate to="/account/content" replace />;
+    }
     const handleAddUser = async () => {
         try {
             await api.create('/auth/register', newUser);
@@ -45,7 +49,7 @@ const Dashboard = () => {
                     <Row>
                         <Col lg={12}>
                             <div className="page-title">
-                                <h3 className="mb-0">{user?.email}</h3>
+                                <h3 className="mb-0">{loggedInUser?.email}</h3>
                                 <p className="mt-1 fw-medium">Welcome to VOPA!</p>
                             </div>
                         </Col>

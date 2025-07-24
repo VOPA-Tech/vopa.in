@@ -4,7 +4,7 @@ import { Badge, Col, Container, Row } from 'react-bootstrap';
 const Footer3 = () => {
     return (
         <section className="section py-4 position-relative">
-            <Container>
+            {/* <Container>
                 <Row className="align-items-center">
                     <Col>
                         <ul className="list-inline list-with-separator mb-0">
@@ -44,7 +44,7 @@ const Footer3 = () => {
                         </p>
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
         </section>
     );
 };

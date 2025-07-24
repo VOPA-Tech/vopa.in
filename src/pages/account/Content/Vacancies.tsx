@@ -1,48 +1,20 @@
-import { useState } from 'react';
-import { Button, Col, Modal, Row, Table, Form, Badge, CloseButton } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Button, Col, Modal, Row, Table, Form, Badge } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-type Vacancy = {
-    id: number;
-    title: string;
-    description: string;
-    skills: string[];
-    jdLink: string;
-    applyLink: string;
-    vacancyCount: number;
-    status: 'Active' | 'Inactive';
-};
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchVacancies, addVacancy, updateVacancy, deleteVacancy } from 'reduxFolder/vacancySlice';
 
 const Vacancies = () => {
-    const [vacancies, setVacancies] = useState<Vacancy[]>([
-        {
-            id: 1,
-            title: 'Math Teacher',
-            description: 'Looking for an experienced math teacher for grade 6.',
-            skills: ['Algebra', 'Geometry', 'Classroom Management'],
-            jdLink: 'https://example.com/jd/math-teacher',
-            applyLink: 'https://example.com/apply/math-teacher',
-            vacancyCount: 2,
-            status: 'Active',
-        },
-        {
-            id: 2,
-            title: 'Science Coordinator',
-            description: 'Lead science initiatives across grades 5–8.',
-            skills: ['Science Curriculum', 'Leadership', 'Training'],
-            jdLink: 'https://example.com/jd/science-coordinator',
-            applyLink: 'https://example.com/apply/science-coordinator',
-            vacancyCount: 1,
-            status: 'Inactive',
-        },
-    ]);
+    const dispatch: any = useDispatch();
+    const { vacancies, loading } = useSelector((state: any) => state.vacancyState);
 
     const [showFormModal, setShowFormModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
-    const [editingVacancy, setEditingVacancy] = useState<Vacancy | null>(null);
+    const [editingVacancy, setEditingVacancy] = useState(null);
     const [showViewModal, setShowViewModal] = useState(false);
-    const [viewVacancy, setViewVacancy] = useState<Vacancy | null>(null);
+    const [viewVacancy, setViewVacancy] = useState(null);
 
-    // Form fields
     const [form, setForm] = useState({
         title: '',
         description: '',
@@ -50,8 +22,14 @@ const Vacancies = () => {
         jdLink: '',
         applyLink: '',
         vacancyCount: 1,
-        status: 'Active',
+        isActive: true,
+        location: '',
+        type: 'Full-time',
     });
+
+    useEffect(() => {
+        dispatch(fetchVacancies());
+    }, [dispatch]);
 
     const handleAddClick = () => {
         setIsEditing(false);
@@ -62,12 +40,14 @@ const Vacancies = () => {
             jdLink: '',
             applyLink: '',
             vacancyCount: 1,
-            status: 'Active',
+            isActive: true,
+            location: '',
+            type: 'Full-time',
         });
         setShowFormModal(true);
     };
 
-    const handleEditClick = (vacancy: Vacancy) => {
+    const handleEditClick = (vacancy) => {
         setIsEditing(true);
         setEditingVacancy(vacancy);
         setForm({
@@ -77,49 +57,36 @@ const Vacancies = () => {
             jdLink: vacancy.jdLink,
             applyLink: vacancy.applyLink,
             vacancyCount: vacancy.vacancyCount,
-            status: vacancy.status,
+            isActive: vacancy.isActive,
+            location: vacancy.location,
+            type: vacancy.type,
         });
         setShowFormModal(true);
     };
 
-    const handleDelete = (id: number) => {
-        const confirmed = window.confirm('Are you sure you want to delete this vacancy?');
-        if (confirmed) {
-            setVacancies((prev) => prev.filter((v) => v.id !== id));
+    const handleDelete = (id) => {
+        if (window.confirm('Are you sure you want to delete this vacancy?')) {
+            dispatch(deleteVacancy(id));
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const skillsArray = form.skills.split(',').map((s) => s.trim());
+        const payload = {
+            ...form,
+            skills: form.skills.split(',').map((s) => s.trim()),
+        };
 
         if (isEditing && editingVacancy) {
-            setVacancies((prev) =>
-                prev.map((v) =>
-                    v.id === editingVacancy.id
-                        ? {
-                              ...editingVacancy,
-                              ...form,
-                              skills: skillsArray,
-                              status: form.status as 'Active' | 'Inactive',
-                          }
-                        : v
-                )
-            );
+            dispatch(updateVacancy({ id: editingVacancy._id, data: payload }));
         } else {
-            const newVacancy: Vacancy = {
-                id: Date.now(),
-                ...form,
-                skills: skillsArray,
-                status: form.status as 'Active' | 'Inactive',
-            };
-            setVacancies((prev) => [...prev, newVacancy]);
+            dispatch(addVacancy(payload));
         }
 
         setShowFormModal(false);
     };
 
-    const handleView = (vacancy: Vacancy) => {
+    const handleView = (vacancy) => {
         setViewVacancy(vacancy);
         setShowViewModal(true);
     };
@@ -137,6 +104,8 @@ const Vacancies = () => {
                         <th>Title</th>
                         <th>Description</th>
                         <th>Skills</th>
+                        <th>Type</th>
+                        <th>Location</th>
                         <th>Status</th>
                         <th>Vacancies</th>
                         <th>Actions</th>
@@ -144,21 +113,25 @@ const Vacancies = () => {
                 </thead>
                 <tbody>
                     {vacancies.map((vacancy) => (
-                        <tr key={vacancy.id}>
-                            <td>{vacancy.title}</td>
-                            <td>{vacancy.description}</td>
-                            <td>
+                        <tr key={vacancy._id}>
+                            <td className="fixed-height-cell">{vacancy.title}</td>
+                            <td className="fixed-height-cell">{vacancy.description}</td>
+                            <td className="fixed-height-cell">
                                 {vacancy.skills.map((skill, i) => (
                                     <Badge key={i} bg="secondary" className="me-1">
                                         {skill}
                                     </Badge>
                                 ))}
                             </td>
-                            <td>
-                                <Badge bg={vacancy.status === 'Active' ? 'success' : 'danger'}>{vacancy.status}</Badge>
+                            <td className="fixed-height-cell">{vacancy.type}</td>
+                            <td className="fixed-height-cell">{vacancy.location}</td>
+                            <td className="fixed-height-cell">
+                                <Badge bg={vacancy.isActive ? 'success' : 'danger'}>
+                                    {vacancy.isActive ? 'Active' : 'Inactive'}
+                                </Badge>
                             </td>
-                            <td>{vacancy.vacancyCount}</td>
-                            <td>
+                            <td className="fixed-height-cell">{vacancy.vacancyCount}</td>
+                            <td className="fixed-height-cell">
                                 <div className="d-flex gap-2">
                                     <Button
                                         size="sm"
@@ -181,7 +154,7 @@ const Vacancies = () => {
                                         variant="light"
                                         className="border"
                                         title="Delete"
-                                        onClick={() => handleDelete(vacancy.id)}>
+                                        onClick={() => handleDelete(vacancy._id)}>
                                         <FeatherIcon icon="trash-2" size={16} className="text-danger" />
                                     </Button>
                                 </div>
@@ -238,21 +211,36 @@ const Vacancies = () => {
                             />
                         </Form.Group>
                         <Form.Group className="mb-2">
+                            <Form.Label>Location</Form.Label>
+                            <Form.Control
+                                value={form.location}
+                                onChange={(e) => setForm({ ...form, location: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-2">
+                            <Form.Label>Type</Form.Label>
+                            <Form.Select value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })}>
+                                <option value="Full-time">Full-time</option>
+                                <option value="Part-time">Part-time</option>
+                                <option value="Internship">Internship</option>
+                                <option value="Contract">Contract</option>
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group className="mb-2">
+                            <Form.Check
+                                type="checkbox"
+                                label="Active"
+                                checked={form.isActive}
+                                onChange={(e) => setForm({ ...form, isActive: e.target.checked })}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-2">
                             <Form.Label>Number of Vacancies</Form.Label>
                             <Form.Control
                                 type="number"
                                 value={form.vacancyCount}
                                 onChange={(e) => setForm({ ...form, vacancyCount: +e.target.value })}
                             />
-                        </Form.Group>
-                        <Form.Group className="mb-2">
-                            <Form.Label>Status</Form.Label>
-                            <Form.Select
-                                value={form.status}
-                                onChange={(e) => setForm({ ...form, status: e.target.value as 'Active' | 'Inactive' })}>
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
-                            </Form.Select>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
@@ -282,6 +270,15 @@ const Vacancies = () => {
                                 <strong>Skills:</strong> {viewVacancy.skills.join(', ')}
                             </p>
                             <p>
+                                <strong>Location:</strong> {viewVacancy.location}
+                            </p>
+                            <p>
+                                <strong>Type:</strong> {viewVacancy.type}
+                            </p>
+                            <p>
+                                <strong>Status:</strong> {viewVacancy.isActive ? 'Active' : 'Inactive'}
+                            </p>
+                            <p>
                                 <strong>JD Link:</strong>{' '}
                                 <a href={viewVacancy.jdLink} target="_blank" rel="noreferrer">
                                     {viewVacancy.jdLink}
@@ -295,9 +292,6 @@ const Vacancies = () => {
                             </p>
                             <p>
                                 <strong>Vacancies:</strong> {viewVacancy.vacancyCount}
-                            </p>
-                            <p>
-                                <strong>Status:</strong> {viewVacancy.status}
                             </p>
                         </>
                     )}

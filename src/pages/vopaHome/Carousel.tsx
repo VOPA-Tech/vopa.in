@@ -8,7 +8,7 @@ const CaptionCarousel = () => {
         {
             title1: 'The Problem',
             title2: 'Bringing quality education to millions in rural India.',
-            description: 'What if every child could learn through a smartphone - no internet needed?',
+            description: 'What if every child could learn through a smartphone.',
             image: '/images/homePage/C1.webp',
         },
         {

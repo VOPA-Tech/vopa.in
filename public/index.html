@@ -82,6 +82,23 @@
             * {
                 box-sizing: border-box; /* Ensure padding and border are included in element width */
             }
+            /* Applies to Quill editor and rendered blog content */
+            .ql-editor img,
+            .blog-content img {
+                max-width: 100%;
+                height: auto;
+                max-height: 500px;
+                display: block;
+                margin: 1rem 0;
+                border-radius: 8px; /* Optional aesthetic */
+                object-fit: contain;
+            }
+            .fixed-height-cell {
+                max-height: 100px;
+                overflow: hidden;
+                /* white-space: nowrap; */
+                text-overflow: ellipsis;
+            }
         </style>
         <title>VOPA</title>
     </head>

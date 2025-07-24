@@ -16,16 +16,17 @@ import { gallery } from './data';
 
 // redux
 import { loadVacancies } from 'reduxFolder/appSlice';
+import { fetchVacancies } from 'reduxFolder/vacancySlice';
 
 const Career = () => {
     const dispatch = useDispatch();
 
-    const vacancies = useSelector((state) => state.appState.vacancies);
-    const isVacanciesLoading = useSelector((state) => state.appState.isVacanciesLoading);
+    const { vacancies, loading } = useSelector((state) => state.vacancyState);
 
     useEffect(() => {
+        console.log('He vacancies', vacancies);
         if (!vacancies.length) {
-            dispatch(loadVacancies());
+            dispatch(fetchVacancies());
         }
     }, [dispatch, vacancies.length]);
 
@@ -45,7 +46,7 @@ const Career = () => {
             <Culture gallery={gallery} />
 
             {/* Job Section */}
-            {isVacanciesLoading ? (
+            {loading ? (
                 <div style={{ textAlign: 'center', padding: '4rem' }}>Loading Vacancies...</div>
             ) : (
                 <Vacancies vacancies={vacancies} />

@@ -18,7 +18,7 @@ const BlogPost1 = ({ post }: any) => {
                             onMouseOver={(e) => (e.currentTarget.style.color = '#28c76f')}
                             onMouseOut={(e) => (e.currentTarget.style.color = 'inherit')}
                             to={`/blog/post/${post.slug}`}>
-                            {post.name}
+                            {post.title}
                         </Link>
                     </h3>
 

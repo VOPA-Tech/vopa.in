@@ -123,7 +123,7 @@ const AllRoutes = () => {
         {
             // protected routes
             path: '/',
-            element: <PrivateRoute roles={'Admin'} />,
+            element: <PrivateRoute roles={['Admin', 'User']} />,
             children: [
                 {
                     path: 'account',

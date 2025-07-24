@@ -12,8 +12,14 @@ import Tasks from './Tasks';
 
 // dummy data
 import { projects, tasks } from './data';
+import { useUser } from 'hooks/auth';
+import { Navigate } from 'react-router-dom';
 
 const Dashboard = () => {
+    const [loggedInUser] = useUser();
+    if (loggedInUser?.role === 'User') {
+        return <Navigate to="/account/content" replace />;
+    }
     return (
         <>
             {/* header */}

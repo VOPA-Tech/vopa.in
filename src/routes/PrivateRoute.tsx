@@ -8,7 +8,7 @@ import { APICore } from '../helpers/api/apiCore';
 import { useUser } from '../hooks/auth';
 
 type PrivateRouteProps = {
-    roles?: string;
+    roles?: string[];
 };
 
 const loading = () => <div className=""></div>;
@@ -18,26 +18,21 @@ const loading = () => <div className=""></div>;
  * @param {*} param0
  * @returns
  */
-const PrivateRoute = ({ roles, ...rest }: PrivateRouteProps) => {
-    let location = useLocation();
+const PrivateRoute = ({ roles }: PrivateRouteProps) => {
+    const location = useLocation();
     const [loggedInUser] = useUser();
-
     const api = new APICore();
 
-    /**
-     * not logged in so redirect to login page with the return url
-     */
-    if (api.isUserAuthenticated() === false) {
-        return <Navigate to={'/auth/login'} state={{ from: location }} replace />;
+    if (!api.isUserAuthenticated()) {
+        return <Navigate to="/auth/login" state={{ from: location }} replace />;
     }
 
-    // check if route is restricted by role
-    if (roles && roles.indexOf(loggedInUser.role) === -1) {
-        // role not authorised so redirect to home page
-        return <Navigate to={{ pathname: '/' }} />;
+    if (roles && !roles.includes(loggedInUser.role)) {
+        return <Navigate to="/" />;
     }
+
     return (
-        <Suspense fallback={loading()}>
+        <Suspense fallback={<div className=""></div>}>
             <Outlet />
         </Suspense>
     );

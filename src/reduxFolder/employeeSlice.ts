@@ -1,4 +1,4 @@
-// src/redux/slices/contentSlice.ts
+// src/redux/slices/employeeSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -32,7 +32,7 @@ export const deleteEmployee = createAsyncThunk('content/deleteEmployee', async (
     return id;
 });
 
-const contentSlice = createSlice({
+const employeeSlice = createSlice({
     name: 'content',
     initialState: {
         employees: [],
@@ -76,4 +76,4 @@ const contentSlice = createSlice({
     },
 });
 
-export default contentSlice.reducer;
+export default employeeSlice.reducer;

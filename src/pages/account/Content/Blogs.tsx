@@ -1,23 +1,29 @@
-import { useState } from 'react';
-import { Badge, Button, Col, Form, Modal, Row, Table } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Badge, Button, Col, Form, Modal, Row, Table, Spinner } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchBlogs, addBlog, updateBlog, deleteBlog } from 'reduxFolder/blogSlice';
 import EditorWithMediaLibrary from './EditorWithMediaLibrary';
+import ImagePickerModal from './ImagePickerModal';
+
 import 'react-quill/dist/quill.snow.css';
 
 export type Blog = {
-    id: number;
+    _id?: string;
     title: string;
     author: string;
     category: string;
-    thumbnail: string;
-    coverPhoto: string;
+    thumbnailUrl: string;
+    coverUrl: string;
     content: string;
-    status: 'Published' | 'Draft';
     featured: boolean;
+    published: boolean;
 };
 
 const Blogs = () => {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const dispatch: any = useDispatch();
+    const { blogs, loading } = useSelector((state: any) => state.blogState);
 
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -25,30 +31,39 @@ const Blogs = () => {
     const [viewingBlog, setViewingBlog] = useState<Blog | null>(null);
 
     const [form, setForm] = useState<Blog>({
-        id: 0,
         title: '',
         author: '',
         category: '',
-        thumbnail: '',
-        coverPhoto: '',
+        thumbnailUrl: '',
+        coverUrl: '',
         content: '',
-        status: 'Draft',
+        published: false,
         featured: false,
     });
 
-    const handleAdd = () => {
-        setIsEditing(false);
+    const [showImagePicker, setShowImagePicker] = useState(false);
+    const [targetImageField, setTargetImageField] = useState<'thumbnailUrl' | 'coverUrl' | null>(null);
+
+    useEffect(() => {
+        dispatch(fetchBlogs());
+    }, [dispatch]);
+
+    const resetForm = () => {
         setForm({
-            id: 0,
             title: '',
             author: '',
             category: '',
-            thumbnail: '',
-            coverPhoto: '',
+            thumbnailUrl: '',
+            coverUrl: '',
             content: '',
-            status: 'Draft',
+            published: false,
             featured: false,
         });
+    };
+
+    const handleAdd = () => {
+        setIsEditing(false);
+        resetForm();
         setShowModal(true);
     };
 
@@ -59,34 +74,27 @@ const Blogs = () => {
         setShowModal(true);
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (_id?: string) => {
+        if (!_id) return;
         if (window.confirm('Are you sure to delete this blog?')) {
-            setBlogs((prev) => prev.filter((b) => b.id !== id));
+            dispatch(deleteBlog(_id));
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const newBlog: Blog = {
-            ...form,
-            id: isEditing && editingBlog ? editingBlog.id : Date.now(),
-        };
-
-        setBlogs((prev) => {
-            if (isEditing && editingBlog) {
-                return prev.map((b) => (b.id === editingBlog.id ? newBlog : b));
-            }
-            return [...prev, newBlog];
-        });
-
+        if (isEditing && editingBlog?._id) {
+            await dispatch(updateBlog({ id: editingBlog._id, data: form }));
+        } else {
+            await dispatch(addBlog(form));
+        }
         setShowModal(false);
+        resetForm();
     };
 
-    const handleMediaSelect = (type: 'thumbnail' | 'coverPhoto') => {
-        const url = prompt(`Paste the ${type} URL:`);
-        if (url) {
-            setForm((prev) => ({ ...prev, [type]: url }));
-        }
+    const handleMediaSelect = (field: 'thumbnailUrl' | 'coverUrl') => {
+        setTargetImageField(field);
+        setShowImagePicker(true);
     };
 
     return (
@@ -96,67 +104,83 @@ const Blogs = () => {
                 <Button onClick={handleAdd}>Add Blog</Button>
             </div>
 
-            <Table responsive bordered hover>
-                <thead>
-                    <tr>
-                        <th>Thumbnail</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Category</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {blogs
-                        .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
-                        .map((blog) => (
-                            <tr key={blog.id}>
-                                <td>
-                                    <img
-                                        src={blog.thumbnail || 'https://via.placeholder.com/40'}
-                                        alt="thumbnail"
-                                        style={{ width: 40, height: 40, borderRadius: '4px', objectFit: 'cover' }}
-                                    />
-                                    {blog.featured && (
-                                        <Badge bg="info" className="ms-2">
-                                            Featured
+            {loading ? (
+                <div className="text-center my-4">
+                    <Spinner animation="border" />
+                </div>
+            ) : (
+                <Table responsive bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Thumbnail</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {blogs
+                            .slice()
+                            .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+                            .map((blog) => (
+                                <tr key={blog._id}>
+                                    <td>
+                                        <img
+                                            src={blog.thumbnailUrl || 'https://via.placeholder.com/40'}
+                                            alt="thumbnail"
+                                            style={{
+                                                width: 40,
+                                                height: 40,
+                                                borderRadius: '4px',
+                                                objectFit: 'cover',
+                                            }}
+                                        />
+                                        {blog.featured && (
+                                            <Badge bg="info" className="ms-2">
+                                                Featured
+                                            </Badge>
+                                        )}
+                                    </td>
+                                    <td>{blog.title}</td>
+                                    <td>{blog.author}</td>
+                                    <td>{blog.category}</td>
+                                    <td>
+                                        <Badge bg={blog.published ? 'success' : 'secondary'}>
+                                            {blog.published ? 'Published' : 'Draft'}
                                         </Badge>
-                                    )}
-                                </td>
-                                <td>{blog.title}</td>
-                                <td>{blog.author}</td>
-                                <td>{blog.category}</td>
-                                <td>{blog.status}</td>
-                                <td>
-                                    <div className="d-flex gap-2">
-                                        <Button
-                                            size="sm"
-                                            variant="light"
-                                            className="border"
-                                            onClick={() => handleEdit(blog)}>
-                                            <FeatherIcon icon="edit" size={16} />
-                                        </Button>
-                                        <Button
-                                            size="sm"
-                                            variant="light"
-                                            className="border"
-                                            onClick={() => handleDelete(blog.id)}>
-                                            <FeatherIcon icon="trash" size={16} className="text-danger" />
-                                        </Button>
-                                        <Button
-                                            size="sm"
-                                            variant="light"
-                                            className="border"
-                                            onClick={() => setViewingBlog(blog)}>
-                                            <FeatherIcon icon="eye" size={16} className="text-primary" />
-                                        </Button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                </tbody>
-            </Table>
+                                    </td>
+                                    <td>
+                                        <div className="d-flex gap-2">
+                                            <Button
+                                                size="sm"
+                                                variant="light"
+                                                className="border"
+                                                onClick={() => handleEdit(blog)}>
+                                                <FeatherIcon icon="edit" size={16} />
+                                            </Button>
+                                            <Button
+                                                size="sm"
+                                                variant="light"
+                                                className="border"
+                                                onClick={() => handleDelete(blog._id)}>
+                                                <FeatherIcon icon="trash" size={16} className="text-danger" />
+                                            </Button>
+                                            <Button
+                                                size="sm"
+                                                variant="light"
+                                                className="border"
+                                                onClick={() => setViewingBlog(blog)}>
+                                                <FeatherIcon icon="eye" size={16} className="text-primary" />
+                                            </Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </Table>
+            )}
 
             {/* Add / Edit Modal */}
             <Modal show={showModal} onHide={() => setShowModal(false)} fullscreen>
@@ -196,34 +220,75 @@ const Blogs = () => {
                                     />
                                 </Form.Group>
                             </Col>
+
+                            {/* Thumbnail Preview */}
                             <Col md={6}>
                                 <Form.Group className="mb-2">
-                                    <Form.Label>Thumbnail URL</Form.Label>
-                                    <div className="d-flex gap-2">
-                                        <Form.Control
-                                            value={form.thumbnail}
-                                            onChange={(e) => setForm({ ...form, thumbnail: e.target.value })}
-                                        />
-                                        <Button size="sm" onClick={() => handleMediaSelect('thumbnail')}>
+                                    <Form.Label>Thumbnail</Form.Label>
+                                    <div className="d-flex align-items-center gap-3">
+                                        {form.thumbnailUrl ? (
+                                            <img
+                                                src={form.thumbnailUrl}
+                                                alt="thumbnail"
+                                                style={{ width: 60, height: 60, borderRadius: 4, objectFit: 'cover' }}
+                                            />
+                                        ) : (
+                                            <div
+                                                style={{
+                                                    width: 60,
+                                                    height: 60,
+                                                    backgroundColor: '#eee',
+                                                    borderRadius: 4,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    fontSize: 12,
+                                                    color: '#999',
+                                                }}>
+                                                No image
+                                            </div>
+                                        )}
+                                        <Button size="sm" onClick={() => handleMediaSelect('thumbnailUrl')}>
                                             Choose
                                         </Button>
                                     </div>
                                 </Form.Group>
                             </Col>
+
+                            {/* Cover Preview */}
                             <Col md={6}>
                                 <Form.Group className="mb-2">
-                                    <Form.Label>Cover Photo URL</Form.Label>
-                                    <div className="d-flex gap-2">
-                                        <Form.Control
-                                            value={form.coverPhoto}
-                                            onChange={(e) => setForm({ ...form, coverPhoto: e.target.value })}
-                                        />
-                                        <Button size="sm" onClick={() => handleMediaSelect('coverPhoto')}>
+                                    <Form.Label>Cover Photo</Form.Label>
+                                    <div className="d-flex align-items-center gap-3">
+                                        {form.coverUrl ? (
+                                            <img
+                                                src={form.coverUrl}
+                                                alt="cover"
+                                                style={{ width: 100, height: 60, borderRadius: 4, objectFit: 'cover' }}
+                                            />
+                                        ) : (
+                                            <div
+                                                style={{
+                                                    width: 100,
+                                                    height: 60,
+                                                    backgroundColor: '#eee',
+                                                    borderRadius: 4,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    fontSize: 12,
+                                                    color: '#999',
+                                                }}>
+                                                No image
+                                            </div>
+                                        )}
+                                        <Button size="sm" onClick={() => handleMediaSelect('coverUrl')}>
                                             Choose
                                         </Button>
                                     </div>
                                 </Form.Group>
                             </Col>
+
                             <Col md={6}>
                                 <Form.Group className="mb-2">
                                     <Form.Check
@@ -235,13 +300,8 @@ const Blogs = () => {
                                 <Form.Group className="mb-2">
                                     <Form.Check
                                         label="Published"
-                                        checked={form.status === 'Published'}
-                                        onChange={(e) =>
-                                            setForm({
-                                                ...form,
-                                                status: e.target.checked ? 'Published' : 'Draft',
-                                            })
-                                        }
+                                        checked={form.published}
+                                        onChange={(e) => setForm({ ...form, published: e.target.checked })}
                                     />
                                 </Form.Group>
                             </Col>
@@ -271,12 +331,25 @@ const Blogs = () => {
                 <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
                     {viewingBlog && (
                         <>
-                            <img src={viewingBlog.coverPhoto} alt="Cover" className="img-fluid mb-3" />
-                            <div dangerouslySetInnerHTML={{ __html: viewingBlog.content }} />
+                            <img src={viewingBlog.coverUrl} alt="Cover" className="img-fluid mb-3" />
+                            <div className="blog-content" dangerouslySetInnerHTML={{ __html: viewingBlog.content }} />
                         </>
                     )}
                 </Modal.Body>
             </Modal>
+
+            {/* Image Picker Modal */}
+            {showImagePicker && targetImageField && (
+                <ImagePickerModal
+                    show={showImagePicker}
+                    folder="blogs"
+                    onClose={() => setShowImagePicker(false)}
+                    onSelect={(url) => {
+                        setForm((prev) => ({ ...prev, [targetImageField]: url }));
+                        setShowImagePicker(false);
+                    }}
+                />
+            )}
         </div>
     );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Badge, Button, Form, Modal, Table } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEmployees, addEmployee, updateEmployee, deleteEmployee } from 'reduxFolder/contentSlice';
+import { fetchEmployees, addEmployee, updateEmployee, deleteEmployee } from 'reduxFolder/employeeSlice';
 import ImagePickerModal from './ImagePickerModal';
 
 export type Employee = {
@@ -19,7 +19,7 @@ export type Employee = {
 
 const Employees = () => {
     const dispatch: any = useDispatch();
-    const { employees } = useSelector((state: any) => state.contentState);
+    const { employees } = useSelector((state: any) => state.employeeState);
 
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -31,7 +31,7 @@ const Employees = () => {
         role: '',
         department: '',
         linkedin: '',
-        level: 3,
+        level: 1,
         joinedDate: new Date().toISOString().split('T')[0],
         photo: '',
         status: 'Active',

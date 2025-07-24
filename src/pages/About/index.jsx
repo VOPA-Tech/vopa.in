@@ -8,15 +8,16 @@ import Team from './Team';
 import Hero from './Hero';
 import Partners from './Partners';
 import { loadTeam } from 'reduxFolder/appSlice';
+import { fetchEmployees } from 'reduxFolder/employeeSlice';
 
 const Company = () => {
     const dispatch = useDispatch();
-    const teamMembers = useSelector((state) => state.appState.teamMembers);
-    const isTeamLoading = useSelector((state) => state.appState.isTeamLoading);
+    const teamMembers = useSelector((state) => state.employeeState.employees);
+    const isTeamLoading = useSelector((state) => state.employeeState.loading);
 
     useEffect(() => {
         if (!teamMembers.length) {
-            dispatch(loadTeam());
+            dispatch(fetchEmployees());
         }
     }, [dispatch, teamMembers.length]);
 

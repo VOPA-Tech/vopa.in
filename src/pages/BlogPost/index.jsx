@@ -15,8 +15,8 @@ const BlogPost = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const blogs = useSelector((state) => state.appState.blogs);
-    const isBlogsLoading = useSelector((state) => state.appState.isBlogsLoading);
+    const blogs = useSelector((state) => state.blogState.blogs);
+    const isBlogsLoading = useSelector((state) => state.blogState.loading);
     const [blog, setBlog] = useState(null); // ✅ fixed incorrect generic syntax
 
     useEffect(() => {
@@ -28,6 +28,7 @@ const BlogPost = () => {
     useEffect(() => {
         if (!isBlogsLoading && blogs.length) {
             const found = blogs.find((b) => b.slug === id);
+            console.log('Hii Ia m Blog', found);
             setBlog(found || null);
         }
     }, [id, blogs, isBlogsLoading]);

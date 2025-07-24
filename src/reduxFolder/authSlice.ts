@@ -39,7 +39,6 @@ export const login = createAsyncThunk<
 
         const session: UserSession = {
             token,
-            role: 'Admin',
             ...admin,
         };
 

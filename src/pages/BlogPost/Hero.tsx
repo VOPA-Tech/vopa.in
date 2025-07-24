@@ -27,7 +27,7 @@ const Hero: React.FC<HeroProps> = ({ blog }) => {
                             </div>
                         )}
 
-                        <h1 className="hero-title mt-0">{blog?.name || 'Untitled'}</h1>
+                        <h1 className="hero-title mt-0">{blog?.title || 'Untitled'}</h1>
                     </Col>
                 </Row>
 
@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ blog }) => {
                             /> */}
                             <div>
                                 <h5 className="m-0">
-                                    <Link to="#">{blog?.content?.author || 'Anonymous'}</Link>
+                                    <Link to="#">{blog?.author || 'Anonymous'}</Link>
                                 </h5>
                             </div>
                         </div>

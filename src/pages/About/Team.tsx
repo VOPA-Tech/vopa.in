@@ -9,9 +9,10 @@ const Team = ({ teamMembers }: TeamProps) => {
     if (!teamMembers || teamMembers.length === 0) return null;
 
     // Separate priority members
-    const leaders = teamMembers.filter((member) => member?.content?.priority);
-    const others = teamMembers.filter((member) => !member?.content?.priority);
-    const sortedMembers = [...leaders, ...others];
+    const level3 = teamMembers.filter((member) => member?.level === 3);
+    const level2 = teamMembers.filter((member) => member?.level === 2);
+    const level1 = teamMembers.filter((member) => member?.level === 1);
+    const sortedMembers = [...level3, ...level2, ...level1];
 
     return (
         <section className="pb-5 pt-6 mt-4 position-relative" data-aos="fade-up">
@@ -32,7 +33,7 @@ const Team = ({ teamMembers }: TeamProps) => {
                         <Col lg={4} md={6} key={index.toString()}>
                             <div className="d-flex align-items-center mb-5 pb-md-4">
                                 <img
-                                    src={member?.content?.Photo?.filename || '/images/placeholder.jpg'}
+                                    src={member?.photo || '/images/placeholder.jpg'}
                                     alt={member?.name || 'Team Member'}
                                     style={{ width: '100px', height: '125px' }}
                                     className="avatar-xl d-block rounded me-4"
