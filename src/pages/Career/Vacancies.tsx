@@ -9,10 +9,8 @@ type VacancyProps = {
     vacancies: any[];
 };
 
-const Vacancies = ({ vacancies }: VacancyProps) => {
-    // If vacancies array is empty or first item has no content, don't render
-
-    if (!vacancies || vacancies.length === 0) return null;
+const Vacancies = ({ vacancies = [] }: VacancyProps) => {
+    if (!Array.isArray(vacancies) || vacancies.length === 0) return null;
 
     return (
         <section className="py-5 mt-2 position-relative" id="job-openings">
