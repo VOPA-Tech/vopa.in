@@ -46,11 +46,19 @@ const Team = ({ teamMembers }: TeamProps) => {
                         <Col lg={4} md={6} key={index}>
                             <div className="d-flex align-items-center mb-5 pb-md-4">
                                 <img
-                                    src={member?.photo || '/images/placeholder.jpg'}
+                                    src={
+                                        member?.photo?.startsWith('http://100.64.0.106:5000')
+                                            ? member.photo.replace(
+                                                  'http://100.64.0.106:5000',
+                                                  'https://sandbox.vopa.in'
+                                              )
+                                            : member?.photo || '/images/placeholder.jpg'
+                                    }
                                     alt={member?.name || 'Team Member'}
                                     style={{ width: '100px', height: '125px' }}
                                     className="avatar-xl d-block rounded me-4"
                                 />
+
                                 <div className="flex-grow-1">
                                     <h5 className="mt-0 mb-1 fw-medium d-flex align-items-center">
                                         {member?.name || 'Unnamed'}
