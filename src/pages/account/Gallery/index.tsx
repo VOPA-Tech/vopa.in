@@ -16,12 +16,29 @@ const Gallery = () => {
     const [newFolder, setNewFolder] = useState('');
     const [creating, setCreating] = useState(false);
 
+    // Fetch all object keys and extract folder names
     const fetchFolders = async () => {
-        const res = await axios.get(`${API_BASE}/upload/list`);
-        const folderNames = res.data.map((url: string) => url.split('/').pop());
-        setFolders(folderNames);
-        if (!selectedFolder && folderNames.includes('employees')) {
-            setSelectedFolder('employees');
+        try {
+            const res = await axios.get(`${API_BASE}/upload/list`);
+
+            const folderList: string[] = res.data;
+            setFolders(folderList);
+
+            if (!selectedFolder && folderList.includes('employees')) {
+                setSelectedFolder('employees');
+            }
+        } catch (err) {
+            console.error('Error fetching folders:', err);
+        }
+    };
+
+    const fetchImages = async (folderName: string) => {
+        try {
+            const res = await axios.get(`${API_BASE}/upload/list/${folderName}`);
+            setImages(res.data);
+        } catch (err) {
+            setImages([]);
+            console.error('Failed to fetch images:', err);
         }
     };
 
@@ -29,36 +46,42 @@ const Gallery = () => {
         fetchFolders();
     }, []);
 
-    const fetchImages = async (folderName: string) => {
-        const res = await axios.get(`${API_BASE}/upload/list/${folderName}`);
-        setImages(res.data);
-    };
-
     useEffect(() => {
-        if (!selectedFolder) return;
-        fetchImages(selectedFolder);
+        if (selectedFolder) {
+            fetchImages(selectedFolder);
+        }
     }, [selectedFolder]);
 
     const handleUpload = async () => {
         if (!selectedFiles || !selectedFolder.trim()) return;
 
-        const formData = new FormData();
-        formData.append('type', selectedFolder.trim());
-        Array.from(selectedFiles).forEach((file) => formData.append('images', file));
-
         setUploading(true);
-        await axios.post(`${API_BASE}/upload`, formData);
-        setUploading(false);
-        setSelectedFiles(null);
-        fetchImages(selectedFolder);
-        fetchFolders();
+        try {
+            const uploadPromises = Array.from(selectedFiles).map((file) => {
+                const formData = new FormData();
+                formData.append('type', selectedFolder.trim());
+                formData.append('images', file); // ✅ corrected field name
+                return axios.post(`${API_BASE}/upload`, formData);
+            });
+
+            await Promise.all(uploadPromises);
+
+            setSelectedFiles(null);
+            fetchImages(selectedFolder);
+            fetchFolders();
+        } catch (err) {
+            console.error('Upload failed:', err);
+            alert('Upload failed');
+        } finally {
+            setUploading(false);
+        }
     };
 
     const handleDelete = async (filename: string) => {
         if (!selectedFolder) return;
 
-        const confirmed = window.confirm(`Delete image: ${filename}?`);
-        if (!confirmed) return;
+        const confirm = window.confirm(`Delete image: ${filename}?`);
+        if (!confirm) return;
 
         try {
             await axios.delete(`${API_BASE}/upload/${selectedFolder}/${filename}`);
@@ -70,13 +93,15 @@ const Gallery = () => {
 
     const handleCreateFolder = async () => {
         if (!newFolder.trim()) return;
+
         setCreating(true);
         try {
             await axios.post(`${API_BASE}/upload/folder`, { name: newFolder.trim() });
             setNewFolder('');
-            fetchFolders();
             setSelectedFolder(newFolder.trim());
+            fetchFolders();
         } catch (err: any) {
+            console.error(err);
             alert(err.response?.data?.message || 'Failed to create folder');
         } finally {
             setCreating(false);
@@ -85,8 +110,9 @@ const Gallery = () => {
 
     const handleDeleteFolder = async () => {
         if (!selectedFolder) return;
-        const confirmDelete = window.confirm(`Delete folder "${selectedFolder}" and all its images?`);
-        if (!confirmDelete) return;
+
+        const confirm = window.confirm(`Delete folder "${selectedFolder}" and all its images?`);
+        if (!confirm) return;
 
         try {
             await axios.delete(`${API_BASE}/upload/folder/${selectedFolder}`);
@@ -94,6 +120,7 @@ const Gallery = () => {
             setImages([]);
             fetchFolders();
         } catch (err: any) {
+            console.error(err);
             alert(err.response?.data?.message || 'Failed to delete folder');
         }
     };
@@ -108,7 +135,6 @@ const Gallery = () => {
                         <h4 className="mb-4">Gallery Manager</h4>
 
                         <Row className="align-items-end mb-4">
-                            {/* Folder Selection */}
                             <Col md={4}>
                                 <Form.Group>
                                     <Form.Label>Select Folder</Form.Label>
@@ -127,7 +153,6 @@ const Gallery = () => {
                                 </Form.Group>
                             </Col>
 
-                            {/* New Folder Input */}
                             <Col md={4}>
                                 <Form.Group>
                                     <Form.Label>Create New Folder</Form.Label>
@@ -140,7 +165,6 @@ const Gallery = () => {
                                 </Form.Group>
                             </Col>
 
-                            {/* Create & Delete Folder Buttons */}
                             <Col md="auto" className="d-flex flex-column gap-2 mt-4">
                                 <Button
                                     variant="primary"
@@ -159,7 +183,6 @@ const Gallery = () => {
                             </Col>
                         </Row>
 
-                        {/* Upload Instructions */}
                         <div className="mb-2 text-muted small">
                             <div>
                                 ⚠️ Image size should not be greater than <strong>1MB</strong>.
@@ -171,7 +194,6 @@ const Gallery = () => {
                             )}
                         </div>
 
-                        {/* File Input */}
                         <Form.Group className="mb-3">
                             <Form.Control
                                 type="file"
@@ -180,7 +202,6 @@ const Gallery = () => {
                             />
                         </Form.Group>
 
-                        {/* Upload Button */}
                         <Button disabled={uploading || !selectedFiles} onClick={handleUpload}>
                             {uploading ? (
                                 <>
@@ -192,7 +213,6 @@ const Gallery = () => {
                             )}
                         </Button>
 
-                        {/* Image Grid */}
                         <Row className="mt-4">
                             {images.map((img, index) => (
                                 <Col xs={6} md={4} lg={3} key={index} className="mb-4">

@@ -47,10 +47,10 @@ const Team = ({ teamMembers }: TeamProps) => {
                             <div className="d-flex align-items-center mb-5 pb-md-4">
                                 <img
                                     src={
-                                        member?.photo?.startsWith('http://100.64.0.106:5000')
+                                        member?.photo?.startsWith(process.env.REACT_APP_API_BASE_URL_PHOTOS)
                                             ? member.photo.replace(
-                                                  'http://100.64.0.106:5000',
-                                                  'https://sandbox.vopa.in'
+                                                  process.env.REACT_APP_API_BASE_URL_PHOTOS,
+                                                  process.env.REACT_APP_API_BASE_URL_NGINX
                                               )
                                             : member?.photo || '/images/placeholder.jpg'
                                     }
