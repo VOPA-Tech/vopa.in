@@ -5,10 +5,8 @@ type TeamMember = {
     level?: number;
     name?: string;
     photo?: string;
-    content?: {
-        Designation?: string;
-        LinkedIn?: string;
-    };
+    role?: string;
+    linkedin?: string;
 };
 
 type TeamProps = {
@@ -61,12 +59,10 @@ const Team = ({ teamMembers }: TeamProps) => {
                                     <h5 className="mt-0 mb-1 fw-medium d-flex align-items-center">
                                         {member?.name || 'Unnamed'}
                                     </h5>
-                                    <p className="text-muted fw-medium mb-0">
-                                        {member?.content?.Designation || 'Designation'}
-                                    </p>
-                                    {member?.content?.LinkedIn && (
+                                    <p className="text-muted fw-medium mb-0">{member?.role || 'Designation'}</p>
+                                    {member?.linkedin && (
                                         <a
-                                            href={member.content.LinkedIn}
+                                            href={member.linkedin}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-muted mt-1 d-inline-block">
