@@ -11,7 +11,7 @@ const post3: Post[] = [
         link: 'https://drive.google.com/file/d/1NPJ2kRZMATOHjXvucEmhekzKTKWZ0hM8/preview',
         docUrl: 'https://drive.google.com/file/d/1NPJ2kRZMATOHjXvucEmhekzKTKWZ0hM8/view',
         tag: { variant: 'success', value: 'Student Impact Stories' },
-        title: 'Annual Report 2023-24',
+        title: 'Student Impact Stories 2023-24',
     },
     {
         link: 'https://drive.google.com/file/d/1voOWzlgwoGHVoVwPI-SbxcxPtWgohD9t/preview',

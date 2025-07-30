@@ -10,15 +10,20 @@ import BlogPost1 from './BlogPost1';
 import VSchoolAnalytics from './VSchoolAnalytics';
 import { post3 } from './data';
 import { fetchBlogs } from 'reduxFolder/blogSlice';
+import { fetchMagazines } from 'reduxFolder/magazinesSlice';
 
 const Blog = () => {
     const dispatch = useDispatch();
     const blogs = useSelector((state) => state.blogState.blogs);
     const isBlogsLoading = useSelector((state) => state.blogState.loading);
+    const magazines = useSelector((state) => state.magazinesState.magazines);
+    const isMagzinesLoading = useSelector((state) => state.magazinesState.loading);
 
+    console.log('Magazines:', magazines);
     useEffect(() => {
         if (!blogs.length) {
             dispatch(fetchBlogs());
+            dispatch(fetchMagazines());
         }
     }, [dispatch, blogs.length]);
 
@@ -35,11 +40,12 @@ const Blog = () => {
                     <Row className="justify-content-lg-between">
                         <Col lg={12}>
                             <Row className="mt-6" data-aos="fade-up">
-                                {post3.map((post, index) => (
-                                    <Col lg={4} key={index}>
-                                        <BlogPost3 post={post} />
-                                    </Col>
-                                ))}
+                                {!isMagzinesLoading &&
+                                    magazines.map((post, index) => (
+                                        <Col lg={4} key={index}>
+                                            <BlogPost3 post={post} />
+                                        </Col>
+                                    ))}
                             </Row>
                         </Col>
                     </Row>

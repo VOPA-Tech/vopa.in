@@ -9,7 +9,7 @@ import BackToTop from 'components/BackToTop';
 import Hero from './Hero';
 import PostContent from './PostContent';
 
-import { loadBlogs } from 'reduxFolder/appSlice';
+import { fetchBlogs } from 'reduxFolder/blogSlice';
 
 const BlogPost = () => {
     const { id } = useParams();
@@ -21,7 +21,7 @@ const BlogPost = () => {
 
     useEffect(() => {
         if (!blogs.length) {
-            dispatch(loadBlogs());
+            dispatch(fetchBlogs());
         }
     }, [dispatch, blogs.length]);
 

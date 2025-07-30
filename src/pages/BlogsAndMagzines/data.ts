@@ -31,12 +31,7 @@ const post3: Post[] = [
     //     tag: { variant: 'info', value: 'V-School Magazines' },
     //     title: 'Edition Feb 2025',
     // },
-    // {
-    //     link: '-https://drive.google.com/file/d/1bHu_62cMFfNEkrYhmco6-Js8d_OxZ1NC/preview',
-    //     docUrl: 'https://drive.google.com/file/d/1bHu_62cMFfNEkrYhmco6-Js8d_OxZ1NC/view',
-    //     tag: { variant: 'info', value: 'V-School Magazines' },
-    //     title: 'Edition Jan 2025',
-    // },
+
     // {
     //     link: 'https://drive.google.com/file/d/1W0LtmhMuNnmX-eUUMmXO_uiZtXwYe4-J/preview',
     //     docUrl: 'https://drive.google.com/file/d/1W0LtmhMuNnmX-eUUMmXO_uiZtXwYe4-J/view',
@@ -71,7 +66,7 @@ const post3: Post[] = [
     //     link: 'https://drive.google.com/file/d/19bUQemIgiCepp8WEM-n_AbGs5D5aTfSe/preview',
     //     docUrl: 'https://drive.google.com/file/d/19bUQemIgiCepp8WEM-n_AbGs5D5aTfSe/view',
     //     tag: { variant: 'info', value: 'V-School Magazines' },
-    //     title: 'Edition August 2024',
+    //     title: 'Edition July 2024',
     // },
     // {
     //     link: 'https://drive.google.com/file/d/1kfzjKMAu3bDyPEOMrPCKCMu0sJXKvldD/preview',

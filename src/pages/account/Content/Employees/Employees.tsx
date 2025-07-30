@@ -3,7 +3,7 @@ import { Badge, Button, Form, Modal, Table } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEmployees, addEmployee, updateEmployee, deleteEmployee } from 'reduxFolder/employeeSlice';
-import ImagePickerModal from './ImagePickerModal';
+import ImagePickerModal from '../ImagePickerModal';
 
 export type Employee = {
     _id?: string;
@@ -117,7 +117,7 @@ const Employees = () => {
                                     <img
                                         src={emp.photo || 'https://via.placeholder.com/40'}
                                         alt="avatar"
-                                        style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }}
+                                        style={{ width: 80, height: 100, borderRadius: '50%', objectFit: 'contain' }}
                                     />
                                     <span className="ms-2">Lv {emp.level}</span>
                                 </td>

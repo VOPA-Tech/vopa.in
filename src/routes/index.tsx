@@ -27,11 +27,15 @@ const Contact = React.lazy(() => import('../pages/Contact'));
 const Career = React.lazy(() => import('../pages/Career'));
 
 // pages
+const BlogCMS = React.lazy(() => import('../pages/account/Content/Blogs/index'));
+const EmployeesCMS = React.lazy(() => import('../pages/account/Content/Employees/index'));
+const VacanciesCMS = React.lazy(() => import('../pages/account/Content/Vacancies/index'));
 const Dashboard = React.lazy(() => import('../pages/account/Dashboard'));
 const Gallery = React.lazy(() => import('../pages/account/Gallery'));
 const UserManagement = React.lazy(() => import('../pages/account/UserManagement'));
 const Settings = React.lazy(() => import('../pages/account/Settings'));
-const Content = React.lazy(() => import('../pages/account/Content'));
+const WorkReportsCMS = React.lazy(() => import('../pages/account/Content/WorkReports/index'));
+const MagzinesCMS = React.lazy(() => import('../pages/account/Content/Magazines/index'));
 
 const loading = () => <div className=""></div>;
 
@@ -130,9 +134,19 @@ const AllRoutes = () => {
                     children: [
                         { path: 'dashboard', element: <LoadComponent component={Dashboard} /> },
                         { path: 'userManagement', element: <LoadComponent component={UserManagement} /> },
-                        { path: 'content', element: <LoadComponent component={Content} /> },
+                        // { path: 'content', element: <LoadComponent component={Content} /> },
                         { path: 'settings', element: <LoadComponent component={Settings} /> },
                         { path: 'gallery', element: <LoadComponent component={Gallery} /> },
+                        {
+                            path: 'content',
+                            children: [
+                                { path: 'blogs', element: <LoadComponent component={BlogCMS} /> },
+                                { path: 'employees', element: <LoadComponent component={EmployeesCMS} /> },
+                                { path: 'vacancies', element: <LoadComponent component={VacanciesCMS} /> },
+                                { path: 'work_reports', element: <LoadComponent component={WorkReportsCMS} /> },
+                                { path: 'magazines', element: <LoadComponent component={MagzinesCMS} /> },
+                            ],
+                        },
                     ],
                 },
             ],

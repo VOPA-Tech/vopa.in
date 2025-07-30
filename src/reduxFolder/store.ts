@@ -5,6 +5,8 @@ import usersSlice from './usersSlice';
 import employeeSlice from './employeeSlice';
 import vacancySlice from './vacancySlice';
 import blogSlice from './blogSlice';
+import workReportsSlice from './workReportsSlice';
+import magazinesSlice from './magazinesSlice';
 export const store = configureStore({
     reducer: {
         appState: appSlice,
@@ -13,6 +15,8 @@ export const store = configureStore({
         employeeState: employeeSlice,
         vacancyState: vacancySlice,
         blogState: blogSlice,
+        workReportsState: workReportsSlice,
+        magazinesState: magazinesSlice,
     },
 });
 export type RootState = ReturnType<typeof store.getState>;

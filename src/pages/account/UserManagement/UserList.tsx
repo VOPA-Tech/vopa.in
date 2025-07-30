@@ -24,6 +24,9 @@ const UserList = ({ users }: Props) => {
     };
 
     const handleDeleteClick = async (_id: string) => {
+        const confirmed = window.confirm('Are you sure you want to delete this user?');
+        if (!confirmed) return;
+
         try {
             await api.delete(`/users/${_id}`);
             alert('User deleted successfully!');

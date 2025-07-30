@@ -4,8 +4,8 @@ import FeatherIcon from 'feather-icons-react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchBlogs, addBlog, updateBlog, deleteBlog } from 'reduxFolder/blogSlice';
-import EditorWithMediaLibrary from './EditorWithMediaLibrary';
-import ImagePickerModal from './ImagePickerModal';
+import EditorWithMediaLibrary from '../EditorWithMediaLibrary';
+import ImagePickerModal from '../ImagePickerModal';
 
 import 'react-quill/dist/quill.snow.css';
 

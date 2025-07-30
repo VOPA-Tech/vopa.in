@@ -5,36 +5,45 @@ import classNames from 'classnames';
 import { Post } from './types';
 
 type BlogPostProps = {
-    post: Post;
+    post: any;
 };
 
 const BlogPost3 = ({ post }: BlogPostProps) => {
+    if (!post) return null;
+
+    const tagVariant = 'info'; // static since we no longer get variant from backend
+    const tagValue = post?.tag || '';
     return (
-        <Card className="card-listing-item">
-            <div className="card-img-top-overlay">
-                <div className={classNames(post.overlay ? 'overlay-' + post.overlay : 'overlay')}></div>
-                <span className={classNames('card-badge', 'top-right', 'bg-' + post.tag.variant, 'text-white')}>
-                    {post.tag.value}
-                </span>
+        <a href={post.docUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <Card className="card-listing-item h-100">
+                <div className="card-img-top-overlay position-relative">
+                    {post.photoLink && (
+                        <img
+                            src={post.photoLink}
+                            alt={post.title}
+                            style={{
+                                width: '100%',
 
-                <iframe
-                    src={post.link}
-                    width="100%"
-                    height="500"
-                    style={{ border: 'none', display: 'block', margin: '0 auto' }}
-                    allow="autoplay"
-                    title="PDF Preview"
-                />
+                                objectFit: 'cover',
+                                display: 'block',
+                            }}
+                        />
+                    )}
 
-                <div className="card-overlay-bottom bg-grey">
-                    <h2>
-                        <a href={post.docUrl} target="_blank" rel="noopener noreferrer" className="text-white">
-                            {post.title}
-                        </a>
-                    </h2>
+                    {tagValue && (
+                        <span className={classNames('card-badge', 'top-right', 'bg-' + tagVariant, 'text-white')}>
+                            {tagValue}
+                        </span>
+                    )}
+
+                    {post.title && (
+                        <div className="card-overlay-bottom bg-grey">
+                            <h2 className="text-white">{post.title}</h2>
+                        </div>
+                    )}
                 </div>
-            </div>
-        </Card>
+            </Card>
+        </a>
     );
 };
 

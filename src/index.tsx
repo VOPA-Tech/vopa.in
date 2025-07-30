@@ -1,5 +1,5 @@
 import React from 'react';
-import './StoryBlockConfig/storyBlockConfig';
+
 import ReactDOM from 'react-dom/client'; // 👈 Updated import
 import './i18n';
 import { Provider } from 'react-redux';
