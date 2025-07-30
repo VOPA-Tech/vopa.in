@@ -24,7 +24,13 @@ const Login = () => {
 
     const schemaResolver = yupResolver(
         yup.object().shape({
-            email: yup.string().required(t('Please enter Email')).email(t('Please enter valid Email')),
+            email: yup
+                .string()
+                .required(t('Please enter Email'))
+                .email(t('Please enter valid Email'))
+                .test('is-vopa-email', t('Email should be an official VOPA email'), (value) =>
+                    value ? value.includes('vopa.in') : false
+                ),
             password: yup.string().required(t('Please enter Password')),
         })
     );
