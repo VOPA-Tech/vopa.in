@@ -36,15 +36,15 @@ const BlogPost1 = ({ post }: any) => {
 
                     <div className="mt-auto">
                         <div className="d-flex">
-                            <img
+                            {/* <img
                                 className="me-2 rounded-sm"
                                 src="/images/aboutUs/vopaStaff/prafullaShashikant.jpg"
                                 alt=""
                                 height="36"
-                            />
+                            /> */}
                             <div className="flex-grow-1">
                                 <h6 className="m-0 fs-13">
-                                    <Link to="#">{post.content.author}</Link>
+                                    <Link to="#">{post.author}</Link>
                                 </h6>
                                 {/* <p className="text-muted mb-0 fs-13"> {'post.postedOn!.time'}</p> */}
                             </div>
