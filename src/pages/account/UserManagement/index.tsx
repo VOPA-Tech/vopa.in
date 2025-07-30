@@ -29,6 +29,19 @@ const Dashboard = () => {
         return <Navigate to="/account/content" replace />;
     }
     const handleAddUser = async () => {
+        const { email, password } = newUser;
+
+        // Validate VOPA email
+        if (!email.includes('@vopa.in')) {
+            alert('Email should be an official VOPA email (e.g., user@vopa.in)');
+            return;
+        }
+
+        if (!password || password.length < 6) {
+            alert('Password must be at least 6 characters long.');
+            return;
+        }
+
         try {
             await api.create('/auth/register', newUser);
             alert('User added successfully!');
