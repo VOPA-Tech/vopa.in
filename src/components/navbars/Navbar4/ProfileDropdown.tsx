@@ -30,8 +30,8 @@ const ProfileDropdown = ({ profileOptions }: ProfileProps) => {
                         /> */}
                     </div>
                     <div className="flex-grow-1 ms-1 lh-base">
-                        <span className="fw-semibold fs-13 d-block line-height-normal">{user.email}</span>
-                        <span className="text-muted fs-13">{user.role}</span>
+                        <span className="fw-semibold fs-13 d-block line-height-normal">{user?.email}</span>
+                        <span className="text-muted fs-13">{user?.role}</span>
                     </div>
                 </div>
             </Dropdown.Toggle>

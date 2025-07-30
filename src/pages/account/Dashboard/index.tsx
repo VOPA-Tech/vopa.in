@@ -18,7 +18,7 @@ import { Navigate } from 'react-router-dom';
 const Dashboard = () => {
     const [loggedInUser] = useUser();
     if (loggedInUser?.role === 'User') {
-        return <Navigate to="/account/content" replace />;
+        return <Navigate to="/account/content/vacancies" replace />;
     }
     return (
         <>

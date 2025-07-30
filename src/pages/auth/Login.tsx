@@ -11,7 +11,6 @@ import { useLogin } from '../../hooks/auth';
 // components
 import { VerticalForm, FormInput } from '../../components/form';
 import AuthLayout from './AuthLayout';
-import { useEffect } from 'react';
 
 type UserData = {
     email: string;
