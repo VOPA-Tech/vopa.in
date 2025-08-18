@@ -133,6 +133,35 @@ const Features = () => {
                         />
                     </Col>
                 </Row>
+                  <Row className="align-items-center">
+                    <Col lg={5}>
+                        <div
+                            className="bg-white p-2 rounded border align-items-center shadow mb-lg-0 mb-3"
+                            data-aos="fade-right"
+                            data-aos-duration="1500">
+                            <img src="/images/projectImages/mycaLogo.png" alt="desktop" className="img-fluid" />
+                        </div>
+                    </Col>
+                    <Col lg={{ span: 5, offset: 1 }}>
+                        <div className="mt-4 mt-lg-0">
+                            <Badge pill bg="" className="badge-soft-success px-2 py-1">
+                                MYCA
+                            </Badge>
+                            <h1 className="display-4 text-success fw-medium mb-3">My Mental Health Companion</h1>
+
+                            <p className="text-muted mx-auto mb-4 pb-3">
+                                A Digital Ecosystem for Mental Health’ is an ecosystem app, which is one and the only of its kind. It is designed to serve different stakeholders: Explorers, Patients, CareGivers, Health Workers. It is designed to address the critical mental health challenges faced by underserved communities, particularly in Maharashtra, through the integration of technology-driven solutions.
+
+                            </p>
+                           
+                        
+                            {/* <Link to="#">
+                                Learn more
+                                <FeatherIcon icon="arrow-right" className="ms-1 icon-xxs" />
+                            </Link> */}
+                        </div>
+                    </Col>
+                </Row>
             </Container>
         </section>
     );

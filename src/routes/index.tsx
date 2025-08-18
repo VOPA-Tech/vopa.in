@@ -12,7 +12,7 @@ const Logout = React.lazy(() => import('../pages/auth/Logout'));
 const Vschool = React.lazy(() => import('../pages/Vschool'));
 const DLP = React.lazy(() => import('../pages/DigitalLearningProgram'));
 const MYCA = React.lazy(() => import('../pages/MYCA'));
-const NipunBharat = React.lazy(() => import('../pages/NipunBharat'));
+const NipunMaharashtra = React.lazy(() => import('../pages/NipunMaharashtra'));
 const ProjectsOverview = React.lazy(() => import('../pages/ProjectsOverview'));
 
 const BlogPost = React.lazy(() => import('../pages/BlogPost'));
@@ -36,6 +36,9 @@ const UserManagement = React.lazy(() => import('../pages/account/UserManagement'
 const Settings = React.lazy(() => import('../pages/account/Settings'));
 const WorkReportsCMS = React.lazy(() => import('../pages/account/Content/WorkReports/index'));
 const MagzinesCMS = React.lazy(() => import('../pages/account/Content/Magazines/index'));
+
+// Terms and Policies
+const NipunMaharashtraTermsAndPolicies = React.lazy(() => import('../pages/TermsAndPolicies'));
 
 const loading = () => <div className=""></div>;
 
@@ -111,15 +114,20 @@ const AllRoutes = () => {
                 {
                     path: 'projects',
                     children: [
-                        {
-                            path: 'blog',
-                            children: [{ path: '', element: <LoadComponent component={Blog} /> }],
-                        },
                         { path: 'vschool', element: <LoadComponent component={Vschool} /> },
-                        { path: 'nipun-bharat', element: <LoadComponent component={NipunBharat} /> },
+                        { path: 'nipun-maharashtra', element: <LoadComponent component={NipunMaharashtra} /> },
                         { path: 'digital-learning-project', element: <LoadComponent component={DLP} /> },
                         { path: 'myca', element: <LoadComponent component={MYCA} /> },
                         { path: 'overview', element: <LoadComponent component={ProjectsOverview} /> },
+                    ],
+                },
+                {
+                    path: 'terms-and-policies',
+                    children: [
+                        {
+                            path: 'nipun-maharashtra',
+                            element: <LoadComponent component={NipunMaharashtraTermsAndPolicies} />,
+                        },
                     ],
                 },
             ],

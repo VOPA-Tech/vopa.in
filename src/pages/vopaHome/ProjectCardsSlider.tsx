@@ -38,7 +38,7 @@ const ProjectCardsSlider = () => {
         </Row>
         <Row className="">
           {" "}
-          <Col xs="auto" className="text-sm-right pt-2 pt-sm-0">
+          {/* <Col xs="auto" className="text-sm-right pt-2 pt-sm-0">
             <div className="navigations">
               <Button
                 variant="link"
@@ -53,7 +53,7 @@ const ProjectCardsSlider = () => {
                 <FeatherIcon icon="arrow-right" className="icon-dual" />
               </Button>
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </section>

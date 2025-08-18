@@ -50,7 +50,7 @@ const projects: Project[] = [
         field: 'Health',
         title: 'MYCA (My Mental Health Companion)',
         description:
-            'MYCA, a mental health initiative by VOPA, is a free mobile platform providing access to self-help tools, therapy, and support to individuals, promoting mental well-being across Maharashtra with a focus of accessibility and inclusivity.',
+            'MYCA, a mental health initiative by VOPA, is a free mobile platform providing access to self-help tools, self assessment tools , and support to individuals, promoting mental well-being across Maharashtra with a focus of accessibility and inclusivity.',
         image: '/images/homePage/projectCardImages/myca.png',
         link: '/projects/myca',
     },

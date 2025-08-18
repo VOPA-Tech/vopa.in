@@ -69,7 +69,10 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                                 to: '/projects/vschool',
                                 label: 'VSchool - Free Digital Education (3 Million+ Students)',
                             },
-                            { to: '/projects/nipun-bharat', label: 'Mission NIPUN Maharashtra - SCERT Maharashtra' },
+                            {
+                                to: '/projects/nipun-maharashtra',
+                                label: 'Mission NIPUN Maharashtra - SCERT Maharashtra',
+                            },
                             {
                                 to: '/projects/digital-learning-project',
                                 label: 'Digital Learning Project (21 Schools)',

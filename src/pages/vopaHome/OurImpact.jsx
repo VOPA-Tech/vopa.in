@@ -17,7 +17,7 @@ const stats = [
         suffix: 'K+',
 
         label: 'Teachers',
-        subtext: 'Educators empowered with new tools',
+        subtext: 'Educators being empowered with new tools',
         icon: <FcReading size={64} />,
     },
     {
@@ -25,7 +25,7 @@ const stats = [
         end: 120,
         suffix: 'K+',
         label: 'Schools',
-        subtext: 'Learning transformed through evidence-based practices',
+        subtext: 'Learning being transformed through evidence-based practices',
         icon: <FcLibrary size={64} />,
     },
     {

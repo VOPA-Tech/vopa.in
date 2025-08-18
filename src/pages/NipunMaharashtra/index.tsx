@@ -17,7 +17,7 @@ import HowWeArwDoing from './HowWeAreDoing';
 import VideosAndPointers from './VideosAndPointers.tsx';
 import { Footer1 } from 'components/footer';
 
-const Startup = () => {
+const NipunMaharashtra = () => {
     return (
         <>
             <div className="header-7">
@@ -50,4 +50,4 @@ const Startup = () => {
     );
 };
 
-export default Startup;
+export default NipunMaharashtra;

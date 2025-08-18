@@ -36,18 +36,24 @@ const Hero = () => {
                                 data-toggle="smooth-scroll">
                                 Tech for Teachers
                             </Link>
+                            <Link
+                                to="/projects/myca"
+                                className="btn btn-success m-2"
+                                data-toggle="smooth-scroll">
+                               MYCA
+                            </Link>
                         </div>
                     </Col>
                     <Col lg={6} md={6}>
                         <div className="img-container text-end ps-lg-5" data-aos="zoom-in">
                             <Row className="align-items-center mt-md-0 mt-4">
-                                <Col xs={6}>
+                                {/* <Col xs={6}>
                                     <Card className="shadow-lg">
                                         <Card.Body className="p-1">
                                             <img src="/images/vschool/vschoolGuy.png" className="img-fluid" alt="" />
                                         </Card.Body>
                                     </Card>
-                                </Col>
+                                </Col> */}
                                 <Col xs={6}>
                                     <Row>
                                         <Col>
@@ -68,6 +74,34 @@ const Hero = () => {
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
                                                         src={'/images/projectImages/projectOverviewHero3.png'}
+                                                        className="img-fluid"
+                                                        alt=""
+                                                    />
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                 <Col xs={6}>
+                                    <Row>
+                                        <Col>
+                                            <Card className="shadow-lg">
+                                                <Card.Body className="p-1">
+                                                    <img
+                                                        src={"/images/vschool/vschoolGuy.png"}
+                                                        className="img-fluid"
+                                                        alt=""
+                                                    />
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Card className="shadow-lg">
+                                                <Card.Body className="p-1 mb-0">
+                                                    <img
+                                                        src={'/images/projectImages/mycaLogo.png'}
                                                         className="img-fluid"
                                                         alt=""
                                                     />

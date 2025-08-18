@@ -22,9 +22,7 @@ const KnowAboutUs = ({ features }: FeaturesProps) => {
                     <Col lg={6}>
                         <h1 className="display-4 fw-semibold mb-4">{'Vowels of People Association'}</h1>
                         <p className="mb-5">
-                            Vowels of the People Association (VOPA) is a tech-driven non-profit founded in 2018, working
-                            to improve education and mental health in Maharashtra. Through its digital learning platform
-                            VSchool, VOPA has positively impacted over 3 million users.
+                           From 2025-through partnering with Maharashtra State Council of Educational Research and Training (SCERT) for Mission NIPUN Maharashtra- the NIPUN Maharashtra app is revolutionizing how India diagnoses and addresses foundational learning gaps through AI-powered, state-integrated platforms personalizing assessment & remedial tools mapped to each student, involvement of parents & data empowerment of the system
                         </p>
                         <Link to="/projects/overview" className="btn btn-success">
                             Learn More

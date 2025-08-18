@@ -42,7 +42,7 @@ const impactData = [
 
 const OurVision = () => {
     return (
-        <section className="pt-8 pb-6 mb-4 mt-lg-4 bg-light position-relative" data-aos="fade-up">
+        <section className="pt-4 pb-6 mb-4 mt-lg-4 bg-light position-relative" data-aos="fade-up">
             <div className="divider top d-none d-sm-block"></div>
             <Container>
                 <Row>

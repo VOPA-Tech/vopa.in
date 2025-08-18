@@ -45,12 +45,12 @@ const Footer1 = () => {
                                 </li>
                                 <li className="my-3">
                                     <Link
-                                        to="/projects/nipun-bharat"
+                                        to="/projects/nipun-maharashtra"
                                         className="text-muted"
                                         style={{ color: 'inherit' }}
                                         onMouseOver={hoverStyle}
                                         onMouseOut={unhoverStyle}>
-                                        Nipun Bharat Maharashtra
+                                        Nipun Maharashtra
                                     </Link>
                                 </li>
                                 <li className="my-3">
@@ -71,6 +71,18 @@ const Footer1 = () => {
                                         onMouseOver={hoverStyle}
                                         onMouseOut={unhoverStyle}>
                                         MYCA
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </Col>
+                    <Col xl="auto" sm={4} xs={6}>
+                        <div className="ps-xl-5">
+                            <h6 className="mb-3 mt-3 mt-sm-2 fs-14 fw-semibold text-uppercase">Terms & Policies</h6>
+                            <ul className="list-unstyled">
+                                <li className="my-3">
+                                    <Link to="/terms-and-policies/nipun-maharashtra" className="text-muted">
+                                        Nipun Maharashtra
                                     </Link>
                                 </li>
                             </ul>
