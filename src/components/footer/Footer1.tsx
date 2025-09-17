@@ -23,10 +23,12 @@ const Footer1 = () => {
                             onMouseOut={unhoverStyle}>
                             <img src="/logo.webp" height="30" alt="" />
                         </Link>
-                        <p className="text-muted w-75">
-                            Vowels of the People Association (VOPA) Commerce Avenue, Paud Road, Kothrud, Pune +91
-                            9158799972 (HR Department) hr.vopa@vopa.in CIN – U85300PN2018NPL178277
-                        </p>
+                        <p className="text-muted w-75">Vowels of the People Association (VOPA)</p>
+                        <p className="text-muted w-75">Commerce Avenue, Paud Road, Kothrud, Pune.</p>
+                        <p className="text-muted w-75">+91 9158799972</p>
+                        <p className="text-muted w-75">(HR Department) hr.vopa@vopa.in</p>
+
+                        <p className="text-muted w-75">CIN – U85300PN2018NPL178277</p>
                     </Col>
 
                     <Col xl="auto" lg={3} xs={6}>
@@ -83,6 +85,28 @@ const Footer1 = () => {
                                 <li className="my-3">
                                     <Link to="/terms-and-policies/nipun-maharashtra" className="text-muted">
                                         Nipun Maharashtra
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </Col>
+                    <Col xl="auto" sm={4} xs={6}>
+                        <div className="ps-xl-5">
+                            <h6 className="mb-3 mt-3 mt-sm-2 fs-14 fw-semibold text-uppercase">Impact</h6>
+                            <ul className="list-unstyled">
+                                <li className="my-3">
+                                    <Link to="/impact/work-reports" className="text-muted">
+                                        Work Reports
+                                    </Link>
+                                </li>
+                                <li className="my-3">
+                                    <Link to="/impact/feedback-and-testimonials" className="text-muted">
+                                        Feedback & Testimonials
+                                    </Link>
+                                </li>
+                                <li className="my-3">
+                                    <Link to="/impact/news-and-media/media-mentions" className="text-muted">
+                                        Media Mentions
                                     </Link>
                                 </li>
                             </ul>

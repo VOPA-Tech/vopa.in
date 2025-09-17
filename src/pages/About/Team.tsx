@@ -51,7 +51,7 @@ const Team = ({ teamMembers }: TeamProps) => {
                                 <img
                                     src={member?.photo || '/images/placeholder.jpg'}
                                     alt={member?.name || 'Team Member'}
-                                    style={{ width: '100px', height: '125px' }}
+                                    style={{ width: '120px', height: '150px', objectFit: 'cover' }}
                                     className="avatar-xl d-block rounded me-4"
                                 />
 

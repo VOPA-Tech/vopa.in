@@ -72,7 +72,7 @@ const VideosAndPointers = () => {
             <Container>
                 {featuresThatMatter.map((ele) => (
                     <Row className="align-items-center">
-                        <Col lg={6}>
+                        <Col lg={4}>
                             <div className="video-container card rounded">
                                 <iframe
                                     width="100%"
@@ -85,7 +85,7 @@ const VideosAndPointers = () => {
                                 />
                             </div>
                         </Col>
-                        <Col lg={{ span: 5, offset: 1 }}>
+                        <Col lg={{ span: 7, offset: 1 }}>
                             <div className="mt-4 mt-lg-0">
                                 <h2 className="display-4 text-success fw-medium mb-3">{ele.title}</h2>
 

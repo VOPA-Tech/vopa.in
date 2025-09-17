@@ -44,17 +44,61 @@ const Menu = () => {
 
             {/* Content Dropdown */}
             <Dropdown as="li" className="nav-item">
-                <Dropdown.Toggle as={Nav.Link} id="navbarDocs" className={isActiveRoute('/content') ? 'active' : ''}>
-                    Content <FeatherIcon icon="chevron-down" className="icon icon-xxs ms-1" />
+                <Dropdown.Toggle as={Nav.Link} id="navbarDocs" className={isActiveRoute('/media') ? 'active' : ''}>
+                    Media <FeatherIcon icon="chevron-down" className="icon icon-xxs ms-1" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu renderOnMount>
                     <Nav as="ul" navbar={false}>
                         {[
-                            { to: '/account/content/vacancies', label: 'Vacancies' },
-                            { to: '/account/content/employees', label: 'Employees' },
-                            { to: '/account/content/blogs', label: 'Blogs' },
-                            { to: '/account/content/work_reports', label: 'Work Reports' },
-                            { to: '/account/content/magazines', label: 'Magazines' },
+                            { to: '/account/media/events', label: 'Events' },
+                            { to: '/account/media/work_reports', label: 'Work Reports' },
+                            { to: '/account/media/media_mentions', label: 'Media Mentions' },
+                            { to: '/account/media/media_cutouts', label: 'Media Cutouts' },
+                            { to: '/account/media/press_releases', label: 'Press Releases' },
+                            { to: '/account/media/media_kit', label: 'Media Kit' },
+                        ].map((item, idx) => (
+                            <Nav.Item as="li" key={idx}>
+                                <NavLink to={item.to} end className="nav-link">
+                                    {item.label}
+                                </NavLink>
+                            </Nav.Item>
+                        ))}
+                    </Nav>
+                </Dropdown.Menu>
+            </Dropdown>
+
+            <Dropdown as="li" className="nav-item">
+                <Dropdown.Toggle as={Nav.Link} id="navbarDocs" className={isActiveRoute('/adminOps') ? 'active' : ''}>
+                    Admin Ops <FeatherIcon icon="chevron-down" className="icon icon-xxs ms-1" />
+                </Dropdown.Toggle>
+                <Dropdown.Menu renderOnMount>
+                    <Nav as="ul" navbar={false}>
+                        {[
+                            { to: '/account/adminOps/vacancies', label: 'Vacancies' },
+                            { to: '/account/adminOps/employees', label: 'Employees' },
+                        ].map((item, idx) => (
+                            <Nav.Item as="li" key={idx}>
+                                <NavLink to={item.to} end className="nav-link">
+                                    {item.label}
+                                </NavLink>
+                            </Nav.Item>
+                        ))}
+                    </Nav>
+                </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown as="li" className="nav-item">
+                <Dropdown.Toggle
+                    as={Nav.Link}
+                    id="navbarDocs"
+                    className={isActiveRoute('/publications') ? 'active' : ''}>
+                    Publications <FeatherIcon icon="chevron-down" className="icon icon-xxs ms-1" />
+                </Dropdown.Toggle>
+                <Dropdown.Menu renderOnMount>
+                    <Nav as="ul" navbar={false}>
+                        {[
+                            { to: '/account/publications/blogs', label: 'Blogs' },
+                            { to: '/account/publications/magazines', label: 'Magazines' },
+                            { to: '/account/publications/brochures', label: 'Brochures' },
                         ].map((item, idx) => (
                             <Nav.Item as="li" key={idx}>
                                 <NavLink to={item.to} end className="nav-link">

@@ -2,11 +2,11 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 const Features = () => {
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className=" pt-6  pb-6 position-relative overflow-hidden">
             <Container>
                 <Row className="align-items-center mb-6 pb-lg-5">
                     <Col lg={5}>
-                        <div className="mb-4 mb-lg-0">
+                        <div className="">
                             {/* <Badge pill bg="" className="badge-soft-danger px-2 py-1">
                                 Why NIPUN Bharat?
                             </Badge> */}
@@ -19,11 +19,11 @@ const Features = () => {
                                 state.
                             </p>
                             <p className="text-muted mx-auto mb-4 pb-3">
-                                It is set to scale our pilots from 350,000 students to 7,000,000 students; 20,000
+                                It is set to scale our pilots from 350,000 students to 5,500,000 students; 20,000
                                 teachers to 200,000 teachers; 1000 Education Supervisors to 10,000 Education
                                 Supervisors; from 5 districts to all 36 districts of the state of Maharashtra-and for
                                 the first time, bringing access to real time reports of students and remedial tools to
-                                15 million parents.
+                                5M+ parents.
                             </p>
                             {/* <Link to="#">
                                 Learn more

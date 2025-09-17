@@ -8,7 +8,7 @@ const slides: Slide[] = [
         customer: {
             avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
             name: 'Student, Pune',
-            designation: 'v-School User',
+            designation: 'V-School User',
         },
         logo: 'Amazon',
     },
@@ -18,7 +18,7 @@ const slides: Slide[] = [
         customer: {
             avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
             name: 'Teacher',
-            designation: 'v-School User',
+            designation: 'V-School User',
         },
         logo: 'Google',
     },
@@ -43,10 +43,10 @@ const slides: Slide[] = [
     },
     {
         statement:
-            'The School Transformation Project has revolutionized our teaching methods. Our students are more engaged and perform better than ever.',
+            'The School Transformation Project (STP) has revolutionized our teaching methods. Our students are more engaged and perform better than ever.',
         customer: {
             avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
-            name: 'Principal, XYZ School',
+            name: 'Principal, Anonymous school',
             designation: 'STP beneficiary',
         },
         logo: 'Google',

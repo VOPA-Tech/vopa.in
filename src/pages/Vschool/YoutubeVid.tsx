@@ -9,7 +9,7 @@ import { SwiperSlider3 } from 'components/sliders';
 
 const YoutubeVid = () => {
     return (
-        <section className="position-relative  py-1 pt-7 pb-sm-6">
+        <section className="position-relative  py-1 pt-5 pb-sm-6">
             <Container className="hero-content">
                 <Row className="align-items-center">
                     <Col xs={12} md={12} lg={6} className="text-center">
@@ -38,7 +38,7 @@ const YoutubeVid = () => {
                 </Row>
             </Container>
 
-            <div className="feature-container position-relative overflow-hidden mt-5 mb-4">
+            <div className="feature-container position-relative overflow-hidden mb-4">
                 <Container>
                     <Row className="align-items-center justify-content-center zindex-1 slider-container">
                         <Col xs={10} className="text-center zindex-1">

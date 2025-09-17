@@ -16,13 +16,17 @@ type FeaturesProps = {
 
 const KnowAboutUs = ({ features }: FeaturesProps) => {
     return (
-        <section className="position-relative bg-light overflow-hidden features-1 py-5 py-md-7">
+        <section className="position-relative bg-light overflow-hidden features-1 py-5 py-md-7  ">
             <Container>
-                <Row>
+                <Row className="align-items-center">
                     <Col lg={6}>
                         <h1 className="display-4 fw-semibold mb-4">{'Vowels of People Association'}</h1>
-                        <p className="mb-5">
-                           From 2025-through partnering with Maharashtra State Council of Educational Research and Training (SCERT) for Mission NIPUN Maharashtra- the NIPUN Maharashtra app is revolutionizing how India diagnoses and addresses foundational learning gaps through AI-powered, state-integrated platforms personalizing assessment & remedial tools mapped to each student, involvement of parents & data empowerment of the system
+                        <p className="mb-5 ">
+                            From 2025-through partnering with Maharashtra State Council of Educational Research and
+                            Training (SCERT) for Mission NIPUN Maharashtra- the NIPUN Maharashtra app is revolutionizing
+                            how India diagnoses and addresses foundational learning gaps through AI-powered,
+                            state-integrated platforms personalizing assessment & remedial tools mapped to each student,
+                            involvement of parents & data empowerment of the system
                         </p>
                         <Link to="/projects/overview" className="btn btn-success">
                             Learn More

@@ -10,7 +10,7 @@ const Hero4 = () => {
                             <span className=" d-inline-block">Mission NIPUN Maharashtra</span>{' '}
                         </h1>
                         <p className="mt-4 fs-17">
-                            AI-Driven Assessments-Transforming Education System from within for 70 lakh students
+                            AI-Driven Assessments-Transforming Education System from within for 55 lakh students
                         </p>
                         {/* <div className="pt-3 pt-sm-5">
                             <Button variant="warning">Explore Our Tools</Button>

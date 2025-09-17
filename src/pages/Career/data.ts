@@ -63,13 +63,6 @@ const gallery: GalleryItem[] = [
             caption: 'A common seating area',
         },
     },
-    {
-        id: 6,
-        image: {
-            src: '/images/career/certificate.png',
-            caption: 'A common seating area',
-        },
-    },
 ];
 
 const vacancies: Vacancy[] = [

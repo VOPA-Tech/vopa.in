@@ -33,11 +33,11 @@ const stats = [
         icon: <FcReading size={64} />, // ✅ Reading implies engagement
     },
     {
-        start: 4,
-        end: 4.4,
+        start: 1,
+        end: 4.5,
         suffix: 'L',
         label: 'Students Onboarded',
-        subtext: 'For assessments',
+        subtext: 'For FLN assessments',
         icon: <FcLibrary size={64} />, // ✅ Library = students & learning
     },
     {
@@ -82,16 +82,16 @@ const stats = [
     },
     {
         start: 1,
-        end: 3.5,
+        end: 5,
         suffix: 'L',
         label: 'Students Assessed',
         subtext: 'For FLN',
         icon: <FcSurvey size={64} />, // ✅ Survey = assessment
     },
     {
-        start: 2,
-        end: 8,
-        suffix: '',
+        start: 0,
+        end: 1.5,
+        suffix: 'M+',
         label: 'Assessment Hours Saved',
         subtext: 'Efficiency gained',
         icon: <FcClock size={64} />, // ✅ Clock = time saved

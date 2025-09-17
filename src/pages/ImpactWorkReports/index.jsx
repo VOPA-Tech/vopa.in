@@ -11,7 +11,7 @@ import Hero from './Hero';
 import BlogPost3 from './BlogPost3';
 
 import { useEffect, useState } from 'react';
-import VSchoolAnalytics from './VSchoolAnalytics';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWorkReports } from 'reduxFolder/workReportsSlice';
 
@@ -20,7 +20,7 @@ const Blog = () => {
     const workReports = useSelector((state) => state.workReportsState.reports);
     const isWorkReportsLoading = useSelector((state) => state.workReportsState.loading);
     const [activeTag, setActiveTag] = useState('All');
-    const tags = ['All', 'Student Impact Stories', 'Teacher Impact Stories', 'Annual Reports', 'Quarterly Reports'];
+    const tags = ['All', 'Student Impact Stories', 'Teacher Impact Stories', 'Annual Reports'];
 
     const filteredPost3 = activeTag === 'All' ? workReports : workReports.filter((p) => p.tag === activeTag);
 
@@ -31,16 +31,17 @@ const Blog = () => {
     }, [dispatch, workReports.length]);
     return (
         <>
-            <div className="header-7" style={{ background: 'url(/images/woodPanelHero.jpg' }}>
-                <div className="overlay"></div>
-
-                <Navbar3 navClass="navbar-dark text-white" fixedWidth buttonClass="btn-secondary btn-sm" />
-
-                <Hero />
+            <div className="header-7">
+                <Navbar3 navClass="navbar-light " fixedWidth buttonClass="btn-secondary btn-sm" />
             </div>
 
-            <section className="pt-6 pb-4 position-relative">
+            <section className="pt-6 pb-4 position-relative bg-paper-texture">
                 <Container>
+                    <Row className="justify-content-center">
+                        <Col lg={12}>
+                            <h1 className="hero-title mt-0">Work Reports</h1>
+                        </Col>
+                    </Row>
                     <Row className="justify-content-lg-between">
                         <Col lg={12}>
                             <div className="d-flex align-items-center mb-5">
@@ -60,20 +61,15 @@ const Blog = () => {
                                 </div>
                             </div>
                         </Col>
-
-                        <Col lg={12}>
-                            <Row className="mt-6" data-aos="fade-up">
-                                {filteredPost3.map((post) => (
-                                    <Col lg={4}>
-                                        <BlogPost3 post={post} />
-                                    </Col>
-                                ))}
-                            </Row>
-                        </Col>
+                    </Row>
+                    <Row className="mt-3 d-flex justify-content-start" data-aos="fade-up">
+                        {filteredPost3.map((post) => (
+                            <BlogPost3 post={post} />
+                        ))}
                     </Row>
                 </Container>
             </section>
-            <VSchoolAnalytics />
+
             {/* footer */}
             <Footer1 />
 

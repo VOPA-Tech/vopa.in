@@ -26,7 +26,7 @@ const Dashboard = () => {
     }, [dispatch]);
 
     if (loggedInUser?.role === 'User') {
-        return <Navigate to="/account/content/vacancies" replace />;
+        return <Navigate to="/account/media/media_kit" replace />;
     }
     const handleAddUser = async () => {
         const { email, password } = newUser;

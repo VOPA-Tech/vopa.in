@@ -53,7 +53,7 @@ const Integrations = () => {
         },
         {
             appLogo: 'phone-call',
-            app: 'Helpline',
+            app: 'Verified Helpline',
         },
     ];
 

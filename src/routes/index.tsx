@@ -9,25 +9,35 @@ const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
 const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
 const Logout = React.lazy(() => import('../pages/auth/Logout'));
 
+// Projects
 const Vschool = React.lazy(() => import('../pages/Vschool'));
 const DLP = React.lazy(() => import('../pages/DigitalLearningProgram'));
 const MYCA = React.lazy(() => import('../pages/MYCA'));
 const NipunMaharashtra = React.lazy(() => import('../pages/NipunMaharashtra'));
 const ProjectsOverview = React.lazy(() => import('../pages/ProjectsOverview'));
 
-const BlogPost = React.lazy(() => import('../pages/BlogPost'));
-const Blog = React.lazy(() => import('../pages/BlogsAndMagzines'));
+//Website Pages
+const BlogPost = React.lazy(() => import('../pages/Publications/Blogs/BlogPost'));
+const EventPost = React.lazy(() => import('../pages/NewsAndMedia/Events/EventPost'));
+const PressReleasesPost = React.lazy(() => import('../pages/NewsAndMedia/PressReleases/PressRelease'));
+const Brouchers = React.lazy(() => import('../pages/Publications/Brouchers'));
 const WorkReports = React.lazy(() => import('../pages/ImpactWorkReports'));
-const NewsMedia = React.lazy(() => import('../pages/ImpactNewsAndMedia'));
+const Magazines = React.lazy(() => import('../pages/Publications/Magazines'));
+const Blogs = React.lazy(() => import('../pages/Publications/Blogs'));
 const FeedbackTestimonials = React.lazy(() => import('../pages/ImpactTestimonialFeedback'));
-
-const Company = React.lazy(() => import('../pages/vopaHome'));
+const MediaMensions = React.lazy(() => import('../pages/NewsAndMedia/MediaMensions'));
+const PressReleases = React.lazy(() => import('../pages/NewsAndMedia/PressReleases'));
+const Events = React.lazy(() => import('../pages/NewsAndMedia/Events'));
+const MediaKit = React.lazy(() => import('../pages/NewsAndMedia/MediaKit'));
+const VopaHome = React.lazy(() => import('../pages/vopaHome'));
 const About = React.lazy(() => import('../pages/About'));
 const Contact = React.lazy(() => import('../pages/Contact'));
 const Career = React.lazy(() => import('../pages/Career'));
 
-// pages
+// CMSpages
 const BlogCMS = React.lazy(() => import('../pages/account/Content/Blogs/index'));
+const PressReleasesCMS = React.lazy(() => import('../pages/account/Content/PressReleases/index'));
+const EventCMS = React.lazy(() => import('../pages/account/Content/Events/index'));
 const EmployeesCMS = React.lazy(() => import('../pages/account/Content/Employees/index'));
 const VacanciesCMS = React.lazy(() => import('../pages/account/Content/Vacancies/index'));
 const Dashboard = React.lazy(() => import('../pages/account/Dashboard'));
@@ -35,8 +45,11 @@ const Gallery = React.lazy(() => import('../pages/account/Gallery'));
 const UserManagement = React.lazy(() => import('../pages/account/UserManagement'));
 const Settings = React.lazy(() => import('../pages/account/Settings'));
 const WorkReportsCMS = React.lazy(() => import('../pages/account/Content/WorkReports/index'));
+const MediaMentionsCMS = React.lazy(() => import('../pages/account/Content/MediaMentions/index'));
+const MediaCutoutsCMS = React.lazy(() => import('../pages/account/Content/MediaCutouts/index'));
+const MediaKitCMS = React.lazy(() => import('../pages/account/Content/MediaKit/index'));
 const MagzinesCMS = React.lazy(() => import('../pages/account/Content/Magazines/index'));
-
+const BrouchersCMS = React.lazy(() => import('../pages/account/Content/Brouchers/index'));
 // Terms and Policies
 const NipunMaharashtraTermsAndPolicies = React.lazy(() => import('../pages/TermsAndPolicies'));
 
@@ -55,34 +68,30 @@ const LoadComponent = ({ component: Component }: LoadComponentProps) => (
 const AllRoutes = () => {
     return useRoutes([
         {
-            // root route
             path: '/',
-            element: <LoadComponent component={Company} />,
+            element: <LoadComponent component={VopaHome} />,
         },
         {
-            // root route
             path: '/about',
             element: <LoadComponent component={About} />,
         },
+
         {
-            // root route
-            path: '/blog',
-            element: <LoadComponent component={Blog} />,
-        },
-        {
-            // root route
             path: '/blog/post/:id',
             element: <LoadComponent component={BlogPost} />,
         },
+
         {
-            // root route
             path: '/career',
             element: <LoadComponent component={Career} />,
         },
         {
-            // root route
             path: '/contact',
             element: <LoadComponent component={Contact} />,
+        },
+        {
+            path: '/blog',
+            element: <LoadComponent component={Magazines} />,
         },
 
         {
@@ -100,10 +109,36 @@ const AllRoutes = () => {
                     ],
                 },
                 {
+                    path: 'publications',
+                    children: [
+                        { path: 'magazines', element: <LoadComponent component={Magazines} /> },
+                        { path: 'blogs', element: <LoadComponent component={Blogs} /> },
+                        { path: 'brouchers', element: <LoadComponent component={Brouchers} /> },
+                    ],
+                },
+                {
                     path: 'impact',
                     children: [
                         { path: 'work-reports', element: <LoadComponent component={WorkReports} /> },
-                        { path: 'news-and-media', element: <LoadComponent component={NewsMedia} /> },
+
+                        {
+                            path: 'news-and-media',
+                            children: [
+                                { path: 'media-mentions', element: <LoadComponent component={MediaMensions} /> },
+                                {
+                                    path: 'press-releases/post/:id',
+                                    element: <LoadComponent component={PressReleasesPost} />,
+                                },
+                                { path: 'press-releases', element: <LoadComponent component={PressReleases} /> },
+                                {
+                                    path: 'events/post/:id',
+                                    element: <LoadComponent component={EventPost} />,
+                                },
+                                { path: 'events', element: <LoadComponent component={Events} /> },
+                                { path: 'media-kit', element: <LoadComponent component={MediaKit} /> },
+                            ],
+                        },
+
                         {
                             path: 'feedback-and-testimonials',
                             element: <LoadComponent component={FeedbackTestimonials} />,
@@ -142,17 +177,32 @@ const AllRoutes = () => {
                     children: [
                         { path: 'dashboard', element: <LoadComponent component={Dashboard} /> },
                         { path: 'userManagement', element: <LoadComponent component={UserManagement} /> },
-                        // { path: 'content', element: <LoadComponent component={Content} /> },
                         { path: 'settings', element: <LoadComponent component={Settings} /> },
                         { path: 'gallery', element: <LoadComponent component={Gallery} /> },
                         {
-                            path: 'content',
+                            path: 'media',
+                            children: [
+                                { path: 'events', element: <LoadComponent component={EventCMS} /> },
+                                { path: 'work_reports', element: <LoadComponent component={WorkReportsCMS} /> },
+                                { path: 'media_mentions', element: <LoadComponent component={MediaMentionsCMS} /> },
+                                { path: 'media_cutouts', element: <LoadComponent component={MediaCutoutsCMS} /> },
+                                { path: 'media_kit', element: <LoadComponent component={MediaKitCMS} /> },
+                                { path: 'press_releases', element: <LoadComponent component={PressReleasesCMS} /> },
+                            ],
+                        },
+                        {
+                            path: 'publications',
                             children: [
                                 { path: 'blogs', element: <LoadComponent component={BlogCMS} /> },
+                                { path: 'magazines', element: <LoadComponent component={MagzinesCMS} /> },
+                                { path: 'brochures', element: <LoadComponent component={BrouchersCMS} /> },
+                            ],
+                        },
+                        {
+                            path: 'adminOps',
+                            children: [
                                 { path: 'employees', element: <LoadComponent component={EmployeesCMS} /> },
                                 { path: 'vacancies', element: <LoadComponent component={VacanciesCMS} /> },
-                                { path: 'work_reports', element: <LoadComponent component={WorkReportsCMS} /> },
-                                { path: 'magazines', element: <LoadComponent component={MagzinesCMS} /> },
                             ],
                         },
                     ],

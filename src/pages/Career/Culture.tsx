@@ -38,7 +38,7 @@ const Culture = ({ gallery }: CultureProps) => {
     };
 
     return (
-        <section className="py-7 mt-5 position-relative bg-gradient2">
+        <section className="py-7  position-relative">
             <div className="divider top d-none d-sm-block"></div>
             <Container>
                 <Row>

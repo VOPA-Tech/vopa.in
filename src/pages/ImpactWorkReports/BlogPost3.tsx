@@ -1,8 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import classNames from 'classnames';
-
-import { Post } from './types';
 
 type BlogPostProps = {
     post: any;
@@ -11,39 +8,65 @@ type BlogPostProps = {
 const BlogPost3 = ({ post }: BlogPostProps) => {
     if (!post) return null;
 
-    const tagVariant = 'info'; // static since we no longer get variant from backend
+    const tagVariant = 'success';
     const tagValue = post?.tag || '';
+
     return (
-        <a href={post.docUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-            <Card className="card-listing-item h-100">
-                <div className="card-img-top-overlay position-relative">
-                    {post.photoLink && (
-                        <img
-                            src={post.photoLink}
-                            alt={post.title}
-                            style={{
-                                width: '100%',
+        <Col xs={6} sm={6} md={4} lg={3} className="d-flex justify-content-center mb-4">
+            {/* 👆 12/4 = 3 = 4 cards per row on large screens */}
 
-                                objectFit: 'cover',
-                                display: 'block',
-                            }}
-                        />
-                    )}
+            <a
+                href={post.docUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', width: '100%' }}>
+                <Card className="card-listing-item" style={{ maxWidth: '280px' }}>
+                    <div className="position-relative" style={{ overflow: 'hidden' }}>
+                        {post.photoLink && (
+                            <img
+                                src={post.photoLink}
+                                alt={post.title}
+                                style={{
+                                    width: '100%',
+                                    height: '300px',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                }}
+                            />
+                        )}
 
-                    {tagValue && (
-                        <span className={classNames('card-badge', 'top-right', 'bg-' + tagVariant, 'text-white')}>
-                            {tagValue}
-                        </span>
-                    )}
+                        {tagValue && (
+                            <span
+                                className={classNames(
+                                    'card-badge',
+                                    'position-absolute',
+                                    'top-0',
+                                    'end-0',
+                                    'bg-' + tagVariant,
+                                    'text-white',
+                                    'm-2',
+                                    'px-2',
+                                    'py-1',
+                                    'rounded'
+                                )}>
+                                {tagValue}
+                            </span>
+                        )}
 
-                    {post.title && (
-                        <div className="card-overlay-bottom bg-grey">
-                            <h2 className="text-white">{post.title}</h2>
-                        </div>
-                    )}
-                </div>
-            </Card>
-        </a>
+                        {post.title && (
+                            <div
+                                className="position-absolute bottom-0 start-0 w-100"
+                                style={{
+                                    background: 'rgba(0,0,0,0.9)',
+                                    padding: '20px',
+                                }}>
+                                <h6 className="text-white m-0">{post.title}</h6>
+                            </div>
+                        )}
+                    </div>
+                </Card>
+            </a>
+        </Col>
     );
 };
 

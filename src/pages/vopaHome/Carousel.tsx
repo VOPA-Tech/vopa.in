@@ -7,21 +7,21 @@ const CaptionCarousel = () => {
     const slides = [
         {
             title1: 'The Problem',
-            title2: 'Bringing quality education to millions in rural India.',
-            description: 'What if every child could learn through a smartphone.',
+            description: 'Bringing quality education to millions in rural India.',
+            title2: 'What if every child could learn through a smartphone ?',
             image: '/images/homePage/C1.webp',
         },
         {
             title1: 'The Possibility',
-            title2: "Education in every child's mother tongue.",
-            description: 'What if learning had no language barriers?',
+            description: "Education in every child's mother tongue.",
+            title2: 'What if learning had no language barriers?',
             image: '/images/homePage/C2.webp',
         },
         {
             title1: 'The Solution',
-            title2: 'Effective teaching and personalized learning despite classroom challenges.',
+            description: 'Effective teaching and personalized learning despite classroom challenges.',
 
-            description: 'What if teachers had the right tools to succeed?',
+            title2: 'What if teachers had the right tools to succeed?',
             image: '/images/homePage/C3.webp',
         },
         {
@@ -33,23 +33,23 @@ const CaptionCarousel = () => {
         },
         {
             title1: 'The Vision',
-            title2: 'Regular updates in their own language to bridge home and school.',
+            description: 'Regular updates in their own language to bridge home and school.',
 
-            description: "What if every parent was truly connected to their child's learning?",
+            title2: "What if every parent was truly connected to their child's learning?",
             image: '/images/homePage/C5.webp',
         },
+        // {
+        //     title1: 'The Vision',
+        //     title2: 'Real-time learning and assistance on one platform.',
+
+        //     description: 'What if frontline workers had AI mental health support?',
+        //     image: '/images/homePage/C6.webp',
+        // },
         {
             title1: 'The Vision',
-            title2: 'Real-time learning and assistance on one platform.',
+            description: 'Daily self-help and professional care in local languages, all free.',
 
-            description: 'What if frontline workers had AI mental health support?',
-            image: '/images/homePage/C6.webp',
-        },
-        {
-            title1: 'The Vision',
-            title2: 'Daily self-help and professional care in local languages, all free.',
-
-            description: 'What if mental health support was proactive and accessible?',
+            title2: 'What if mental health support was proactive and accessible?',
             image: '/images/homePage/C7.webp',
         },
     ];

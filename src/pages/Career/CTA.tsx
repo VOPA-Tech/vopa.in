@@ -5,9 +5,16 @@ const CTA = () => {
     return (
         <section className="section py-6 position-relative">
             <Container>
-                <Row>
-                    {/* <Col lg={6}>
-                        <Card className="shadow-none border mb-lg-0 rounded-sm">
+                <Row className="align-items-center">
+                    <Col lg={4}>
+                        <img
+                            src="/images/career/certificate.png"
+                            alt="QR Code to Application Form"
+                            width={300}
+                            className="border shadow-lg"
+                            // height={200}
+                        />
+                        {/* <Card className="shadow-none border mb-lg-0 rounded-sm">
                             <Card.Body>
                                 <h3 className="mt-0 fw-semibold">Get in touch</h3>
                                 <p>
@@ -18,35 +25,34 @@ const CTA = () => {
                                     Contact Us
                                 </Link>
                             </Card.Body>
+                        </Card> */}
+                    </Col>
+                    <Col lg={8}>
+                        <Card className="shadow-none border mb-0 rounded-sm">
+                            <Card.Body>
+                                <h3 className="mt-0 fw-semibold">
+                                    Come and be a part of the exciting journey of social change!
+                                </h3>
+
+                                <a
+                                    href="https://docs.google.com/forms/d/e/1FAIpQLScM6CEiwnfAutSDHOwR1B2ra1DPsrpyj6KYR3MfyZnfIg8iyw/viewform"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn-outline-success mt-4">
+                                    Apply by filling up this form!
+                                </a>
+
+                                <div className="mt-4">
+                                    <img
+                                        src="/images/career/googleFormQR.png"
+                                        alt="QR Code to Application Form"
+                                        width={200}
+                                        height={200}
+                                    />
+                                </div>
+                            </Card.Body>
                         </Card>
-                    </Col> */}
-                    {/* <Col lg={6}> */}
-
-                    <Card className="shadow-none border mb-0 rounded-sm">
-                        <Card.Body>
-                            <h3 className="mt-0 fw-semibold">
-                                Come and be a part of the exciting journey of social change!
-                            </h3>
-
-                            <a
-                                href="https://docs.google.com/forms/d/e/1FAIpQLScM6CEiwnfAutSDHOwR1B2ra1DPsrpyj6KYR3MfyZnfIg8iyw/viewform"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn btn-outline-success mt-4">
-                                Apply by filling up this form!
-                            </a>
-
-                            <div className="mt-4">
-                                <img
-                                    src="/images/career/googleFormQR.png"
-                                    alt="QR Code to Application Form"
-                                    width={200}
-                                    height={200}
-                                />
-                            </div>
-                        </Card.Body>
-                    </Card>
-                    {/* </Col> */}
+                    </Col>
                 </Row>
             </Container>
         </section>
@@ -54,3 +60,10 @@ const CTA = () => {
 };
 
 export default CTA;
+//  {
+//         id: 6,
+//         image: {
+//             src: '/images/career/certificate.png',
+//             caption: 'A common seating area',
+//         },
+//     },

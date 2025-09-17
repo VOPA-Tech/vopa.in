@@ -27,7 +27,7 @@ const VideosAndPointers = () => {
             title: 'Features of Nipun Maharashtra',
             link: 'https://www.youtube.com/embed/BeKsdfHT20Y',
             pointer: {
-                Scale: 'Ability to work at scale for 1.2 Lakh schools, replicable tech stack',
+                Scale: 'Ability to work at scale for 70,000 schools, replicable tech stack',
                 Ecosystem: 'All stakeholders on one platform: Parents, Teachers, HeadMasters, Education Officers',
                 ' Evidence': 'AI based classroom assessments for reading, numeracy (FLN)',
 
@@ -43,11 +43,11 @@ const VideosAndPointers = () => {
     ];
 
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className="pt-6  pb-6 position-relative overflow-hidden">
             <Container>
                 {featuresThatMatter.map((ele) => (
                     <Row className="align-items-center">
-                        <Col lg={6}>
+                        <Col lg={4}>
                             <div className="video-container card rounded">
                                 <iframe
                                     width="100%"
@@ -60,14 +60,14 @@ const VideosAndPointers = () => {
                                 />
                             </div>
                         </Col>
-                        <Col lg={{ span: 5, offset: 1 }}>
-                            <div className="mt-4 mt-lg-0">
+                        <Col lg={{ span: 7, offset: 1 }}>
+                            <div className=" mt-lg-0">
                                 <h2 className="display-4 text-success fw-medium mb-3">{ele.title}</h2>
 
-                                <ul className="list-unstyled border-top py-4 mt-4 text-start">
+                                <ul className="list-unstyled    text-start">
                                     {Object.entries(ele.pointer).map(([key, value]) => {
                                         return (
-                                            <li className="py-2 d-flex align-items-center" key={key}>
+                                            <li className=" d-flex align-items-center" key={key}>
                                                 <>
                                                     <FeatherIcon
                                                         icon="check"

@@ -51,7 +51,7 @@ const ChalOppUrg = () => {
                                             <>
                                                 <FeatherIcon
                                                     icon="check"
-                                                    className="icon-md text-success align-middle me-2"
+                                                    className="icon-sm text-success align-middle me-2"
                                                 />
                                                 {feature}
                                             </>

@@ -14,8 +14,8 @@ const Hero = () => {
                 <Row className="align-items-center">
                     <Col lg={6} md={6}>
                         <h1 className="hero-title mt-0">
-                            We’re more than just a
-                            <span className="highlight highlight-success d-inline-block">Team</span>
+                            We’re more than just a Team
+                            <span className="highlight highlight-success d-inline-block"></span>
                         </h1>
                         <p className="fs-16 text-muted pt-3 w-75">
                             Mission-driven force committed to transforming lives through Mental Health and Education

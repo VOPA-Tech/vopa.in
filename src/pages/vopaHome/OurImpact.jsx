@@ -21,8 +21,8 @@ const stats = [
         icon: <FcReading size={64} />,
     },
     {
-        start: 110,
-        end: 120,
+        start: 50,
+        end: 70,
         suffix: 'K+',
         label: 'Schools',
         subtext: 'Learning being transformed through evidence-based practices',

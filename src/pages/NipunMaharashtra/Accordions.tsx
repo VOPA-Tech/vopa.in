@@ -59,7 +59,7 @@ const AccordionExample = () => {
         {
             id: 1,
             title: 'Effective Training:',
-            text: `Over 2 lakh  teachers and 1.2 lakh  headmasters are neomg trained and onboarded, facilitating swift project adoption and implementation.`,
+            text: `Over 70,000 teachers & headmasters are being trained and onboarded, facilitating swift project adoption and implementation.`,
         },
         {
             id: 2,
@@ -69,18 +69,18 @@ const AccordionExample = () => {
         {
             id: 3,
             title: 'Comprehensive Assessments',
-            text: `Monthly evaluations of over 7 million students, with data visually presented in dashboards for all stakeholders: Parents, Teachers, HM's, System - driving targeted improvements.`,
+            text: `Monthly evaluations of over 5.5 million students, with data visually presented in dashboards for all stakeholders: Parents, Teachers, HM's, System - driving targeted improvements.`,
         },
         {
             id: 4,
             title: 'Data Empowerment',
             text: `School leaders are equipped with data analysis and monitoring tools for informed decision-making
-Recognition: The District CEO Mr. Rohan Ghuge (IAS) from Thane, received the prestigious Skoch Awars for this project in 2023 while he was in Wardha`,
+Recognition: The District CEO Mr. Rohan Ghuge (IAS) from Thane, received the prestigious Skoch Awards for this project in 2023 while he was in Wardha`,
         },
         {
             id: 5,
             title: 'Recognition',
-            text: `The District CEO Mr. Rohan Ghuge (IAS) from Thane, received the prestigious Skoch Awars for this project in 2023 while he was in Wardha`,
+            text: `The District CEO Mr. Rohan Ghuge (IAS) from Thane, received the prestigious Skoch Awards for this project in 2023 while he was in Wardha`,
         },
     ];
 

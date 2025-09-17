@@ -75,7 +75,7 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                             },
                             {
                                 to: '/projects/digital-learning-project',
-                                label: 'Digital Learning Project (21 Schools)',
+                                label: 'Digital Learning Project (20 Schools)',
                             },
                             { to: '/projects/myca', label: 'MYCA - Mental Health For All (Aim - 100K Citizens)' },
                         ].map((item, idx) => (
@@ -103,11 +103,45 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                     style={isActiveRoute('/impact') ? activeLinkStyle : linkStyle}>
                     Impacts <FeatherIcon icon="chevron-down" className="icon icon-xxs ms-1" />
                 </Dropdown.Toggle>
+
                 <Dropdown.Menu renderOnMount>
+                    <Nav as={'ul'} navbar={false}>
+                        <Dropdown as={'li'} className="nav-item" aria-labelledby="navbarPages">
+                            <Dropdown.Toggle
+                                as={Nav.Link}
+                                id="accountPages"
+                                className={classNames(isActiveRoute('/pages/account') ? 'active' : '')}>
+                                News and Media<div className="arrow"></div>
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu renderOnMount>
+                                <Nav as="ul" navbar={false}>
+                                    {[
+                                        { to: '/impact/news-and-media/media-mentions', label: 'Media Mentions' },
+                                        { to: '/impact/news-and-media/press-releases', label: 'Press Releases' },
+                                        { to: '/impact/news-and-media/events', label: 'Events' },
+                                        { to: '/impact/news-and-media/media-kit', label: 'Media Kit' },
+                                    ].map((ele) => (
+                                        <Nav.Item as="li">
+                                            <NavLink
+                                                to={ele.to}
+                                                end
+                                                className={classNames(
+                                                    'nav-link',
+                                                    ({ ...isActive }) => isActive && 'active'
+                                                )}>
+                                                {ele.label}
+                                            </NavLink>
+                                        </Nav.Item>
+                                    ))}
+                                </Nav>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </Nav>
                     <Nav as="ul" navbar={false}>
                         {[
                             { to: '/impact/work-reports', label: 'Work Reports' },
-                            { to: '/impact/news-and-media', label: 'News & Media' },
+
                             { to: '/impact/feedback-and-testimonials', label: 'Feedback & Testimonials' },
                         ].map((item, idx) => (
                             <Nav.Item as="li" key={idx}>
@@ -124,15 +158,38 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                 </Dropdown.Menu>
             </Dropdown>
 
-            <Nav.Item as="li">
-                <NavLink
-                    to="/blog"
-                    end
-                    className="nav-link"
-                    style={({ isActive }) => (isActive ? activeLinkStyle : linkStyle)}>
-                    Blogs/Magzines
-                </NavLink>
-            </Nav.Item>
+            {/* Publications Dropdown */}
+            <Dropdown as="li" className="nav-item">
+                <Dropdown.Toggle
+                    as={Nav.Link}
+                    id="navbarDocs"
+                    className={isActiveRoute('/publications') ? 'active' : ''}
+                    style={isActiveRoute('/publications') ? activeLinkStyle : linkStyle}>
+                    Publications <FeatherIcon icon="chevron-down" className="icon icon-xxs ms-1" />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu renderOnMount>
+                    <Nav as="ul" navbar={false}>
+                        {[
+                            { to: '/publications/magazines', label: 'Magazines' },
+
+                            { to: '/publications/brouchers', label: 'Brochures' },
+                            { to: '/publications/blogs', label: 'Blogs' },
+                        ].map((item, idx) => (
+                            <Nav.Item as="li" key={idx}>
+                                <NavLink
+                                    to={item.to}
+                                    end
+                                    className="nav-link"
+                                    style={({ isActive }) => (isActive ? activeLinkStyle : linkStyle)}>
+                                    {item.label}
+                                </NavLink>
+                            </Nav.Item>
+                        ))}
+                    </Nav>
+                </Dropdown.Menu>
+            </Dropdown>
+
             <Nav.Item as="li">
                 <NavLink
                     to="/career"

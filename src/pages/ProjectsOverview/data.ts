@@ -163,14 +163,14 @@ const projects: Project[] = [
     },
 ];
 
-const slides: Slide[] = [
+const slides1: Slide[] = [
     {
         statement:
             'माझे नाव राज गोरे आहे. मी बीड जिल्ह्यात राहतो. मी इयत्ता दहावीचा विद्यार्थी आहे. लॉकडाऊनपासुन मला दहावीचा अभ्यास कसा करायचा हे कळत नव्हते. मला खूप टेन्शन येत होते. त्यावेळी मला V-School विषयी समजले. VOPA या संस्थेने निर्माण केलेल्या V-School या प्लॅटफॉर्ममुळे मला दहावीचा अभ्यास करणे शक्य झाले.मला ऑनलाईन अभ्यास करत असताना व्हिडिओ शोधायला खूप वेळा लागायचा. VOPAमुळे आता मला चांगले व्हिडिओ शोधावे लागत नाहीत',
         customer: {
             avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
             name: 'राज गोरे, बीड',
-            designation: 'v-School User',
+            designation: 'V-School User',
         },
         logo: 'Amazon',
     },
@@ -180,7 +180,30 @@ const slides: Slide[] = [
         customer: {
             avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
             name: 'शुभम, जुन्नर',
-            designation: 'v-School User',
+            designation: 'V-School User',
+        },
+        logo: 'Amazon',
+    },
+];
+
+const slides: Slide[] = [
+    {
+        statement:
+            'My name is Raj Gore. I live in Beed district. I am a 10th-grade student. Since the lockdown, I didn’t know how to study for my 10th standard. I used to feel very stressed. At that time, I came to know about V-School. With the help of the V-School platform created by VOPA, I was able to study for my 10th standard. Earlier, while studying online, I had to spend a lot of time searching for videos. Thanks to VOPA, now I don’t need to search for good videos.',
+        customer: {
+            avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
+            name: 'Raaj Gore, Beed',
+            designation: 'V-School User',
+        },
+        logo: 'Amazon',
+    },
+    {
+        statement:
+            'VOPA’s work in education will be number one in the world — this is not just my opinion, but the opinion of many other students as well; there is absolutely no doubt about it. My name is Shubham, and I live in Junnar taluka. Because of the coronavirus, my school was closed. Since I study in a rural school, our online classes had also not started. During that time, I joined the study sessions of the VOPA organization, and because of that, my interrupted studies started again with full energy.',
+        customer: {
+            avatar: '/images/aboutUs/vopaStaff/rutujaJeve.jpg',
+            name: 'Shubham, Junnar',
+            designation: 'V-School User',
         },
         logo: 'Amazon',
     },

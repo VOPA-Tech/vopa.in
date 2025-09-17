@@ -21,7 +21,7 @@ const Hero = () => {
                             of the deprived and needy students.
                         </p>
                         <div className="pt-4 pb-md-5 mb-md-4">
-                            <Link to="/projects/vschool" className="btn btn-success m-2" data-toggle="smooth-scroll">
+                            <Link to="/projects/vschool" className="btn btn-success " data-toggle="smooth-scroll">
                                 V-School
                             </Link>
                             <Link
@@ -36,11 +36,8 @@ const Hero = () => {
                                 data-toggle="smooth-scroll">
                                 Tech for Teachers
                             </Link>
-                            <Link
-                                to="/projects/myca"
-                                className="btn btn-success m-2"
-                                data-toggle="smooth-scroll">
-                               MYCA
+                            <Link to="/projects/myca" className="btn btn-success " data-toggle="smooth-scroll">
+                                MYCA
                             </Link>
                         </div>
                     </Col>
@@ -82,13 +79,13 @@ const Hero = () => {
                                         </Col>
                                     </Row>
                                 </Col>
-                                 <Col xs={6}>
+                                <Col xs={6}>
                                     <Row>
                                         <Col>
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1">
                                                     <img
-                                                        src={"/images/vschool/vschoolGuy.png"}
+                                                        src={'/images/vschool/vschoolGuy.png'}
                                                         className="img-fluid"
                                                         alt=""
                                                     />

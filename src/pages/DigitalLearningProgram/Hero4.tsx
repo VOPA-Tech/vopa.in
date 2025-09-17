@@ -14,7 +14,7 @@ const Hero4 = () => {
                         </h1>
                         <p className="mt-4 fs-17">
                             The Digital Learning Project (DLP) is VOPA’s groundbreaking initiative, revolutionizing
-                            education in low-resource schools in Pune. We’re creating a new paradigm for learning in 21
+                            education in low-resource schools in Pune. We’re creating a new paradigm for learning in 20
                             schools by enhancing teacher methodologies, upgrading infrastructure, implementing regular
                             assessments, and providing supplementary education through our V-School app-all of it
                             together. VOPA’s holistic & focused approach in solving for all stakeholders has shown

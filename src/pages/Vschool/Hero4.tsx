@@ -14,10 +14,10 @@ const Hero4 = () => {
                         <h1 className="hero-title">Bridging Learning Gaps with Scalable, Free EdTech</h1>
                         <p className="mt-4 fs-17">
                             Millions of children in India drop out or fall behind due to poor foundational learning,
-                            unaffordable tuitions, and limited access to quality free EdTech. V-School bridges this gap
-                            by offering a free, multilingual digital ecosystem aligned with public education. It
-                            empowers students, teachers, and governments to improve learning outcomes—at scale and with
-                            equity.
+                            migration, unaffordable tuitions, lack of systemic support and limited access to quality
+                            free EdTech. V-School bridges this gap by offering a free, multilingual digital ecosystem
+                            aligned with public education. It empowers students, teachers, and governments to improve
+                            learning outcomes-at scale and with equity.
                         </p>
                         <div className="pt-3 pt-sm-5">
                             <Button

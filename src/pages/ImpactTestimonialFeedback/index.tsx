@@ -18,7 +18,6 @@ import hero from 'assets/images/blog/hero.jpg';
 import TabsExample from './Tabs';
 import { useState } from 'react';
 import { post3 } from './data';
-import VSchoolAnalytics from './VSchoolAnalytics';
 
 const ytLinks = [
     'https://www.youtube.com/embed/z1tAHi1OJMs',
@@ -35,15 +34,17 @@ const Blog = () => {
     const filteredPost3 = activeTag === 'All' ? post3 : post3.filter((p) => p.tag.value === activeTag);
     return (
         <>
-            <div className="header-7" style={{ background: 'url(/images/woodPanelHero.jpg' }}>
-                <div className="overlay"></div>
-                <Navbar3 navClass="navbar-dark text-white" fixedWidth buttonClass="btn-secondary btn-sm" />
-
-                <Hero />
+            <div className="header-7">
+                <Navbar3 navClass="navbar-light " fixedWidth buttonClass="btn-secondary btn-sm" />
             </div>
 
-            <section className="pt-6 pb-4 position-relative">
+            <section className="pt-6 pb-4 position-relative bg-paper-texture">
                 <Container>
+                    <Row className="justify-content-center">
+                        <Col lg={12}>
+                            <h1 className="hero-title mt-0">Feedback & Testimonials</h1>
+                        </Col>
+                    </Row>
                     <Row className="justify-content-lg-between">
                         <Col lg={12}>
                             <div className="d-flex align-items-center mb-5">
@@ -64,60 +65,40 @@ const Blog = () => {
                         </Col>
 
                         <Col lg={12}>
-                            <Row className="mt-6" data-aos="fade-up">
+                            <Row className="" data-aos="fade-up">
                                 {filteredPost3.map((ele) => (
-                                    <Col xs={12} md={6} lg={4} className="text-center zindex-1">
-                                        <Card className="rounded-lg shadow" data-aos="fade-up" data-aos-duration="2000">
-                                            <Card.Body className="slider-container-body">
-                                                <div className="video-container">
-                                                    <iframe
-                                                        width="100%"
-                                                        height="315"
-                                                        src={ele.link}
-                                                        title="YouTube video"
-                                                        frameBorder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                        allowFullScreen
-                                                    />
-                                                </div>
-                                                {/* <div className="slider">
+                                    <Col
+                                        xs={6}
+                                        md={6}
+                                        lg={4}
+                                        className="text-center zindex-1"
+                                        data-aos="fade-up"
+                                        data-aos-duration="2000">
+                                        <Card.Body className="slider-container-body">
+                                            <div className="video-container">
+                                                <iframe
+                                                    width="100%"
+                                                    // height="315"
+                                                    src={ele.link}
+                                                    title="YouTube video"
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                />
+                                            </div>
+                                            {/* <div className="slider">
                                         <SwiperSlider3 />
                                     </div> */}
-                                            </Card.Body>
-                                        </Card>
+                                        </Card.Body>
                                     </Col>
                                 ))}
                             </Row>
-
-                            {/* <Row className="mt-6" data-aos="fade-up">
-                                <Col lg={8} className="h-100">
-                                    <BlogPost1 post={post1[1]} />
-                                </Col>
-
-                                <Col lg={4}>
-                                    <BlogPost3 post={post3[0]} />
-                                </Col>
-                            </Row> */}
-
-                            {/* <Row className="mt-5">
-                                <Col lg={12}>
-                                    <div className="d-flex align-items-center justify-content-center">
-                                        <Link className="btn btn-sm btn-white" to="#">
-                                            <i className="icon icon-xxs icon-left-arrow me-2"></i>
-                                            Previous
-                                        </Link>
-                                        <Link className="btn btn-sm btn-white ms-2" to="#">
-                                            Next<i className="icon-xxs icon-right-arrow ms-2"></i>
-                                        </Link>
-                                    </div>
-                                </Col>
-                            </Row> */}
                         </Col>
                     </Row>
                 </Container>
+                <Testimonials />
             </section>
-            <Testimonials />
-            <VSchoolAnalytics />
+
             {/* footer */}
             <Footer1 />
 

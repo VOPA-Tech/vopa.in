@@ -1,14 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import ImagePickerModal from './ImagePickerModal'; // ⬅️ import modal
+import ImagePickerModal from './ImagePickerModal';
 
 const EditorWithMediaLibrary = ({ value, onChange }: { value: string; onChange: (value: string) => void }) => {
     const quillRef = useRef<ReactQuill>(null);
-
     const [showImagePicker, setShowImagePicker] = useState(false);
 
-    // Insert image at current cursor position
+    // Determine folder based on current route
+    const getFolder = () => {
+        const path = window.location.pathname;
+
+        if (path.includes('/events')) return 'events';
+        if (path.includes('/press_releases')) return 'press releases';
+        return 'blogs'; // default
+    };
+
     const insertImage = (url: string) => {
         if (quillRef.current) {
             const editor = quillRef.current.getEditor();
@@ -16,7 +23,7 @@ const EditorWithMediaLibrary = ({ value, onChange }: { value: string; onChange: 
 
             if (range) {
                 editor.insertEmbed(range.index, 'image', url, 'user');
-                editor.setSelection({ index: range.index + 1, length: 0 }); // ✅ Proper RangeStatic object
+                editor.setSelection({ index: range.index + 1, length: 0 });
             } else {
                 const length = editor.getLength();
                 editor.insertEmbed(length - 1, 'image', url, 'user');
@@ -68,7 +75,7 @@ const EditorWithMediaLibrary = ({ value, onChange }: { value: string; onChange: 
 
             <ImagePickerModal
                 show={showImagePicker}
-                folder="blogs"
+                folder={getFolder()} // dynamically set folder
                 onClose={() => setShowImagePicker(false)}
                 onSelect={(url) => {
                     insertImage(url);
