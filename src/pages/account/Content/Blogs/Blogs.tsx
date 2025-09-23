@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Badge, Button, Col, Form, Modal, Row, Table, Spinner } from 'react-bootstrap';
+import { Badge, Button, Col, Form, Modal, Row, Table, Spinner, Container } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -184,158 +184,176 @@ const Blogs = () => {
 
             {/* Add / Edit Modal */}
             <Modal show={showModal} onHide={() => setShowModal(false)} fullscreen>
-                <Modal.Header closeButton>
-                    <Modal.Title>{isEditing ? 'Edit Blog' : 'Add Blog'}</Modal.Title>
-                </Modal.Header>
-                <Form onSubmit={handleSubmit}>
-                    <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
-                        <Row className="mb-3">
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Label>Title</Form.Label>
-                                    <Form.Control
-                                        required
-                                        value={form.title}
-                                        onChange={(e) => setForm({ ...form, title: e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Label>Author</Form.Label>
-                                    <Form.Control
-                                        required
-                                        value={form.author}
-                                        onChange={(e) => setForm({ ...form, author: e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Label>Category</Form.Label>
-                                    <Form.Control
-                                        required
-                                        value={form.category}
-                                        onChange={(e) => setForm({ ...form, category: e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Col>
+                <Container>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{isEditing ? 'Edit Blog' : 'Add Blog'}</Modal.Title>
+                    </Modal.Header>
+                    <Form onSubmit={handleSubmit}>
+                        <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
+                            <Row className="mb-3">
+                                <Col md={6}>
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>Title</Form.Label>
+                                        <Form.Control
+                                            required
+                                            value={form.title}
+                                            onChange={(e) => setForm({ ...form, title: e.target.value })}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>Author</Form.Label>
+                                        <Form.Control
+                                            required
+                                            value={form.author}
+                                            onChange={(e) => setForm({ ...form, author: e.target.value })}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                                <Col md={6}>
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>Category</Form.Label>
+                                        <Form.Control
+                                            required
+                                            value={form.category}
+                                            onChange={(e) => setForm({ ...form, category: e.target.value })}
+                                        />
+                                    </Form.Group>
+                                </Col>
 
-                            {/* Thumbnail Preview */}
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Label>Thumbnail</Form.Label>
-                                    <div className="d-flex align-items-center gap-3">
-                                        {form.thumbnailUrl ? (
-                                            <img
-                                                src={form.thumbnailUrl}
-                                                alt="thumbnail"
-                                                style={{ width: 60, height: 60, borderRadius: 4, objectFit: 'cover' }}
-                                            />
-                                        ) : (
-                                            <div
-                                                style={{
-                                                    width: 60,
-                                                    height: 60,
-                                                    backgroundColor: '#eee',
-                                                    borderRadius: 4,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    fontSize: 12,
-                                                    color: '#999',
-                                                }}>
-                                                No image
-                                            </div>
-                                        )}
-                                        <Button size="sm" onClick={() => handleMediaSelect('thumbnailUrl')}>
-                                            Choose
-                                        </Button>
-                                    </div>
-                                </Form.Group>
-                            </Col>
+                                {/* Thumbnail Preview */}
+                                <Col md={6}>
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>Thumbnail</Form.Label>
+                                        <div className="d-flex align-items-center gap-3">
+                                            {form.thumbnailUrl ? (
+                                                <img
+                                                    src={form.thumbnailUrl}
+                                                    alt="thumbnail"
+                                                    style={{
+                                                        width: 60,
+                                                        height: 60,
+                                                        borderRadius: 4,
+                                                        objectFit: 'cover',
+                                                    }}
+                                                />
+                                            ) : (
+                                                <div
+                                                    style={{
+                                                        width: 60,
+                                                        height: 60,
+                                                        backgroundColor: '#eee',
+                                                        borderRadius: 4,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        fontSize: 12,
+                                                        color: '#999',
+                                                    }}>
+                                                    No image
+                                                </div>
+                                            )}
+                                            <Button size="sm" onClick={() => handleMediaSelect('thumbnailUrl')}>
+                                                Choose
+                                            </Button>
+                                        </div>
+                                    </Form.Group>
+                                </Col>
 
-                            {/* Cover Preview */}
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Label>Cover Photo</Form.Label>
-                                    <div className="d-flex align-items-center gap-3">
-                                        {form.coverUrl ? (
-                                            <img
-                                                src={form.coverUrl}
-                                                alt="cover"
-                                                style={{ width: 100, height: 60, borderRadius: 4, objectFit: 'cover' }}
-                                            />
-                                        ) : (
-                                            <div
-                                                style={{
-                                                    width: 100,
-                                                    height: 60,
-                                                    backgroundColor: '#eee',
-                                                    borderRadius: 4,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    fontSize: 12,
-                                                    color: '#999',
-                                                }}>
-                                                No image
-                                            </div>
-                                        )}
-                                        <Button size="sm" onClick={() => handleMediaSelect('coverUrl')}>
-                                            Choose
-                                        </Button>
-                                    </div>
-                                </Form.Group>
-                            </Col>
+                                {/* Cover Preview */}
+                                <Col md={6}>
+                                    <Form.Group className="mb-2">
+                                        <Form.Label>Cover Photo</Form.Label>
+                                        <div className="d-flex align-items-center gap-3">
+                                            {form.coverUrl ? (
+                                                <img
+                                                    src={form.coverUrl}
+                                                    alt="cover"
+                                                    style={{
+                                                        width: 100,
+                                                        height: 60,
+                                                        borderRadius: 4,
+                                                        objectFit: 'cover',
+                                                    }}
+                                                />
+                                            ) : (
+                                                <div
+                                                    style={{
+                                                        width: 100,
+                                                        height: 60,
+                                                        backgroundColor: '#eee',
+                                                        borderRadius: 4,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        fontSize: 12,
+                                                        color: '#999',
+                                                    }}>
+                                                    No image
+                                                </div>
+                                            )}
+                                            <Button size="sm" onClick={() => handleMediaSelect('coverUrl')}>
+                                                Choose
+                                            </Button>
+                                        </div>
+                                    </Form.Group>
+                                </Col>
 
-                            <Col md={6}>
-                                <Form.Group className="mb-2">
-                                    <Form.Check
-                                        label="Featured"
-                                        checked={form.featured}
-                                        onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-2">
-                                    <Form.Check
-                                        label="Published"
-                                        checked={form.published}
-                                        onChange={(e) => setForm({ ...form, published: e.target.checked })}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Form.Group className="mt-4">
-                            <Form.Label>Content</Form.Label>
-                            <EditorWithMediaLibrary
-                                value={form.content}
-                                onChange={(value) => setForm({ ...form, content: value })}
-                            />
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={() => setShowModal(false)}>
-                            Cancel
-                        </Button>
-                        <Button type="submit">{isEditing ? 'Update' : 'Add'}</Button>
-                    </Modal.Footer>
-                </Form>
+                                <Col md={6}>
+                                    <Form.Group className="mb-2">
+                                        <Form.Check
+                                            label="Featured"
+                                            checked={form.featured}
+                                            onChange={(e) => setForm({ ...form, featured: e.target.checked })}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group className="mb-2">
+                                        <Form.Check
+                                            label="Published"
+                                            checked={form.published}
+                                            onChange={(e) => setForm({ ...form, published: e.target.checked })}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                            <Form.Group className="mt-4">
+                                <Form.Label>Content</Form.Label>
+                                <EditorWithMediaLibrary
+                                    value={form.content}
+                                    onChange={(value) => setForm({ ...form, content: value })}
+                                />
+                            </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={() => setShowModal(false)}>
+                                Cancel
+                            </Button>
+                            <Button type="submit">{isEditing ? 'Update' : 'Add'}</Button>
+                        </Modal.Footer>
+                    </Form>
+                </Container>
             </Modal>
 
             {/* View Modal */}
             <Modal show={!!viewingBlog} onHide={() => setViewingBlog(null)} centered fullscreen>
-                <Modal.Header closeButton>
-                    <Modal.Title>{viewingBlog?.title}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
-                    {viewingBlog && (
-                        <>
-                            <img src={viewingBlog.coverUrl} alt="Cover" className="img-fluid mb-3" />
-                            <div className="blog-content" dangerouslySetInnerHTML={{ __html: viewingBlog.content }} />
-                        </>
-                    )}
-                </Modal.Body>
+                <Container>
+                    {' '}
+                    <Modal.Header closeButton>
+                        <Modal.Title>{viewingBlog?.title}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body style={{ maxHeight: '75vh', overflowY: 'auto' }}>
+                        {viewingBlog && (
+                            <>
+                                <img src={viewingBlog.coverUrl} alt="Cover" className="img-fluid mb-3" />
+                                <div
+                                    className="blog-content"
+                                    dangerouslySetInnerHTML={{ __html: viewingBlog.content }}
+                                />
+                            </>
+                        )}
+                    </Modal.Body>
+                </Container>
             </Modal>
 
             {/* Image Picker Modal */}

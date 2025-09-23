@@ -7,12 +7,6 @@ const Features = () => {
                 <Row className="align-items-center mb-6 pb-lg-5">
                     <Col lg={5}>
                         <div className="">
-                            {/* <Badge pill bg="" className="badge-soft-danger px-2 py-1">
-                                Why NIPUN Bharat?
-                            </Badge> */}
-                            {/* <h1 className="display-4 fw-medium mb-3">
-                                Foundational gaps are holding back millions of students from progressing in school.
-                            </h1> */}
                             <p className="text-muted mx-auto mb-4 pb-3">
                                 To improve students’ Foundational Literacy and Numeracy (FLN) at scale, VOPA has built
                                 out the NIPUN Maharashtra app for SCERT Maharashtra, the apex educational body of the
@@ -25,15 +19,11 @@ const Features = () => {
                                 the first time, bringing access to real time reports of students and remedial tools to
                                 5M+ parents.
                             </p>
-                            {/* <Link to="#">
-                                Learn more
-                                <FeatherIcon icon="arrow-right" className="ms-1 icon-xxs" />
-                            </Link> */}
                         </div>
                     </Col>
                     <Col lg={{ span: 6, offset: 1 }}>
                         <img
-                            src="/images/nipun/nipunLogo.png"
+                            src="https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1758273494664_nipunlogo.png"
                             alt="desktop1"
                             className="img-fluid"
                             data-aos="fade-left"

@@ -16,7 +16,7 @@ const MapImage = () => {
                         <p className="display-3">Official Collaborations with ZP</p>
                         <div className="video-container">
                             <img
-                                src="/images/vschool/maharashtraMap.png" // 🔁 Replace with your image path
+                                src="https://uploads.justech-ai.in/vopa-website/vschoolPage/1758275207925_maharashtramap.png" // 🔁 Replace with your image path
                                 alt="Video Thumbnail"
                                 width="100%"
                                 height="515"

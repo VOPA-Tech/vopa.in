@@ -12,6 +12,7 @@ const EditorWithMediaLibrary = ({ value, onChange }: { value: string; onChange: 
         const path = window.location.pathname;
 
         if (path.includes('/events')) return 'events';
+        if (path.includes('/jobs')) return 'jobs';
         if (path.includes('/press_releases')) return 'press releases';
         return 'blogs'; // default
     };

@@ -115,7 +115,7 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
                         </Col>
                         <Col md={6} className="text-center">
                             <Image
-                                src="/images/donate/qr.png"
+                                src="https://uploads.justech-ai.in/vopa-website/donate/1758272293057_qr.png"
                                 alt="QR Code"
                                 fluid
                                 style={{ maxHeight: 200, marginBottom: 10 }}

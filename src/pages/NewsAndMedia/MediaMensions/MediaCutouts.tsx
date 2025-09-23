@@ -13,7 +13,7 @@ const MediaCutouts = ({ mediaCutouts }: CultureProps) => {
             <Container
                 style={{
                     backgroundImage: `linear-gradient(rgba(49, 63, 49, 0.3), rgba(22, 23, 21, 0.9)), 
-                        url('/images/newsAndMedia/woodTable.webp')`,
+                        url('https://uploads.justech-ai.in/vopa-website/NewsAndMediaPage/1758273220833_woodtable.webp')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -23,7 +23,7 @@ const MediaCutouts = ({ mediaCutouts }: CultureProps) => {
                     <Col className="text-center">
                         <img
                             style={{ maxWidth: '150px' }}
-                            src="/images/newsAndMedia/tajaKhabar.png"
+                            src="https://uploads.justech-ai.in/vopa-website/NewsAndMediaPage/1758273220529_tajakhabar.png"
                             alt="Logo"
                             className="rounded-sm m-2"
                         />

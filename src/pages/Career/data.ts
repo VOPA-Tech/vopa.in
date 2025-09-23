@@ -38,28 +38,28 @@ const gallery: GalleryItem[] = [
     {
         id: 3,
         image: {
-            src: '/images/aboutUs/officePhotos/office1.webp',
+            src: 'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642077_office1.webp',
             caption: 'Office Desks',
         },
     },
     {
         id: 4,
         image: {
-            src: '/images/aboutUs/officePhotos/office2.webp',
+            src: 'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642375_vopateam.webp',
             caption: 'Meeting Room view',
         },
     },
     {
         id: 5,
         image: {
-            src: '/images/aboutUs/officePhotos/office3.webp',
+            src: 'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642378_office2.webp',
             caption: 'Outside view',
         },
     },
     {
         id: 6,
         image: {
-            src: '/images/aboutUs/officePhotos/vopaTeam.webp',
+            src: 'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp',
             caption: 'A common seating area',
         },
     },

@@ -35,8 +35,7 @@ const KnowAboutUs = ({ features }: FeaturesProps) => {
                     </Col>
                     <Col lg={{ span: 5, offset: 1 }}>
                         <img
-                            // src={'/images/homePage/rmbg.png'}
-                            src={'/images/homePage/BG.png'}
+                            src="https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194047815_bg.png"
                             alt="Girl Reading Book"
                             className="img-fluid d-block mx-auto mt-4 mt-lg-0"
                         />

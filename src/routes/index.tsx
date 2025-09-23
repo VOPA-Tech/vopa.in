@@ -19,6 +19,7 @@ const ProjectsOverview = React.lazy(() => import('../pages/ProjectsOverview'));
 //Website Pages
 const BlogPost = React.lazy(() => import('../pages/Publications/Blogs/BlogPost'));
 const EventPost = React.lazy(() => import('../pages/NewsAndMedia/Events/EventPost'));
+const JobDetails = React.lazy(() => import('../pages/Career/JobDetails'));
 const PressReleasesPost = React.lazy(() => import('../pages/NewsAndMedia/PressReleases/PressRelease'));
 const Brouchers = React.lazy(() => import('../pages/Publications/Brouchers'));
 const WorkReports = React.lazy(() => import('../pages/ImpactWorkReports'));
@@ -40,6 +41,7 @@ const PressReleasesCMS = React.lazy(() => import('../pages/account/Content/Press
 const EventCMS = React.lazy(() => import('../pages/account/Content/Events/index'));
 const EmployeesCMS = React.lazy(() => import('../pages/account/Content/Employees/index'));
 const VacanciesCMS = React.lazy(() => import('../pages/account/Content/Vacancies/index'));
+const JobsCMS = React.lazy(() => import('../pages/account/Content/Jobs/index'));
 const Dashboard = React.lazy(() => import('../pages/account/Dashboard'));
 const Gallery = React.lazy(() => import('../pages/account/Gallery'));
 const UserManagement = React.lazy(() => import('../pages/account/UserManagement'));
@@ -80,10 +82,13 @@ const AllRoutes = () => {
             path: '/blog/post/:id',
             element: <LoadComponent component={BlogPost} />,
         },
-
         {
             path: '/career',
             element: <LoadComponent component={Career} />,
+        },
+        {
+            path: '/careers/:id',
+            element: <LoadComponent component={JobDetails} />, // the shareable details page
         },
         {
             path: '/contact',
@@ -203,6 +208,7 @@ const AllRoutes = () => {
                             children: [
                                 { path: 'employees', element: <LoadComponent component={EmployeesCMS} /> },
                                 { path: 'vacancies', element: <LoadComponent component={VacanciesCMS} /> },
+                                { path: 'jobs', element: <LoadComponent component={JobsCMS} /> },
                             ],
                         },
                     ],

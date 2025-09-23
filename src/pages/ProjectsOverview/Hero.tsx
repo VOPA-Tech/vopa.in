@@ -57,7 +57,9 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1">
                                                     <img
-                                                        src={'/images/projectImages/projectOverviewHero2.png'}
+                                                        src={
+                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809461_projectoverviewhero2.png'
+                                                        }
                                                         className="img-fluid"
                                                         alt=""
                                                     />
@@ -70,7 +72,9 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
-                                                        src={'/images/projectImages/projectOverviewHero3.png'}
+                                                        src={
+                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809466_projectoverviewhero3.png'
+                                                        }
                                                         className="img-fluid"
                                                         alt=""
                                                     />
@@ -85,7 +89,9 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1">
                                                     <img
-                                                        src={'/images/vschool/vschoolGuy.png'}
+                                                        src={
+                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758275052345_vschoolguy.png'
+                                                        }
                                                         className="img-fluid"
                                                         alt=""
                                                     />
@@ -98,7 +104,9 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
-                                                        src={'/images/projectImages/mycaLogo.png'}
+                                                        src={
+                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809154_mycalogo.png'
+                                                        }
                                                         className="img-fluid"
                                                         alt=""
                                                     />

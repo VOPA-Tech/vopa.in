@@ -15,13 +15,15 @@ import CTA from './CTA';
 import { gallery } from './data';
 
 // redux
-import { loadVacancies } from 'reduxFolder/appSlice';
 import { fetchVacancies } from 'reduxFolder/vacancySlice';
+import Jobs from './Jobs';
+import { fetchJobs } from 'reduxFolder/jobsSlice';
 
 const Career = () => {
     const dispatch = useDispatch();
 
     const { vacancies, loading } = useSelector((state) => state.vacancyState);
+    const { jobs } = useSelector((state) => state.jobsState);
 
     useEffect(() => {
         console.log('He vacancies', vacancies);
@@ -29,7 +31,11 @@ const Career = () => {
             dispatch(fetchVacancies());
         }
     }, [dispatch, vacancies.length]);
-
+    useEffect(() => {
+        if (!jobs.length) {
+            dispatch(fetchJobs());
+        }
+    }, [dispatch, jobs.length]);
     return (
         <>
             <div className="bg-gradient2 position-relative">
@@ -51,7 +57,7 @@ const Career = () => {
             ) : (
                 <Vacancies vacancies={vacancies} />
             )}
-
+            <Jobs jobs={jobs} />
             {/* CTA and Footer */}
             <CTA />
             <Footer1 />

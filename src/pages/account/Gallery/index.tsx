@@ -15,6 +15,7 @@ const Gallery = () => {
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
     const [newFolder, setNewFolder] = useState('');
     const [creating, setCreating] = useState(false);
+    const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
     // Fetch all object keys and extract folder names
     const fetchFolders = async () => {
@@ -80,8 +81,8 @@ const Gallery = () => {
     const handleDelete = async (filename: string) => {
         if (!selectedFolder) return;
 
-        const confirm = window.confirm(`Delete image: ${filename}?`);
-        if (!confirm) return;
+        const confirmDelete = window.confirm(`Delete image: ${filename}?`);
+        if (!confirmDelete) return;
 
         try {
             await axios.delete(`${API_BASE}/upload/${selectedFolder}/${filename}`);
@@ -111,8 +112,8 @@ const Gallery = () => {
     const handleDeleteFolder = async () => {
         if (!selectedFolder) return;
 
-        const confirm = window.confirm(`Delete folder "${selectedFolder}" and all its images?`);
-        if (!confirm) return;
+        const confirmDelete = window.confirm(`Delete folder "${selectedFolder}" and all its images?`);
+        if (!confirmDelete) return;
 
         try {
             await axios.delete(`${API_BASE}/upload/folder/${selectedFolder}`);
@@ -122,6 +123,28 @@ const Gallery = () => {
         } catch (err: any) {
             console.error(err);
             alert(err.response?.data?.message || 'Failed to delete folder');
+        }
+    };
+
+    const handleCopyUrl = async (url: string, index: number) => {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                // Fallback for non-HTTPS/older browsers
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                ta.style.position = 'fixed';
+                ta.style.top = '-1000px';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+            }
+            setCopiedIndex(index);
+            setTimeout(() => setCopiedIndex(null), 1500);
+        } catch (e) {
+            console.error('Copy failed:', e);
         }
     };
 
@@ -217,13 +240,28 @@ const Gallery = () => {
                             {images.map((img, index) => (
                                 <Col xs={6} md={4} lg={3} key={index} className="mb-4">
                                     <div className="position-relative border rounded overflow-hidden">
+                                        {/* Delete button */}
                                         <Button
                                             size="sm"
                                             variant="danger"
                                             className="position-absolute top-0 end-0 m-1 p-1 rounded-circle"
                                             style={{ zIndex: 1 }}
-                                            onClick={() => handleDelete(img.filename)}>
+                                            onClick={() => handleDelete(img.filename)}
+                                            aria-label="Delete image"
+                                            title="Delete">
                                             <FeatherIcon icon="x" size={14} />
+                                        </Button>
+
+                                        {/* Copy URL button */}
+                                        <Button
+                                            size="sm"
+                                            variant="secondary"
+                                            className="position-absolute top-0 start-0 m-1 p-1 rounded-circle"
+                                            style={{ zIndex: 1 }}
+                                            onClick={() => handleCopyUrl(img.url, index)}
+                                            aria-label="Copy image URL"
+                                            title="Copy URL">
+                                            <FeatherIcon icon="copy" size={14} />
                                         </Button>
 
                                         <img
@@ -236,6 +274,13 @@ const Gallery = () => {
                                                 aspectRatio: selectedFolder === 'employees' ? '5 / 4' : undefined,
                                             }}
                                         />
+
+                                        {/* Copied badge */}
+                                        {copiedIndex === index && (
+                                            <span className="badge bg-success position-absolute bottom-0 start-0 m-2">
+                                                Copied!
+                                            </span>
+                                        )}
 
                                         <div className="p-2 text-truncate text-center small">{img.filename}</div>
                                     </div>

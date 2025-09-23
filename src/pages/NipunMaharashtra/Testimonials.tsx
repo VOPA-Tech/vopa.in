@@ -14,14 +14,14 @@ const slides: Slide[] = [
             'I used to struggle with English and math, but the V-School app made it easier. Now, I’m excited to learn every day, and I even topped my class.',
         summary:
             'Center for Effective Governance of Indian States (CEGIS) is collaborating with VOPA to provide evidence-based insights and solutions. Their support strengthens VOPA’s programs, ensuring best practices are applied, and advocating for policy changes.',
-        logo: '/images/nipun/cegis.png',
+        logo: 'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1758273494345_cegis.png',
     },
     {
         statement:
             'The V-School app has everything in Marathi, which helps our students understand better. It’s made learning fun and accessible, even for kids who don’t have much support at home.',
         summary:
             'Room to Read India collaborates with VOPA to provide curated multilingual literacy content from their Literacy Cloud platform, enriching VOPA’s V-School and NIPUN Maharashtra apps with quality educational resources for early-grade students. This partnership fosters literacy development in English, Marathi, Urdu,  and Hindi, ensuring culturally relevant and accessible learning materials. Together, we aim to enhance student engagement and support state education standards through continuous content updates and seamless integration, empowering children across Maharashtra with improved reading opportunities.',
-        logo: '/images/nipun/roomToRead.png',
+        logo: 'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1758273494658_roomtoread.png',
     },
 ];
 const Testimonials = () => {

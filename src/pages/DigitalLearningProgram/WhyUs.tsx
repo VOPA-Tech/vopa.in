@@ -7,9 +7,6 @@ import classNames from 'classnames';
 // types
 import { Feature } from './types';
 
-// images
-import saas1 from 'assets/images/hero/saas1.jpg';
-
 const features: Feature[] = [
     {
         avatar: 'users',
@@ -126,8 +123,8 @@ const WhyUs = () => {
                         <div className="img-content position-relative">
                             <div className="img-up mb-lg-0 mb-6">
                                 <img
-                                    src={'/images/dlp/dlp.png'}
-                                    alt=""
+                                    src={'https://uploads.justech-ai.in/vopa-website/DLPPage/1758256222670_dlp.png'}
+                                    alt="Digital Learning Program"
                                     className="img-fluid d-block rounded"
                                     data-aos="fade-right"
                                     data-aos-duration="200"

@@ -9,48 +9,48 @@ const CaptionCarousel = () => {
             title1: 'The Problem',
             description: 'Bringing quality education to millions in rural India.',
             title2: 'What if every child could learn through a smartphone ?',
-            image: '/images/homePage/C1.webp',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702000_c5.webp',
         },
         {
             title1: 'The Possibility',
             description: "Education in every child's mother tongue.",
             title2: 'What if learning had no language barriers?',
-            image: '/images/homePage/C2.webp',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702012_c2.webp',
         },
         {
             title1: 'The Solution',
             description: 'Effective teaching and personalized learning despite classroom challenges.',
 
             title2: 'What if teachers had the right tools to succeed?',
-            image: '/images/homePage/C3.webp',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702015_c3.webp',
         },
         {
             title1: 'The Vision',
             title2: 'What if education ran on real-time data?',
 
             description: 'Timely insights for effective administrative decisions.',
-            image: '/images/homePage/C4.webp',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702009_c4.webp',
         },
         {
             title1: 'The Vision',
             description: 'Regular updates in their own language to bridge home and school.',
 
             title2: "What if every parent was truly connected to their child's learning?",
-            image: '/images/homePage/C5.webp',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702000_c5.webp',
         },
-        // {
-        //     title1: 'The Vision',
-        //     title2: 'Real-time learning and assistance on one platform.',
+        {
+            title1: 'The Vision',
+            title2: 'Real-time learning and assistance on one platform.',
 
-        //     description: 'What if frontline workers had AI mental health support?',
-        //     image: '/images/homePage/C6.webp',
-        // },
+            description: 'What if frontline workers had AI mental health support?',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702003_c7.webp',
+        },
         {
             title1: 'The Vision',
             description: 'Daily self-help and professional care in local languages, all free.',
 
             title2: 'What if mental health support was proactive and accessible?',
-            image: '/images/homePage/C7.webp',
+            image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758193702003_c7.webp',
         },
     ];
     return (

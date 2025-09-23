@@ -4,6 +4,7 @@ import authSlice from './authSlice';
 import usersSlice from './usersSlice';
 import employeeSlice from './employeeSlice';
 import vacancySlice from './vacancySlice';
+import jobsSlice from './jobsSlice';
 import blogSlice from './blogSlice';
 import eventSlice from './eventSlice';
 import workReportsSlice from './workReportsSlice';
@@ -20,6 +21,7 @@ export const store = configureStore({
         usersState: usersSlice,
         employeeState: employeeSlice,
         vacancyState: vacancySlice,
+        jobsState: jobsSlice,
         blogState: blogSlice,
         eventState: eventSlice,
         workReportsState: workReportsSlice,

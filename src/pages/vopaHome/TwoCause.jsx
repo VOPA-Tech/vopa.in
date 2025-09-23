@@ -47,7 +47,9 @@ const TwoCause = () => {
                                     style={{
                                         width: '150px',
                                     }}
-                                    src={'/images/homePage/3.webp'}
+                                    src={
+                                        'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194547403_3.webp'
+                                    }
                                     alt="Girl Reading Book"
                                     className="img-fluid d-block mx-auto mt-4 mt-lg-0"
                                 />
@@ -70,7 +72,9 @@ const TwoCause = () => {
                                     style={{
                                         width: '150px',
                                     }}
-                                    src={'/images/homePage/4.webp'}
+                                    src={
+                                        'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194547404_4.webp'
+                                    }
                                     alt="Girl Reading Book"
                                     className="img-fluid d-block mx-auto mt-4 mt-lg-0"
                                 />
@@ -93,7 +97,9 @@ const TwoCause = () => {
                                     style={{
                                         width: '150px',
                                     }}
-                                    src={'/images/homePage/10.webp'}
+                                    src={
+                                        'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194547406_10.webp'
+                                    }
                                     alt="Girl Reading Book"
                                     className="img-fluid d-block mx-auto mt-4 "
                                 />
@@ -117,7 +123,9 @@ const TwoCause = () => {
                                     style={{
                                         width: '150px',
                                     }}
-                                    src={'/images/homePage/17.webp'}
+                                    src={
+                                        'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194547408_17.webp'
+                                    }
                                     alt="Girl Reading Book"
                                     className="img-fluid d-block mx-auto mt-4"
                                 />

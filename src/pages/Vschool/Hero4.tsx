@@ -36,7 +36,9 @@ const Hero4 = () => {
                     <Col lg={7} md={6}>
                         <div className="img-container text-end pt-5 pt-sm-0">
                             <img
-                                src={'/images/vschool/heroImage.png'}
+                                src={
+                                    'https://uploads.justech-ai.in/vopa-website/vschoolPage/1758275207643_heroimage.png'
+                                }
                                 alt="startup"
                                 className="img-fluid rounded-3 shadow-lg"
                                 data-aos="fade-left"

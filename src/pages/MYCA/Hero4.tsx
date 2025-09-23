@@ -1,7 +1,4 @@
-import { Button, Col, Container, Row } from 'react-bootstrap';
-
-// images
-import vschool from 'assets/images/hero/allTab.webp';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Hero4 = () => {
     return (
@@ -9,7 +6,7 @@ const Hero4 = () => {
             {/* Background Layer */}
             <div
                 style={{
-                    backgroundImage: `url(/images/myca/nobgmycalogo.png)`,
+                    backgroundImage: `url(https://uploads.justech-ai.in/vopa-website/myca/1758272746925_nobgmycalogo.png)`,
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -35,7 +32,7 @@ const Hero4 = () => {
                     <Col lg={7} md={6}>
                         <div className="img-container text-end pt-5 pt-sm-0">
                             <img
-                                src="/images/myca/mycaHero.png"
+                                src="https://uploads.justech-ai.in/vopa-website/myca/1758272746622_mycahero.png"
                                 alt="startup"
                                 className="img-fluid rounded-3 shadow-lg"
                                 data-aos="fade-left"

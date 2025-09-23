@@ -8,7 +8,7 @@ const CTA = () => {
                 <Row className="align-items-center">
                     <Col lg={4}>
                         <img
-                            src="/images/career/certificate.png"
+                            src="https://uploads.justech-ai.in/vopa-website/careerPage/1758255852267_certificate.png"
                             alt="QR Code to Application Form"
                             width={300}
                             className="border shadow-lg"
@@ -44,7 +44,7 @@ const CTA = () => {
 
                                 <div className="mt-4">
                                     <img
-                                        src="/images/career/googleFormQR.png"
+                                        src="https://uploads.justech-ai.in/vopa-website/careerPage/1758255852270_googleformqr.png"
                                         alt="QR Code to Application Form"
                                         width={200}
                                         height={200}

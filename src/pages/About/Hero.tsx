@@ -34,7 +34,9 @@ const Hero = () => {
                                     <Card className="shadow-lg">
                                         <Card.Body className="p-1">
                                             <img
-                                                src={'/images/aboutUs/officePhotos/office1.webp'}
+                                                src={
+                                                    'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642077_office1.webp'
+                                                }
                                                 className="img-fluid"
                                                 alt=""
                                             />
@@ -47,7 +49,9 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1">
                                                     <img
-                                                        src={'/images/aboutUs/officePhotos/office2.webp'}
+                                                        src={
+                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642378_office2.webp'
+                                                        }
                                                         className="img-fluid"
                                                         alt=""
                                                     />
@@ -60,7 +64,9 @@ const Hero = () => {
                                             <Card className="shadow-lg">
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
-                                                        src={'/images/aboutUs/officePhotos/office3.webp'}
+                                                        src={
+                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp'
+                                                        }
                                                         className="img-fluid"
                                                         alt=""
                                                     />

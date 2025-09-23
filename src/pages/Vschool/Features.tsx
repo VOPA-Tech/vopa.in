@@ -44,7 +44,7 @@ const Features = () => {
                     </Col>
                     <Col lg={{ span: 6, offset: 1 }}>
                         <img
-                            src="/images/vschool/vschoolGuy.png"
+                            src="https://uploads.justech-ai.in/vopa-website/vschoolPage/1758275207638_vschoolguy.png"
                             alt="desktop1"
                             className="img-fluid"
                             data-aos="fade-left"

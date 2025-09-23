@@ -76,6 +76,7 @@ const Menu = () => {
                         {[
                             { to: '/account/adminOps/vacancies', label: 'Vacancies' },
                             { to: '/account/adminOps/employees', label: 'Employees' },
+                            { to: '/account/adminOps/jobs', label: 'Jobs' },
                         ].map((item, idx) => (
                             <Nav.Item as="li" key={idx}>
                                 <NavLink to={item.to} end className="nav-link">

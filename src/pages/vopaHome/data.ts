@@ -35,7 +35,7 @@ const projects: Project[] = [
         title: 'V-School',
         description:
             'V-School, by Vowels of the People Association (VOPA), offers free education through an Android app with an ecosystem approach serving students, parents, teachers, and administrators, empowering quality learning across Maharashtra.',
-        image: '/images/homePage/projectCardImages/vschool.webp',
+        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262069_vschool.webp',
         link: '/projects/vschool',
     },
     {
@@ -43,7 +43,7 @@ const projects: Project[] = [
         title: 'Nipun Maharashtra',
         description:
             'Nipun Bharat, a Maharashtra, focuses on enhancing foundational literacy and numeracy for children in the state, with VOPA supporting the program through digital tools and resources aimed at improving learning outcomes.',
-        image: '/images/homePage/projectCardImages/nipun.png',
+        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262067_nipun.png',
         link: '/projects/nipun-bharat',
     },
     {
@@ -51,7 +51,7 @@ const projects: Project[] = [
         title: 'MYCA (My Mental Health Companion)',
         description:
             'MYCA, a mental health initiative by VOPA, is a free mobile platform providing access to self-help tools, self assessment tools , and support to individuals, promoting mental well-being across Maharashtra with a focus of accessibility and inclusivity.',
-        image: '/images/homePage/projectCardImages/myca.png',
+        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262064_myca.png',
         link: '/projects/myca',
     },
     {
@@ -59,7 +59,7 @@ const projects: Project[] = [
         title: 'School Transformation Project (STP)',
         description:
             'Digital Learning Project implements cutting-edge digital tools and resources to enhance learning experiences, providing interactive and engaging educational content that transforms traditional teaching methods across Maharashtra schools.',
-        image: '/images/homePage/projectCardImages/stp.png',
+        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262076_stp.png',
         link: '/projects/digital-learning-project',
     },
     {
@@ -67,7 +67,7 @@ const projects: Project[] = [
         title: 'Digital Learning Project (DLP)',
         description:
             'Comprehensive program to modernize schools and enhance teacher capabilities through innovative training methodologies, digital literacy programs, and infrastructure development to create 21st-century learning environments.',
-        image: '/images/homePage/projectCardImages/dlp.webp',
+        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262072_dlp.webp',
         link: '/projects/digital-learning-project',
     },
 ];
