@@ -28,7 +28,7 @@ const PressReleasePost = () => {
     useEffect(() => {
         if (!isLoading && pressReleases.length) {
             const found = pressReleases.find((pr) => pr.slug === id);
-            console.log('Found Press Release:', found);
+
             setPressRelease(found || null);
         }
     }, [id, pressReleases, isLoading]);

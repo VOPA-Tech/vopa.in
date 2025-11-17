@@ -28,7 +28,7 @@ const EventPost = () => {
     useEffect(() => {
         if (!isEventsLoading && events.length) {
             const found = events.find((e) => e.slug === id);
-            console.log('Hii I am Event', found);
+
             setEvent(found || null);
         }
     }, [id, events, isEventsLoading]);

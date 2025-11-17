@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
 // import { RootState } from 'store'; // ✅ make sure this points to your store's RootState
-
+import FeatherIcon from 'feather-icons-react';
 // components
 import Menu from './Menu';
 
@@ -19,6 +19,10 @@ type Navbar3Props = {
 };
 
 const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) => {
+    const successGreen = '#28c76f';
+    // Hover handlers
+    const hoverStyle = (e: any) => (e.currentTarget.style.color = successGreen);
+    const unhoverStyle = (e: any) => (e.currentTarget.style.color = 'inherit');
     const dispatch = useDispatch();
     const isDonationModalOpen = useSelector((state: any) => state.appState.isDonationModalOpen); // updated to match slice name
 
@@ -57,9 +61,16 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
                 className={classNames('topnav-menu', navClass)}>
                 <Container fluid={!fixedWidth}>
                     <Navbar.Brand href="/" className="logo">
-                        <img src="/logo.webp" height="30" className="align-top logo-dark" alt="" />
-                        <img src="/logo-light.webp" height="30" className="align-top logo-light" alt="" />
+                        <img src="/logo.webp" height="40" width="120" className="align-top logo-dark" alt="logo" />
+                        <img
+                            src="/logo-light.webp"
+                            height="40"
+                            width="120"
+                            className="align-top logo-light"
+                            alt="logo"
+                        />
                     </Navbar.Brand>
+
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Menu navClass="mx-auto" buttonClass={buttonClass || 'btn-primary'} />
@@ -83,7 +94,7 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
             {/* Donation Modal */}
             <Modal show={isDonationModalOpen} onHide={() => dispatch(setIsDonationModalOpen(false))} size="lg" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>SUPPORT US TO HELP THEM!</Modal.Title>
+                    <Modal.Title>SUPPORT US!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Row className="p-4">
@@ -106,10 +117,10 @@ const Navbar3 = ({ isSticky, navClass, buttonClass, fixedWidth }: Navbar3Props) 
                                     <strong>IFSC:</strong> KKBK0001765
                                 </li>
                                 <li>
-                                    <strong>Email:</strong> contact.vopa@ybl
+                                    <strong>UPI:</strong> contact.vopa@ybl
                                 </li>
                                 <li>
-                                    <strong>Alt Email:</strong> contact.vopa@axl
+                                    <strong>Alt UPI:</strong> contact.vopa@axl
                                 </li>
                             </ul>
                         </Col>

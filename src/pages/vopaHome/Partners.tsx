@@ -21,14 +21,14 @@ const partners = [
 ];
 const Partners = () => {
     return (
-        <section className="py-5  bg-light position-relative" data-aos="fade-up">
-            <Container>
+        <section className="py-5 position-relative bg-paper-texture">
+            <Container data-aos="fade-up">
                 <Row className="">
                     <Col className="text-center">
                         <Badge pill bg="" className="badge-soft-success px-2 py-1">
                             Our Partners
                         </Badge>
-                        <h1 className="display-5 fw-medium">We are backed by</h1>
+                        <h2 className="display-5 fw-medium">We are supported by</h2>
                         <p className="text-muted mx-auto">
                             <span className="text-dark fw-bold">VOPA</span> collaborates with government bodies, NGOs,
                             and educational partners to scale impact across Maharashtra.
@@ -38,7 +38,7 @@ const Partners = () => {
                 <Row className="mt-5 justify-content-center gap-4 flex-wrap">
                     {partners.map((logo, idx) => (
                         <Col key={idx} xs="auto" className="d-flex align-items-center justify-content-center mb-3">
-                            <img src={logo} alt={`partner-${idx}`} height="45" />
+                            <img src={logo} alt={`partner-${idx}`} height="45" width={'100%'} />
                         </Col>
                     ))}
                 </Row>

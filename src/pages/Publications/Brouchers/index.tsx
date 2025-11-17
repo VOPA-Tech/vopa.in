@@ -28,11 +28,11 @@ const Brouchers = () => {
                 />
             </div>
 
-            <section className="pt-6 pb-4 position-relative bg-paper-texture">
+            <section className="pt-6 pb-4 position-relative bg-paper-texture-dark">
                 <Container>
                     <Row className="justify-content-center">
                         <Col lg={12}>
-                            <h1 className="hero-title mt-0">Brochures</h1>
+                            <h1 className="hero-title text-white mt-0">Brochures</h1>
                         </Col>
                     </Row>
 

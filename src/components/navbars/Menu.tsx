@@ -65,6 +65,7 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                     <Nav as="ul" navbar={false}>
                         {[
                             { to: '/projects/overview', label: 'Projects Overview' },
+                            // { to: '/projects/saiyam', label: 'Saiyam' },
                             {
                                 to: '/projects/vschool',
                                 label: 'VSchool - Free Digital Education (3 Million+ Students)',
@@ -87,7 +88,7 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                                     style={({ isActive }) => (isActive ? activeLinkStyle : linkStyle)}>
                                     {item.label}
                                 </NavLink>
-                                {idx !== 4 && <hr className="my-2" />}
+                                {idx !== 5 && <hr className="my-2" />}
                             </Nav.Item>
                         ))}
                     </Nav>
@@ -172,7 +173,7 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                         {[
                             { to: '/publications/magazines', label: 'Magazines' },
 
-                            { to: '/publications/brouchers', label: 'Brochures' },
+                            { to: '/publications/brochures', label: 'Brochures' },
                             { to: '/publications/blogs', label: 'Blogs' },
                         ].map((item, idx) => (
                             <Nav.Item as="li" key={idx}>
@@ -191,20 +192,20 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
 
             <Nav.Item as="li">
                 <NavLink
-                    to="/career"
+                    to="/join-us"
                     end
                     className="nav-link"
                     style={({ isActive }) => (isActive ? activeLinkStyle : linkStyle)}>
-                    Career
+                    Join Us
                 </NavLink>
             </Nav.Item>
             <Nav.Item as="li">
                 <NavLink
-                    to="/contact"
+                    to="/contact-us"
                     end
                     className="nav-link"
                     style={({ isActive }) => (isActive ? activeLinkStyle : linkStyle)}>
-                    Contact
+                    Contact Us
                 </NavLink>
             </Nav.Item>
         </Nav>

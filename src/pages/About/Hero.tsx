@@ -1,84 +1,44 @@
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import FeatherIcon from 'feather-icons-react';
+import { useDispatch } from 'react-redux';
+import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
+import MovingImageTrain from './MovingImageTrain';
 
-// images
-import img1 from 'assets/images/photos/12.jpg';
-import img2 from 'assets/images/photos/14.jpg';
-import img3 from 'assets/images/photos/15.jpg';
+const Hero4 = () => {
+    const dispatch = useDispatch();
 
-const Hero = () => {
     return (
-        <section className="hero-4 pb-5 pt-7 py-sm-7">
+        <section className="hero-4 bg-soft-success pt-7 pb-3 py-sm-7 overflow-hidden">
             <Container>
                 <Row className="align-items-center">
-                    <Col lg={6} md={6}>
-                        <h1 className="hero-title mt-0">
-                            We’re more than just a Team
-                            <span className="highlight highlight-success d-inline-block"></span>
-                        </h1>
-                        <p className="fs-16 text-muted pt-3 w-75">
-                            Mission-driven force committed to transforming lives through Mental Health and Education
-                            initiatives. Our projects are rooted in compassion, innovation, and measurable impact.
-                        </p>
-                        <div className="pt-4 pb-md-5 mb-md-4">
-                            <Link to="/contact" className="btn btn-success mb-2" data-toggle="smooth-scroll">
-                                Contact Us
-                            </Link>
-                        </div>
-                    </Col>
-                    <Col lg={6} md={6}>
-                        <div className="img-container text-end ps-lg-5" data-aos="zoom-in">
-                            <Row className="align-items-center mt-md-0 mt-4">
-                                <Col xs={6}>
-                                    <Card className="shadow-lg">
-                                        <Card.Body className="p-1">
-                                            <img
-                                                src={
-                                                    'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642077_office1.webp'
-                                                }
-                                                className="img-fluid"
-                                                alt=""
-                                            />
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col xs={6}>
-                                    <Row>
-                                        <Col>
-                                            <Card className="shadow-lg">
-                                                <Card.Body className="p-1">
-                                                    <img
-                                                        src={
-                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642378_office2.webp'
-                                                        }
-                                                        className="img-fluid"
-                                                        alt=""
-                                                    />
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Card className="shadow-lg">
-                                                <Card.Body className="p-1 mb-0">
-                                                    <img
-                                                        src={
-                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp'
-                                                        }
-                                                        className="img-fluid"
-                                                        alt=""
-                                                    />
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                        </div>
-                    </Col>
+                    <h1 className="hero-title">We’re more than just a Team</h1>
+                    <p className="mt-4 fs-17">
+                        Mission-driven force committed to transforming lives through Mental Health and Education
+                        initiatives. Our projects are rooted in compassion, innovation, and measurable impact.
+                    </p>
+                    <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
+                        <Col>
+                            <div className="slider">
+                                <MovingImageTrain
+                                    images={[
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642375_vopateam.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642378_office2.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758713972062_1000073126.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758800214830_media-14.jpg',
+                                    ]}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
                 </Row>
+                <div className=" pt-sm-5">
+                    <Link className="mt-sm-2" to="/contact-us">
+                        <Button variant="success" className=" mb-2 ms-2">
+                            Contact Us
+                        </Button>
+                    </Link>
+                </div>
             </Container>
             <div className="shape bottom">
                 <svg
@@ -100,4 +60,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default Hero4;

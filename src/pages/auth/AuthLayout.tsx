@@ -32,7 +32,7 @@ const AuthLayout = ({ hasSlider, children, bottomLinks }: AuthLayoutProps) => {
                                             <div className="mx-auto mb-5">
                                                 <Link to="/" className="d-flex">
                                                     <img
-                                                        src="/images/logo.webp"
+                                                        src="/logo.webp"
                                                         alt="logo"
                                                         height="30"
                                                         className="align-self-center"

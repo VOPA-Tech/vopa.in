@@ -2,7 +2,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 // components
-import { Navbar1, Navbar3 } from 'components/navbars';
+import { Navbar3 } from 'components/navbars';
 
 import { Footer1, Footer2 } from 'components/footer';
 import BackToTop from 'components/BackToTop';

@@ -28,7 +28,7 @@ const BlogPost = () => {
     useEffect(() => {
         if (!isBlogsLoading && blogs.length) {
             const found = blogs.find((b) => b.slug === id);
-            console.log('Hii Ia m Blog', found);
+
             setBlog(found || null);
         }
     }, [id, blogs, isBlogsLoading]);

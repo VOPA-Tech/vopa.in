@@ -29,7 +29,6 @@ export const login = createAsyncThunk<
 >('auth/login', async ({ email, password }, { rejectWithValue }) => {
     try {
         const response = await loginApi({ email, password });
-        console.log('✅ Login response:', response.data);
 
         if (!response || !response.data) {
             return rejectWithValue('No response from server');

@@ -15,7 +15,6 @@ export type Broucher = {
 const Brouchers = () => {
     const dispatch: any = useDispatch();
     const { brouchers } = useSelector((state: any) => state.brouchersState);
-    console.log('Brouchers:', brouchers);
 
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);

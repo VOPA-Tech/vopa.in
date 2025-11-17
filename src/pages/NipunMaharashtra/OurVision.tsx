@@ -30,7 +30,7 @@ const impactData = [
     },
     {
         start: 1,
-        end: 5,
+        end: 3,
         suffix: 'M+',
         prefix: '',
         title: 'Guardians',

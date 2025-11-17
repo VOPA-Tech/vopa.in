@@ -11,6 +11,7 @@ const Logout = React.lazy(() => import('../pages/auth/Logout'));
 
 // Projects
 const Vschool = React.lazy(() => import('../pages/Vschool'));
+const Saiyam = React.lazy(() => import('../pages/Saiyam'));
 const DLP = React.lazy(() => import('../pages/DigitalLearningProgram'));
 const MYCA = React.lazy(() => import('../pages/MYCA'));
 const NipunMaharashtra = React.lazy(() => import('../pages/NipunMaharashtra'));
@@ -32,6 +33,8 @@ const Events = React.lazy(() => import('../pages/NewsAndMedia/Events'));
 const MediaKit = React.lazy(() => import('../pages/NewsAndMedia/MediaKit'));
 const VopaHome = React.lazy(() => import('../pages/vopaHome'));
 const About = React.lazy(() => import('../pages/About'));
+const AllSites = React.lazy(() => import('../pages/AllSites'));
+const Donate = React.lazy(() => import('../pages/Donate'));
 const Contact = React.lazy(() => import('../pages/Contact'));
 const Career = React.lazy(() => import('../pages/Career'));
 
@@ -52,8 +55,15 @@ const MediaCutoutsCMS = React.lazy(() => import('../pages/account/Content/MediaC
 const MediaKitCMS = React.lazy(() => import('../pages/account/Content/MediaKit/index'));
 const MagzinesCMS = React.lazy(() => import('../pages/account/Content/Magazines/index'));
 const BrouchersCMS = React.lazy(() => import('../pages/account/Content/Brouchers/index'));
+const WebsiteFeedbacksCMS = React.lazy(() => import('../pages/account/Content/WebsiteFeedbacks/index'));
+const ContactFormCMS = React.lazy(() => import('../pages/account/Content/ContactForm/index'));
+const VolunteerFormCMS = React.lazy(() => import('../pages/account/Content/VolunteerForm/index'));
+
 // Terms and Policies
-const NipunMaharashtraTermsAndPolicies = React.lazy(() => import('../pages/TermsAndPolicies'));
+const NipunMaharashtraTermsAndPolicies = React.lazy(
+    () => import('../pages/UserAgreements/PrivacyPoliciesNipunMaharashtra')
+);
+const NipunMaharashtraTermsOfUsage = React.lazy(() => import('../pages/UserAgreements/TermsOfUseNipunMaharashtra'));
 
 const loading = () => <div className=""></div>;
 
@@ -74,6 +84,14 @@ const AllRoutes = () => {
             element: <LoadComponent component={VopaHome} />,
         },
         {
+            path: '/all-sites',
+            element: <LoadComponent component={AllSites} />,
+        },
+        {
+            path: '/donate',
+            element: <LoadComponent component={Donate} />,
+        },
+        {
             path: '/about',
             element: <LoadComponent component={About} />,
         },
@@ -83,15 +101,15 @@ const AllRoutes = () => {
             element: <LoadComponent component={BlogPost} />,
         },
         {
-            path: '/career',
+            path: '/join-us',
             element: <LoadComponent component={Career} />,
         },
         {
-            path: '/careers/:id',
+            path: '/join-us/:id',
             element: <LoadComponent component={JobDetails} />, // the shareable details page
         },
         {
-            path: '/contact',
+            path: '/contact-us',
             element: <LoadComponent component={Contact} />,
         },
         {
@@ -118,7 +136,7 @@ const AllRoutes = () => {
                     children: [
                         { path: 'magazines', element: <LoadComponent component={Magazines} /> },
                         { path: 'blogs', element: <LoadComponent component={Blogs} /> },
-                        { path: 'brouchers', element: <LoadComponent component={Brouchers} /> },
+                        { path: 'brochures', element: <LoadComponent component={Brouchers} /> },
                     ],
                 },
                 {
@@ -155,6 +173,7 @@ const AllRoutes = () => {
                     path: 'projects',
                     children: [
                         { path: 'vschool', element: <LoadComponent component={Vschool} /> },
+                        { path: 'saiyam', element: <LoadComponent component={Saiyam} /> },
                         { path: 'nipun-maharashtra', element: <LoadComponent component={NipunMaharashtra} /> },
                         { path: 'digital-learning-project', element: <LoadComponent component={DLP} /> },
                         { path: 'myca', element: <LoadComponent component={MYCA} /> },
@@ -167,6 +186,10 @@ const AllRoutes = () => {
                         {
                             path: 'nipun-maharashtra',
                             element: <LoadComponent component={NipunMaharashtraTermsAndPolicies} />,
+                        },
+                        {
+                            path: 'nipun-maharashtra-terms',
+                            element: <LoadComponent component={NipunMaharashtraTermsOfUsage} />,
                         },
                     ],
                 },
@@ -209,6 +232,18 @@ const AllRoutes = () => {
                                 { path: 'employees', element: <LoadComponent component={EmployeesCMS} /> },
                                 { path: 'vacancies', element: <LoadComponent component={VacanciesCMS} /> },
                                 { path: 'jobs', element: <LoadComponent component={JobsCMS} /> },
+                                {
+                                    path: 'website-feedbacks',
+                                    element: <LoadComponent component={WebsiteFeedbacksCMS} />,
+                                },
+                                {
+                                    path: 'contact-form',
+                                    element: <LoadComponent component={ContactFormCMS} />,
+                                },
+                                {
+                                    path: 'volunteer-form',
+                                    element: <LoadComponent component={VolunteerFormCMS} />,
+                                },
                             ],
                         },
                     ],

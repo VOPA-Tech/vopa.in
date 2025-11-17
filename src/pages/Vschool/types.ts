@@ -20,3 +20,11 @@ export type PlanFeature = {
     professional: Availability;
     enterprise: Availability;
 };
+
+export type Project = {
+    field: string;
+    title: string;
+    description: string;
+    image: string;
+    link: string;
+};

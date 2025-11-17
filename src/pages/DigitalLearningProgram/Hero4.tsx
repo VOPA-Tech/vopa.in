@@ -1,54 +1,53 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
-
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
+import MovingImageTrain from './MovingImageTrain';
 
 const Hero4 = () => {
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     return (
-        <section className="hero-4 bg-soft-warning pt-7 pb-3 py-sm-7 overflow-hidden">
+        <section className="hero-4 bg-soft-success pt-7 pb-3 py-sm-7 overflow-hidden">
             <Container>
                 <Row className="align-items-center">
-                    <Col lg={5} md={6}>
-                        <h1 className="hero-title">
-                            <span className=" d-inline-block">Digital Learning Project</span>{' '}
-                        </h1>
-                        <p className="mt-4 fs-17">
-                            The Digital Learning Project (DLP) is VOPA’s groundbreaking initiative, revolutionizing
-                            education in low-resource schools in Pune. We’re creating a new paradigm for learning in 20
-                            schools by enhancing teacher methodologies, upgrading infrastructure, implementing regular
-                            assessments, and providing supplementary education through our V-School app-all of it
-                            together. VOPA’s holistic & focused approach in solving for all stakeholders has shown
-                            tremendous success.
-                        </p>
-                        <div className="pt-3 pt-sm-5">
-                            <Button
-                                onClick={() => {
-                                    navigate('/contact');
-                                }}
-                                variant="success">
-                                Explore Our Tools
+                    <h1 className="hero-title">Digital Learning Project</h1>
+                    <p className="mt-4 fs-17">
+                        The Digital Learning Project (DLP) is VOPA’s groundbreaking initiative, revolutionizing
+                        education in low-resource schools in Pune. We’re creating a new paradigm for learning in 20
+                        schools by enhancing teacher methodologies, upgrading infrastructure, implementing regular
+                        assessments, and providing supplementary education through our V-School app-all of it together.
+                        VOPA’s holistic & focused approach in solving for all stakeholders has shown tremendous success.
+                    </p>
+                    <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
+                        <Col>
+                            <div className="slider">
+                                <MovingImageTrain
+                                    images={[
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506874786_shared-image-11.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506877675_media-34.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506878647_media-33.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506880406_media-35.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506880785_shared-image-13.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506881383_img_20250425_144702-1.jpg',
+                                    ]}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
+                    <div className="pt-3 pt-sm-5">
+                        <Button
+                            className="mb-2"
+                            variant="success"
+                            onClick={() => dispatch(setIsDonationModalOpen(true))}>
+                            Support a Child’s Education
+                        </Button>
+                        <Link className="mt-sm-2" to="/contact-us">
+                            <Button variant="outline-success" className="me-2 mb-2 ms-2">
+                                Join as a Volunteer
                             </Button>
-                            <Button
-                                onClick={() => {
-                                    navigate('/contact');
-                                }}
-                                variant="outline-success"
-                                className="ms-2">
-                                Partner With Us
-                            </Button>
-                        </div>
-                    </Col>
-                    <Col lg={7} md={6}>
-                        <div className="img-container text-end pt-5 pt-sm-0">
-                            <img
-                                src="https://uploads.justech-ai.in/vopa-website/DLPPage/1758256222666_alltab.webp"
-                                alt="Nipun Maharashtra"
-                                className="img-fluid rounded-3 shadow-lg"
-                                data-aos="fade-left"
-                                data-aos-duration="1000"
-                            />
-                        </div>
-                    </Col>
+                        </Link>
+                    </div>
                 </Row>
             </Container>
             <div className="shape bottom">

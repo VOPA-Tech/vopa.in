@@ -17,7 +17,7 @@ export const getMediaMentionById = createAsyncThunk('mediaMentions/getById', asy
 
 export const addMediaMention = createAsyncThunk('mediaMentions/add', async (payload: any) => {
     const res = await axios.post(BASE_URL, payload);
-    console.log('MediaMentions not populating', res.data);
+
     return res.data;
 });
 

@@ -1,5 +1,5 @@
 // components
-import { Navbar1, Navbar3 } from 'components/navbars';
+import { Navbar3 } from 'components/navbars';
 import BackToTop from 'components/BackToTop';
 import { Footer1, Footer2 } from 'components/footer';
 

@@ -1,9 +1,7 @@
-import { useMemo, useRef } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Badge, Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
 
 type JobContentProps = { job: any };
 
@@ -11,9 +9,7 @@ const APPLY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScM6CEiwnfAutSDHOwR1
 
 const JobContent = ({ job }: JobContentProps) => {
     const jobs: any[] = useSelector((state: any) => state.jobsState.jobs ?? []);
-
-    const printRef = useRef<HTMLDivElement>(null);
-    const downloadingRef = useRef(false);
+    const [copied, setCopied] = useState(false);
 
     const otherJobs = useMemo(() => {
         if (!Array.isArray(jobs)) return [];
@@ -25,63 +21,24 @@ const JobContent = ({ job }: JobContentProps) => {
     const fmtEmp = (t?: string) => (t ? t.replace('-', ' ') : undefined);
     const fmtDate = (d?: string | Date | null) => (d ? new Date(d).toLocaleDateString() : undefined);
 
-    const downloadPdf = async () => {
-        if (!printRef.current || !job) return;
-        if (downloadingRef.current) return;
-        downloadingRef.current = true;
-
-        // Create an offscreen clone to control layout for export
-        const host = document.createElement('div');
-        host.style.position = 'fixed';
-        host.style.left = '-99999px';
-        host.style.top = '0';
-        host.style.width = '800px'; // export width target
-        host.style.background = '#ffffff';
-        document.body.appendChild(host);
-
-        const clone = printRef.current.cloneNode(true) as HTMLElement;
-
-        // 1) Remove ALL images from the PDF export
-        clone.querySelectorAll('img').forEach((img) => img.remove());
-
-        // 2) Tighten layout so it fits on one page before scaling
-        clone.style.margin = '0';
-        clone.style.padding = '0';
-        clone.style.fontSize = '12px';
-        clone.style.lineHeight = '1.4';
-
-        host.appendChild(clone);
-
+    const handleShare = async () => {
         try {
-            const canvas = await html2canvas(clone, {
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                logging: false,
-                backgroundColor: '#ffffff',
-                windowWidth: clone.scrollWidth,
-            });
-
-            const pdf = new jsPDF('p', 'pt', 'a4');
-            const pageW = pdf.internal.pageSize.getWidth();
-            const pageH = pdf.internal.pageSize.getHeight();
-            const margin = 28; // ~1cm
-            const availW = pageW - margin * 2;
-            const availH = pageH - margin * 2;
-
-            // Fit the snapshot to a single page
-            const ratio = Math.min(availW / canvas.width, availH / canvas.height);
-            const imgW = canvas.width * ratio;
-            const imgH = canvas.height * ratio;
-
-            const imgData = canvas.toDataURL('image/jpeg', 0.92);
-            pdf.addImage(imgData, 'JPEG', margin, margin, imgW, imgH);
-
-            const filename = `${(job.title || 'Job_Description').replace(/[^\w\s-]/g, '').replace(/\s+/g, '_')}.pdf`;
-            pdf.save(filename);
-        } finally {
-            document.body.removeChild(host);
-            downloadingRef.current = false;
+            const url = window.location.href;
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                // Fallback for older browsers / non-secure context
+                const input = document.createElement('input');
+                input.value = url;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+            }
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        } catch {
+            // no-op
         }
     };
 
@@ -91,43 +48,35 @@ const JobContent = ({ job }: JobContentProps) => {
                 <Row className="g-4">
                     {/* LEFT: Job details */}
                     <Col lg={8}>
-                        {/* Only this content is exported (images are stripped in clone) */}
-                        <div ref={printRef}>
+                        <div>
                             <div className="d-flex flex-wrap align-items-center gap-2 mb-3">
+                                {job?.department && (
+                                    <Badge bg="" className="badge-soft-info">
+                                        {job.department}
+                                    </Badge>
+                                )}
                                 {job?.isActive ? (
                                     <Badge bg="success">Active</Badge>
                                 ) : (
                                     <Badge bg="secondary">Closed</Badge>
                                 )}
-                                {job?.department && (
-                                    <Badge bg="info" text="dark">
-                                        {job.department}
-                                    </Badge>
-                                )}
-                                {job?.employmentType && (
-                                    <Badge bg="light" text="dark">
-                                        {fmtEmp(job.employmentType)}
-                                    </Badge>
-                                )}
-                                {job?.location && <Badge bg="secondary">{job.location}</Badge>}
+
                                 {job?.applicationDeadline && (
                                     <Badge bg="light" text="dark">
                                         Apply by {fmtDate(job.applicationDeadline)}
                                     </Badge>
                                 )}
+                                {job?.employmentType && (
+                                    <Badge bg="light" text="dark">
+                                        <Link to="#">{job?.employmentType?.replace('-', ' ') || 'Position'}</Link>
+                                    </Badge>
+                                )}
+                                {job?.location && (
+                                    <Badge bg="light" text="dark">
+                                        {job?.location && <div className="text-muted small">📍 {job.location}</div>}
+                                    </Badge>
+                                )}
                             </div>
-
-                            {/* Keep image in UI, but it's removed for PDF in the clone */}
-                            {job?.thumbnailUrl && (
-                                <figure className="figure">
-                                    <img
-                                        src={job.thumbnailUrl}
-                                        alt="Job Thumbnail"
-                                        className="figure-img img-fluid rounded"
-                                        style={{ maxHeight: 320, objectFit: 'cover', width: '100%' }}
-                                    />
-                                </figure>
-                            )}
 
                             <Row className="g-3 mb-4">
                                 {job?.noOfVacancies != null && (
@@ -178,12 +127,12 @@ const JobContent = ({ job }: JobContentProps) => {
                                 Apply Now
                             </Button>
 
-                            <Button variant="outline-secondary" onClick={downloadPdf} disabled={!job}>
-                                Download JD (PDF)
+                            <Button variant="outline-info" onClick={handleShare}>
+                                {copied ? 'Copied!' : 'Share'}
                             </Button>
 
                             <Button variant="light" className="border">
-                                <Link to="/career">Back to Careers</Link>
+                                <Link to="/join-us">Back</Link>
                             </Button>
                         </div>
                     </Col>
@@ -194,74 +143,75 @@ const JobContent = ({ job }: JobContentProps) => {
                         <div className="d-flex flex-column gap-3">
                             {otherJobs.length === 0 && <div className="text-muted small">No other jobs available.</div>}
 
-                            {otherJobs.map((j) => (
-                                <Card key={j._id || j.slug || j.title} className="border-0 shadow-sm">
-                                    <Card.Body className="p-3">
-                                        <div className="d-flex gap-3">
-                                            {j?.thumbnailUrl ? (
-                                                <img
-                                                    src={j.thumbnailUrl}
-                                                    alt={j.title}
-                                                    style={{
-                                                        width: 56,
-                                                        height: 56,
-                                                        objectFit: 'cover',
-                                                        borderRadius: 8,
-                                                        flex: '0 0 auto',
-                                                    }}
-                                                />
-                                            ) : (
-                                                <div
-                                                    style={{
-                                                        width: 56,
-                                                        height: 56,
-                                                        background: '#eee',
-                                                        borderRadius: 8,
-                                                        flex: '0 0 auto',
-                                                    }}
-                                                />
-                                            )}
+                            {otherJobs.map((j, idx) => (
+                                <React.Fragment key={j._id || j.slug || j.title}>
+                                    <div className="d-flex align-items-center gap-3 py-2">
+                                        {j?.thumbnailUrl ? (
+                                            <img
+                                                src={j.thumbnailUrl}
+                                                alt={j.title}
+                                                style={{
+                                                    width: 56,
+                                                    height: 56,
+                                                    objectFit: 'cover',
+                                                    borderRadius: 8,
+                                                    flex: '0 0 auto',
+                                                }}
+                                            />
+                                        ) : (
+                                            <div
+                                                style={{
+                                                    width: 56,
+                                                    height: 56,
+                                                    background: '#eee',
+                                                    borderRadius: 8,
+                                                    flex: '0 0 auto',
+                                                }}
+                                            />
+                                        )}
 
-                                            <div className="flex-grow-1">
-                                                <h6 className="mb-1">
-                                                    <Link
-                                                        to={`/careers/${j.slug || j._id}`}
-                                                        className="text-decoration-none">
-                                                        {j.title}
-                                                    </Link>
-                                                </h6>
+                                        <div className="flex-grow-1">
+                                            <h6 className="mb-1">
+                                                <Link
+                                                    to={`/join-us/${j.slug || j._id}`}
+                                                    className="text-decoration-none">
+                                                    {j.title}
+                                                </Link>
+                                            </h6>
 
-                                                <div className="text-muted small">
-                                                    {j.department && <span>{j.department}</span>}
-                                                    {j.location && (
-                                                        <span className={j.department ? 'ms-2' : ''}>
-                                                            • {j.location}
-                                                        </span>
-                                                    )}
-                                                    {j.employmentType && (
-                                                        <span className="ms-2">• {fmtEmp(j.employmentType)}</span>
-                                                    )}
-                                                </div>
+                                            <div className="text-muted small">
+                                                {j.department && <span>{j.department}</span>}
+                                                {j.location && (
+                                                    <span className={j.department ? 'ms-2' : ''}>• {j.location}</span>
+                                                )}
+                                                {j.employmentType && (
+                                                    <span className="ms-2">• {fmtEmp(j.employmentType)}</span>
+                                                )}
+                                            </div>
 
-                                                <div className="d-flex gap-2 mt-2">
-                                                    <Button
-                                                        size="sm"
-                                                        variant="outline-primary"
-                                                        as="a"
-                                                        href={APPLY_URL}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        disabled={j?.isActive === false}>
-                                                        Apply
-                                                    </Button>
-                                                    <Button size="sm" variant="light" className="border">
-                                                        <Link to={`/careers/${j.slug || j._id}`}>View</Link>
-                                                    </Button>
-                                                </div>
+                                            <div className="d-flex gap-2 mt-2">
+                                                <Button
+                                                    size="sm"
+                                                    variant="outline-primary"
+                                                    as="a"
+                                                    href={APPLY_URL}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    disabled={j?.isActive === false}>
+                                                    Apply
+                                                </Button>
+                                                <Button size="sm" variant="light" className="border">
+                                                    <Link to={`/join-us/${j.slug || j._id}`}>View</Link>
+                                                </Button>
                                             </div>
                                         </div>
-                                    </Card.Body>
-                                </Card>
+                                    </div>
+
+                                    {/* visible separator between items */}
+                                    {idx !== otherJobs.length - 1 && (
+                                        <div className="border-top my-2" style={{ borderColor: '#dee2e6' }} />
+                                    )}
+                                </React.Fragment>
                             ))}
                         </div>
                     </Col>

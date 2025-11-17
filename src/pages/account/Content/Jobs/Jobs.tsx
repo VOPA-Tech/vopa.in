@@ -34,6 +34,8 @@ const Jobs = () => {
     const [editingJob, setEditingJob] = useState<Job | null>(null);
     const [viewingJob, setViewingJob] = useState<Job | null>(null);
 
+    const [thumbnailError, setThumbnailError] = useState(false);
+
     const [form, setForm] = useState<Job>({
         title: '',
         department: '',
@@ -68,6 +70,7 @@ const Jobs = () => {
             salary: '',
             applicationDeadline: '',
         });
+        setThumbnailError(false);
     };
 
     const handleAdd = () => {
@@ -89,6 +92,7 @@ const Jobs = () => {
             experience: job.experience ?? 0,
             isActive: !!job.isActive,
         });
+        setThumbnailError(false);
         setShowModal(true);
     };
 
@@ -101,6 +105,13 @@ const Jobs = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // THUMBNAIL REQUIRED
+        if (!form.thumbnailUrl) {
+            setThumbnailError(true);
+            return;
+        }
+
         const payload = {
             ...form,
             noOfVacancies: Number(form.noOfVacancies) || 0,
@@ -235,10 +246,17 @@ const Jobs = () => {
                                     </Form.Group>
                                 </Col>
 
-                                {/* Thumbnail */}
+                                {/* THUMBNAIL REQUIRED */}
                                 <Col md={6}>
                                     <Form.Group className="mb-2">
-                                        <Form.Label>Thumbnail</Form.Label>
+                                        <Form.Label>
+                                            Thumbnail <span className="text-danger">*</span>
+                                        </Form.Label>
+
+                                        {!form.thumbnailUrl && (
+                                            <input type="text" required value="" style={{ display: 'none' }} />
+                                        )}
+
                                         <div className="d-flex align-items-center gap-3">
                                             {form.thumbnailUrl ? (
                                                 <img
@@ -249,6 +267,7 @@ const Jobs = () => {
                                                         height: 60,
                                                         borderRadius: 4,
                                                         objectFit: 'cover',
+                                                        border: '2px solid #28a745',
                                                     }}
                                                 />
                                             ) : (
@@ -256,8 +275,9 @@ const Jobs = () => {
                                                     style={{
                                                         width: 60,
                                                         height: 60,
-                                                        backgroundColor: '#eee',
                                                         borderRadius: 4,
+                                                        border: '2px solid red',
+                                                        backgroundColor: '#eee',
                                                         display: 'flex',
                                                         alignItems: 'center',
                                                         justifyContent: 'center',
@@ -267,10 +287,15 @@ const Jobs = () => {
                                                     No image
                                                 </div>
                                             )}
+
                                             <Button size="sm" onClick={() => setShowImagePicker(true)}>
                                                 Choose
                                             </Button>
                                         </div>
+
+                                        {thumbnailError && (
+                                            <small className="text-danger">Thumbnail is required.</small>
+                                        )}
                                     </Form.Group>
                                 </Col>
 
@@ -380,7 +405,10 @@ const Jobs = () => {
                             <Button variant="secondary" onClick={() => setShowModal(false)}>
                                 Cancel
                             </Button>
-                            <Button type="submit">{isEditing ? 'Update' : 'Add'}</Button>
+
+                            <Button type="submit" disabled={!form.thumbnailUrl}>
+                                {isEditing ? 'Update' : 'Add'}
+                            </Button>
                         </Modal.Footer>
                     </Form>
                 </Container>
@@ -449,6 +477,7 @@ const Jobs = () => {
                     onClose={() => setShowImagePicker(false)}
                     onSelect={(url) => {
                         setForm((prev) => ({ ...prev, thumbnailUrl: url }));
+                        setThumbnailError(false);
                         setShowImagePicker(false);
                     }}
                 />

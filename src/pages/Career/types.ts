@@ -19,3 +19,8 @@ export type Vacancy = {
 
     jobs: { link?: string; designation: string; type: string }[];
 };
+export type InterviewStep = {
+    icon: string;
+    title: string;
+    description: string;
+};

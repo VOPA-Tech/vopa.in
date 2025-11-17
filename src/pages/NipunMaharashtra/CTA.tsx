@@ -14,7 +14,7 @@ const CTA = () => {
                                 NGO’s, Government Bodies who seek to understand how they can use our innovations
                                 themselves, do contact us.
                             </p>
-                            <Link to="/contact" className="btn btn-outline-success mt-4">
+                            <Link to="/contact-us" className="btn btn-outline-success mt-4">
                                 Partner with us.
                             </Link>
                         </Card.Body>

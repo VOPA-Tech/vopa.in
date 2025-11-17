@@ -23,15 +23,15 @@
     width: 100%;
     height: 100%;
     background: #020024;
-    background: linear-gradient(90deg, hsla(186, 33%, 94%, 0.95) 0%, hsla(216, 41%, 79%, 0.95) 100%);
+    background: linear-gradient(90deg, hsla(186, 33%, 94%, 0.92) 0%, hsla(216, 41%, 79%, 0.95) 100%);
 
-    // background-color: rgba(243, 248, 196, 0.7); /* Black overlay with 30% opacity */
+    // background-color: rgba(243, 248, 196, 0.9); /* Black overlay with 30% opacity */
     pointer-events: none; /* Allows clicks on underlying content */
 }
 
-.bg-nav-texture {
+.bg-paper-texture-dark {
     position: relative;
-    background-image: url('/assets/images/school-paper.jpg');
+    background-image: url('/assets/images/school-paper-dark.jpg');
     background-size: contain;
     // background-position: center;
     // background-repeat: no-repeat;
@@ -41,7 +41,7 @@
 }
 
 /* Overlay using ::before */
-.bg-nav-texture::before {
+.bg-paper-texture-dark::before {
     content: '';
     position: absolute;
     top: 0;
@@ -49,8 +49,34 @@
     width: 100%;
     height: 100%;
     background: #020024;
-    background: linear-gradient(90deg, hsla(186, 33%, 94%, 0.95) 0%, hsla(216, 41%, 79%, 0.95) 100%);
+    background: linear-gradient(90deg, hsla(240, 2%, 12%, 0.92) 0%, hsla(215, 39%, 23%, 0.95) 100%);
 
-    // background-color: rgba(243, 248, 196, 0.7); /* Black overlay with 30% opacity */
+    // background-color: rgba(243, 248, 196, 0.9); /* Black overlay with 30% opacity */
+    pointer-events: none; /* Allows clicks on underlying content */
+}
+
+.bg-media-texture-dark {
+    position: relative;
+    background-image: url('https://uploads.justech-ai.in/vopa-website/websiteHomepage/1762342500437_chatgpt-image-sep-27-2025-03_00_37-pm.webp');
+    background-size: contain;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    width: 100%;
+    // height: 300px; /* Adjust as needed */
+    overflow: hidden; /* To contain pseudo-element */
+}
+
+/* Overlay using ::before */
+.bg-media-texture-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e4e4ef;
+    background: linear-gradient(90deg, hsla(240, 2%, 12%, 0.8) 0%, hsla(215, 39%, 23%, 0.8) 100%);
+
+    // background-color: rgba(243, 248, 196, 0.9); /* Black overlay with 30% opacity */
     pointer-events: none; /* Allows clicks on underlying content */
 }

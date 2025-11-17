@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Badge, Button, Card, Col, Container, Modal, Row } from 'react-bootstrap';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
-import { Link } from 'react-router-dom';
+import FeatherIcon from 'feather-icons-react';
 
 type Job = {
+    _id?: string;
     slug?: string;
     title: string;
     department?: string;
@@ -26,15 +25,13 @@ type JobsProps = {
 const APPLY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScM6CEiwnfAutSDHOwR1B2ra1DPsrpyj6KYR3MfyZnfIg8iyw/viewform';
 
 const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
-    // Make sure jsPDF.html can find html2canvas
-    useEffect(() => {
-        (window as any).html2canvas = html2canvas;
-    }, []);
-
     const rows = useMemo(() => (Array.isArray(jobs) ? jobs : []), [jobs]);
     const [show, setShow] = useState(false);
     const [activeJob, setActiveJob] = useState<Job | null>(null);
     const printRef = useRef<HTMLDivElement>(null);
+
+    // track which card just copied
+    const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
     if (!rows.length) return null;
 
@@ -52,25 +49,28 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
         date: (d?: string | Date | null) => (d ? new Date(d).toLocaleDateString() : '-'),
     };
 
-    const plainText = (html?: string, max = 180) => {
-        const text = (html || '')
-            .replace(/<[^>]+>/g, ' ')
-            .replace(/\s+/g, ' ')
-            .trim();
-        return text.length > max ? text.slice(0, max - 1) + '…' : text;
-    };
+    const cardKey = (job: Job) => job.slug || job._id || job.title;
 
-    const handleDownloadPdf = async () => {
-        if (!printRef.current || !activeJob) return;
-        const doc = new jsPDF('p', 'pt', 'a4');
-        await doc.html(printRef.current, {
-            x: 28,
-            y: 28,
-            width: 539,
-            windowWidth: 900,
-            html2canvas: { scale: 2 },
-        });
-        doc.save(`${activeJob.title}.pdf`);
+    const copyLink = async (job: Job) => {
+        const slugOrId = job.slug || job._id || '';
+        const url = `${window.location.origin}/careers/${slugOrId}`;
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(url);
+            } else {
+                const input = document.createElement('input');
+                input.value = url;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+            }
+            const key = cardKey(job);
+            setCopiedKey(key);
+            setTimeout(() => setCopiedKey((k) => (k === key ? null : k)), 1400);
+        } catch {
+            // no-op
+        }
     };
 
     const fixedImage =
@@ -87,90 +87,113 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
                 </Row>
 
                 <Row className="mt-4 g-4">
-                    {rows.map((job) => (
-                        <Col key={job.slug || job.title} xs={12} md={6} lg={4}>
-                            <Card className="h-100 shadow-sm border-2 rounded">
-                                {job.thumbnailUrl ? (
-                                    <Card.Img
-                                        variant="top"
-                                        src={job.thumbnailUrl}
-                                        alt={job.title}
-                                        style={{ height: 160, objectFit: 'cover' }}
-                                    />
-                                ) : null}
-                                <Card.Body className="d-flex flex-column">
-                                    <div className="d-flex align-items-center gap-2 mb-2">
-                                        {job.isActive ? (
-                                            <Badge bg="success">Active</Badge>
+                    {rows
+                        .filter((job: any) => job.isActive)
+                        .map((job) => (
+                            <Col key={job.slug || job.title} xs={12} md={6} lg={4}>
+                                {/* Card with background image */}
+                                <Card className="h-100 shadow-sm border-2 rounded position-relative overflow-hidden">
+                                    {job.thumbnailUrl && (
+                                        <div
+                                            aria-hidden
+                                            className="position-absolute top-0 start-0 w-100 h-100"
+                                            style={{
+                                                backgroundImage: `linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url(${job.thumbnailUrl})`,
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center',
+                                                filter: 'grayscale(10%)',
+                                                pointerEvents: 'none',
+                                            }}
+                                        />
+                                    )}
+
+                                    {/* Share button / copied indicator */}
+                                    <div className="position-absolute top-0 end-0 p-2" style={{ zIndex: 2 }}>
+                                        {copiedKey === cardKey(job) ? (
+                                            <span className="badge bg-success">Copied!</span>
                                         ) : (
-                                            <Badge bg="secondary">Closed</Badge>
+                                            <button
+                                                type="button"
+                                                className="btn btn-outline btn-sm rounded-circle "
+                                                aria-label="Copy share link"
+                                                onClick={() => copyLink(job)}
+                                                title="Copy share link">
+                                                <FeatherIcon icon="share-2" size={16} />
+                                            </button>
                                         )}
-                                        {job.department ? (
-                                            <Badge bg="info" text="dark">
-                                                {job.department}
-                                            </Badge>
-                                        ) : null}
-                                        {job.employmentType ? (
-                                            <Badge bg="light" text="dark">
-                                                {fmt.emp(job.employmentType)}
-                                            </Badge>
-                                        ) : null}
                                     </div>
 
-                                    <Card.Title className="mb-1">{job.title}</Card.Title>
+                                    <Card.Body className="d-flex flex-column position-relative" style={{ zIndex: 1 }}>
+                                        <div className="d-flex align-items-center gap-2 mb-2">
+                                            {job.isActive ? (
+                                                <Badge bg="success">Active</Badge>
+                                            ) : (
+                                                <Badge bg="secondary">Closed</Badge>
+                                            )}
+                                            {job.department ? (
+                                                <Badge bg="soft-info" text="dark">
+                                                    {job.department}
+                                                </Badge>
+                                            ) : null}
+                                            {job.employmentType ? (
+                                                <Badge bg="light" text="dark">
+                                                    {fmt.emp(job.employmentType)}
+                                                </Badge>
+                                            ) : null}
+                                        </div>
 
-                                    <div className="text-muted small mb-2">
-                                        {job.location ? <span>📍 {job.location}</span> : null}
-                                        {job.applicationDeadline ? (
-                                            <span className="ms-2">
-                                                ⏳ Apply by {fmt.date(job.applicationDeadline)}
-                                            </span>
-                                        ) : null}
-                                    </div>
+                                        <Card.Title className="mb-1">{job.title}</Card.Title>
 
-                                    <Card.Text className="text-muted mb-3" style={{ minHeight: 60 }}>
-                                        {plainText(job.content)}
-                                    </Card.Text>
+                                        <div className="text-muted small mb-2">
+                                            {job.location ? <span>📍 {job.location}</span> : null}
+                                            {job.applicationDeadline ? (
+                                                <span className="ms-2">
+                                                    ⏳ Apply by {fmt.date(job.applicationDeadline)}
+                                                </span>
+                                            ) : null}
+                                        </div>
 
-                                    <div className="mt-auto d-flex gap-2">
-                                        <Button
-                                            variant="primary"
-                                            className="flex-grow-1"
-                                            as="a"
-                                            href={APPLY_URL}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            disabled={job.isActive === false}>
-                                            Apply Now
-                                        </Button>
-                                        <Button
-                                            variant="outlined-secondary"
-                                            className="flex-grow-1"
-                                            as="a"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            disabled={job.isActive === false}>
-                                            <Link to={`/careers/${job.slug}`}>View Details</Link>
-                                        </Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))}
+                                        <div className="mt-auto d-flex gap-2">
+                                            <Button
+                                                variant="outline-info"
+                                                className="flex-grow-1"
+                                                as="a"
+                                                href={APPLY_URL}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                disabled={job.isActive === false}>
+                                                Apply Now
+                                            </Button>
+
+                                            <Button
+                                                variant="outline-info"
+                                                className="flex-grow-1"
+                                                as="a"
+                                                href={`/join-us/${job.slug || job._id}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                disabled={job.isActive === false}>
+                                                View Details
+                                            </Button>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))}
                 </Row>
             </Container>
 
             {/* fixed decorative image at right corner */}
             <img
-                src={fixedImage}
+                src="https://uploads.justech-ai.in/vopa-website/careerPage/1758612171489_screenshot_2025-09-23_125121-removebg-preview.png"
                 alt="careers"
                 style={{
                     position: 'fixed',
                     right: 24,
-                    bottom: 24,
+                    top: 84,
                     width: 140,
                     height: 'auto',
-                    opacity: 0.12,
+                    opacity: 0.22,
                     borderRadius: 12,
                     pointerEvents: 'none',
                     objectFit: 'cover',
@@ -178,7 +201,7 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
                 }}
             />
 
-            {/* Details Modal */}
+            {/* (Legacy) Details Modal retained as in your file */}
             <Modal show={show} onHide={closeModal} centered size="lg">
                 <Modal.Header closeButton>
                     <div className="w-100">
@@ -205,7 +228,6 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
                 </Modal.Header>
 
                 <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto' }}>
-                    {/* printable content wrapper */}
                     <div ref={printRef}>
                         {activeJob?.thumbnailUrl ? (
                             <img
@@ -256,9 +278,6 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
                 </Modal.Body>
 
                 <Modal.Footer className="d-flex justify-content-between">
-                    <Button variant="outline-secondary" onClick={handleDownloadPdf}>
-                        Download PDF
-                    </Button>
                     <div className="d-flex gap-2">
                         <Button variant="secondary" onClick={closeModal}>
                             Close

@@ -14,6 +14,9 @@ import mediaMentionsSlice from './mediaMentionsSlice';
 import mediaCutoutsSlice from './mediaCutoutsSlice';
 import mediaKitSlice from './mediaKitSlice';
 import pressReleaseSlice from './pressReleaseSlice';
+import websiteFeedbackSlice from './websiteFeedbackSlice';
+import contactFormSlice from './contactFormSlice';
+import volunteerFormSlice from './volunteerFormSlice';
 export const store = configureStore({
     reducer: {
         appState: appSlice,
@@ -31,6 +34,9 @@ export const store = configureStore({
         mediaCutoutsState: mediaCutoutsSlice,
         mediaKitState: mediaKitSlice,
         pressReleaseState: pressReleaseSlice,
+        websiteFeedbackState: websiteFeedbackSlice,
+        contactFormState: contactFormSlice,
+        volunteerFormState: volunteerFormSlice,
     },
 });
 

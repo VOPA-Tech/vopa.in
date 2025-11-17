@@ -12,11 +12,13 @@ import Tasks from './Tasks';
 
 // dummy data
 import { projects, tasks } from './data';
-import { useUser } from 'hooks/auth';
+import { useLogin, useUser } from 'hooks/auth';
 import { Navigate } from 'react-router-dom';
+import WebsiteRating from './WebsiteRating';
 
 const Dashboard = () => {
     const [loggedInUser] = useUser();
+
     if (loggedInUser?.role === 'User') {
         return <Navigate to="/account/media/media_kit" replace />;
     }
@@ -29,32 +31,24 @@ const Dashboard = () => {
             <section className="position-relative overflow-hidden bg-gradient2 py-3 px-3">
                 <Container>
                     <Row>
-                        <Col lg={12}>
-                            <div className="page-title">
-                                <h3 className="mb-0">Hi Admin</h3>
-                                <p className="mt-1 fw-medium">Welcome to VOPA!</p>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
                         {/* profile widget */}
-                        <ProfileWidget />
+                        <WebsiteRating />
 
                         {/* stat widgets */}
-                        <Col lg={3}>
+                        {/* <Col lg={3}>
                             <StatWidget icon="check-circle" variant="success" stats={21} title="Tasks Completed" />
                             <StatWidget icon="edit-3" variant="info" stats={21} title="Tasks Inprogress" />
-                        </Col>
+                        </Col> */}
 
                         {/* revenue widget */}
-                        <RevenueWidget />
+                        {/* <RevenueWidget /> */}
                     </Row>
 
                     {/* recent projects */}
-                    <ReecentProjects projects={projects} />
+                    {/* <ReecentProjects projects={projects} /> */}
 
                     {/* tasks */}
-                    <Tasks tasks={tasks} />
+                    {/* <Tasks tasks={tasks} /> */}
                 </Container>
             </section>
 

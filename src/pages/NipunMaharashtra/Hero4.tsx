@@ -1,35 +1,55 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
+import MovingImageTrain from './MovingImageTrain';
 
 const Hero4 = () => {
+    const dispatch = useDispatch();
+
     return (
-        <section className="hero-4 bg-soft-warning pt-7 pb-3 py-sm-7 overflow-hidden">
+        <section className="hero-4 bg-soft-success pt-7 pb-3 py-sm-7 overflow-hidden">
             <Container>
                 <Row className="align-items-center">
-                    <Col lg={5} md={6}>
-                        <h1 className="hero-title">
-                            <span className=" d-inline-block">Mission NIPUN Maharashtra</span>{' '}
-                        </h1>
-                        <p className="mt-4 fs-17">
-                            AI-Driven Assessments-Transforming Education System from within for 55 lakh students
-                        </p>
-                        {/* <div className="pt-3 pt-sm-5">
-                            <Button variant="warning">Explore Our Tools</Button>
-                            <Button variant="outline-warning" className="ms-2">
-                                Partner With Us
+                    <h1 className="hero-title">Mission NIPUN Maharashtra</h1>
+                    <p className="mt-4 fs-17">
+                        AI-Driven Assessments-Transforming Education System from within for 38 lakh students
+                    </p>
+                    <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
+                        <Col>
+                            <div className="slider">
+                                <MovingImageTrain
+                                    images={[
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495364116_image-1.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495364471_shared-image-10.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495364638_shared-image-8.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495364745_image.png',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495365596_whatsapp-image-2025-05-27-at-13407-pm-1-1.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495366829_screenshot-2025-03-20-125526.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495367736_20250324_104853.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495368310_screenshot-2025-03-29-074222.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762495367735_20250324_105412.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762497492267_-1.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762497491339_media-18.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1762497491308_media-17.jpg',
+                                    ]}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
+                    <div className="pt-3 pt-sm-5">
+                        <Button
+                            className="mb-2"
+                            variant="success"
+                            onClick={() => dispatch(setIsDonationModalOpen(true))}>
+                            Support a Child’s Education
+                        </Button>
+                        <Link className="mt-sm-2" to="/contact-us">
+                            <Button variant="outline-success" className="me-2 mb-2 ms-2">
+                                Join as a Volunteer
                             </Button>
-                        </div> */}
-                    </Col>
-                    <Col lg={7} md={6}>
-                        <div className="img-container text-end pt-5 pt-sm-0">
-                            <img
-                                src="https://uploads.justech-ai.in/vopa-website/Nipun Page Website/1758273494353_alltab.webp"
-                                alt="startup"
-                                className="img-fluid rounded-3 shadow-lg"
-                                data-aos="fade-left"
-                                data-aos-duration="1000"
-                            />
-                        </div>
-                    </Col>
+                        </Link>
+                    </div>
                 </Row>
             </Container>
             <div className="shape bottom">

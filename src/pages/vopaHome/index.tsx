@@ -1,5 +1,5 @@
 // component
-import { Navbar1, Navbar3 } from '../../components/navbars';
+import { Navbar3 } from '../../components/navbars';
 // import { Hero2, Hero9 } from '../../components/heros';
 import BackToTop from '../../components/BackToTop';
 import { Footer1 } from '../../components/footer';
@@ -23,11 +23,26 @@ import ProductCards from './ProductCards';
 import TwoCause from './TwoCause';
 import OurImpact from './OurImpact';
 import ProjectCardsSlider from './ProjectCardsSlider';
+import Latest from './Latest';
+import SEO from 'components/SEO';
+import { baseUrl } from 'data/seo/baseUrl';
+import VolunteerForm from 'components/forms/VolenteerForm';
+import BarImageAchivements from './BarImageAchivements';
 
 const Company = () => {
     return (
         <>
             {/* header and hero */}
+            <SEO
+                title="Vowels of People Association | Vopa
+"
+                description={`We're shaping a world where every child has the tools to learn, the strength to grow, and the freedom to flourish.
+`}
+                keywords={
+                    'Education, Mental Health, Child Development, Community Support, Non-Profit Organization, Empowerment, Learning Resources, Health and Wellness, Social Impact, Advocacy'
+                }
+                link={`${baseUrl}`}
+            />
             <div className="">
                 <Navbar3
                     navClass="navbar-light zindex-10"
@@ -38,12 +53,11 @@ const Company = () => {
                 />
                 <HeroCara />
             </div>
-
-            {/* about */}
-            {/* <About /> */}
+            <Latest />
 
             {/* feature */}
             <KnowAboutUs features={features} />
+            {/* <BarImageAchivements /> */}
             <ProductCards />
             {/* projects */}
             {/* <Projects projects={projects} /> */}
@@ -60,7 +74,7 @@ const Company = () => {
 
             {/* Partners */}
             <Partners />
-
+            <VolunteerForm />
             {/* footer */}
             <Footer1 />
 

@@ -70,6 +70,14 @@ const projects: Project[] = [
         image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262072_dlp.webp',
         link: '/projects/digital-learning-project',
     },
+    {
+        field: 'Health',
+        title: 'Saiyam',
+        description:
+            'The Saiyam Olympiad is an educational program that raises awareness about addiction prevention and helps students develop life skills through interactive school activities and digital modules.',
+        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1762145020861_img1.png',
+        link: '/projects/saiyam',
+    },
 ];
 
 export { features, projects };

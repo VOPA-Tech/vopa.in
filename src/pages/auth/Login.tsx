@@ -35,7 +35,6 @@ const Login = () => {
     );
 
     const onSubmit = async (formData: UserData) => {
-        console.log('I am Getting Called', formData);
         try {
             await loginHandler({ email: formData.email, password: formData.password });
         } catch (err) {

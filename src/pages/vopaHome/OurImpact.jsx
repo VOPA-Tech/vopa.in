@@ -48,14 +48,14 @@ const stats = [
 
 const OurImpact = () => {
     return (
-        <section className="pt-8 pb-6  position-relative" data-aos="fade-up">
+        <section className="pt-8 pb-6  position-relative bg-paper-texture">
             <Container>
                 <Row>
                     <Col className="text-center">
                         {/* <Badge pill bg="" className="badge-soft-info px-2 py-1">
                             stats
                         </Badge> */}
-                        <h1 className="display-5 fw-medium">Our Impact</h1>
+                        <h2 className="display-5 fw-medium">Our Impact</h2>
                         <p className="mt-2 mb-0 fw-semibold">
                             Measuring success through meaningful metrics that reflect real change in communities and
                             individual lives across our project implementations.

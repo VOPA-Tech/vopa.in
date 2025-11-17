@@ -1,109 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFP9ZX4M7N"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-YFP9ZX4M7N');
+        </script>
+
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-TLVTZV9T');
+        </script>
+        <!-- End Google Tag Manager -->
+
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="Bringing quality education to millions in rural India." />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-        <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
         <style>
-            /* Fix horizontal scrolling and overflow */
             html,
             body {
                 margin: 0;
                 padding: 0;
-                overflow-x: hidden; /* Prevent horizontal scrolling */
-                width: 100%; /* Ensure elements don’t exceed the viewport width */
-            }
-
-            /* Style for iframe elements (like reCAPTCHA badge) */
-            iframe {
-                max-width: 100%; /* Prevent iframes from overflowing */
-                border: none;
-                overflow: hidden;
-            }
-            /* Make links inside modal content styled and clickable */
-            .modal-body a {
-                color: #0d6efd;
-                text-decoration: underline;
-                cursor: pointer;
-            }
-
-            .modal-body a:hover {
-                color: #0a58ca;
-            }
-
-            /* Contain the reCAPTCHA badge 
-            .grecaptcha-badge {
-                display: none;
-            }*/
-
-            /* Hamburger menu styling */
-            .hamburger-menu {
-                position: fixed;
-                z-index: 1000; /* Ensure it appears above other elements */
-                top: 0;
-                right: 0;
+                overflow-x: hidden;
                 width: 100%;
-                background-color: white; /* Adjust as per your design */
             }
 
-            @media (max-width: 768px) {
-                .hamburger-menu {
-                    height: 100%; /* Full-screen for mobile view */
-                    overflow-y: auto; /* Scrollable if menu content exceeds height */
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Custom fake reCAPTCHA badge */
+            .custom-recaptcha-badge {
+                position: fixed;
+                bottom: 1rem;
+                right: 1rem;
+                background: #fff;
+                border-radius: 4px;
+                padding: 6px 12px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-family: 'Roboto', Arial, sans-serif;
+                z-index: 99999;
+                cursor: pointer;
+                border: 1px solid #dadada;
+                opacity: 0.85;
+                box-shadow: 0px 2px 4px rgba(32, 33, 36, 0.28);
+                transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            }
+
+            .custom-recaptcha-badge:hover {
+                opacity: 1;
+                transform: translateY(-2px);
+                box-shadow: 0px 4px 10px rgba(32, 33, 36, 0.3);
+            }
+
+            .recaptcha-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .recaptcha-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .recaptcha-secured {
+                font-size: 10px;
+                color: #5f6368;
+                line-height: 11px;
+            }
+
+            .recaptcha-name {
+                font-size: 12px;
+                font-weight: 600;
+                color: #3c4043;
+                line-height: 12px;
+            }
+
+            /* 
+                📱 Hide text on small screens 
+                (only show icon)
+            */
+            @media (max-width: 767px) {
+                .recaptcha-text {
+                    display: none !important;
+                }
+
+                .custom-recaptcha-badge {
+                    padding: 6px;
+                    gap: 0;
                 }
             }
-
-            /* Fix any hidden or oversized elements */
-            .container,
-            .content {
-                max-width: 100%; /* Prevent child elements from overflowing */
-                margin: 0 auto;
-            }
-
-            /* General styling for the layout */
-            * {
-                box-sizing: border-box; /* Ensure padding and border are included in element width */
-            }
-            /* Applies to Quill editor and rendered blog content */
-            .ql-editor img,
-            .blog-content img {
-                max-width: 100%;
-                height: auto;
-                max-height: 500px;
-                display: block;
-                margin: 1rem 0;
-                border-radius: 8px; /* Optional aesthetic */
-                object-fit: contain;
-            }
-            .fixed-height-cell {
-                max-height: 100px;
-                overflow: hidden;
-                /* white-space: nowrap; */
-                text-overflow: ellipsis;
-            }
         </style>
-        <title>VOPA</title>
     </head>
 
     <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLVTZV9T" height="0" width="0"></iframe>
+        </noscript>
+
         <div id="root"></div>
+
+        <!-- Fake reCAPTCHA badge -->
+        <div class="custom-recaptcha-badge" onclick="window.open('https://www.google.com/recaptcha/about/', '_blank')">
+            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" class="recaptcha-icon" />
+
+            <div class="recaptcha-text">
+                <span class="recaptcha-secured">protected by</span>
+                <span class="recaptcha-name">reCAPTCHA V3</span>
+            </div>
+        </div>
     </body>
 </html>

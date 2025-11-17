@@ -6,28 +6,20 @@ const CTA = () => {
         <section className="section py-6 position-relative">
             <Container>
                 <Row className="align-items-center">
-                    <Col lg={4}>
-                        <img
-                            src="https://uploads.justech-ai.in/vopa-website/careerPage/1758255852267_certificate.png"
-                            alt="QR Code to Application Form"
-                            width={300}
-                            className="border shadow-lg"
-                            // height={200}
-                        />
-                        {/* <Card className="shadow-none border mb-lg-0 rounded-sm">
+                    {/* <Card className="shadow-none border mb-lg-0 rounded-sm">
                             <Card.Body>
                                 <h3 className="mt-0 fw-semibold">Get in touch</h3>
                                 <p>
                                     Don't find suitable opening? We'd still love to learn more about you. Contact us and
                                     we'll reach out to have interesting conversation!
                                 </p>
-                                <Link to="/contact" className="btn btn-outline-primary mt-4">
+                                <Link to="/contact-us" className="btn btn-outline-primary mt-4">
                                     Contact Us
                                 </Link>
                             </Card.Body>
                         </Card> */}
-                    </Col>
-                    <Col lg={8}>
+                    {/* </Col> */}
+                    {/* <Col lg={8}>
                         <Card className="shadow-none border mb-0 rounded-sm">
                             <Card.Body>
                                 <h3 className="mt-0 fw-semibold">
@@ -52,7 +44,7 @@ const CTA = () => {
                                 </div>
                             </Card.Body>
                         </Card>
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
         </section>

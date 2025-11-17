@@ -9,6 +9,50 @@ const Features = () => {
         <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
             <Container>
                 <Row className="align-items-center mb-6 pb-lg-5">
+                    <Col lg={6}>
+                        <div
+                            className="bg-white rounded border shadow mb-lg-0 mb-3 overflow-hidden"
+                            data-aos="fade-right"
+                            data-aos-duration="1500"
+                            style={{ padding: 0 }}>
+                            <img
+                                src="https://uploads.justech-ai.in/vopa-website/Project Overview Page/1762767224872_nipun2.gif"
+                                alt="desktop"
+                                className="img-fluid w-100 h-100"
+                                style={{ objectFit: 'cover', display: 'block' }}
+                            />
+                        </div>
+                    </Col>
+
+                    <Col lg={{ span: 5, offset: 1 }}>
+                        <div className="mt-4 mt-lg-0">
+                            <Badge pill bg="" className="badge-soft-success px-2 py-1">
+                                NIPUN Maharashtra
+                            </Badge>
+                            <h1 className="display-4 text-success fw-medium mb-3"> NIPUN Maharashtra</h1>
+
+                            <p className="text-muted mx-auto mb-4 pb-3">
+                                To improve students’ Foundational Literacy and Numeracy (FLN) at scale, VOPA has built
+                                out the NIPUN Maharashtra app for SCERT Maharashtra, the apex educational body of the
+                                state.
+                            </p>
+                            <p className="text-muted mx-auto mb-4 pb-3">
+                                It is set to scale our pilots from 350,000 students to 3,800,000 students; 20,000
+                                teachers to 200,000 teachers; 1000 Education Supervisors to 10,000 Education
+                                Supervisors; from 5 districts to all 36 districts of the state of Maharashtra-and for
+                                the first time, bringing access to real time reports of students and remedial tools to
+                                3M+ parents.
+                            </p>
+
+                            <ul className="list-unstyled border-top py-4 mt-4 text-start"></ul>
+                            {/* <Link to="#">
+                                Learn more
+                                <FeatherIcon icon="arrow-right" className="ms-1 icon-xxs" />
+                            </Link> */}
+                        </div>
+                    </Col>
+                </Row>
+                <Row className="align-items-center mb-6 pb-lg-5">
                     <Col lg={5}>
                         <div className="mb-4 mb-lg-0">
                             {/* <Badge pill bg="" className="badge-soft-info px-2 py-1">
@@ -36,8 +80,8 @@ const Features = () => {
                     </Col>
                     <Col lg={{ span: 6, offset: 1 }}>
                         <img
-                            src="/images/projectImages/racialGap.webp"
-                            alt="desktop1"
+                            src="https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809481_racialgap.webp"
+                            alt="racial gap image"
                             className="img-fluid"
                             data-aos="fade-left"
                             data-aos-duration="1000"
@@ -50,7 +94,11 @@ const Features = () => {
                             className="bg-white p-2 rounded border shadow mb-lg-0 mb-3"
                             data-aos="fade-right"
                             data-aos-duration="1500">
-                            <img src="/images/projectImages/ourSolution.webp" alt="desktop" className="img-fluid" />
+                            <img
+                                src="https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809478_oursolution.webp"
+                                alt="desktop"
+                                className="img-fluid"
+                            />
                         </div>
                     </Col>
                     <Col lg={{ span: 5, offset: 1 }}>
@@ -123,23 +171,32 @@ const Features = () => {
                             </Link>
                         </div>
                     </Col>
-                    <Col lg={{ span: 6, offset: 1 }}>
-                        <img
-                            src="/images/vschool/vschoolGuy.png"
-                            alt="desktop1"
-                            className="img-fluid"
-                            data-aos="fade-left"
-                            data-aos-duration="1000"
-                        />
+                    <Col lg={6}>
+                        <div
+                            className="bg-white rounded border shadow mb-lg-0 mb-3 overflow-hidden"
+                            data-aos="fade-right"
+                            data-aos-duration="1500"
+                            style={{ padding: 0 }}>
+                            <img
+                                src="https://uploads.justech-ai.in/vopa-website/Project Overview Page/1762767224872_nipun2.gif"
+                                alt="desktop"
+                                className="img-fluid w-100 h-100"
+                                style={{ objectFit: 'cover', display: 'block' }}
+                            />
+                        </div>
                     </Col>
                 </Row>
-                  <Row className="align-items-center">
+                <Row className="align-items-center">
                     <Col lg={5}>
                         <div
                             className="bg-white p-2 rounded border align-items-center shadow mb-lg-0 mb-3"
                             data-aos="fade-right"
                             data-aos-duration="1500">
-                            <img src="/images/projectImages/mycaLogo.png" alt="desktop" className="img-fluid" />
+                            <img
+                                src="https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809154_mycalogo.png"
+                                alt="desktop"
+                                className="img-fluid"
+                            />
                         </div>
                     </Col>
                     <Col lg={{ span: 5, offset: 1 }}>
@@ -150,11 +207,13 @@ const Features = () => {
                             <h1 className="display-4 text-success fw-medium mb-3">My Mental Health Companion</h1>
 
                             <p className="text-muted mx-auto mb-4 pb-3">
-                                A Digital Ecosystem for Mental Health’ is an ecosystem app, which is one and the only of its kind. It is designed to serve different stakeholders: Explorers, Patients, CareGivers, Health Workers. It is designed to address the critical mental health challenges faced by underserved communities, particularly in Maharashtra, through the integration of technology-driven solutions.
-
+                                A Digital Ecosystem for Mental Health’ is an ecosystem app, which is one and the only of
+                                its kind. It is designed to serve different stakeholders: Explorers, Patients,
+                                CareGivers, Health Workers. It is designed to address the critical mental health
+                                challenges faced by underserved communities, particularly in Maharashtra, through the
+                                integration of technology-driven solutions.
                             </p>
-                           
-                        
+
                             {/* <Link to="#">
                                 Learn more
                                 <FeatherIcon icon="arrow-right" className="ms-1 icon-xxs" />

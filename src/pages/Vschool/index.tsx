@@ -9,8 +9,6 @@ import Integrations from './Integration';
 import Pricing from './Pricing';
 import Footer from './Footer';
 
-// data
-import { integrations, planFeatures } from './data';
 import Hero4 from './Hero4';
 import YoutubeVid from './YoutubeVid';
 
@@ -35,7 +33,7 @@ const Startup = () => {
 
             {/* clients - reviews  */}
             {/* <ClientsReview /> */}
-
+            {/* <ProjectCardsSlider /> */}
             {/* features */}
             <Features />
             <OurImpact />

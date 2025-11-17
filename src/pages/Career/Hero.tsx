@@ -1,72 +1,36 @@
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import FeatherIcon from 'feather-icons-react';
+import { useDispatch } from 'react-redux';
+import { setIsDonationModalOpen } from 'reduxFolder/appSlice';
+import MovingImageTrain from './MovingImageTrain';
 
-const Hero = () => {
+const Hero4 = () => {
+    const dispatch = useDispatch();
+
     return (
-        <section className="hero-4 pb-5 pt-7 py-sm-7">
+        <section className="hero-4 bg-soft-success pt-7 pb-3 py-sm-7 overflow-hidden">
             <Container>
                 <Row className="align-items-center">
-                    <Col lg={6} md={6}>
-                        <h1 className="hero-title mt-0">
-                            Let's work <span className=" d-inline-block">together</span>. Join VOPA!
-                        </h1>
-                        <p className="fs-16 text-muted pt-3 w-75">
-                            We're always open for new creative, analytical and technical minds to join our team. Search
-                            for the suitable job.
-                        </p>
-                    </Col>
-                    <Col lg={6} md={6}>
-                        <div className="img-container text-end ps-lg-5" data-aos="zoom-in">
-                            <Row className="align-items-center mt-md-0 mt-4">
-                                <Col xs={6}>
-                                    <Card className="shadow-lg">
-                                        <Card.Body className="p-1">
-                                            <img
-                                                src={
-                                                    'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642077_office1.webp'
-                                                }
-                                                className="img-fluid"
-                                                alt=""
-                                            />
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col xs={6}>
-                                    <Row>
-                                        <Col>
-                                            <Card className="shadow-lg">
-                                                <Card.Body className="p-1">
-                                                    <img
-                                                        src={
-                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642378_office2.webp'
-                                                        }
-                                                        className="img-fluid"
-                                                        alt=""
-                                                    />
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Card className="shadow-lg">
-                                                <Card.Body className="p-1 mb-0">
-                                                    <img
-                                                        src={
-                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp'
-                                                        }
-                                                        className="img-fluid"
-                                                        alt=""
-                                                    />
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                        </div>
-                    </Col>
+                    <h1 className="hero-title">Let's work together. Join VOPA!</h1>
+                    <p className="mt-4 fs-17">
+                        We're always open for new creative, analytical and technical minds to join our team. Search for
+                        the suitable job.
+                    </p>
+                    <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
+                        <Col>
+                            <div className="slider">
+                                <MovingImageTrain
+                                    images={[
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642375_vopateam.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642378_office2.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758713972062_1000073126.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758800214830_media-14.jpg',
+                                    ]}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
                 </Row>
             </Container>
             <div className="shape bottom">
@@ -89,4 +53,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default Hero4;

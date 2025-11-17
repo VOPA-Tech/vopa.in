@@ -18,6 +18,9 @@ import { gallery } from './data';
 import { fetchVacancies } from 'reduxFolder/vacancySlice';
 import Jobs from './Jobs';
 import { fetchJobs } from 'reduxFolder/jobsSlice';
+import InterviewSteps from './InterviewSteps';
+import Benefits from './Benefits';
+import OurBenefits from './OurBenefits';
 
 const Career = () => {
     const dispatch = useDispatch();
@@ -26,7 +29,6 @@ const Career = () => {
     const { jobs } = useSelector((state) => state.jobsState);
 
     useEffect(() => {
-        console.log('He vacancies', vacancies);
         if (!vacancies.length) {
             dispatch(fetchVacancies());
         }
@@ -47,19 +49,19 @@ const Career = () => {
                 />
                 <Hero />
             </div>
-
+            <OurBenefits />
             {/* culture */}
-            <Culture gallery={gallery} />
-
+            {/* <Culture gallery={gallery} /> */}
+            <InterviewSteps />
             {/* Job Section */}
-            {loading ? (
+            {/* {loading ? (
                 <div style={{ textAlign: 'center', padding: '4rem' }}>Loading Vacancies...</div>
             ) : (
                 <Vacancies vacancies={vacancies} />
-            )}
+            )} */}
             <Jobs jobs={jobs} />
             {/* CTA and Footer */}
-            <CTA />
+            {/* <CTA /> */}
             <Footer1 />
             <BackToTop variant="success" />
         </>

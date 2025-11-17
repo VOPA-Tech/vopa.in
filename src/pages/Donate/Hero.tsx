@@ -14,74 +14,34 @@ const Hero = () => {
                 <Row className="align-items-center">
                     <Col lg={6} md={6}>
                         <h1 className="hero-title mt-0">
-                            <span className="highlight  d-inline-block">Our projects</span>
+                            Transform Lives with VOPA.
+                            <span className="highlight highlight-success d-inline-block"></span>
                         </h1>
                         <p className="fs-16 text-muted pt-3 w-75">
-                            VOPA works on multiple educational projects. We focus on improving the learning experience
-                            of the deprived and needy students.
+                            Mission-driven force committed to transforming lives through Mental Health and Education
+                            initiatives. Our projects are rooted in compassion, innovation, and measurable impact.
                         </p>
                         <div className="pt-4 pb-md-5 mb-md-4">
-                            <Link to="/projects/vschool" className="btn btn-success " data-toggle="smooth-scroll">
-                                V-School
-                            </Link>
-                            <Link
-                                to="/projects/digital-learning-project"
-                                className="btn btn-success m-2"
-                                data-toggle="smooth-scroll">
-                                School Transformation
-                            </Link>
-                            <Link
-                                to="/projects/digital-learning-project"
-                                className="btn btn-success m-2"
-                                data-toggle="smooth-scroll">
-                                Tech for Teachers
-                            </Link>
-                            <Link to="/projects/myca" className="btn btn-success " data-toggle="smooth-scroll">
-                                MYCA
+                            <Link to="/contact-us" className="btn btn-success mb-2" data-toggle="smooth-scroll">
+                                Contact Us
                             </Link>
                         </div>
                     </Col>
                     <Col lg={6} md={6}>
                         <div className="img-container text-end ps-lg-5" data-aos="zoom-in">
                             <Row className="align-items-center mt-md-0 mt-4">
-                                {/* <Col xs={6}>
+                                <Col xs={6}>
                                     <Card className="shadow-lg">
                                         <Card.Body className="p-1">
-                                            <img src="/images/vschool/vschoolGuy.png" className="img-fluid" alt="" />
+                                            <img
+                                                src={
+                                                    'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758713972062_1000073126.jpg'
+                                                }
+                                                className="img-fluid"
+                                                alt=""
+                                            />
                                         </Card.Body>
                                     </Card>
-                                </Col> */}
-                                <Col xs={6}>
-                                    <Row>
-                                        <Col>
-                                            <Card className="shadow-lg">
-                                                <Card.Body className="p-1">
-                                                    <img
-                                                        src={
-                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809461_projectoverviewhero2.png'
-                                                        }
-                                                        className="img-fluid"
-                                                        alt=""
-                                                    />
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <Card className="shadow-lg">
-                                                <Card.Body className="p-1 mb-0">
-                                                    <img
-                                                        src={
-                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809466_projectoverviewhero3.png'
-                                                        }
-                                                        className="img-fluid"
-                                                        alt=""
-                                                    />
-                                                </Card.Body>
-                                            </Card>
-                                        </Col>
-                                    </Row>
                                 </Col>
                                 <Col xs={6}>
                                     <Row>
@@ -90,7 +50,7 @@ const Hero = () => {
                                                 <Card.Body className="p-1">
                                                     <img
                                                         src={
-                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758275052345_vschoolguy.png'
+                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758800214830_media-14.jpg'
                                                         }
                                                         className="img-fluid"
                                                         alt=""
@@ -105,7 +65,7 @@ const Hero = () => {
                                                 <Card.Body className="p-1 mb-0">
                                                     <img
                                                         src={
-                                                            'https://uploads.justech-ai.in/vopa-website/Project Overview Page/1758274809154_mycalogo.png'
+                                                            'https://uploads.justech-ai.in/vopa-website/websiteAboutSection/1758255642381_office3.webp'
                                                         }
                                                         className="img-fluid"
                                                         alt=""

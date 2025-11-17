@@ -16,10 +16,10 @@ type FeaturesProps = {
 
 const KnowAboutUs = ({ features }: FeaturesProps) => {
     return (
-        <section className="position-relative bg-light overflow-hidden features-1 py-5 py-md-7  ">
+        <section className="position-relative bg-light overflow-hidden features-1 py-5 py-md-7 bg-paper-texture">
             <Container>
                 <Row className="align-items-center">
-                    <Col lg={6}>
+                    <Col lg={12}>
                         <h1 className="display-4 fw-semibold mb-4">{'Vowels of People Association'}</h1>
                         <p className="mb-5 ">
                             From 2025-through partnering with Maharashtra State Council of Educational Research and
@@ -33,13 +33,15 @@ const KnowAboutUs = ({ features }: FeaturesProps) => {
                             <FeatherIcon icon="arrow-right" className="ms-2 icon-xs" />
                         </Link>
                     </Col>
-                    <Col lg={{ span: 5, offset: 1 }}>
+                    {/* <Col lg={{ span: 5, offset: 1 }}>
                         <img
+                            width={500}
+                            height={300}
                             src="https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194047815_bg.png"
                             alt="Girl Reading Book"
                             className="img-fluid d-block mx-auto mt-4 mt-lg-0"
                         />
-                    </Col>
+                    </Col> */}
                 </Row>
             </Container>
         </section>

@@ -14,14 +14,14 @@ const Footer1 = () => {
         <section className="pt-9 pb-4 bg-gradient3 position-relative">
             <Container>
                 <Row>
-                    <Col xl={4}>
+                    <Col xl={3}>
                         <Link
                             className="navbar-brand me-lg-4 mb-4 me-auto d-flex align-items-center pt-0"
                             to="#"
                             style={{ color: 'inherit' }}
                             onMouseOver={hoverStyle}
                             onMouseOut={unhoverStyle}>
-                            <img src="/logo.webp" height="30" alt="" />
+                            <img src="/logo.webp" height="40" width={130} alt="logo" />
                         </Link>
                         <p className="text-muted w-75">Vowels of the People Association (VOPA)</p>
                         <p className="text-muted w-75">Commerce Avenue, Paud Road, Kothrud, Pune.</p>
@@ -80,11 +80,18 @@ const Footer1 = () => {
                     </Col>
                     <Col xl="auto" sm={4} xs={6}>
                         <div className="ps-xl-5">
-                            <h6 className="mb-3 mt-3 mt-sm-2 fs-14 fw-semibold text-uppercase">Terms & Policies</h6>
+                            <h6 className="mb-3 mt-3 mt-sm-2 fs-14 fw-semibold text-uppercase"> User Agreements</h6>
                             <ul className="list-unstyled">
                                 <li className="my-3">
                                     <Link to="/terms-and-policies/nipun-maharashtra" className="text-muted">
-                                        Nipun Maharashtra
+                                        Privacy Policy Nipun Maharashtra.
+                                    </Link>
+                                </li>
+                            </ul>
+                            <ul className="list-unstyled">
+                                <li className="my-3">
+                                    <Link to="/terms-and-policies/nipun-maharashtra-terms" className="text-muted">
+                                        Terms of Use Nipun Maharashtra.
                                     </Link>
                                 </li>
                             </ul>
@@ -111,6 +118,14 @@ const Footer1 = () => {
                                 </li>
                             </ul>
                         </div>
+                    </Col>
+                    <Col lg={3} sm={4} xs={6}>
+                        <img
+                            src="https://uploads.justech-ai.in/vopa-website/careerPage/1758612171489_screenshot_2025-09-23_125121-removebg-preview.png"
+                            alt="QR Code to Application Form"
+                            width={100}
+                            height={'100%'}
+                        />
                     </Col>
                 </Row>
                 <hr />

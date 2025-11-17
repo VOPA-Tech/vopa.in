@@ -69,7 +69,7 @@ const AccordionExample = () => {
         {
             id: 3,
             title: 'Comprehensive Assessments',
-            text: `Monthly evaluations of over 5.5 million students, with data visually presented in dashboards for all stakeholders: Parents, Teachers, HM's, System - driving targeted improvements.`,
+            text: `Monthly evaluations of over 3.8 million students, with data visually presented in dashboards for all stakeholders: Parents, Teachers, HM's, System - driving targeted improvements.`,
         },
         {
             id: 4,

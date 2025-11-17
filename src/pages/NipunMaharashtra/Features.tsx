@@ -13,11 +13,11 @@ const Features = () => {
                                 state.
                             </p>
                             <p className="text-muted mx-auto mb-4 pb-3">
-                                It is set to scale our pilots from 350,000 students to 5,500,000 students; 20,000
+                                It is set to scale our pilots from 350,000 students to 3,800,000 students; 20,000
                                 teachers to 200,000 teachers; 1000 Education Supervisors to 10,000 Education
                                 Supervisors; from 5 districts to all 36 districts of the state of Maharashtra-and for
                                 the first time, bringing access to real time reports of students and remedial tools to
-                                5M+ parents.
+                                3M+ parents.
                             </p>
                         </div>
                     </Col>

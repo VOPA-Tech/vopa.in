@@ -28,7 +28,7 @@ const Partners = () => {
                         <Badge pill bg="" className="badge-soft-success px-2 py-1">
                             Our Partners
                         </Badge>
-                        <h1 className="display-5 fw-medium">We are backed by</h1>
+                        <h1 className="display-5 fw-medium">We are supported by</h1>
                         <p className="text-muted mx-auto">
                             "<span className="text-dark fw-bold">VOPA</span> collaborates with government bodies, NGOs,
                             and educational partners to scale impact across Maharashtra."

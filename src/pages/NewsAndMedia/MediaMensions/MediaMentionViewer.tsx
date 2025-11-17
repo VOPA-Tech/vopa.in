@@ -6,14 +6,13 @@ type BlogPostProps = {
 };
 
 const MediaMentionViewer = ({ post }: BlogPostProps) => {
-    console.log('Iam news data', post);
     if (!post) return null;
 
     const tagVariant = 'success';
     const tagValue = post?.tag || '';
 
     return (
-        <Col xs={6} sm={6} md={4} lg={4} className="d-flex justify-content-center mb-4">
+        <Col xs={6} sm={6} md={4} lg={4} className="d-flex justify-content-center mb-4 ">
             {/* 👆 12/4 = 3 = 4 cards per row on large screens */}
 
             <a
@@ -21,7 +20,7 @@ const MediaMentionViewer = ({ post }: BlogPostProps) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ textDecoration: 'none', width: '100%' }}>
-                <Card className="card-listing-item">
+                <Card className="card-listing-item ">
                     <div className="position-relative" style={{ overflow: 'hidden' }}>
                         {
                             <img

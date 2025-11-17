@@ -74,9 +74,12 @@ const Menu = () => {
                 <Dropdown.Menu renderOnMount>
                     <Nav as="ul" navbar={false}>
                         {[
-                            { to: '/account/adminOps/vacancies', label: 'Vacancies' },
+                            // { to: '/account/adminOps/vacancies', label: 'Vacancies' },
                             { to: '/account/adminOps/employees', label: 'Employees' },
                             { to: '/account/adminOps/jobs', label: 'Jobs' },
+                            { to: '/account/adminOps/website-feedbacks', label: 'Website Feedbacks' },
+                            { to: '/account/adminOps/contact-form', label: 'Contact Form' },
+                            { to: '/account/adminOps/volunteer-form', label: 'Volunteer Form' },
                         ].map((item, idx) => (
                             <Nav.Item as="li" key={idx}>
                                 <NavLink to={item.to} end className="nav-link">

@@ -9,7 +9,7 @@ const Hero: React.FC<HeroProps> = ({ blog }) => {
     if (!blog) return null; // prevent rendering if blog is not available
 
     return (
-        <section className="hero-4 pb-5 pt-8 pt-lg-6 pb-sm-4">
+        <section className="hero-4 pb-5 pt-8 pt-lg-6 pb-sm-4 bg-paper-texture">
             <Container>
                 <Row className="justify-content-center">
                     <Col lg={12}>

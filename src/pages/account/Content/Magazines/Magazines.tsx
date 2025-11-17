@@ -16,7 +16,7 @@ export type Magazine = {
 const Magazines = () => {
     const dispatch: any = useDispatch();
     const { magazines } = useSelector((state: any) => state.magazinesState);
-    console.log('Magazines:', magazines);
+
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editingMagazine, setEditingMagazine] = useState<Magazine | null>(null);

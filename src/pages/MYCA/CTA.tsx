@@ -19,7 +19,7 @@ const CTA = () => {
                                 className="btn btn-outline-success mt-4">
                                 Download MYCA
                             </a>
-                            <Link to="/contact" className="btn btn-outline-success mx-2 mt-4">
+                            <Link to="/contact-us" className="btn btn-outline-success mx-2 mt-4">
                                 Support MYCA
                             </Link>
                         </Card.Body>

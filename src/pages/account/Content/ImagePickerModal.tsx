@@ -23,11 +23,9 @@ const ImagePickerModal: React.FC<ImagePickerModalProps> = ({ show, folder, onClo
 
         const fetchImages = async () => {
             setLoading(true);
-            console.log(`🔍 Fetching images for folder: ${folder}`);
 
             try {
                 const response = await axios.get(`/upload/list/${folder}`);
-                console.log('✅ Response from server:', response.data);
 
                 // If response is directly an array
                 let files: ImageFile[] = [];
@@ -54,7 +52,6 @@ const ImagePickerModal: React.FC<ImagePickerModalProps> = ({ show, folder, onClo
     }, [show, folder]);
 
     const handleSelect = (url: string) => {
-        console.log(`🖼️ Image selected: ${url}`);
         onSelect(url);
         onClose();
     };

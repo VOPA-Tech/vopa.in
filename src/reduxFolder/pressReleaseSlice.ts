@@ -15,7 +15,6 @@ export const getPressReleaseById = createAsyncThunk('pressRelease/getPressReleas
 });
 
 export const addPressRelease = createAsyncThunk('pressRelease/addPressRelease', async (payload: any) => {
-    console.log('Payload Press releases', payload);
     const res = await axios.post(BASE_URL, payload);
     return res.data;
 });

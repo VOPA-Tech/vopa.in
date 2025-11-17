@@ -9,7 +9,7 @@ import SwiperSlider2 from './SwiperSlider2';
 
 const Testimonials = () => {
     return (
-        <section className="section bg-light pt-5 pb-7 py-sm-9 position-relative features-4">
+        <section className="section  pt-5 pb-7 py-sm-9 position-relative features-4 bg-paper-texture">
             <Container>
                 <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
                     <Col lg={3}>
@@ -18,7 +18,7 @@ const Testimonials = () => {
                                 <Badge pill bg="" className="badge-soft-success px-2 py-1">
                                     Feedback
                                 </Badge>
-                                <h1 className="display-5 fw-medium">What people say</h1>
+                                <h2 className="display-5 fw-medium">What people say</h2>
                                 <p className="text-muted mx-auto">Few valuables words from our Students</p>
                             </Col>
                         </Row>

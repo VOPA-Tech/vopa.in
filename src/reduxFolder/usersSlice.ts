@@ -26,7 +26,7 @@ const initialState: usersState = {
 export const fetchUsers = createAsyncThunk('users/fetchAll', async (_, { rejectWithValue }) => {
     try {
         const response = await api.get('/users', {});
-        console.log('fetchUsers', response);
+
         return response.data;
     } catch (error) {
         return rejectWithValue(error);
@@ -78,7 +78,6 @@ const usersSlice = createSlice({
                 state.error = null;
             })
             .addCase(fetchUsers.fulfilled, (state, action) => {
-                console.log('Hii Am action payload', action.payload);
                 state.loading = false;
                 state.list = action.payload;
             })

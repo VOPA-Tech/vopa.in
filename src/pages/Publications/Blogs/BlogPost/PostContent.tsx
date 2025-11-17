@@ -6,7 +6,7 @@ type HeroProps = {
 
 const PostContent = ({ blog }: HeroProps) => {
     return (
-        <section className="position-relative pb-5">
+        <section className="position-relative pb-5 bg-paper-texture">
             <Container>
                 <Row>
                     <Col lg={12}>

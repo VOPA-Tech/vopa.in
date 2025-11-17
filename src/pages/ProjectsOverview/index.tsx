@@ -2,9 +2,10 @@
 import { Navbar3 } from 'components/navbars';
 import BackToTop from 'components/BackToTop';
 import Features from './Features';
-import Hero4 from './Hero';
+
 import Testimonials from './Testimonials';
 import { Footer1 } from 'components/footer';
+import Hero4 from './Hero4';
 
 const Startup = () => {
     return (

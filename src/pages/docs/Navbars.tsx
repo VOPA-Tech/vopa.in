@@ -1,8 +1,5 @@
 import { Card, Col, Row } from 'react-bootstrap';
 
-// component
-import Navbar1 from '../../components/navbars/Navbar1';
-import Navbar2 from '../../components/navbars/Navbar2';
 import Navbar3 from '../../components/navbars/Navbar3';
 import Navbar4 from '../../components/navbars/Navbar4';
 
@@ -20,30 +17,6 @@ const Navbars = () => {
 
                 <Row>
                     <Col xs={12}>
-                        <Card>
-                            <Card.Body>
-                                <div className="border">
-                                    <Navbar1 hideSearch />
-                                </div>
-                            </Card.Body>
-                        </Card>
-
-                        <Card>
-                            <Card.Body>
-                                <div className="border">
-                                    <Navbar1 hideSearch navClass="navbar-dark bg-dark" />
-                                </div>
-                            </Card.Body>
-                        </Card>
-
-                        <Card>
-                            <Card.Body>
-                                <div className="border">
-                                    <Navbar2 />
-                                </div>
-                            </Card.Body>
-                        </Card>
-
                         <Card>
                             <Card.Body>
                                 <div className="border">
