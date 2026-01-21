@@ -1,31 +1,28 @@
 import { useEffect } from 'react';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // make sure AOS animations work
+import 'aos/dist/aos.css';
 
-// routes
 import Routes from './routes/Routes';
-
-// Themes
-import './assets/scss/theme.scss';
-
-// 📊 Mixpanel
-import mixpanel from './helpers/mixpanel';
 import { useLocation } from 'react-router-dom';
+import './assets/scss/theme.scss';
+import mixpanel from 'mixpanel-browser';
+
+mixpanel.init('b28d62e96d30a29ebd78ae8d0d937275', {
+    debug: true,
+    track_pageview: false,
+    persistence: 'localStorage',
+    record_sessions_percent: 100,
+    record_heatmap_data: true,
+});
 
 const App = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Initialize AOS (animations)
         AOS.init();
-
-        // Optional: Track app loaded
-        mixpanel.track('App Loaded');
     }, []);
 
-    // Track page views whenever route changes
     useEffect(() => {
-        console.log('Page view tracked:', location.pathname);
         mixpanel.track('Page View', {
             path: location.pathname,
         });
@@ -33,5 +30,4 @@ const App = () => {
 
     return <Routes />;
 };
-
 export default App;

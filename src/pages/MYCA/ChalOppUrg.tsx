@@ -38,32 +38,18 @@ const ChalOppUrg = () => {
     ];
 
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden bg-paper-texture">
             <Container>
-                {/* <Row>
-                    <Col className="text-center">
-                        <Badge pill bg="" className="badge-soft-info px-2 py-1">
-                            stats
-                        </Badge>
-                        <h1 className="display-5 fw-medium">Our Impact</h1>
-                    </Col>
-                </Row> */}
                 <Row className="mt-5 text-center">
                     {ChalOppUrg.map((ele) => (
                         <Col xs={6} md={4} className="mb-4 mb-sm-0">
-                            <div className="display-4 fw-normal">{ele.title}</div>
+                            <div className="display-4 mb-3 fw-normal">{ele.title}</div>
                             {ele.pointers.map((feature, index) => {
                                 return (
-                                    <li className="py-2 d-flex align-items-center" key={index.toString()}>
-                                        {feature && (
-                                            <>
-                                                <FeatherIcon
-                                                    icon="check"
-                                                    className="icon-sm text-success align-middle me-2"
-                                                />
-                                                {feature}
-                                            </>
-                                        )}
+                                    <li
+                                        className="py-3 border shadow-lg rounded m-2 bg-white d-flex align-items-center justify-content-center"
+                                        key={index.toString()}>
+                                        {feature && <>{feature}</>}
                                     </li>
                                 );
                             })}

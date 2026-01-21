@@ -9,7 +9,7 @@ type CultureProps = {
 
 const MediaCutouts = ({ mediaCutouts }: CultureProps) => {
     return (
-        <section className="p-7 position-relative bg-soft">
+        <section className="p-lg-7 position-relative bg-soft">
             <Container
                 style={{
                     backgroundImage: `linear-gradient(rgba(49, 63, 49, 0.3), rgba(22, 23, 21, 0.9)), 
@@ -62,7 +62,7 @@ const MediaCutouts = ({ mediaCutouts }: CultureProps) => {
                                             )`,
                                             backgroundRepeat: 'no-repeat',
                                             backgroundSize: '100% 10px',
-                                            backgroundPosition: 'top',
+                                            // backgroundPosition: 'top',
                                         }}>
                                         <Card.Body className="p-1">
                                             <img

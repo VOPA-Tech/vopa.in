@@ -40,7 +40,7 @@ const Career = () => {
     }, [dispatch, jobs.length]);
     return (
         <>
-            <div className="bg-gradient2 position-relative">
+            <div className="bg-paper-texture position-relative">
                 <Navbar3
                     fixedWidth
                     isSticky

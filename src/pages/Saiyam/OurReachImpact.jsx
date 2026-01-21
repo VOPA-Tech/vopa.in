@@ -28,7 +28,7 @@ const stats = [
         start: 40,
         end: 50,
         suffix: 'K',
-        label: 'Saiyam Olympaid 2025',
+        label: 'Saiyam Olympiad 2025',
         subtext: '700 + students enrolled till September 2025',
         icon: 'https://uploads.justech-ai.in/vopa-website/Saiyam Page/1762166555177_pilot-impact-oct-2024-may-2025-1825-students-reached.png', // ✅ Reading implies engagement
     },
@@ -36,8 +36,8 @@ const stats = [
 
 const OurReachImpact = () => {
     return (
-        <section className="pt-8 pb-6 bg-light position-relative" data-aos="fade-up">
-            <Container>
+        <section className="pt-8 pb-6 bg-paper-texture position-relative">
+            <Container data-aos="fade-up">
                 <Row>
                     <Col className="text-center">
                         {/* <Badge pill bg="" className="badge-soft-info px-2 py-1">
@@ -58,15 +58,6 @@ const OurReachImpact = () => {
                                 className="img-fluid mt-2  "
                             />
 
-                            {/* <div className="display-4fw-normal">
-                                <CountUp
-                                    duration={5}
-                                    start={stat.start}
-                                    end={stat.end}
-                                    suffix={stat.suffix}
-                                    prefix={stat.prefix || ''}
-                                />
-                            </div> */}
                             <h3 className="mt-2  mb-0 ">{stat.label}</h3>
                             <p className="m-2   ">{stat.subtext}</p>
                         </Col>

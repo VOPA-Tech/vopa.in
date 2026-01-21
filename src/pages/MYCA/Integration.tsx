@@ -58,7 +58,7 @@ const Integrations = () => {
     ];
 
     return (
-        <section className="my-5 py-6 bg-gradient2 position-relative">
+        <section className=" py-8 bg-paper-texture position-relative">
             <Container data-aos="fade-up" data-aos-duration="1500">
                 <Row>
                     <Col className="text-center">

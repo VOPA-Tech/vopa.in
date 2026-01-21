@@ -31,8 +31,8 @@ const benefits = [
 
 const OurBenefits = () => {
     return (
-        <section className="pt-8 pb-6 position-relative" data-aos="fade-up">
-            <Container>
+        <section className="pt-8 pb-6 bg-paper-texture position-relative">
+            <Container data-aos="fade-up">
                 <Row>
                     <Col className="text-center">
                         <h1 className="display-5 fw-medium">Our Benefits</h1>

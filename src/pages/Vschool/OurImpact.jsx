@@ -100,8 +100,8 @@ const stats = [
 
 const OurImpact = () => {
     return (
-        <section className="pt-8 pb-6 bg-light position-relative" data-aos="fade-up">
-            <Container>
+        <section className="pt-8 pb-6  bg-paper-texture position-relative">
+            <Container data-aos="fade-up">
                 <Row>
                     <Col className="text-center">
                         {/* <Badge pill bg="" className="badge-soft-info px-2 py-1">
@@ -121,7 +121,7 @@ const OurImpact = () => {
                             key={idx}
                             xs={6}
                             md={2}
-                            className="mt-4 m-2 mb-sm-0  border bg-soft-success rounded-3  shadow-lg">
+                            className="mt-4 m-2 mb-sm-0  border bg-white  rounded-3  shadow-lg">
                             <div className="m-2">{stat.icon}</div>
 
                             <div className="display-4fw-normal">

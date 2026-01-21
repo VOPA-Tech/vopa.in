@@ -65,7 +65,7 @@ const Menu = ({ navClass, buttonClass, showDownload, loggedInUser }: MenuProps) 
                     <Nav as="ul" navbar={false}>
                         {[
                             { to: '/projects/overview', label: 'Projects Overview' },
-                            // { to: '/projects/saiyam', label: 'Saiyam' },
+                            { to: '/projects/saiyam', label: 'Saiyam' },
                             {
                                 to: '/projects/vschool',
                                 label: 'VSchool - Free Digital Education (3 Million+ Students)',

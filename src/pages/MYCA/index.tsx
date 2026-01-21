@@ -14,7 +14,7 @@ import Integrations from './Integration';
 const Startup = () => {
     return (
         <>
-            <div className="header-7">
+            <div className="bg-paper-texture">
                 <Navbar3 isSticky navClass="navbar-light" fixedWidth buttonClass="btn-secondary btn-sm" />
                 <Hero4 />
             </div>

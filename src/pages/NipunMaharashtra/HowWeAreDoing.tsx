@@ -9,7 +9,7 @@ import AccordionExample from './Accordions';
 
 const HowWeAreDoing = () => {
     return (
-        <section className="pt-lg-6  pb-lg-6 pb-5 bg-light position-relative overflow-hidden">
+        <section className="pt-lg-6  pb-lg-6 pb-5 bg-paper-texture position-relative overflow-hidden">
             <Container>
                 <AccordionExample />
             </Container>

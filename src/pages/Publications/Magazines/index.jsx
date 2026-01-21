@@ -26,6 +26,18 @@ const Blog = () => {
         return [...magazines].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     }, [magazines]);
 
+    const BOTTOM_COUNT = 20;
+
+    const bottomMagazines = useMemo(
+        () => sortedMagazines.slice(-BOTTOM_COUNT), // last 22 (oldest 22)
+        [sortedMagazines]
+    );
+
+    const remainingMagazines = useMemo(
+        () => sortedMagazines.slice(0, -BOTTOM_COUNT), // everything except last 22
+        [sortedMagazines]
+    );
+
     return (
         <>
             <div className="">
@@ -43,11 +55,14 @@ const Blog = () => {
                 <Container>
                     <Row className="justify-content-center">
                         <Col lg={12}>
-                            <h1 className="hero-title text-white mt-0">Magazines</h1>
+                            <h1 className="hero-title text-white m-0">Magazines</h1>
                         </Col>
                     </Row>
-                    <Row className="justify-content-lg-center">
-                        {!isMagzinesLoading && sortedMagazines.map((post, index) => <BlogPost3 post={post} />)}
+                    <Row className="justify-content-lg-start mt-4">
+                        {!isMagzinesLoading && remainingMagazines.map((post, index) => <BlogPost3 post={post} />)}
+                    </Row>
+                    <Row className="justify-content-lg-start ">
+                        {!isMagzinesLoading && bottomMagazines.map((post, index) => <BlogPost3 post={post} />)}
                     </Row>
                 </Container>
             </section>

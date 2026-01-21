@@ -23,7 +23,7 @@ const Footer1 = () => {
                             onMouseOut={unhoverStyle}>
                             <img src="/logo.webp" height="40" width={130} alt="logo" />
                         </Link>
-                        <p className="text-muted w-75">Vowels of the People Association (VOPA)</p>
+                        <p className="fw-bold w-75">Vowels of the People Association (VOPA)</p>
                         <p className="text-muted w-75">Commerce Avenue, Paud Road, Kothrud, Pune.</p>
                         <p className="text-muted w-75">+91 9158799972</p>
                         <p className="text-muted w-75">(HR Department) hr.vopa@vopa.in</p>
@@ -121,7 +121,7 @@ const Footer1 = () => {
                     </Col>
                     <Col lg={3} sm={4} xs={6}>
                         <img
-                            src="https://uploads.justech-ai.in/vopa-website/careerPage/1758612171489_screenshot_2025-09-23_125121-removebg-preview.png"
+                            src="https://uploads.justech-ai.in/vopa-website/careerPage/1768910406969_vowels_of_the_people_association_in_english_2026_certification_badge-removebg-pr.png"
                             alt="QR Code to Application Form"
                             width={100}
                             height={'100%'}

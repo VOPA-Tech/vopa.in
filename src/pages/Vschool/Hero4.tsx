@@ -8,12 +8,12 @@ const Hero4 = () => {
     const dispatch = useDispatch();
 
     return (
-        <section className="hero-4 bg-soft-success pt-7 pb-3 py-sm-7 overflow-hidden">
+        <section className="hero-4 bg-paper-texture pt-7 pb-3 py-sm-7 overflow-hidden ">
             <Container>
                 <Row className="align-items-center">
                     {' '}
                     <h1 className="hero-title">Bridging Learning Gaps with Scalable, Free EdTech</h1>
-                    <p className="mt-4 fs-17">
+                    <p className="mt-4 fs-17 newspaper-text">
                         Millions of children in India drop out or fall behind due to poor foundational learning,
                         migration, unaffordable tuitions, lack of systemic support and limited access to quality free
                         EdTech. V-School bridges this gap by offering a free, multilingual digital ecosystem aligned
@@ -81,7 +81,7 @@ const Hero4 = () => {
                     </div>
                 </Row>
             </Container>
-            <div className="shape bottom">
+            {/* <div className="shape bottom">
                 <svg
                     width="1440px"
                     height="40px"
@@ -96,7 +96,7 @@ const Hero4 = () => {
                         </g>
                     </g>
                 </svg>
-            </div>
+            </div> */}
         </section>
     );
 };

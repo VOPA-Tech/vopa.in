@@ -8,28 +8,32 @@ const Hero4 = () => {
     const dispatch = useDispatch();
 
     return (
-        <section className="hero-4 bg-soft-success pt-7 pb-3 py-sm-7 overflow-hidden">
+        <section className="hero-4 bg-paper-texture pt-7 pb-3 py-sm-7 overflow-hidden">
             <Container>
                 <Row className="align-items-center">
                     <h1 className="hero-title">Digital Learning Project</h1>
-                    <p className="mt-4 fs-17">
-                        The Digital Learning Project (DLP) is VOPA’s groundbreaking initiative, revolutionizing
-                        education in low-resource schools in Pune. We’re creating a new paradigm for learning in 20
-                        schools by enhancing teacher methodologies, upgrading infrastructure, implementing regular
-                        assessments, and providing supplementary education through our V-School app-all of it together.
-                        VOPA’s holistic & focused approach in solving for all stakeholders has shown tremendous success.
+                    <p className="mt-4 fs-17 newspaper-text">
+                        VOPA’s Digital Learning Project is supporting 20 schools in Pune by strengthening how children
+                        learn and how teachers teach. The programme equips teachers with simple, effective teaching
+                        practices, improves essential school facilities, and closely tracks student progress through
+                        regular assessments. Students also receive additional learning support through the V-School app.
+                        By focusing on the real needs of schools, the project is helping create meaningful and lasting
+                        improvements in classrooms. This balanced approach is enhancing student learning outcomes and
+                        empowering teachers with greater confidence to adopt new, effective teaching methods.
                     </p>
                     <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
                         <Col>
                             <div className="slider">
                                 <MovingImageTrain
                                     images={[
-                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506874786_shared-image-11.jpg',
-                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506877675_media-34.jpg',
-                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506878647_media-33.jpg',
-                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506880406_media-35.jpg',
-                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506880785_shared-image-13.jpg',
-                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1762506881383_img_20250425_144702-1.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586966_shared-image-89.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586948_shared-image-2025-11-13t164420156.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586795_shared-image-2025-11-20t101830643.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586492_media-62-1.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586308_shared-image-90.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586250_shared-image-88.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586158_media-2025-08-05t115609381-2.jpg',
+                                        'https://uploads.justech-ai.in/vopa-website/DLPPage/1764219586151_shared-image-2025-08-20t164815133-1.jpg',
                                     ]}
                                 />
                             </div>
@@ -50,22 +54,6 @@ const Hero4 = () => {
                     </div>
                 </Row>
             </Container>
-            <div className="shape bottom">
-                <svg
-                    width="1440px"
-                    height="40px"
-                    viewBox="0 0 1440 40"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <g id="shape-b" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                        <g id="curve" fill="#fff">
-                            <path
-                                d="M0,30.013 C239.659,10.004 479.143,0 718.453,0 C957.763,0 1198.28,10.004 1440,30.013 L1440,40 L0,40 L0,30.013 Z"
-                                id="Path"></path>
-                        </g>
-                    </g>
-                </svg>
-            </div>
         </section>
     );
 };

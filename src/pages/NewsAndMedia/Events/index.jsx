@@ -23,7 +23,7 @@ const Events = () => {
 
     return (
         <>
-            <div className="">
+            <div className="bg-paper-texture">
                 <div className="overlay"></div>
 
                 <Navbar3
@@ -32,27 +32,26 @@ const Events = () => {
                     fixedWidth
                     isSticky
                 />
-            </div>
-
-            <section className="pt-6 pb-4 position-relative bg-paper-texture">
-                <Container>
-                    <Row className="justify-content-center">
-                        <Col lg={12}>
-                            <h1 className="hero-title mt-0">Events</h1>
-                        </Col>
-                    </Row>
-
-                    {!isEventsLoading && Array.isArray(events) && events?.length > 0 && (
-                        <Row className="" data-aos="fade-up">
-                            {events.map((event, index) => (
-                                <Col lg={4} key={index}>
-                                    <EventPost post={event} />
-                                </Col>
-                            ))}
+                <section className="pt-6 pb-4 position-relative bg-paper-texture">
+                    <Container>
+                        <Row className="justify-content-center">
+                            <Col lg={12}>
+                                <h1 className="hero-title mt-0">Events</h1>
+                            </Col>
                         </Row>
-                    )}
-                </Container>
-            </section>
+
+                        {!isEventsLoading && Array.isArray(events) && events?.length > 0 && (
+                            <Row className="" data-aos="fade-up">
+                                {events.map((event, index) => (
+                                    <Col lg={4} key={index}>
+                                        <EventPost post={event} />
+                                    </Col>
+                                ))}
+                            </Row>
+                        )}
+                    </Container>
+                </section>
+            </div>
 
             <Footer1 />
             <BackToTop variant="success" />

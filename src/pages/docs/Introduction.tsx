@@ -67,6 +67,7 @@ const Introduction = () => {
                                 </p>
 
                                 <div
+                                    className="blog-content"
                                     dangerouslySetInnerHTML={createMarkup(
                                         `<pre class="mb-0">
 ├── prompt
@@ -90,8 +91,7 @@ const Introduction = () => {
 │   │   └── App.tsx                 => Main application component
 │   │   └── i18n.ts                 => internationalization
 </pre>`
-                                    )}
-                                ></div>
+                                    )}></div>
                             </Card.Body>
                         </Card>
                     </Col>

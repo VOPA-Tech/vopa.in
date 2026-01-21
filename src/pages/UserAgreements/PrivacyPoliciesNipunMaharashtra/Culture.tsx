@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 const Culture = () => {
     return (
         <section className="py-7 position-relative bg-warning">
-            <Container className="bg-white p-5 rounded shadow" style={{ maxWidth: '800px' }}>
+            <Container className="bg-white p-5 rounded shadow newspaper-text" style={{ maxWidth: '800px' }}>
                 <h1>Privacy Policy of NIPUN MAHARASHTRA Application</h1>
                 <p>
                     <strong>Date:</strong>30 Jan 2025

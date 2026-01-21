@@ -9,7 +9,7 @@ import { slides } from './data';
 
 const Testimonials = () => {
     return (
-        <section className="section pt-5 pb-7 py-sm-9 position-relative features-4">
+        <section className="section pt-5 pb-7 py-sm-9 position-relative features-4 bg-paper-texture newspaper-text">
             <Container>
                 <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
                     <Col lg={3}>

@@ -9,7 +9,7 @@ import Features from './Features';
 
 import Hero4 from './Hero4';
 
-import OurVision from './OurVision';
+import OurImpact from './OurImpact';
 import Testimonials from './Testimonials';
 import CTA from './CTA';
 
@@ -20,7 +20,7 @@ import { Footer1 } from 'components/footer';
 const NipunMaharashtra = () => {
     return (
         <>
-            <div className="header-7">
+            <div className="bg-paper-texture">
                 <Navbar3 isSticky navClass="navbar-light" fixedWidth buttonClass="btn-secondary btn-sm" />
                 <Hero4 />
             </div>
@@ -30,7 +30,7 @@ const NipunMaharashtra = () => {
 
             {/* features */}
             <Features />
-            <OurVision />
+            <OurImpact />
             {/* integration */}
             <HowWeArwDoing />
             <VideosAndPointers />

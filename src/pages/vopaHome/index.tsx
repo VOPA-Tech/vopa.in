@@ -43,7 +43,7 @@ const Company = () => {
                 }
                 link={`${baseUrl}`}
             />
-            <div className="">
+            <div className="bg-paper-texture">
                 <Navbar3
                     navClass="navbar-light zindex-10"
                     buttonClass="btn-outline-secondary btn-sm"
@@ -64,7 +64,7 @@ const Company = () => {
             <ProjectCardsSlider />
 
             {/* counter */}
-            <OurImpact />
+            {/* <OurImpact /> */}
             <TwoCause />
             {/* <AchivementStrip /> */}
             <Testimonials />
@@ -74,6 +74,7 @@ const Company = () => {
 
             {/* Partners */}
             <Partners />
+            {/* <About /> */}
             <VolunteerForm />
             {/* footer */}
             <Footer1 />

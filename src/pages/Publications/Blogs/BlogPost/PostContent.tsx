@@ -12,14 +12,22 @@ const PostContent = ({ blog }: HeroProps) => {
                     <Col lg={12}>
                         {/* Hero Image */}
                         {blog.coverUrl && (
-                            <figure className="figure">
-                                <img src={blog.coverUrl} alt="Blog Cover" className="figure-img img-fluid rounded" />
-                            </figure>
+                            <img
+                                style={{
+                                    width: '100%',
+                                    height: '400px',
+                                    objectFit: 'cover',
+                                }}
+                                src={blog.coverUrl}
+                                alt={blog.title}
+                                className="blog-cover"
+                            />
                         )}
 
                         {/* Render Blog Content */}
                         {blog.content ? (
                             <div
+                                className="blog-content pt-4"
                                 style={{
                                     color: '#212529',
                                     fontSize: '1rem',

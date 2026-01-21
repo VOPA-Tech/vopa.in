@@ -20,6 +20,7 @@ const EventContent = ({ event }: PostContentProps) => {
                         {/* Render Event Content */}
                         {event.content ? (
                             <div
+                                className="blog-content"
                                 style={{
                                     color: '#212529',
                                     fontSize: '1rem',

@@ -7,6 +7,7 @@
     position: relative;
     background-image: url('/assets/images/school-paper.jpg');
     background-size: contain;
+
     // background-position: center;
     // background-repeat: no-repeat;
     width: 100%;
@@ -18,12 +19,13 @@
 .bg-paper-texture::before {
     content: '';
     position: absolute;
+
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: #020024;
-    background: linear-gradient(90deg, hsla(186, 33%, 94%, 0.92) 0%, hsla(216, 41%, 79%, 0.95) 100%);
+    background: linear-gradient(90deg, hsla(186, 33%, 94%, 0.9) 0%, hsla(216, 41%, 79%, 0.9) 100%);
 
     // background-color: rgba(243, 248, 196, 0.9); /* Black overlay with 30% opacity */
     pointer-events: none; /* Allows clicks on underlying content */
@@ -79,4 +81,10 @@
 
     // background-color: rgba(243, 248, 196, 0.9); /* Black overlay with 30% opacity */
     pointer-events: none; /* Allows clicks on underlying content */
+}
+
+.newspaper-text {
+    text-align: justify;
+    text-justify: inter-word;
+    // text-indent: 2rem; // optional
 }

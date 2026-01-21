@@ -26,17 +26,19 @@ const slides: Slide[] = [
 ];
 const Testimonials = () => {
     return (
-        <section className="section pt-5 pb-7 py-sm-9 position-relative features-4">
+        <section className="section bg-paper-texture pt-5 pb-7 py-sm-9  position-relative features-4">
             <Container>
-                <Row>
-                    {' '}
-                    <h1 className="display-5 fw-medium d-flex mb-5 justify-content-center">Partnerships</h1>
-                </Row>
+                <Row> </Row>
 
                 <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
-                    <div className="slider">
-                        <SwiperSlider2 slides={slides} />
-                    </div>
+                    <Col lg={{ span: 3 }}>
+                        <h1 className="display-5 fw-medium d-flex mb-5 justify-content-center">Partnerships</h1>
+                    </Col>
+                    <Col lg={{ span: 8, offset: 1 }}>
+                        <div className="slider">
+                            <SwiperSlider2 slides={slides} />
+                        </div>
+                    </Col>
                 </Row>
             </Container>
         </section>

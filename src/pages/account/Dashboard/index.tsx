@@ -15,6 +15,7 @@ import { projects, tasks } from './data';
 import { useLogin, useUser } from 'hooks/auth';
 import { Navigate } from 'react-router-dom';
 import WebsiteRating from './WebsiteRating';
+import WebsiteFormStats from './FormStats';
 
 const Dashboard = () => {
     const [loggedInUser] = useUser();
@@ -33,7 +34,7 @@ const Dashboard = () => {
                     <Row>
                         {/* profile widget */}
                         <WebsiteRating />
-
+                        <WebsiteFormStats />
                         {/* stat widgets */}
                         {/* <Col lg={3}>
                             <StatWidget icon="check-circle" variant="success" stats={21} title="Tasks Completed" />

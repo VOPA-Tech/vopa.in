@@ -100,7 +100,7 @@ const SwiperSliderProjectCards = ({ slides }: SwiperSliderProps) => {
                                 </div>
                             </div>
 
-                            <Card.Body className="equal-card-body bg-soft-warning">
+                            <Card.Body className="equal-card-body bg-soft-success">
                                 <div>
                                     <h4 className="mt-0">
                                         <Link

@@ -119,7 +119,7 @@ const SwiperSliderProjectCards = ({ slides }: SwiperSliderProps) => {
                                         </Link>
                                     </h4>
 
-                                    <p className="text-muted mb-1">
+                                    <p className="text-muted mb-1 newspaper-text">
                                         {project.description.slice(0, 200)}...
                                         <Link
                                             style={{ color: 'inherit' }}

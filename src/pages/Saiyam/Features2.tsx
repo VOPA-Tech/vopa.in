@@ -14,7 +14,7 @@ const Features = () => {
     ];
 
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className="pt-lg-6 bg-paper-texture pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
             <Container>
                 <Row className="align-items-center ">
                     <Col lg={5}>
@@ -64,7 +64,7 @@ const Features = () => {
                     </Col>
                     <Col lg={{ span: 6, offset: 1 }}>
                         <img
-                            src="https://uploads.justech-ai.in/vopa-website/Saiyam Page/1762165165556_saiyam_digital_platform-.png"
+                            src="https://uploads.justech-ai.in/vopa-website/Saiyam Page/1763723728620_1762165165556_saiyam_digital_platform-.png"
                             alt="desktop1"
                             className="img-fluid"
                             data-aos="fade-left"

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CTA = () => {
     return (
-        <section className="section py-6 position-relative">
+        <section className="section bg-paper-texture py-6 position-relative">
             <Container>
                 <Row>
                     <Card className="shadow-none border mb-0 rounded-sm">
@@ -17,7 +17,7 @@ const CTA = () => {
                                 href="https://play.google.com/store/apps/details?id=com.mycaapp"
                                 target="blank"
                                 className="btn btn-outline-success mt-4">
-                                Download MYCA
+                                Download MYCA App
                             </a>
                             <Link to="/contact-us" className="btn btn-outline-success mx-2 mt-4">
                                 Support MYCA

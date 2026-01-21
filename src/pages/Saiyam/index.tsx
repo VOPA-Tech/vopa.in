@@ -3,7 +3,6 @@ import { Navbar3 } from 'components/navbars';
 
 import BackToTop from 'components/BackToTop';
 
-import ClientsReview from './ClientsReview';
 import Features from './Features';
 import Features2 from './Features2';
 import Integrations from './Integration';
@@ -23,13 +22,10 @@ import Highlights from './Highlights';
 const Startup = () => {
     return (
         <>
-            <div className="header-7">
+            <div className="bg-paper-texture">
                 <Navbar3 isSticky navClass="navbar-light" fixedWidth buttonClass="btn-secondary btn-sm" />
                 <Hero4 />
             </div>
-
-            {/* clients - reviews  */}
-            {/* <ClientsReview /> */}
 
             {/* features */}
             <Features />

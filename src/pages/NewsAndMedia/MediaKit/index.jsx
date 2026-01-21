@@ -25,19 +25,18 @@ const MediaKit = () => {
 
     return (
         <>
-            <div className="position-relative">
+            <div className="position-relative bg-paper-texture">
                 <Navbar3
                     fixedWidth
                     isSticky
                     navClass="navbar-light zindex-10"
                     buttonClass="btn-outline-secondary btn-sm"
                 />
+                <section className="">
+                    {/* Pass Redux media kit items instead of static gallery */}
+                    <Culture gallery={mediaKitItems} />
+                </section>
             </div>
-
-            <section className="bg-paper-texture">
-                {/* Pass Redux media kit items instead of static gallery */}
-                <Culture gallery={mediaKitItems} />
-            </section>
 
             <Footer1 />
             <BackToTop variant="success" />

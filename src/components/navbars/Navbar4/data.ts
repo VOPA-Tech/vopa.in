@@ -29,21 +29,21 @@ const notifications: Notification[] = [
 ];
 
 const profileOptions: ProfileOption[] = [
-    {
-        icon: 'user',
-        label: 'Profile',
-        redirectTo: '#',
-    },
-    {
-        icon: 'settings',
-        label: 'Settings',
-        redirectTo: '#',
-    },
-    {
-        icon: 'aperture',
-        label: 'Support',
-        redirectTo: '#',
-    },
+    // {
+    //     icon: 'user',
+    //     label: 'Profile',
+    //     redirectTo: '#',
+    // },
+    // {
+    //     icon: 'settings',
+    //     label: 'Settings',
+    //     redirectTo: '#',
+    // },
+    // {
+    //     icon: 'aperture',
+    //     label: 'Support',
+    //     redirectTo: '#',
+    // },
     {
         icon: 'unlock',
         label: 'Sign Out',

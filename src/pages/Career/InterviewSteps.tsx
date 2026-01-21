@@ -25,7 +25,7 @@ const steps = [
 
 const InterviewSteps = () => {
     return (
-        <section className="position-relative py-6">
+        <section className="position-relative bg-paper-texture py-6">
             <Container>
                 <Row className="justify-content-center">
                     <Col className="text-center">

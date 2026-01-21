@@ -24,38 +24,37 @@ const PressReleases = () => {
 
     return (
         <>
-            <div>
+            <div className="bg-paper-texture">
                 <Navbar3
                     navClass="navbar-light zindex-10"
                     buttonClass="btn-outline-secondary btn-sm"
                     fixedWidth
                     isSticky
                 />
-            </div>
-
-            <section className="pt-6 pb-4 position-relative bg-paper-texture">
-                <Container>
-                    <Row className="justify-content-center">
-                        <Col lg={12}>
-                            <h1 className="hero-title mt-0">Press Releases</h1>
-                        </Col>
-                    </Row>
-
-                    {isLoading ? (
-                        <p style={{ padding: '2rem', textAlign: 'center' }}>Loading...</p>
-                    ) : pressReleases.length ? (
-                        <Row className="" data-aos="fade-up">
-                            {pressReleases.map((pressRelease, index) => (
-                                <Col lg={12} key={index}>
-                                    <PressReleaseCard post={pressRelease} />
-                                </Col>
-                            ))}
+                <section className="pt-6 pb-4 position-relative bg-paper-texture">
+                    <Container>
+                        <Row className="justify-content-center">
+                            <Col lg={12}>
+                                <h1 className="hero-title mt-0">Press Releases</h1>
+                            </Col>
                         </Row>
-                    ) : (
-                        <p style={{ padding: '2rem', textAlign: 'center' }}>No press releases found.</p>
-                    )}
-                </Container>
-            </section>
+
+                        {isLoading ? (
+                            <p style={{ padding: '2rem', textAlign: 'center' }}>Loading...</p>
+                        ) : pressReleases.length ? (
+                            <Row className="" data-aos="fade-up">
+                                {pressReleases.map((pressRelease, index) => (
+                                    <Col lg={12} key={index}>
+                                        <PressReleaseCard post={pressRelease} />
+                                    </Col>
+                                ))}
+                            </Row>
+                        ) : (
+                            <p style={{ padding: '2rem', textAlign: 'center' }}>No press releases found.</p>
+                        )}
+                    </Container>
+                </section>
+            </div>
 
             <Footer1 />
             <BackToTop variant="success" />

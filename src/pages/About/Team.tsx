@@ -19,20 +19,20 @@ const Team = ({ teamMembers }: TeamProps) => {
 
     if (safeTeamMembers.length === 0) return null;
 
-    const sortByName = (a: any, b: any) => a.name?.localeCompare(b.name || '');
+    const sortByJoiningDate = (a: any, b: any) => a.joinedDate?.localeCompare(b.joinedDate || '');
 
     // Separate and sort priority members alphabetically
-    const level3 = safeTeamMembers.filter((member) => member?.level === 3).sort(sortByName);
+    const level3 = safeTeamMembers.filter((member) => member?.level === 3).sort(sortByJoiningDate);
 
-    const level2 = safeTeamMembers.filter((member) => member?.level === 2).sort(sortByName);
+    const level2 = safeTeamMembers.filter((member) => member?.level === 2).sort(sortByJoiningDate);
 
-    const level1 = safeTeamMembers.filter((member) => member?.level === 1).sort(sortByName);
+    const level1 = safeTeamMembers.filter((member) => member?.level === 1).sort(sortByJoiningDate);
 
     // Merge in order of priority
     const sortedMembers = [...level3, ...level2, ...level1];
     return (
-        <section className="pb-5 pt-6 mt-4 position-relative" data-aos="fade-up">
-            <Container>
+        <section className="pb-5  position-relative bg-paper-texture">
+            <Container data-aos="fade-up">
                 <Row className="justify-content-center">
                     <Col className="text-center">
                         <Badge pill bg="" className="badge-soft-success px-2 py-1">
@@ -51,21 +51,21 @@ const Team = ({ teamMembers }: TeamProps) => {
                                 <img
                                     src={member?.photo || '/images/placeholder.jpg'}
                                     alt={member?.name || 'Team Member'}
-                                    style={{ width: '120px', height: '150px', objectFit: 'cover' }}
+                                    style={{ width: '160px', height: '200px', objectFit: 'cover' }}
                                     className="avatar-xl d-block rounded me-4"
                                 />
 
                                 <div className="flex-grow-1">
-                                    <h5 className="mt-0 mb-1 fw-medium d-flex align-items-center">
+                                    <h5 className="mt-0 mb-1 fw-bold text-black d-flex align-items-center">
                                         {member?.name || 'Unnamed'}
                                     </h5>
-                                    <p className="text-muted fw-medium mb-0">{member?.role || 'Designation'}</p>
+                                    <p className=" fw-medium mb-0">{member?.role || 'Designation'}</p>
                                     {member?.linkedin && (
                                         <a
                                             href={member.linkedin}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-muted mt-1 d-inline-block">
+                                            className=" mt-1 d-inline-block">
                                             <FeatherIcon icon="linkedin" size={16} />
                                         </a>
                                     )}

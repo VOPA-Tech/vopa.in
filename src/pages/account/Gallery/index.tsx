@@ -71,7 +71,7 @@ const Gallery = () => {
             fetchImages(selectedFolder);
             fetchFolders();
         } catch (err) {
-            console.error('Upload failed:', err);
+            console.error('Upload failed:', err.message);
             alert('Upload failed');
         } finally {
             setUploading(false);
@@ -237,55 +237,74 @@ const Gallery = () => {
                         </Button>
 
                         <Row className="mt-4">
-                            {images.map((img, index) => (
-                                <Col xs={6} md={4} lg={3} key={index} className="mb-4">
-                                    <div className="position-relative border rounded overflow-hidden">
-                                        {/* Delete button */}
-                                        <Button
-                                            size="sm"
-                                            variant="danger"
-                                            className="position-absolute top-0 end-0 m-1 p-1 rounded-circle"
-                                            style={{ zIndex: 1 }}
-                                            onClick={() => handleDelete(img.filename)}
-                                            aria-label="Delete image"
-                                            title="Delete">
-                                            <FeatherIcon icon="x" size={14} />
-                                        </Button>
+                            {images.map((file, index) => {
+                                const isVideo = file.filename.match(/\.(mp4|webm|ogg)$/i);
 
-                                        {/* Copy URL button */}
-                                        <Button
-                                            size="sm"
-                                            variant="secondary"
-                                            className="position-absolute top-0 start-0 m-1 p-1 rounded-circle"
-                                            style={{ zIndex: 1 }}
-                                            onClick={() => handleCopyUrl(img.url, index)}
-                                            aria-label="Copy image URL"
-                                            title="Copy URL">
-                                            <FeatherIcon icon="copy" size={14} />
-                                        </Button>
+                                return (
+                                    <Col xs={6} md={4} lg={3} key={index} className="mb-4">
+                                        <div className="position-relative border rounded overflow-hidden">
+                                            {/* Delete button */}
+                                            <Button
+                                                size="sm"
+                                                variant="danger"
+                                                className="position-absolute top-0 end-0 m-1 p-1 rounded-circle"
+                                                style={{ zIndex: 1 }}
+                                                onClick={() => handleDelete(file.filename)}
+                                                aria-label="Delete file"
+                                                title="Delete">
+                                                <FeatherIcon icon="x" size={14} />
+                                            </Button>
 
-                                        <img
-                                            src={img.url}
-                                            alt={img.filename}
-                                            className="w-100"
-                                            style={{
-                                                objectFit: 'contain',
-                                                height: selectedFolder === 'employees' ? '250px' : '200px',
-                                                aspectRatio: selectedFolder === 'employees' ? '5 / 4' : undefined,
-                                            }}
-                                        />
+                                            {/* Copy URL button */}
+                                            <Button
+                                                size="sm"
+                                                variant="secondary"
+                                                className="position-absolute top-0 start-0 m-1 p-1 rounded-circle"
+                                                style={{ zIndex: 1 }}
+                                                onClick={() => handleCopyUrl(file.url, index)}
+                                                aria-label="Copy file URL"
+                                                title="Copy URL">
+                                                <FeatherIcon icon="copy" size={14} />
+                                            </Button>
 
-                                        {/* Copied badge */}
-                                        {copiedIndex === index && (
-                                            <span className="badge bg-success position-absolute bottom-0 start-0 m-2">
-                                                Copied!
-                                            </span>
-                                        )}
+                                            {/* File preview */}
+                                            {isVideo ? (
+                                                <video
+                                                    src={file.url}
+                                                    className="w-100"
+                                                    style={{
+                                                        height: selectedFolder === 'employees' ? '250px' : '200px',
+                                                        objectFit: 'cover',
+                                                        borderRadius: 4,
+                                                    }}
+                                                    controls
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={file.url}
+                                                    alt={file.filename}
+                                                    className="w-100"
+                                                    style={{
+                                                        objectFit: 'contain',
+                                                        height: selectedFolder === 'employees' ? '250px' : '200px',
+                                                        aspectRatio:
+                                                            selectedFolder === 'employees' ? '5 / 4' : undefined,
+                                                    }}
+                                                />
+                                            )}
 
-                                        <div className="p-2 text-truncate text-center small">{img.filename}</div>
-                                    </div>
-                                </Col>
-                            ))}
+                                            {/* Copied badge */}
+                                            {copiedIndex === index && (
+                                                <span className="badge bg-success position-absolute bottom-0 start-0 m-2">
+                                                    Copied!
+                                                </span>
+                                            )}
+
+                                            <div className="p-2 text-truncate text-center small">{file.filename}</div>
+                                        </div>
+                                    </Col>
+                                );
+                            })}
                         </Row>
                     </Container>
                 </Container>

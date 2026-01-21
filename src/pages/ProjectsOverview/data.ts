@@ -145,7 +145,7 @@ const projects: any[] = [
         description:
             'Nipun Bharat, a Maharashtra, focuses on enhancing foundational literacy and numeracy for children in the state, with VOPA supporting the program through digital tools and resources aimed at improving learning outcomes.',
         image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262067_nipun.png',
-        link: '/projects/nipun-bharat',
+        link: '/projects/nipun-maharashtra',
     },
     {
         field: 'Health',
@@ -155,14 +155,7 @@ const projects: any[] = [
         image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262064_myca.png',
         link: '/projects/myca',
     },
-    {
-        field: 'Education',
-        title: 'School Transformation Project (STP)',
-        description:
-            'Digital Learning Project implements cutting-edge digital tools and resources to enhance learning experiences, providing interactive and engaging educational content that transforms traditional teaching methods across Maharashtra schools.',
-        image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262076_stp.png',
-        link: '/projects/digital-learning-project',
-    },
+
     {
         field: 'Education',
         title: 'Digital Learning Project (DLP)',

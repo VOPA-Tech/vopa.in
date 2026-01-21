@@ -9,20 +9,18 @@ import ContactUs from './ContactUs';
 const Contact = () => {
     return (
         <>
-            <div className="header-7 bg-gradient2">
+            <div className="bg-paper-texture">
                 <Navbar3
-                    // hideSearch
-                    isSticky
-                    fixedWidth
                     navClass="navbar-light zindex-10"
                     buttonClass="btn-outline-secondary btn-sm"
+                    // hideSearch
+                    fixedWidth
+                    isSticky
                 />
-
-                <Hero />
+                <ContactUs />
             </div>
 
             {/* contact us */}
-            <ContactUs />
 
             {/* footer */}
             <Footer1 />

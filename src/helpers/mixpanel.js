@@ -1,14 +1,16 @@
-//Import Mixpanel SDK
 import mixpanel from 'mixpanel-browser';
 
-// Near entry of your product, init Mixpanel
-console.log('pro12345', process.env.REACT_APP_MIXPANEL_TOKEN);
-mixpanel.init(process.env.REACT_APP_MIXPANEL_TOKEN, {
-    debug: false,
-    track_pageview: true,
-    // persistence: 'localStorage',
-    // record_sessions_percent: 100, //records 100% of all sessions
-    // record_heatmap_data: true,
-});
+const token = process.env.REACT_APP_MIXPANEL_TOKEN;
+
+if (!token) {
+    console.error('❌ MIXPANEL ERROR: REACT_APP_MIXPANEL_TOKEN is missing!');
+} else {
+    mixpanel.init(token, {
+        debug: true,
+        persistence: 'localStorage',
+    });
+
+    console.log('✅ Mixpanel initialized successfully');
+}
 
 export default mixpanel;

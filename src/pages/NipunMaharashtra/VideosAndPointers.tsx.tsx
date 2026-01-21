@@ -14,36 +14,42 @@ const VideosAndPointers = () => {
             title: 'Education Assessment at Scale',
             link: 'https://www.youtube.com/embed/xg6YjLbqzeY',
             pointer: {
-                'Replicable model': 'Model replicable at state & national level',
-                'Scalable model': 'Platform-agnostic and readily adaptable',
-                'Customizable Assessment Levels': 'Agency with Educational bodies(SCERT)',
-                'Ground-Up Ownership': 'Government ecosystem led project',
-                'Long-Term Vision': 'Ensuring sustained improvements for future generations',
-                'State Adoption': 'SCERT to host data and technology infrastructure',
-                'Technology Readiness': 'Successful pilot with 100% adoption',
+                'Replicable model': 'Designed for seamless replication at both state and national levels.',
+                'Scalable model': 'Platform-agnostic architecture ensures easy expansion and adaptability.',
+                'Customizable Assessment Levels':
+                    ' Full flexibility for educational bodies (SCERT) to define and modify assessment levels.',
+                'Ground-Up Ownership': 'A government-led initiative built with strong ecosystem ownership.',
+                'Long-Term Vision': 'Focused on sustaining improvements for future generations.',
+                'State Adoption': 'SCERT will host and manage the data and technology infrastructure.',
+                'Technology Readiness':
+                    'Successfully piloted with 100% adoption, demonstrating strong operational feasibility.',
             },
         },
         {
             title: 'Features of Nipun Maharashtra',
             link: 'https://www.youtube.com/embed/BeKsdfHT20Y',
             pointer: {
-                Scale: 'Ability to work at scale for 70,000 schools, replicable tech stack',
-                Ecosystem: 'All stakeholders on one platform: Parents, Teachers, HeadMasters, Education Officers',
-                ' Evidence': 'AI based classroom assessments for reading, numeracy (FLN)',
+                Scale: 'Capable of operating across 70,000+ schools with a fully replicable technology stack.',
+                Ecosystem:
+                    ': Brings all stakeholders—parents, teachers, headmasters, and education officers—onto a single integrated platform.',
+                Evidence: 'Utilizes AI-based classroom assessments for reading and numeracy (FLN).',
 
-                'Transparency & accountability': 'Parents and admin officers linkage into model',
+                'Transparency & accountability':
+                    'Ensures linkage of parents and administrative officers for greater visibility and responsibility.',
 
-                'Governance Transformation': 'Realtime dashboards, Nested supervision',
+                'Governance Transformation':
+                    'Offers real-time dashboards and a nested supervision framework for effective monitoring.',
 
-                Engagement: 'Multimedia notifications, Reminders, Chatbots',
+                Engagement:
+                    'Provides multimedia notifications, reminders, and chatbot support for continuous communication.',
 
-                'Teacher capacity building': 'Data driven, need based courses and material',
+                'Teacher capacity building': 'Delivers data-driven, need-based courses and learning materials.',
             },
         },
     ];
 
     return (
-        <section className="pt-6  pb-6 position-relative overflow-hidden">
+        <section className="pt-6 bg-paper-texture pb-6 position-relative overflow-hidden">
             <Container>
                 {featuresThatMatter.map((ele) => (
                     <Row className="align-items-center">
@@ -69,10 +75,10 @@ const VideosAndPointers = () => {
                                         return (
                                             <li className=" d-flex align-items-center" key={key}>
                                                 <>
-                                                    <FeatherIcon
-                                                        icon="check"
-                                                        className="icon-md text-success align-middle me-2"
-                                                    />
+                                                    {/* <FeatherIcon
+                                                        icon="check-circle"
+                                                        className="icon-XS text-success align-middle me-2"
+                                                    /> */}
                                                     <p>
                                                         <strong>{key}</strong>: {value}
                                                     </p>

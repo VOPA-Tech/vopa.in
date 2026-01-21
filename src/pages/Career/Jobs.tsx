@@ -77,7 +77,7 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
         rows.find((r) => !!r.thumbnailUrl)?.thumbnailUrl || 'https://via.placeholder.com/240x160?text=Careers';
 
     return (
-        <section className="py-5 mt-2 position-relative" id="job-openings" style={{ overflow: 'hidden' }}>
+        <section className="py-5 position-relative bg-paper-texture" id="job-openings" style={{ overflow: 'hidden' }}>
             <Container>
                 <Row>
                     <Col className="text-center">
@@ -185,7 +185,7 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
 
             {/* fixed decorative image at right corner */}
             <img
-                src="https://uploads.justech-ai.in/vopa-website/careerPage/1758612171489_screenshot_2025-09-23_125121-removebg-preview.png"
+                src="https://uploads.justech-ai.in/vopa-website/careerPage/1768910406969_vowels_of_the_people_association_in_english_2026_certification_badge-removebg-pr.png"
                 alt="careers"
                 style={{
                     position: 'fixed',
@@ -273,7 +273,10 @@ const Jobs: React.FC<JobsProps> = ({ jobs = [] }) => {
                             )}
                         </Row>
 
-                        <div className="prose" dangerouslySetInnerHTML={{ __html: activeJob?.content || '' }} />
+                        <div
+                            className="blog-content porse"
+                            dangerouslySetInnerHTML={{ __html: activeJob?.content || '' }}
+                        />
                     </div>
                 </Modal.Body>
 

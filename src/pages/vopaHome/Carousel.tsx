@@ -11,7 +11,7 @@ const CaptionCarousel = () => {
         {
             title1: 'The Problem',
             description: 'Bringing quality education to millions in rural India.',
-            title2: 'What if every child could learn through a smartphone ?',
+            title2: 'What if every child could learn through a smartphone?',
             image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262069_vschool.webp',
         },
         {

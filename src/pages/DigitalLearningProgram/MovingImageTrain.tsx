@@ -32,12 +32,11 @@ const MovingImageTrain = ({ images }) => {
             background: transparent;
             padding: 20px 0;
           }
-
-          .swiper {
+     .image-train-container .swiper {
             width: 100%;
           }
 
-          .swiper-slide {
+          .image-train-container .swiper-slide {
             width: auto !important;
           }
 

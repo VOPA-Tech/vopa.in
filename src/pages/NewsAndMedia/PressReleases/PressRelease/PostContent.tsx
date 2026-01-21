@@ -29,6 +29,7 @@ const PressReleaseContent = ({ pressRelease }: PostContentProps) => {
                                     fontSize: '1rem',
                                     lineHeight: '1.7',
                                 }}
+                                className="blog-content"
                                 dangerouslySetInnerHTML={{
                                     __html: pressRelease.content,
                                 }}

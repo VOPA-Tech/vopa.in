@@ -21,7 +21,7 @@ const KnowAboutUs = ({ features }: FeaturesProps) => {
                 <Row className="align-items-center">
                     <Col lg={12}>
                         <h1 className="display-4 fw-semibold mb-4">{'Vowels of People Association'}</h1>
-                        <p className="mb-5 ">
+                        <p className="mb-5 newspaper-text">
                             From 2025-through partnering with Maharashtra State Council of Educational Research and
                             Training (SCERT) for Mission NIPUN Maharashtra- the NIPUN Maharashtra app is revolutionizing
                             how India diagnoses and addresses foundational learning gaps through AI-powered,

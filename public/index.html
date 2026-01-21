@@ -43,7 +43,7 @@
                 overflow-x: hidden;
                 width: 100%;
             }
-
+            body,
             * {
                 box-sizing: border-box;
             }
@@ -66,6 +66,65 @@
                 opacity: 0.85;
                 box-shadow: 0px 2px 4px rgba(32, 33, 36, 0.28);
                 transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            }
+
+            .blog-content {
+                line-height: 1.7;
+                font-size: 1rem;
+                word-break: normal;
+                overflow-wrap: anywhere;
+                white-space: normal;
+                text-align: justify; /* newspaper-style blocks */
+                hyphens: auto; /* smart word breaks */
+            }
+            .blog-content img {
+                /* float: left; */
+                max-width: 80%;
+                /* margin: 0.4rem 1rem 0.4rem 0; */
+                height: auto;
+                border-radius: 8px;
+            }
+            .blog-content::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .blog-content a,
+            .blog-content code {
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+            .blog-content p {
+                margin-bottom: 1rem;
+            }
+            @media (max-width: 768px) {
+                .blog-content {
+                    text-align: left;
+                }
+
+                .blog-content img {
+                    float: none;
+                    max-width: 100%;
+                    margin: 1rem 0;
+                    display: block;
+                }
+            }
+            /* Optional: limit very tall images */
+            .blog-content img {
+                max-height: 400px;
+                object-fit: contain;
+            }
+
+            /* Tables & embeds safety */
+            .blog-content table {
+                width: 100%;
+                overflow-x: auto;
+                display: block;
+            }
+
+            .blog-content iframe,
+            .blog-content video {
+                max-width: 100%;
             }
 
             .custom-recaptcha-badge:hover {
@@ -98,8 +157,8 @@
                 line-height: 12px;
             }
 
-            /* 
-                📱 Hide text on small screens 
+            /*
+                📱 Hide text on small screens
                 (only show icon)
             */
             @media (max-width: 767px) {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CTA = () => {
     return (
-        <section className="section py-6 position-relative">
+        <section className="section bg-paper-texture py-6 position-relative">
             <Container>
                 <Row>
                     <Card className="shadow-none border mb-lg-0 rounded-sm">

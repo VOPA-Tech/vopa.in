@@ -35,39 +35,33 @@ const MediaMentions = () => {
 
     return (
         <>
-            <div className="">
-                <div className="overlay"></div>
+            <div className="bg-paper-texture">
+                <Navbar3 navClass="navbar-light " buttonClass="btn-outline-secondary btn-sm" fixedWidth isSticky />
+                <section className=" pt-4 pb-5">
+                    {' '}
+                    <Container className="pt-4 pb-5">
+                        <Row className="justify-content-center">
+                            <Col lg={12}>
+                                <h1 className="hero-title mt-0">Media Mentions & Cutouts</h1>
+                            </Col>
+                        </Row>
 
-                <Navbar3
-                    navClass="navbar-light zindex-10"
-                    buttonClass="btn-outline-secondary btn-sm"
-                    fixedWidth
-                    isSticky
-                />
+                        <Row className="mt-3 d-flex justify-content-start" data-aos="fade-up">
+                            {mentions.map((post) => (
+                                <MediaMentionViewer key={post._id} post={post} />
+                            ))}
+                        </Row>
+                    </Container>
+                </section>
+                <section className="bg-paper-texture pt-4 pb-5">
+                    {' '}
+                    <Container fluid className="bg-paper-texture pt-4 pb-5">
+                        <MediaCutouts mediaCutouts={mediaCutouts} />
+                    </Container>
+                </section>
             </div>
 
-            <section className="pt-6 pb-4 position-relative bg-paper-texture">
-                <Container className="">
-                    <Row className="justify-content-center">
-                        <Col lg={12}>
-                            <h1 className="hero-title mt-0">Media Mentions & Cutouts</h1>
-                        </Col>
-                    </Row>
-
-                    <Row className="mt-3 d-flex justify-content-start" data-aos="fade-up">
-                        {mentions.map((post) => (
-                            <MediaMentionViewer key={post._id} post={post} />
-                        ))}
-                    </Row>
-                </Container>
-
-                {/* MediaCutouts */}
-                <MediaCutouts mediaCutouts={mediaCutouts} />
-            </section>
-
-            {/* footer */}
             <Footer1 />
-
             <BackToTop variant="success" />
         </>
     );

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { useRoutes, Navigate } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
 // auth
@@ -246,9 +246,17 @@ const AllRoutes = () => {
                                 },
                             ],
                         },
+                        {
+                            path: '*',
+                            element: <Navigate to="/account/gallery" replace />,
+                        },
                     ],
                 },
             ],
+        },
+        {
+            path: '*',
+            element: <Navigate to="/" replace />,
         },
     ]);
 };

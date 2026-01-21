@@ -42,7 +42,7 @@ const SwiperSlider2 = ({ slides, hasLogo }: SwiperSliderProps) => {
                             <Card.Body className="testimonial-body shadow">
                                 <p className="quotation-mark text-muted mb-0">“</p>
                                 {/* <h4 className="fw-normal mb-3 mt-0">{slide.statement}</h4> */}
-                                <h4 className="fw-normal mb-3 mt-0">{slide.summary}</h4>
+                                <h4 className="fw-normal mb-3 mt-0 newspaper-text">{slide.summary}</h4>
                                 <hr />
                                 <div className="d-flex pt-2 align-items-center">
                                     {true && <img src={slide.logo} alt="logo" height="38" />}

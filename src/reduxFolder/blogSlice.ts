@@ -47,7 +47,9 @@ const blogSlice = createSlice({
             })
             .addCase(fetchBlogs.fulfilled, (state, action) => {
                 state.loading = false;
-                state.blogs = action.payload;
+                state.blogs = action.payload
+                    .slice() // avoid mutating original array
+                    .sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
             })
             .addCase(fetchBlogs.rejected, (state, action) => {
                 state.loading = false;

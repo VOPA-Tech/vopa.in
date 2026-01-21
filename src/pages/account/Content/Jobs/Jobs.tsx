@@ -460,7 +460,7 @@ const Jobs = () => {
                                         : '-'}
                                 </p>
                                 <div
-                                    className="event-content"
+                                    className="blog-content"
                                     dangerouslySetInnerHTML={{ __html: viewingJob.content }}
                                 />
                             </>

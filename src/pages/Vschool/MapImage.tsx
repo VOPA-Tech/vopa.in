@@ -9,21 +9,18 @@ import { SwiperSlider3 } from 'components/sliders';
 
 const MapImage = () => {
     return (
-        <section className="py-1 pb-sm-6">
+        <section className="py-1 pb-sm-6 bg-paper-texture position-relative overflow-hidden">
             <Row className="align-items-center justify-content-center zindex-1">
                 <Col xs={10} className="text-center zindex-1">
-                    <Card className="rounded-lg shadow" data-aos="fade-up" data-aos-duration="2000">
-                        <p className="display-3">Official Collaborations with ZP</p>
-                        <div className="video-container">
-                            <img
-                                src="https://uploads.justech-ai.in/vopa-website/vschoolPage/1758275207925_maharashtramap.png" // 🔁 Replace with your image path
-                                alt="Video Thumbnail"
-                                width="100%"
-                                height="515"
-                                style={{ objectFit: 'contain', borderRadius: '8px' }}
-                            />
-                        </div>
-                    </Card>
+                    <p className="display-4">Official Collaborations with ZP</p>
+
+                    <img
+                        src="https://uploads.justech-ai.in/vopa-website/vschoolPage/1758275207925_maharashtramap.png" // 🔁 Replace with your image path
+                        alt="Video Thumbnail"
+                        width="100%"
+                        className="image-fluid"
+                        style={{ objectFit: 'cover', borderRadius: '8px' }}
+                    />
                 </Col>
             </Row>
         </section>

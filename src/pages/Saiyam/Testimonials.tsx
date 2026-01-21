@@ -9,7 +9,7 @@ import SwiperSlider2 from './SwiperSlider2';
 
 const Testimonials = () => {
     return (
-        <section className="section  pt-5 pb-7 py-sm-9 position-relative features-4">
+        <section className="section bg-paper-texture pt-5 pb-7 py-sm-9 position-relative features-4 newspaper-text">
             <Container>
                 <Row className="testimonials-2" data-aos="fade-up" data-aos-duration="200">
                     <Col lg={3}>

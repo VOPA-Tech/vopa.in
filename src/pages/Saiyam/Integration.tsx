@@ -35,13 +35,10 @@ const Integrations = () => {
         },
     ];
     return (
-        <section className=" py-6 bg-gradient2 position-relative">
+        <section className=" py-6 bg-paper-texture position-relative">
             <Container data-aos="fade-up" data-aos-duration="1500">
                 <Row>
                     <Col className="text-center">
-                        <Badge pill bg="" className="badge-soft-success px-2 py-1">
-                            Benefits and Features for Schools
-                        </Badge>
                         <h1 className="display-5 fw-medium"> Benefits and Features for Schools</h1>
                         <p className="text-muted mx-auto">Benefits and Features for Schools</p>
                     </Col>

@@ -23,7 +23,7 @@ const Company = () => {
 
     return (
         <>
-            <div>
+            <div className="bg-paper-texture">
                 <Navbar3
                     navClass="navbar-light zindex-10"
                     buttonClass="btn-outline-secondary btn-sm"

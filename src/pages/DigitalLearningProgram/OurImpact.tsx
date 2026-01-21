@@ -8,14 +8,14 @@ import desktop from 'assets/images/hero/desktop.jpg';
 
 const OurImpact = () => {
     const features = [
-        '~30% improvement in Learning Outcomes & Functional Numeracy & Numeracy.',
-        'Tailored Lesson Plans delivered for enhanced teaching.',
-        '90% of teachers report increased confidence in using digital tools.',
-        '10 hours saved per teacher on assessment during each cycle.',
+        'Foundational literacy (Marathi) proficiency has increased by approximately 30 percentage points.',
+        'Foundational literacy (English) proficiency has increased by approximately 35 percentage points.',
+        'Foundational numeracy proficiency has increased by approximately 40 percentage points.',
+        'Around 90% of students have had the opportunity to experience digital learning inside their classrooms.',
     ];
 
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 bg-paper-texture position-relative overflow-hidden">
             <Container>
                 <Row className="align-items-center">
                     <Col lg={6}>
@@ -37,7 +37,10 @@ const OurImpact = () => {
                                 Our Solution
                             </Badge> */}
                             <h1 className="display-4 text-success fw-medium mb-3">Our Impact</h1>
-
+                            <p className="text-muted mb-4">
+                                Since the launch of the project, we have seen significant improvements in student
+                                learning:
+                            </p>
                             <ul className="list-unstyled border-top py-4 mt-4 text-start">
                                 {features.map((feature, index) => {
                                     return (
@@ -45,8 +48,8 @@ const OurImpact = () => {
                                             {feature && (
                                                 <>
                                                     <FeatherIcon
-                                                        icon="check"
-                                                        className="icon-xs text-success align-middle me-2"
+                                                        icon="check-circle"
+                                                        className="icon-md text-success align-middle me-2"
                                                     />
                                                     {feature}
                                                 </>

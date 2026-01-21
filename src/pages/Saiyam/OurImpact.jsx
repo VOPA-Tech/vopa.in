@@ -68,8 +68,8 @@ const stats = [
 
 const OurImpact = () => {
     return (
-        <section className="pt-8 pb-6 bg-light position-relative" data-aos="fade-up">
-            <Container>
+        <section className="pt-8 pb-6 bg-paper-texture position-relative">
+            <Container data-aos="fade-up">
                 <Row>
                     <Col className="text-center">
                         {/* <Badge pill bg="" className="badge-soft-info px-2 py-1">
@@ -85,7 +85,10 @@ const OurImpact = () => {
 
                 <Row className="mt-5 text-center justify-content-center">
                     {stats.map((stat, idx) => (
-                        <Col key={idx} lg={4} className="mt-4 m-2 mb-sm-0  border bg-soft-success rounded-3  shadow-lg">
+                        <Col
+                            key={idx}
+                            lg={4}
+                            className="mt-4 m-2 mb-sm-0  border bg-soft-secondary rounded-3  shadow-lg">
                             {/* <div className="m-2">{stat.icon}</div> */}
                             <img
                                 style={{ height: '100px' }}

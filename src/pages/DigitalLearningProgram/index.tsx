@@ -11,7 +11,7 @@ import { Footer1 } from 'components/footer';
 const Startup = () => {
     return (
         <>
-            <div className="header-7">
+            <div className="bg-paper-texture">
                 <Navbar3 navClass="navbar-light" fixedWidth isSticky buttonClass="btn-secondary btn-sm" />
                 <Hero4 />
             </div>

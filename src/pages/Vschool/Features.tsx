@@ -14,7 +14,7 @@ const Features = () => {
     ];
 
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className="pt-lg-6 pt-4 bg-paper-texture pb-lg-6 pb-5 position-relative overflow-hidden">
             <Container>
                 <Row className="align-items-center ">
                     <Col lg={5}>
@@ -25,13 +25,13 @@ const Features = () => {
                             <h1 className="display-4 fw-medium mb-3">
                                 V-School: Scalable Public EdTech for Systemic Impact
                             </h1>
-                            <p className="text-muted mx-auto mb-4 pb-3">
+                            <p className="text-muted mx-auto mb-4 pb-3 newspaper-text">
                                 V-School is a free, multilingual, AI-enabled digital education ecosystem designed to
                                 strengthen public education. It offers curriculum-aligned content, FLN and learning
                                 outcome-based assessments, teacher resources, and data dashboards—supporting students,
                                 teachers, and government officials.
                             </p>
-                            <p className="text-muted mx-auto mb-4 pb-3">
+                            <p className="text-muted mx-auto mb-4 pb-3 newspaper-text">
                                 With over 3 million users impacted, V-School is built to be replicable across districts,
                                 states, and curricula, making it a powerful model for scalable, equity-driven education
                                 reform at no cost to end users.

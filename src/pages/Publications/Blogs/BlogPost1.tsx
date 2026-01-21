@@ -3,49 +3,35 @@ import { Link } from 'react-router-dom';
 
 const BlogPost1 = ({ post }: any) => {
     return (
-        <Card className="">
-            <Row>
-                <Card.Body className="d-flex flex-column rounded  ">
-                    <h3 className="mt-1 fw-semibold">
-                        <Link
-                            style={{ color: 'inherit' }}
-                            onMouseOver={(e) => (e.currentTarget.style.color = '#28c76f')}
-                            onMouseOut={(e) => (e.currentTarget.style.color = 'inherit')}
-                            to={`/blog/post/${post.slug}`}>
-                            {post.title}
-                        </Link>
-                    </h3>
+        <Card className="h-80 w-100">
+            <Card.Body className="d-flex flex-column">
+                <img
+                    src={post.thumbnailUrl}
+                    alt={post.title}
+                    className="rounded-sm"
+                    style={{
+                        width: '100%',
+                        height: '180px',
+                        objectFit: 'cover',
+                    }}
+                />
 
-                    <p className="text-muted">
-                        {/* {post.name.substring(0, 350)}{' '} */}
-                        <Link
-                            style={{ color: 'inherit' }}
-                            onMouseOver={(e) => (e.currentTarget.style.color = '#28c76f')}
-                            onMouseOut={(e) => (e.currentTarget.style.color = 'inherit')}
-                            to={`/blog/post/${post.slug}`}
-                            className="text-secondary">
-                            read more
-                        </Link>
-                    </p>
+                <h3 className="mt-2 fw-semibold blog-title">
+                    <Link to={`/blog/post/${post.slug}`} className="text-decoration-none text-dark">
+                        {post.title}
+                    </Link>
+                </h3>
 
-                    <div className="mt-auto">
-                        <div className="d-flex">
-                            {/* <img
-                                className="me-2 rounded-sm"
-                                src="/images/aboutUs/vopaStaff/prafullaShashikant.jpg"
-                                alt=""
-                                height="36"
-                            /> */}
-                            <div className="flex-grow-1">
-                                <h6 className="m-0 fs-13">
-                                    <Link to="#">{post.author}</Link>
-                                </h6>
-                                {/* <p className="text-muted mb-0 fs-13"> {'post.postedOn!.time'}</p> */}
-                            </div>
-                        </div>
-                    </div>
-                </Card.Body>
-            </Row>
+                <p className="text-muted mt-1">
+                    <Link to={`/blog/post/${post.slug}`} className="text-secondary text-decoration-none">
+                        Read more
+                    </Link>
+                </p>
+
+                <div className="mt-auto">
+                    <h6 className="m-0 fs-13">{post.author}</h6>
+                </div>
+            </Card.Body>
         </Card>
     );
 };

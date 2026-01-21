@@ -7,7 +7,7 @@ const MovingImageTrain = ({ images }) => {
         loop: true,
         slidesPerView: 'auto' as const,
         spaceBetween: 30,
-        speed: 8000 / 3, // 🔥 3x faster (previously 8000ms → now ~2666ms)
+        speed: 8000 / 3,
         freeMode: {
             enabled: true,
             momentum: false,
@@ -33,29 +33,30 @@ const MovingImageTrain = ({ images }) => {
             padding: 20px 0;
           }
 
-          .swiper {
+          /* 🛡 Scoped styles (won't affect other components) */
+          .image-train-container .swiper {
             width: 100%;
           }
 
-          .swiper-slide {
+          .image-train-container .swiper-slide {
             width: auto !important;
           }
 
-          .passport-img {
-            width: 400px;  /* ⬆️ 2x bigger */
-            height: 320px; /* ⬆️ 2x bigger */
+          .image-train-container .passport-img {
+            width: 400px;
+            height: 320px;
             object-fit: cover;
             border-radius: 16px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.25);
             transition: transform 0.4s ease;
           }
 
-          .passport-img:hover {
+          .image-train-container .passport-img:hover {
             transform: scale(1.08);
           }
 
           @media (max-width: 768px) {
-            .passport-img {
+            .image-train-container .passport-img {
               width: 130px;
               height: 100px;
             }

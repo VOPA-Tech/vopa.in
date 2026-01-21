@@ -346,7 +346,7 @@ const Events = () => {
                             <>
                                 <img src={viewingEvent.coverUrl} alt="Cover" className="img-fluid mb-3" />
                                 <div
-                                    className="event-content"
+                                    className="blog-content"
                                     dangerouslySetInnerHTML={{ __html: viewingEvent.content }}
                                 />
                             </>

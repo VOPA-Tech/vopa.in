@@ -21,8 +21,8 @@ const partners = [
 ];
 const Partners = () => {
     return (
-        <section className="py-5  bg-light position-relative" data-aos="fade-up">
-            <Container>
+        <section className="py-5  bg-paper-texture position-relative">
+            <Container data-aos="fade-up">
                 <Row className="">
                     <Col className="text-center">
                         <Badge pill bg="" className="badge-soft-success px-2 py-1">

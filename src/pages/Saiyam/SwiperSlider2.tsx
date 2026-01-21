@@ -38,7 +38,7 @@ const SwiperSlider2 = ({ slides, hasLogo }: SwiperSliderProps) => {
             {(slides || []).map((slide, index) => {
                 return (
                     <SwiperSlide key={index.toString()}>
-                        <Card style={{ maxWidth: '400px' }} className="mb-0 border rounded">
+                        <Card className="mb-0 border rounded">
                             <Card.Body className="testimonial-body shadow">
                                 <p className="quotation-mark text-muted mb-0">“</p>
                                 <h4 className="fw-normal mb-3 mt-0">{slide.statement}</h4>

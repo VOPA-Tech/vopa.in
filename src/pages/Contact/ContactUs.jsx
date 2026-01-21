@@ -58,89 +58,87 @@ function ContactUs() {
     };
 
     return (
-        <section className="section pb-lg-7 py-4 position-relative">
+        <section className="hero-4 pt-lg-6 pb-sm-9 pb-6  bg-paper-texture position-relative overflow-hidden">
             <Container>
-                <Row className="align-items-center justify-content-center mb-5">
+                <Row className="align-items-center justify-content-center  mb-5">
                     <Col lg={6}>
-                        <Card className="shadow-none">
-                            <Card.Body className="p-xl-5 p-0">
-                                <h2 className="mb-2 mt-0 fw-medium">Let's Talk Further</h2>
-                                <p className="mb-5">
-                                    Please fill out the following form and we will get back to you shortly
-                                </p>
+                        <Card.Body className="p-xl-5 ">
+                            <h2 className="mb-2  fw-medium">Let's Talk Further</h2>
+                            <p className="mb-5">
+                                Please fill out the following form and we will get back to you shortly
+                            </p>
 
-                                <form onSubmit={handleSubmit}>
-                                    <Row>
-                                        <Col md={6}>
-                                            <Form.Group className="mb-3">
-                                                <Form.Label>First Name</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    placeholder="Enter first name"
-                                                    value={firstName}
-                                                    onChange={(e) => setFirstName(e.target.value)}
-                                                    required
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col md={6}>
-                                            <Form.Group className="mb-3">
-                                                <Form.Label>Last Name</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    placeholder="Enter last name"
-                                                    value={lastName}
-                                                    onChange={(e) => setLastName(e.target.value)}
-                                                    required
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col lg={12}>
-                                            <Form.Group className="mb-3">
-                                                <Form.Label>Email</Form.Label>
-                                                <Form.Control
-                                                    type="email"
-                                                    placeholder="Enter your email"
-                                                    value={email}
-                                                    onChange={(e) => setEmail(e.target.value)}
-                                                    required
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col lg={12}>
-                                            <Form.Group className="mb-4">
-                                                <Form.Label>Message</Form.Label>
-                                                <Form.Control
-                                                    as="textarea"
-                                                    rows={5}
-                                                    placeholder="Write your message here..."
-                                                    value={message}
-                                                    onChange={(e) => setMessage(e.target.value)}
-                                                    required
-                                                />
-                                            </Form.Group>
-                                        </Col>
-
-                                        {/* ✅ Added reCAPTCHA here */}
-                                        <Col lg={12} className="mb-4 text-center">
-                                            <ReCAPTCHA
-                                                sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                                                onChange={handleCaptchaChange}
+                            <form onSubmit={handleSubmit}>
+                                <Row>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>First Name</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter first name"
+                                                value={firstName}
+                                                onChange={(e) => setFirstName(e.target.value)}
+                                                required
                                             />
-                                        </Col>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>Last Name</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                placeholder="Enter last name"
+                                                value={lastName}
+                                                onChange={(e) => setLastName(e.target.value)}
+                                                required
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col lg={12}>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>Email</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                placeholder="Enter your email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col lg={12}>
+                                        <Form.Group className="mb-4">
+                                            <Form.Label>Message</Form.Label>
+                                            <Form.Control
+                                                as="textarea"
+                                                rows={5}
+                                                placeholder="Write your message here..."
+                                                value={message}
+                                                onChange={(e) => setMessage(e.target.value)}
+                                                required
+                                            />
+                                        </Form.Group>
+                                    </Col>
 
-                                        <Col lg="auto" className="mb-0">
-                                            <Button variant="success" type="submit" disabled={loading}>
-                                                {loading ? 'Sending...' : 'Send Message'}
-                                                <span className="icon icon-xs text-white ms-1">
-                                                    <FeatherIcon icon="send" />
-                                                </span>
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </form>
-                            </Card.Body>
-                        </Card>
+                                    {/* ✅ Added reCAPTCHA here */}
+                                    <Col lg={12} className="mb-4 text-center">
+                                        <ReCAPTCHA
+                                            sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                                            onChange={handleCaptchaChange}
+                                        />
+                                    </Col>
+
+                                    <Col lg="auto" className="mb-0">
+                                        <Button variant="success" type="submit" disabled={loading}>
+                                            {loading ? 'Sending...' : 'Send Message'}
+                                            <span className="icon icon-xs text-white ms-1">
+                                                <FeatherIcon icon="send" />
+                                            </span>
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </form>
+                        </Card.Body>
                     </Col>
 
                     {/* Map Section */}
@@ -177,7 +175,7 @@ function ContactUs() {
                 </Row>
 
                 {/* Contact Info Section */}
-                <Row className="mt-5 align-items-center">
+                <Row className="mt-7 align-items-center">
                     <Col md={4}>
                         <div className="d-flex px-md-1 px-lg-5 mb-md-0 mb-3">
                             <span className="bg-soft-success avatar avatar-sm rounded icon icon-with-bg icon-xs text-success me-3 flex-shrink-0">

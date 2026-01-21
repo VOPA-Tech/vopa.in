@@ -44,7 +44,7 @@ const projects: Project[] = [
         description:
             'Nipun Bharat, a Maharashtra, focuses on enhancing foundational literacy and numeracy for children in the state, with VOPA supporting the program through digital tools and resources aimed at improving learning outcomes.',
         image: 'https://uploads.justech-ai.in/vopa-website/websiteHomepage/1758194262067_nipun.png',
-        link: '/projects/nipun-bharat',
+        link: '/projects/nipun-maharashtra',
     },
     {
         field: 'Health',

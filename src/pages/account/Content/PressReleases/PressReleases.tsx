@@ -351,7 +351,7 @@ const PressReleases = () => {
                             <>
                                 <img src={viewingPressRelease.coverUrl} alt="Cover" className="img-fluid mb-3" />
                                 <div
-                                    className="pressRelease-content"
+                                    className="blog-content"
                                     dangerouslySetInnerHTML={{ __html: viewingPressRelease.content }}
                                 />
                             </>

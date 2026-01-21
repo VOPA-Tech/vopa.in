@@ -59,23 +59,22 @@ const AccordionExample = () => {
         {
             id: 1,
             title: 'Effective Training:',
-            text: `Over 70,000 teachers & headmasters are being trained and onboarded, facilitating swift project adoption and implementation.`,
+            text: `Over 5,500 supervisors are being trained and onboarded, enabling swift adoption and effective implementation of the project.`,
         },
         {
             id: 2,
             title: 'Enabling Centralization',
-            text: ` SCERT Maharashtra to set the goals, pace, and action plans through a human centric tech-led, customizable approach that meets Maharashtra's needs`,
+            text: `Through NIPUN Maharashtra, SCERT Maharashtra is strengthening state education by implementing AI-driven, data-backed strategies and effective teacher support, while also contributing its expertise and best practices to the national NIPUN Bharat initiative.`,
         },
         {
             id: 3,
             title: 'Comprehensive Assessments',
-            text: `Monthly evaluations of over 3.8 million students, with data visually presented in dashboards for all stakeholders: Parents, Teachers, HM's, System - driving targeted improvements.`,
+            text: `Conducting monthly evaluations of over 3.8 million students, with data visually presented through dedicated dashboards for parents, teachers, headmasters, and district and state authorities—enabling targeted improvements and informed decision-making.`,
         },
         {
             id: 4,
             title: 'Data Empowerment',
-            text: `School leaders are equipped with data analysis and monitoring tools for informed decision-making
-Recognition: The District CEO Mr. Rohan Ghuge (IAS) from Thane, received the prestigious Skoch Awards for this project in 2023 while he was in Wardha`,
+            text: `School leaders are empowered with advanced data analysis and monitoring tools to make informed decisions. Recognition: Wardha Zilla Parishad received the prestigious Skoch Award in 2023 for this project, under the leadership of Mr. Rohan Ghuge (IAS).`,
         },
         {
             id: 5,

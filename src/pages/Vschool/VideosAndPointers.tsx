@@ -68,7 +68,7 @@ const VideosAndPointers = () => {
     ];
 
     return (
-        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 position-relative overflow-hidden">
+        <section className="pt-lg-6 pt-4 pb-lg-6 pb-5 bg-paper-texture position-relative overflow-hidden">
             <Container>
                 {featuresThatMatter.map((ele) => (
                     <Row className="align-items-center">
