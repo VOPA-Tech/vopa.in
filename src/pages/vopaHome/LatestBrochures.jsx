@@ -34,9 +34,11 @@ const LatestBrochures = () => {
     };
 
     return (
-        <section className=" position-relative">
-            <Container>
-                <Row className="mb-6 text-center">
+        <section>
+            <Container
+                className="rounded-lg position-relative px-2 px-md-4 text-center"
+                style={{ overflow: 'visible' }}>
+                <Row className="text-center mb-3 mb-md-6">
                     <Col>
                         <h2 className="fw-bold text-success mb-2">Latest Brochures</h2>
                         <p className="text-black">Explore our most recent updates and publications.</p>

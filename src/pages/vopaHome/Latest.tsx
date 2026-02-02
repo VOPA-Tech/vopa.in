@@ -90,14 +90,15 @@ const Latest = () => {
                         <div className="title-underline" />
                     </Col>
                 </Row>
-
                 <Row className="mt-4" data-aos="fade-up" data-duration="600">
                     <Col lg={6} className="mb-4 mb-lg-0 ">
                         <LatestMentions />
                     </Col>
                     <Col lg={6}>
                         <LatestCutouts />
-                    </Col>
+                    </Col>{' '}
+                </Row>{' '}
+                <Row className="mt-4" data-aos="fade-up" data-duration="600">
                     <Col lg={6} className="mb-4 mb-lg-0">
                         <LatestBrochures />
                     </Col>

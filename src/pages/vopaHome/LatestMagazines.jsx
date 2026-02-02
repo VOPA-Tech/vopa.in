@@ -20,8 +20,10 @@ const LatestMagazines = () => {
 
     return (
         <>
-            <Container className="rounded-lg position-relative px-4 text-center" style={{ overflow: 'visible' }}>
-                <Row className="mb-4 text-center">
+            <Container
+                className="rounded-lg position-relative px-2 px-md-4 text-center"
+                style={{ overflow: 'visible' }}>
+                <Row className="text-center mb-3 mb-md-6">
                     <Col>
                         <h2 className="fw-bold text-success mb-2">Latest Magazines</h2>
                         <p className="text-black">
@@ -53,7 +55,7 @@ const LatestMagazines = () => {
                 )}
 
                 {!loading && !error && items.length > 0 && (
-                    <div className="magazine-fan d-flex justify-content-center align-items-center py-4 position-relative">
+                    <div className="magazine-fan d-flex justify-content-center align-items-center py-2 py-md-4">
                         {items.map((mag, index) => {
                             const cover =
                                 mag?.coverUrl ||
@@ -104,12 +106,23 @@ const LatestMagazines = () => {
             </Container>
 
             <style>{`
-                .magazine-fan {
-                    position: relative;
-                    overflow: visible;
-                    height: 460px;
-                    gap: 0;
-                }
+               .magazine-fan {
+  position: relative;
+  overflow: visible;
+  height: 420px; /* desktop */
+}
+
+@media (max-width: 768px) {
+  .magazine-fan {
+    height: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .magazine-fan {
+    height: 300px;
+  }
+}
 
                 .magazine-card {
                     width: 260px;

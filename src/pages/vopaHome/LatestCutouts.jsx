@@ -24,7 +24,7 @@ const LatestCutouts = () => {
     const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 768;
 
     return (
-        <section className="pt-7 position-relative bg-soft ">
+        <section className="pt-lg-7 position-relative bg-soft ">
             <Container
                 className="rounded-lg position-relative shadow-lg "
                 style={{
