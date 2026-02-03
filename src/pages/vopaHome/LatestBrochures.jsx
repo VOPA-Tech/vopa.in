@@ -19,12 +19,12 @@ const LatestBrochures = () => {
     const items = useMemo(() => (Array.isArray(brouchers) ? brouchers.filter(Boolean) : []), [brouchers]);
 
     const swiperConfig = {
-        loop: items.length > 1, // ✅ only loop when multiple brochures
+        loop: items.length > 1,
         spaceBetween: 24,
         autoplay: items.length > 1 ? { delay: 5000, disableOnInteraction: false } : false,
         pagination: { clickable: true },
-        navigation: items.length > 1, // hide arrows if only one
-        centeredSlides: items.length === 1, // ✅ center single item
+        navigation: items.length > 1,
+        centeredSlides: items.length === 1,
         modules: [Navigation, Pagination, Autoplay],
         breakpoints: {
             0: { slidesPerView: 1 },
@@ -38,18 +38,22 @@ const LatestBrochures = () => {
             <Container
                 className="rounded-lg position-relative px-2 px-md-4 text-center"
                 style={{ overflow: 'visible' }}>
-                <Row className="text-center mb-3 mb-md-6">
+                {/* 🔹 Title + subtitle (tight spacing like magazines) */}
+                <Row className="text-center mb-2">
                     <Col>
-                        <h2 className="fw-bold text-success mb-2">Latest Brochures</h2>
-                        <p className="text-black">Explore our most recent updates and publications.</p>
+                        <h2 className="fw-bold text-success mb-1">Latest Brochures</h2>
+                        <p className="text-black mb-2">Explore our most recent updates and publications.</p>
                     </Col>
                 </Row>
 
-                <Swiper {...swiperConfig} style={{ paddingBottom: '40px' }}>
+                {/* 🔹 Swiper */}
+                <Swiper {...swiperConfig} className="brochure-swiper">
                     {items.length === 0 ? (
                         <SwiperSlide>
-                            <div className="d-flex justify-content-center align-items-center" style={{ height: 200 }}>
-                                <span className="text-muted">No brochures available yet.</span>
+                            <div
+                                className="d-flex justify-content-center align-items-center text-muted"
+                                style={{ height: 180 }}>
+                                No brochures available yet.
                             </div>
                         </SwiperSlide>
                     ) : (
@@ -62,7 +66,11 @@ const LatestBrochures = () => {
                                             href={docUrl || '#'}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            style={{ textDecoration: 'none', display: 'block', position: 'relative' }}>
+                                            style={{
+                                                textDecoration: 'none',
+                                                display: 'block',
+                                                position: 'relative',
+                                            }}>
                                             {photoLink ? (
                                                 <img
                                                     src={photoLink}
@@ -70,7 +78,7 @@ const LatestBrochures = () => {
                                                     className="brochure-img"
                                                 />
                                             ) : (
-                                                <div style={{ height: 300, background: '#e9ecef' }} />
+                                                <div className="brochure-placeholder" />
                                             )}
 
                                             {title && (
@@ -88,6 +96,7 @@ const LatestBrochures = () => {
             </Container>
 
             <style>{`
+                /* Pagination */
                 .swiper-pagination-bullet {
                     background: #ccc;
                     opacity: 1;
@@ -96,37 +105,67 @@ const LatestBrochures = () => {
                     background: #28c76f;
                 }
 
+                /* Tight spacing below subtitle */
+                .brochure-swiper {
+                    margin-top: 4px;
+                    padding-bottom: 28px;
+                }
+
+                /* Card */
                 .brochure-card {
                     border-radius: 10px;
                     overflow: hidden;
-                    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+                    max-width: 250px;
                     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                    cursor: pointer;
-                    max-width: 350px;
-                }
-                .brochure-card:hover {
-                    transform: scale(1.03);
-                    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+                    transition: transform 0.25s ease, box-shadow 0.25s ease;
                 }
 
+                .brochure-card:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+                }
+
+                /* Image */
                 .brochure-img {
                     width: 100%;
-                    height: 35 0px;
+                    aspect-ratio: 1 / 1;
                     object-fit: cover;
                     display: block;
-                    transition: transform 0.5s ease;
-                }
-                .brochure-card:hover .brochure-img {
-                    transform: scale(1.1);
+                    transition: transform 0.4s ease;
                 }
 
+                .brochure-card:hover .brochure-img {
+                    transform: scale(1.06);
+                }
+
+                .brochure-placeholder {
+                    aspect-ratio: 1 / 1;
+                    background: #e9ecef;
+                }
+
+                /* Overlay */
                 .brochure-overlay {
-                    background: rgba(0, 0, 0, 0.75);
-                    padding: 10px;
                     position: absolute;
                     bottom: 0;
                     left: 0;
                     right: 0;
+                    padding: 10px;
+                    background: rgba(0,0,0,0.75);
+                }
+
+                /* Mobile spacing fixes */
+                @media (max-width: 768px) {
+                    .brochure-swiper {
+                        margin-top: 2px;
+                        padding-bottom: 22px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .brochure-swiper {
+                        margin-top: 2px;
+                        padding-bottom: 18px;
+                    }
                 }
             `}</style>
         </section>

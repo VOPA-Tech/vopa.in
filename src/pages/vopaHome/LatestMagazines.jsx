@@ -23,79 +23,67 @@ const LatestMagazines = () => {
             <Container
                 className="rounded-lg position-relative px-2 px-md-4 text-center"
                 style={{ overflow: 'visible' }}>
-                <Row className="text-center mb-3 mb-md-6">
+                <Row className="text-center mb-2">
                     <Col>
-                        <h2 className="fw-bold text-success mb-2">Latest Magazines</h2>
-                        <p className="text-black">
+                        <h2 className="fw-bold text-success mb-1">Latest Magazines</h2>
+                        <p className="text-black mb-2">
                             Discover our most recent publications, insights, and impact stories.
                         </p>
                     </Col>
                 </Row>
 
-                {/* --- State handlers --- */}
                 {loading && (
-                    <div className="py-5 text-center text-muted">
+                    <div className="py-4 text-center text-muted">
                         <FeatherIcon icon="loader" className="icon-spin" />
                         <div className="mt-2 small">Loading magazines...</div>
                     </div>
                 )}
 
                 {error && (
-                    <div className="py-5 text-center text-danger">
+                    <div className="py-4 text-center text-danger">
                         <FeatherIcon icon="alert-circle" />
-                        <div className="mt-2 small">Failed to load magazines. Please try again later.</div>
+                        <div className="mt-2 small">Failed to load magazines.</div>
                     </div>
                 )}
 
                 {!loading && !error && items.length === 0 && (
-                    <div className="py-5 text-center text-muted">
+                    <div className="py-4 text-center text-muted">
                         <FeatherIcon icon="book-open" />
                         <div className="mt-2 small">No magazines uploaded yet.</div>
                     </div>
                 )}
 
                 {!loading && !error && items.length > 0 && (
-                    <div className="magazine-fan d-flex justify-content-center align-items-center py-2 py-md-4">
+                    <div className="magazine-fan d-flex justify-content-center align-items-center">
                         {items.map((mag, index) => {
                             const cover =
                                 mag?.coverUrl ||
                                 mag?.photoLink ||
                                 mag?.photoUrl ||
-                                'https://via.placeholder.com/400x600?text=Magazine';
-                            const title = mag?.title || 'Magazine';
+                                'https://via.placeholder.com/400x400?text=Magazine';
                             const pdfUrl = mag?.docUrl || mag?.link || '#';
-
-                            // Fan angles + offsets
-                            const rotation = index === 0 ? '-10deg' : index === 1 ? '0deg' : '10deg';
-                            const zIndex = 10 - Math.abs(index - 1);
-                            const offsetX = index === 0 ? '-40px' : index === 2 ? '40px' : '0px';
 
                             return (
                                 <div
                                     key={mag?._id || index}
                                     className="magazine-card-wrapper"
                                     style={{
-                                        transform: `rotate(${rotation}) translateX(${offsetX})`,
-                                        zIndex,
-                                        marginLeft: index !== 0 ? '-90px' : '0',
+                                        transform: `translateY(${index * 4}px) rotate(${
+                                            index === 0 ? '-2deg' : index === 1 ? '-4deg' : '-6deg'
+                                        })`,
+                                        zIndex: 30 - index * 5,
                                     }}>
-                                    <Link
-                                        to={pdfUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        style={{ textDecoration: 'none' }}>
-                                        <Card className="magazine-card border-0 position-relative">
-                                            <div className="overflow-hidden">
-                                                <img
-                                                    src={cover}
-                                                    alt={title}
-                                                    className="w-100"
-                                                    style={{
-                                                        height: '360px',
-                                                        objectFit: 'cover',
-                                                    }}
-                                                />
-                                            </div>
+                                    <Link to={pdfUrl} target="_blank" rel="noopener noreferrer">
+                                        <Card className="magazine-card border-0">
+                                            <img
+                                                src={cover}
+                                                alt="Magazine"
+                                                className="w-100"
+                                                style={{
+                                                    aspectRatio: '1 / 1',
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
                                         </Card>
                                     </Link>
                                 </div>
@@ -106,45 +94,62 @@ const LatestMagazines = () => {
             </Container>
 
             <style>{`
-               .magazine-fan {
-  position: relative;
-  overflow: visible;
-  height: 420px; /* desktop */
-}
-
-@media (max-width: 768px) {
-  .magazine-fan {
-    height: 340px;
-  }
-}
-
-@media (max-width: 480px) {
-  .magazine-fan {
-    height: 300px;
-  }
-}
+                .magazine-fan {
+                    position: relative;
+                    overflow: visible;
+                    margin-top: 4px;
+                }
 
                 .magazine-card {
-                    width: 260px;
+                    width: 240px;
                     border-radius: 10px;
-                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-                    background-color: #fff;
-                    transition: transform 0.4s ease, box-shadow 0.4s ease;
+                    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+                    background: #fff;
                 }
 
                 .magazine-card-wrapper {
                     position: relative;
+                    transform-origin: center center;
                     transition: transform 0.4s ease, z-index 0.3s ease;
                 }
 
-                .magazine-card-wrapper:hover {
-                    transform: scale(1.07) rotate(0deg) translateY(-10px);
-                    z-index: 20 !important;
+                .magazine-card-wrapper:not(:first-child) {
+                    margin-left: -150px;
                 }
 
-                .magazine-card:hover img {
-                    transform: scale(1.1);
-                    transition: transform 0.4s ease;
+                .magazine-card-wrapper:hover {
+                    transform: translateY(-10px) rotate(0deg) scale(1.05) !important;
+                    z-index: 50 !important;
+                }
+
+                @media (max-width: 768px) {
+                    .magazine-card {
+                        width: 260px;
+                    }
+                    .magazine-card-wrapper:not(:first-child) {
+                        margin-left: -110px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .magazine-card {
+                        width: 320px;
+                    }
+                    .magazine-card-wrapper:not(:first-child) {
+                        margin-left: -80px;
+                    }
+                }
+
+                @media (max-width: 420px) {
+                    .magazine-fan {
+                        flex-direction: column;
+                        gap: 6px;
+                        margin-top: 2px;
+                    }
+                    .magazine-card-wrapper {
+                        margin-left: 0 !important;
+                        transform: none !important;
+                    }
                 }
 
                 .icon-spin {
@@ -154,34 +159,6 @@ const LatestMagazines = () => {
                 @keyframes spin {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
-                }
-
-                /* ✅ Keep overlapping on small screens too */
-                @media (max-width: 768px) {
-                    .magazine-fan {
-                        flex-wrap: nowrap;
-                        justify-content: center;
-                        transform: scale(0.85);
-                    }
-                    .magazine-card {
-                        width: 220px;
-                        height: auto;
-                    }
-                    .magazine-card-wrapper {
-                        margin-left: -70px !important;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .magazine-fan {
-                        transform: scale(0.75);
-                    }
-                    .magazine-card {
-                        width: 200px;
-                    }
-                    .magazine-card-wrapper {
-                        margin-left: -60px !important;
-                    }
                 }
             `}</style>
         </>
