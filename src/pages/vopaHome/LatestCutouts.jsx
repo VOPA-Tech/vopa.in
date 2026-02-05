@@ -26,12 +26,13 @@ const LatestCutouts = () => {
     return (
         <section className="pt-lg-7 position-relative bg-soft ">
             <Container
-                className="rounded-lg position-relative shadow-lg "
+                className="rounded-lg  position-relative shadow-lg "
                 style={{
                     backgroundImage: `linear-gradient(rgba(49,63,49,0.3), rgba(22,23,21,0.9)), url('${bgUrl}')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
+                    maxHeight: '360px',
                 }}>
                 <div className="">
                     {items.length === 0 ? (
@@ -64,7 +65,7 @@ const LatestCutouts = () => {
                                             <Card
                                                 className="rounded-sm media-card"
                                                 style={{
-                                                    maxHeight: '140px',
+                                                    maxHeight: '130px',
                                                     overflow: 'hidden',
                                                     marginTop: '-40px',
                                                     boxShadow: '0 -4px 6px -2px rgba(19,19,19,1)',

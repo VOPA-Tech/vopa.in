@@ -9,6 +9,8 @@ import Hero from './Hero';
 import Partners from './Partners';
 import { loadTeam } from 'reduxFolder/appSlice';
 import { fetchEmployees } from 'reduxFolder/employeeSlice';
+import SEO from 'components/SEO';
+import { baseUrl } from 'data/seo/baseUrl';
 
 const Company = () => {
     const dispatch = useDispatch();
@@ -23,6 +25,17 @@ const Company = () => {
 
     return (
         <>
+            {/* header and hero */}
+            <SEO
+                title="Vowels of People Association | Vopa
+        "
+                description={`We're shaping a world where every child has the tools to learn, the strength to grow, and the freedom to flourish.
+        `}
+                keywords={
+                    'Education, Mental Health, Child Development, Community Support, Non-Profit Organization, Empowerment, Learning Resources, Health and Wellness, Social Impact, Advocacy'
+                }
+                link={`${baseUrl}/about`}
+            />
             <div className="bg-paper-texture">
                 <Navbar3
                     navClass="navbar-light zindex-10"

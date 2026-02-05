@@ -26,7 +26,7 @@ const LatestMagazines = () => {
                 <Row className="text-center mb-2">
                     <Col>
                         <h2 className="fw-bold text-success mb-1">Latest Magazines</h2>
-                        <p className="text-black mb-2">
+                        <p className="text-white mb-2">
                             Discover our most recent publications, insights, and impact stories.
                         </p>
                     </Col>

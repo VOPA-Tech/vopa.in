@@ -13,7 +13,8 @@ const Latest = () => {
                 .latest-section {
                     position: relative;
                     background-image: url('https://uploads.justech-ai.in/vopa-website/websiteHomepage/1762342702701_media-doodles.jpg');
-                    background-size: cover;
+                    background-repeat: repeat;              /* 🔁 repeat pattern */
+  background-size: 300px 300px;  
                     background-position: center;
                     background-attachment: fixed; /* 👈 This creates the parallax effect */
                     z-index: 1;
@@ -24,7 +25,7 @@ const Latest = () => {
                     content: '';
                     position: absolute;
                     inset: 0;
-                       background: linear-gradient(90deg, hsla(186, 33%, 94%, 0.92) 0%, hsla(216, 41%, 79%, 0.95) 100%);
+                       background: linear-gradient(90deg, hsla(0, 33%, 18%, 0.92) 0%, hsla(213, 53%, 26%, 0.95) 100%);
                     z-index: 0;
                 }
 
@@ -83,7 +84,7 @@ const Latest = () => {
                             <h3 className="display-5 pt-3 fw-bold latest-title text-primary">Latest Updates</h3>
                         </div>
 
-                        <p className="text-black mx-auto latest-sub mb-2">
+                        <p className="text-white mx-auto latest-sub mb-2">
                             Fresh press mentions, media cutouts, and highlights—catch the buzz as it happens.
                         </p>
 

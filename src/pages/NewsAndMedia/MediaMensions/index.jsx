@@ -18,6 +18,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMediaMentions } from 'reduxFolder/mediaMentionsSlice';
 import { fetchMediaCutouts } from 'reduxFolder/mediaCutoutsSlice'; // New import for fetching media cutouts
 import MediaCutouts from './MediaCutouts';
+import SEO from 'components/SEO';
+import { baseUrl } from 'data/seo/baseUrl';
 
 const MediaMentions = () => {
     const dispatch = useDispatch();
@@ -35,6 +37,17 @@ const MediaMentions = () => {
 
     return (
         <>
+            {' '}
+            <SEO
+                title="Vowels of People Association | Vopa
+                                                                "
+                description={`We're shaping a world where every child has the tools to learn, the strength to grow, and the freedom to flourish.
+                                                                `}
+                keywords={
+                    'Education, Mental Health, Child Development, Community Support, Non-Profit Organization, Empowerment, Learning Resources, Health and Wellness, Social Impact, Advocacy'
+                }
+                link={`${baseUrl}/impact/news-and-media/media-mentions`}
+            />
             <div className="bg-paper-texture">
                 <Navbar3 navClass="navbar-light " buttonClass="btn-outline-secondary btn-sm" fixedWidth isSticky />
                 <section className=" pt-4 pb-5">
@@ -60,7 +73,6 @@ const MediaMentions = () => {
                     </Container>
                 </section>
             </div>
-
             <Footer1 />
             <BackToTop variant="success" />
         </>

@@ -1,16 +1,13 @@
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { Autoplay, Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
+import FeatherIcon from 'feather-icons-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo } from 'react';
 import { fetchBrouchers } from 'reduxFolder/brouchersSlice';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
-const LatestBrochures = () => {
+const LatestMagazines = () => {
     const dispatch = useDispatch();
-    const { brouchers } = useSelector((state) => state.brouchersState || { brouchers: [] });
+    const { brouchers, loading, error } = useSelector((state) => state.brouchersState || { brouchers: [] });
 
     useEffect(() => {
         dispatch(fetchBrouchers());
@@ -18,158 +15,149 @@ const LatestBrochures = () => {
 
     const items = useMemo(() => (Array.isArray(brouchers) ? brouchers.filter(Boolean) : []), [brouchers]);
 
-    const swiperConfig = {
-        loop: items.length > 1,
-        spaceBetween: 24,
-        autoplay: items.length > 1 ? { delay: 5000, disableOnInteraction: false } : false,
-        pagination: { clickable: true },
-        navigation: items.length > 1,
-        centeredSlides: items.length === 1,
-        modules: [Navigation, Pagination, Autoplay],
-        breakpoints: {
-            0: { slidesPerView: 1 },
-            768: { slidesPerView: Math.min(2, items.length) },
-            1024: { slidesPerView: Math.min(3, items.length) },
-        },
-    };
-
     return (
-        <section>
+        <>
             <Container
                 className="rounded-lg position-relative px-2 px-md-4 text-center"
                 style={{ overflow: 'visible' }}>
-                {/* 🔹 Title + subtitle (tight spacing like magazines) */}
                 <Row className="text-center mb-2">
                     <Col>
                         <h2 className="fw-bold text-success mb-1">Latest Brochures</h2>
-                        <p className="text-black mb-2">Explore our most recent updates and publications.</p>
+                        <p className="text-white mb-2">Explore our most recent updates and publications.</p>
                     </Col>
                 </Row>
 
-                {/* 🔹 Swiper */}
-                <Swiper {...swiperConfig} className="brochure-swiper">
-                    {items.length === 0 ? (
-                        <SwiperSlide>
-                            <div
-                                className="d-flex justify-content-center align-items-center text-muted"
-                                style={{ height: 180 }}>
-                                No brochures available yet.
-                            </div>
-                        </SwiperSlide>
-                    ) : (
-                        items.map((item, index) => {
-                            const { photoLink, title, docUrl } = item || {};
-                            return (
-                                <SwiperSlide key={item?._id || index}>
-                                    <Card className="brochure-card mx-auto border-0">
-                                        <a
-                                            href={docUrl || '#'}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            style={{
-                                                textDecoration: 'none',
-                                                display: 'block',
-                                                position: 'relative',
-                                            }}>
-                                            {photoLink ? (
-                                                <img
-                                                    src={photoLink}
-                                                    alt={title || 'Brochure'}
-                                                    className="brochure-img"
-                                                />
-                                            ) : (
-                                                <div className="brochure-placeholder" />
-                                            )}
+                {loading && (
+                    <div className="py-4 text-center text-muted">
+                        <FeatherIcon icon="loader" className="icon-spin" />
+                        <div className="mt-2 small">Loading brochures...</div>
+                    </div>
+                )}
 
-                                            {title && (
-                                                <div className="brochure-overlay">
-                                                    <h6 className="text-white m-0">{title}</h6>
-                                                </div>
-                                            )}
-                                        </a>
-                                    </Card>
-                                </SwiperSlide>
+                {error && (
+                    <div className="py-4 text-center text-danger">
+                        <FeatherIcon icon="alert-circle" />
+                        <div className="mt-2 small">Failed to load brochures.</div>
+                    </div>
+                )}
+
+                {!loading && !error && items.length === 0 && (
+                    <div className="py-4 text-center text-muted">
+                        <FeatherIcon icon="book-open" />
+                        <div className="mt-2 small">No brochures uploaded yet.</div>
+                    </div>
+                )}
+
+                {!loading && !error && items.length > 0 && (
+                    <div className="magazine-fan d-flex justify-content-center align-items-center">
+                        {items.map((mag, index) => {
+                            const cover =
+                                mag?.coverUrl ||
+                                mag?.photoLink ||
+                                mag?.photoUrl ||
+                                'https://via.placeholder.com/400x400?text=Magazine';
+                            const pdfUrl = mag?.docUrl || mag?.link || '#';
+
+                            return (
+                                <div
+                                    key={mag?._id || index}
+                                    className="magazine-card-wrapper"
+                                    style={{
+                                        transform: `translateY(${index * 4}px) rotate(${
+                                            index === 0 ? '-2deg' : index === 1 ? '-4deg' : '-6deg'
+                                        })`,
+                                        zIndex: 30 - index * 5,
+                                    }}>
+                                    <Link to={pdfUrl} target="_blank" rel="noopener noreferrer">
+                                        <Card className="magazine-card border-0">
+                                            <img
+                                                src={cover}
+                                                alt="Magazine"
+                                                className="w-100"
+                                                style={{
+                                                    aspectRatio: '1 / 1',
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
+                                        </Card>
+                                    </Link>
+                                </div>
                             );
-                        })
-                    )}
-                </Swiper>
+                        })}
+                    </div>
+                )}
             </Container>
 
             <style>{`
-                /* Pagination */
-                .swiper-pagination-bullet {
-                    background: #ccc;
-                    opacity: 1;
-                }
-                .swiper-pagination-bullet-active {
-                    background: #28c76f;
-                }
-
-                /* Tight spacing below subtitle */
-                .brochure-swiper {
+                .magazine-fan {
+                    position: relative;
+                    overflow: visible;
                     margin-top: 4px;
-                    padding-bottom: 28px;
                 }
 
-                /* Card */
-                .brochure-card {
+                .magazine-card {
+                    width: 240px;
                     border-radius: 10px;
-                    overflow: hidden;
-                    max-width: 250px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                    transition: transform 0.25s ease, box-shadow 0.25s ease;
+                    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+                    background: #fff;
                 }
 
-                .brochure-card:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+                .magazine-card-wrapper {
+                    position: relative;
+                    transform-origin: center center;
+                    transition: transform 0.4s ease, z-index 0.3s ease;
                 }
 
-                /* Image */
-                .brochure-img {
-                    width: 100%;
-                    aspect-ratio: 1 / 1;
-                    object-fit: cover;
-                    display: block;
-                    transition: transform 0.4s ease;
+                .magazine-card-wrapper:not(:first-child) {
+                    margin-left: -150px;
                 }
 
-                .brochure-card:hover .brochure-img {
-                    transform: scale(1.06);
+                .magazine-card-wrapper:hover {
+                    transform: translateY(-10px) rotate(0deg) scale(1.05) !important;
+                    z-index: 50 !important;
                 }
 
-                .brochure-placeholder {
-                    aspect-ratio: 1 / 1;
-                    background: #e9ecef;
-                }
-
-                /* Overlay */
-                .brochure-overlay {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    padding: 10px;
-                    background: rgba(0,0,0,0.75);
-                }
-
-                /* Mobile spacing fixes */
                 @media (max-width: 768px) {
-                    .brochure-swiper {
-                        margin-top: 2px;
-                        padding-bottom: 22px;
+                    .magazine-card {
+                        width: 260px;
+                    }
+                    .magazine-card-wrapper:not(:first-child) {
+                        margin-left: -110px;
                     }
                 }
 
                 @media (max-width: 480px) {
-                    .brochure-swiper {
-                        margin-top: 2px;
-                        padding-bottom: 18px;
+                    .magazine-card {
+                        width: 320px;
+                    }
+                    .magazine-card-wrapper:not(:first-child) {
+                        margin-left: -80px;
                     }
                 }
+
+                @media (max-width: 420px) {
+                    .magazine-fan {
+                        flex-direction: column;
+                        gap: 6px;
+                        margin-top: 2px;
+                    }
+                    .magazine-card-wrapper {
+                        margin-left: 0 !important;
+                        transform: none !important;
+                    }
+                }
+
+                .icon-spin {
+                    animation: spin 1.2s linear infinite;
+                }
+
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
             `}</style>
-        </section>
+        </>
     );
 };
 
-export default LatestBrochures;
+export default LatestMagazines;

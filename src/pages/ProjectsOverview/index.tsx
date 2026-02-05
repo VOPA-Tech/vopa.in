@@ -6,10 +6,22 @@ import Features from './Features';
 import Testimonials from './Testimonials';
 import { Footer1 } from 'components/footer';
 import Hero4 from './Hero4';
+import SEO from 'components/SEO';
+import { baseUrl } from 'data/seo/baseUrl';
 
 const Startup = () => {
     return (
         <>
+            <SEO
+                title="Vowels of People Association | Vopa
+                "
+                description={`We're shaping a world where every child has the tools to learn, the strength to grow, and the freedom to flourish.
+                `}
+                keywords={
+                    'Education, Mental Health, Child Development, Community Support, Non-Profit Organization, Empowerment, Learning Resources, Health and Wellness, Social Impact, Advocacy'
+                }
+                link={`${baseUrl}/projects/overview`}
+            />
             <div className=" bg-paper-texture">
                 <Navbar3 isSticky navClass="navbar-light" fixedWidth buttonClass="btn-secondary btn-sm" />
                 <Hero4 />

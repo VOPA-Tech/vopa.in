@@ -29,7 +29,7 @@ import { baseUrl } from 'data/seo/baseUrl';
 import VolunteerForm from 'components/forms/VolenteerForm';
 import BarImageAchivements from './BarImageAchivements';
 
-const Company = () => {
+const VopaHome = () => {
     return (
         <>
             {/* header and hero */}
@@ -84,4 +84,4 @@ const Company = () => {
     );
 };
 
-export default Company;
+export default VopaHome;

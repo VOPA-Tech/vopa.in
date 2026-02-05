@@ -76,15 +76,19 @@ const LatestMentions = () => {
                                                 href={mention?.link || '/'}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                style={{ textDecoration: 'none', width: '100%' }}>
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    width: '100%',
+                                                    maxWidth: '420px', // ⬅️ keeps it tighter on large screens
+                                                }}>
                                                 <Card className="card-listing-item shadow-xl">
                                                     <div className="position-relative" style={{ overflow: 'hidden' }}>
                                                         <img
                                                             src={photo}
                                                             alt={title}
-                                                            width={600}
-                                                            height={400}
                                                             style={{
+                                                                width: '100%',
+                                                                height: '360px', // ⬅️ was ~400px visually
                                                                 objectFit: 'cover',
                                                                 display: 'block',
                                                             }}
